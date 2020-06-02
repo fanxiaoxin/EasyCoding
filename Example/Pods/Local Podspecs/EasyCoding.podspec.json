@@ -1,0 +1,22 @@
+{
+  "name": "EasyCoding",
+  "version": "0.1.0",
+  "summary": "A short description of EasyCoding.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/fanxiaoxin_1987@126.com/EasyCoding",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "fanxiaoxin_1987@126.com": "fanxiaoxin_1987@126.com"
+  },
+  "source": {
+    "git": "https://github.com/fanxiaoxin_1987@126.com/EasyCoding.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "EasyCoding/Classes/**/*"
+}

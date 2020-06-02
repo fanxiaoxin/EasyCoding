@@ -1,0 +1,27 @@
+PODS:
+  - EasyCoding (0.1.0)
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+
+DEPENDENCIES:
+  - EasyCoding (from `../`)
+  - FBSnapshotTestCase (~> 2.1.4)
+
+SPEC REPOS:
+  trunk:
+    - FBSnapshotTestCase
+
+EXTERNAL SOURCES:
+  EasyCoding:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  EasyCoding: 5cb7e12f91e40344597adf2ba71020486dfa0b04
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+
+PODFILE CHECKSUM: 28e40c9cced2596fbd9228828fed2be45333f945
+
+COCOAPODS: 1.9.2

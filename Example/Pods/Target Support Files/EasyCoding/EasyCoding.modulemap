@@ -1,0 +1,6 @@
+framework module EasyCoding {
+  umbrella header "EasyCoding-umbrella.h"
+
+  export *
+  module * { export * }
+}
