@@ -22,3 +22,14 @@ class ViewController: UIViewController {
 
 }
 
+@_functionBuilder
+class A  {
+    var buildBlock: () -> Void
+}
+
+class TEST {
+    @A
+    func haha() {
+        
+    }
+}
