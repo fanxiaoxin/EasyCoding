@@ -1,5 +1,4 @@
 import XCTest
-import EasyCoding
 
 class Tests: XCTestCase {
     

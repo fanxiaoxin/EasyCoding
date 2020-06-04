@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftUI
+import EasyCoding
 
 class ViewController: UIViewController {
 
@@ -15,6 +15,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         TEST().haha()
+        let t  = T4()
+        let a = t("ssv")
+        let c = t("", d: "ab")
+        let b = t.callAsFunction("3434")
+        
+        let t4 = T4()("haha")
+        
+        print(t.test)
+        t.test = 8
+        print(t.test)
+        t.test = 0
+        print(t.test)
+        t.test = 3
+        print(t.test)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,46 +38,20 @@ class ViewController: UIViewController {
     }
 
 }
-
-@_functionBuilder
-struct AttributedStringBuilder {
-    static func buildBlock() -> NSAttributedString {
-        return NSAttributedString(string: "I'm Default")
+class T4 {
+    @ECProperty.Clamping(min: 1, max: 5)
+    var test: Int = 4
+    func callAsFunction(_ p: String?) -> String {
+        return p ?? "FUCK"
     }
-  static func buildBlock(_ segments: NSAttributedString...) -> NSAttributedString {
-    let string = NSMutableAttributedString()
-    segments.forEach { string.append($0) }
-    return string
-  }
-static func buildBlock(_ string: String,_ color: UIColor) -> NSAttributedString {
-    return NSAttributedString(string: string, attributes: [NSAttributedString.Key.foregroundColor : color])
-  }
-}
-extension NSAttributedString {
-  convenience init(@AttributedStringBuilder _ content: () -> NSAttributedString) {
-    self.init(attributedString: content())
-  }
-}
-
-class TEST {
-    func haha() {
-        let hello = NSAttributedString(string: "Hello")
-        let world = NSAttributedString(string: "World")
-       let str =
-        NSAttributedString {
-          hello
-          world
-        }
-        print(str)
-        let str2 = NSAttributedString{
-            "fuck you"
-            UIColor.red
-        }
-        print(str2)
-        let str3 = NSAttributedString { () -> NSAttributedString in
-            "SHit"
-            UIColor.blue
-        }
-        print(str3)
+    func callAsFunction(_ p: String?, d: String) -> String {
+        return p ?? "FUCK"
+    }
+    static func callAsFunction(_ p: Int) -> Int {
+        return p
     }
 }
+///Swift5.1: Some 泛型
+///Swift5.1: @propertyWrapper
+///Swift5.1: @_functionBuilder
+///Swift5.2: callAsFunction 把类当方法一样调用

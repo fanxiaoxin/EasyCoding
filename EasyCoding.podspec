@@ -32,7 +32,7 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'EasyCoding/Classes/**/*'
   
-  s.swift_version = '5.1'
+  s.swift_version = '5.2'
   
   # s.resource_bundles = {
   #   'EasyCoding' => ['EasyCoding/Assets/*.png']
