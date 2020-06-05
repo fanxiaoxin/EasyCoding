@@ -19,13 +19,13 @@ extension EC.NamespaceImplement where Base: UIColor {
     public static func rgba(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat, _ a: CGFloat = 1) -> UIColor {
         return UIColor(red: r, green: g, blue: b, alpha: a)
     }
-    public static func rgba(_ rgba: UInt) -> UIColor {
+    public static func rgba(_ rgba: UInt32) -> UIColor {
         return UIColor(red: CGFloat((rgba & 0xFF000000) >> 24) / 255.0,
                     green:CGFloat((rgba & 0xFF0000) >> 16) / 255.0,
                     blue:CGFloat((rgba & 0xFF00) >> 8) / 255.0,
                     alpha:CGFloat(rgba & 0xFF) / 255.0)
     }
-    public static func rgb(_ rgb: UInt, alpha: CGFloat = 1) -> UIColor {
+    public static func rgb(_ rgb: UInt32, alpha: CGFloat = 1) -> UIColor {
         return UIColor(red: CGFloat((rgb & 0xFF0000) >> 16) / 255.0,
                     green:CGFloat((rgb & 0xFF00) >> 8) / 255.0,
                     blue:CGFloat(rgb & 0xFF) / 255.0,

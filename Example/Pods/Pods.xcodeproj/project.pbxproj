@@ -65,6 +65,12 @@
 		9C0CA3CE2488E75E00D3BBCA /* EnvironmentVariableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CA3CD2488E75E00D3BBCA /* EnvironmentVariableProperty.swift */; };
 		9C0CA3D02488E90500D3BBCA /* ClampingProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CA3CF2488E90500D3BBCA /* ClampingProperty.swift */; };
 		9C0CA3D22488EB9600D3BBCA /* AtomicProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CA3D12488EB9600D3BBCA /* AtomicProperty.swift */; };
+		9C455B2D2489EEF400160102 /* ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C455B282489EEF400160102 /* ParagraphStyle.swift */; };
+		9C455B2E2489EEF400160102 /* AttributedStringOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C455B292489EEF400160102 /* AttributedStringOperator.swift */; };
+		9C455B302489EEF400160102 /* StringAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C455B2B2489EEF400160102 /* StringAttribute.swift */; };
+		9C455B312489EEF400160102 /* StringAttributeShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C455B2C2489EEF400160102 /* StringAttributeShortcut.swift */; };
+		9C455B35248A3B6300160102 /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C455B34248A3B6300160102 /* AttributedString.swift */; };
+		9C455B39248A4E1300160102 /* AttributedStringFunctionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C455B38248A4E1300160102 /* AttributedStringFunctionBuilder.swift */; };
 		9C766CBE8B958E2F2D2FB48767BB33D6 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102283BD1D1F7C50E05C589FC70F2C82 /* LayoutConstraint.swift */; };
 		9CE41D362488C60D00FE4B91 /* StringProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D352488C60D00FE4B91 /* StringProperty.swift */; };
 		9CE41D382488CA8C00FE4B91 /* UIWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D372488CA8C00FE4B91 /* UIWebViewExtension.swift */; };
@@ -239,6 +245,12 @@
 		9C0CA3CD2488E75E00D3BBCA /* EnvironmentVariableProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableProperty.swift; sourceTree = "<group>"; };
 		9C0CA3CF2488E90500D3BBCA /* ClampingProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClampingProperty.swift; sourceTree = "<group>"; };
 		9C0CA3D12488EB9600D3BBCA /* AtomicProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicProperty.swift; sourceTree = "<group>"; };
+		9C455B282489EEF400160102 /* ParagraphStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParagraphStyle.swift; sourceTree = "<group>"; };
+		9C455B292489EEF400160102 /* AttributedStringOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedStringOperator.swift; sourceTree = "<group>"; };
+		9C455B2B2489EEF400160102 /* StringAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringAttribute.swift; sourceTree = "<group>"; };
+		9C455B2C2489EEF400160102 /* StringAttributeShortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringAttributeShortcut.swift; sourceTree = "<group>"; };
+		9C455B34248A3B6300160102 /* AttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
+		9C455B38248A4E1300160102 /* AttributedStringFunctionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedStringFunctionBuilder.swift; sourceTree = "<group>"; };
 		9CE41D352488C60D00FE4B91 /* StringProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProperty.swift; sourceTree = "<group>"; };
 		9CE41D372488CA8C00FE4B91 /* UIWebViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWebViewExtension.swift; sourceTree = "<group>"; };
 		9CE41D392488CAAA00FE4B91 /* UIWindowExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindowExtension.swift; sourceTree = "<group>"; };
@@ -365,6 +377,8 @@
 				7FEC605A201918DE77D87F48E7F2304C /* 1.0.Foundation */,
 				796F6579FB6C4E4A6117A724D976B044 /* 1.1.Extensions */,
 				9AE6DB953AA68E49D0EAD21C9B43EEAD /* 1.2.PropertyWrapper */,
+				9C455B262489EED400160102 /* 1.3.FunctionBuilder */,
+				9C455B252489EED400160102 /* 1.4.Shortcut */,
 				889EBD992349F026D6E2C81D49FF3CC9 /* 1.5.Types */,
 				0252F5D3E0D17C7EA37326043338996A /* Basic */,
 				DDAAAF9E8FA00988AB8AA525F94FE4E3 /* Pod */,
@@ -534,6 +548,36 @@
 			);
 			name = 1.2.PropertyWrapper;
 			path = EasyCoding/Classes/1.Basic/1.2.PropertyWrapper;
+			sourceTree = "<group>";
+		};
+		9C455B252489EED400160102 /* 1.4.Shortcut */ = {
+			isa = PBXGroup;
+			children = (
+				9C455B272489EEF400160102 /* 1.4.1.AttributedStringShortcut */,
+			);
+			name = 1.4.Shortcut;
+			path = EasyCoding/Classes/1.Basic/1.4.Shortcut;
+			sourceTree = "<group>";
+		};
+		9C455B262489EED400160102 /* 1.3.FunctionBuilder */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = 1.3.FunctionBuilder;
+			path = EasyCoding/Classes/1.Basic/1.3.FunctionBuilder;
+			sourceTree = "<group>";
+		};
+		9C455B272489EEF400160102 /* 1.4.1.AttributedStringShortcut */ = {
+			isa = PBXGroup;
+			children = (
+				9C455B2B2489EEF400160102 /* StringAttribute.swift */,
+				9C455B2C2489EEF400160102 /* StringAttributeShortcut.swift */,
+				9C455B282489EEF400160102 /* ParagraphStyle.swift */,
+				9C455B292489EEF400160102 /* AttributedStringOperator.swift */,
+				9C455B34248A3B6300160102 /* AttributedString.swift */,
+				9C455B38248A4E1300160102 /* AttributedStringFunctionBuilder.swift */,
+			);
+			path = 1.4.1.AttributedStringShortcut;
 			sourceTree = "<group>";
 		};
 		B0E0395D36177C63B17A7761B7012490 /* Pods-EasyCoding_Tests */ = {
@@ -956,6 +1000,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C455B35248A3B6300160102 /* AttributedString.swift in Sources */,
 				9C0CA3CE2488E75E00D3BBCA /* EnvironmentVariableProperty.swift in Sources */,
 				895745DF0807C635FC6C8DD451908BFF /* BundleExtension.swift in Sources */,
 				0149C8E0A22718213D26A10076258159 /* DateExtension.swift in Sources */,
@@ -978,12 +1023,17 @@
 				FA468C915F0365CAE92EA66C63AE32C7 /* UILabelExtension.swift in Sources */,
 				9C0CA3CC2488E37100D3BBCA /* ExpirableProperty.swift in Sources */,
 				462E689978FFACAF9DEECE79D8141518 /* UIScrollViewExtension.swift in Sources */,
+				9C455B2D2489EEF400160102 /* ParagraphStyle.swift in Sources */,
 				456850FF59941A419842896CF57ED20F /* UIViewControllerExtension.swift in Sources */,
 				9C0CA3D02488E90500D3BBCA /* ClampingProperty.swift in Sources */,
 				C75DA7360765DC6AE5F846AB3991B4C6 /* UIViewExtension.swift in Sources */,
+				9C455B312489EEF400160102 /* StringAttributeShortcut.swift in Sources */,
+				9C455B2E2489EEF400160102 /* AttributedStringOperator.swift in Sources */,
 				9CE41D382488CA8C00FE4B91 /* UIWebViewExtension.swift in Sources */,
+				9C455B302489EEF400160102 /* StringAttribute.swift in Sources */,
 				9C0CA3D22488EB9600D3BBCA /* AtomicProperty.swift in Sources */,
 				9CE41D3B2488CAAB00FE4B91 /* UIWindowExtension.swift in Sources */,
+				9C455B39248A4E1300160102 /* AttributedStringFunctionBuilder.swift in Sources */,
 				6E9506D48799C815A7175A29D8B2FD9F /* UserDefaultProperty.swift in Sources */,
 				9C0CA3CA2488E20D00D3BBCA /* DelayInitProperty.swift in Sources */,
 				29F57618AA8F3A564CB6092CB677D950 /* Weaker.swift in Sources */,

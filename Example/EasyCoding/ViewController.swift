@@ -14,30 +14,29 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        TEST().haha()
-        let t  = T4()
-        let a = t("ssv")
-        let c = t("", d: "ab")
-        let b = t.callAsFunction("3434")
-        
-        let t4 = T4()("haha")
-        
-        print(t.test)
-        t.test = 8
-        print(t.test)
-        t.test = 0
-        print(t.test)
-        t.test = 3
-        print(t.test)
-        
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let a = "I'm".easy.attr(.color(.blue), .font(.systemFont(ofSize: 14)))
+        let b: ECAttributedString = "i'm \("where \("ag", .color(.red)) ", .color(.blue)) here "
+        let e = NSAttributedString.easy("I'm \("here\("fuck ", .color(.yellow))", .color(.red))  find me", .color(.blue))
+        print(e)
+//        let f:NSAttributedString =
+//            .easy(.color(.blue), .font(size: 13)) {
+//                "I'm "
+//                    .easy(.color(.red)) {
+//                    "hehe"
+//                }
+//                "haha"
+//            }
+        self.test("", "") {
+            
+        }
+    }
+    func test(_ attrs: String..., block: () -> Void) {
+        
     }
 
 }
+
 class T4 {
     @ECProperty.Clamping(min: 1, max: 5)
     var test: Int = 4

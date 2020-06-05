@@ -8,29 +8,36 @@
 import UIKit
 
 ///用于保存弱对象
-public struct ECWeaker {
-    public weak var obj: AnyObject?
+public struct ECWeaker<T: AnyObject> {
+    public weak var obj: T?
 }
 
 ///保存弱对象，并在对象销毁时自动清除对象
-open class ECWeakerSet {
-    private var weakers: [ECWeaker] = []
+open class ECWeakerArray<T: AnyObject> {
+    private var weakers: [ECWeaker<T>] = []
     public init() {
         
     }
     ///添加对象
-    open func append(_ obj: AnyObject) {
+    open func append(_ obj: T) {
         self.checkObjectsAliving()
         let weaker = ECWeaker(obj: obj)
         self.weakers.append(weaker)
+    }
+    ///移除对象
+    open func remove(_ obj: T) -> T? {
+        if let idx = self.weakers.firstIndex(where: { $0.obj === obj }) {
+            return self.weakers.remove(at: idx).obj
+        }
+        return nil
     }
     ///检查对象是否存在，若不存在则移除
     open func checkObjectsAliving() {
         self.weakers.removeAll(where: { $0.obj == nil })
     }
     ///循环操作对象
-    open func forEach<ObjectType>(_ body: (ObjectType) throws -> Void) rethrows {
+    open func forEach(_ body: (T) throws -> Void) rethrows {
         self.checkObjectsAliving()
-        try self.weakers.map( { $0.obj as! ObjectType }).forEach(body)
+        try self.weakers.map( { $0.obj! }).forEach(body)
     }
 }
