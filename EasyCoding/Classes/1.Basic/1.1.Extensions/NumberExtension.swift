@@ -1,5 +1,5 @@
 //
-//  Number+FXAdd.swift
+//  Number+ECAdd.swift
 //  EasyCoding
 //
 //  Created by Fanxx on 2018/3/23.

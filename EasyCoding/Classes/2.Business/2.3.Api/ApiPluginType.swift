@@ -9,13 +9,13 @@ import UIKit
 import Moya
 import Result
 
-public protocol FXApiPluginType: PluginType {
-    //只会接受FXResponseApiType, 其中responser的类型和FXResponseApiType的response一致
-    func willReceive(_ response: Any, target: FXApiType)
-    //只会接受FXResponseApiType, 其中responser的类型和FXResponseApiType的response一致
-    func didReceive(_ response: Any, target: FXApiType)
+public protocol ECApiPluginType: PluginType {
+    //只会接受ECResponseApiType, 其中responser的类型和ECResponseApiType的response一致
+    func willReceive(_ response: Any, target: ECApiType)
+    //只会接受ECResponseApiType, 其中responser的类型和ECResponseApiType的response一致
+    func didReceive(_ response: Any, target: ECApiType)
 }
-extension FXApiPluginType {
-    public func willReceive(_ response: Any, target: FXApiType) {}
-    public func didReceive(_ response: Any, target: FXApiType) {}
+extension ECApiPluginType {
+    public func willReceive(_ response: Any, target: ECApiType) {}
+    public func didReceive(_ response: Any, target: ECApiType) {}
 }

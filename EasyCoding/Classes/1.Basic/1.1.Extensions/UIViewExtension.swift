@@ -1,5 +1,5 @@
 //
-//  UIView+FXAdd.swift
+//  UIView+ECAdd.swift
 //  EasyCoding
 //
 //  Created by Fanxx on 2018/3/23.
@@ -214,6 +214,12 @@ extension EC.NamespaceImplement where Base: UIView {
             }else{
                 view.easy.forEachSubviews(body: body)
             }
+        }
+    }
+    ///清空子Viewigbw
+    public func removeAllSubviews() {
+        for view in self.base.subviews {
+            view.removeFromSuperview()
         }
     }
 }

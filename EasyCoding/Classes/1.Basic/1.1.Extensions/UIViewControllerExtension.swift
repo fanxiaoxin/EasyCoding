@@ -8,7 +8,7 @@
 
 import UIKit
 
-//extension UINavigationController: FXNamespaceWrappable {}
+//extension UINavigationController: ECNamespaceWrappable {}
 extension EC.NamespaceImplement where Base == UIViewController {
     public static var current: UIViewController? {
         if var target = UIApplication.shared.delegate?.window??.rootViewController {

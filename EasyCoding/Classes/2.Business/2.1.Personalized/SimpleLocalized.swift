@@ -11,7 +11,7 @@ import UIKit
 open class ECLocalizedManager: ECLocalizedManagerType {
     public typealias ProviderType = ECLocalizedProvider
     
-    public let targets = ECWeakerSet()
+    public let targets = ECWeakerArray<AnyObject>()
     ///当前使用的资源
     public var provider: ECLocalizedProvider? {
         didSet {

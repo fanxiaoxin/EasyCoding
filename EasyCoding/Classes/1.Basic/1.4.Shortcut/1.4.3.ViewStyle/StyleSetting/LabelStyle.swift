@@ -82,7 +82,7 @@ extension ECStyleSetting where TargetType: UILabel {
     }
 }
 extension ECStyleSetable where Self: UILabel {
-    public static func fx(text: String? = nil, font: UIFont, color: UIColor?) -> Self {
+    public static func easy(text: String? = nil, font: UIFont, color: UIColor?) -> Self {
         let o = self.init()
         o.text = text
         o.font = font

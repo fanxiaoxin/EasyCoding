@@ -69,20 +69,20 @@ extension ECPresentSegue {
                         let segue = Push(animated: self.isAnimated)
                         segue.source = cs[i-1]
                         segue.destination = cs[i]
-                        cs[i].EC.set(currentSegue: segue)
+                        cs[i].easy.set(currentSegue: segue)
                     }
                 }
                 if cs.count > 0 {
                     let segue = Push(animated: self.isAnimated)
                     segue.source = s
                     segue.destination = cs[0]
-                    cs[0].EC.set(currentSegue: segue)
+                    cs[0].easy.set(currentSegue: segue)
                 }
                 if let nav = s.navigationController {
-                    nav.EC.push(cs, animated: self.isAnimated)
+                    nav.easy.push(cs, animated: self.isAnimated)
                     completion?()
                 } else if let tab = s as? UITabBarController, let nav = tab.selectedViewController as? UINavigationController {
-                    nav.EC.push(cs, animated: self.isAnimated)
+                    nav.easy.push(cs, animated: self.isAnimated)
                     completion?()
                 }
             }
@@ -102,10 +102,10 @@ extension ECPresentSegue {
         open override func performAction(completion: (() -> Void)?) {
             if let s = self.source, let d = self.destination {
                 if let nav = s.navigationController {
-                    nav.EC.replace(d, level: count, animated: self.isAnimated)
+                    nav.easy.replace(d, level: count, animated: self.isAnimated)
                     completion?()
                 } else if let tab = s as? UITabBarController, let nav = tab.selectedViewController as? UINavigationController {
-                    nav.EC.replace(d, level: count, animated: self.isAnimated)
+                    nav.easy.replace(d, level: count, animated: self.isAnimated)
                     completion?()
                 }
             }
@@ -215,12 +215,12 @@ extension ECPresentSegue {
         }
         open override func performAction(completion: (() -> Void)?) {
             if let d = self.destination {
-                d.EC.showInNewWindow(level: level)
+                d.easy.showWindow(level: level)
                 completion?()
             }
         }
         public override func unwindAction() {
-            self.destination?.EC.closeWindow()
+            self.destination?.easy.closeWindow()
         }
         public override func performNext(segue: ECPresentSegueType, completion: (() -> Void)?) {
             self.unwind()

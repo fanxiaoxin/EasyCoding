@@ -1,5 +1,5 @@
 //
-//  FXEventManagerType.swift
+//  ECEventManagerType.swift
 //  EasyCoding
 //
 //  Created by Fanxx on 2019/4/19.

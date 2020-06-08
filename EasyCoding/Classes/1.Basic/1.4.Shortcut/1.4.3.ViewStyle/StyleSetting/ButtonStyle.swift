@@ -191,7 +191,7 @@ extension ECStyleSetting where TargetType: UIButton {
 }
 
 extension ECStyleSetable where Self: UIButton {
-    public static func fx(text: String? = nil, font: UIFont, color: UIColor?) -> Self {
+    public static func easy(text: String? = nil, font: UIFont, color: UIColor?) -> Self {
         let o = self.init()
         o.setTitle(text, for: .normal)
         o.titleLabel?.font = font

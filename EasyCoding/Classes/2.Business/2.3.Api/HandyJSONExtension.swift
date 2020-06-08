@@ -8,7 +8,7 @@
 import UIKit
 import HandyJSON
 
-extension FX {
+extension EC {
     public struct HandyJSON {
         open class StringArrayTransform: TransformOf<[String], String> {
             public init() {
@@ -19,7 +19,7 @@ extension FX {
                 })
             }
         }
-        open class StringArrayTransformOf<TargetType: FXStringConvertible>: TransformOf<[TargetType], String> {
+        open class StringArrayTransformOf<TargetType: ECStringConvertible>: TransformOf<[TargetType], String> {
             public init() {
                 super.init(fromJSON: { (json) -> [TargetType]? in
                     let strings = json?.components(separatedBy: ",")

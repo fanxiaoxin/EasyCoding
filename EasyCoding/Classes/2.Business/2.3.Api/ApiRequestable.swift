@@ -9,13 +9,13 @@ import UIKit
 import Moya
 import HandyJSON
 
-public protocol FXApiRequestable {
-    var defaultScheme: FXApiRequestSchemeType { get }
+public protocol ECApiRequestable {
+    var defaultScheme: ECApiRequestSchemeType { get }
 }
-extension FXApiRequestable {
+extension ECApiRequestable {
     ///调用接口
     @discardableResult
-    public func request<ApiType: FXResponseApiType>(_ api: ApiType, scheme: FXApiRequestSchemeType? = nil, completion: ((ApiType.ResponseType) -> Void)? = nil) -> FXApiResultHandling<ApiType.ResponseType> {
+    public func request<ApiType: ECResponseApiType>(_ api: ApiType, scheme: ECApiRequestSchemeType? = nil, completion: ((ApiType.ResponseType) -> Void)? = nil) -> ECApiResultHandling<ApiType.ResponseType> {
         let handler = (scheme ?? self.defaultScheme).request(api)
         if let c = completion {
             handler.success(c)

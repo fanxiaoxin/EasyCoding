@@ -91,6 +91,7 @@ extension EC.NamespaceImplement where Base: UIWindow {
 
 extension EC.NamespaceImplement where Base: UIViewController {
     ///通过打开新的Window显示viewController
+    @discardableResult
     public func showWindow(level:UIWindow.Level = UIWindow.Level.alert) -> UIWindow{
         let window = UIWindow(frame:UIScreen.main.bounds)
         window.windowLevel = level
@@ -106,6 +107,7 @@ extension EC.NamespaceImplement where Base: UIViewController {
 
 extension EC.NamespaceImplement where Base: UIView {
     ///通过打开新的Window显示view
+    @discardableResult
     public func showWindow(level:UIWindow.Level = UIWindow.Level.alert) -> UIWindow {
         let controller = UIViewController()
         controller.view = self.base

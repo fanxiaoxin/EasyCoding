@@ -64,4 +64,18 @@ TODO: Add long description of the pod here.
       a.dependency 'Moya', '~> 13.0.0'
       a.dependency 'HandyJSON', '~> 5.0.0'
   end
+  # 提供一些控件及界面相关的工具
+  s.subspec 'Controls' do |c|
+    c.source_files = 'EasyCoding/Classes/3.Controls/**/*','EasyCoding/Classes/4.plugs/{T,V}*/**/*'
+    c.dependency 'EasyCoding/AccessControl'
+    c.dependency 'JRSwizzle'
+    c.dependency 'YYKeyboardManager', '~> 1.0.0'
+    c.dependency 'Kingfisher', '~> 5.14.0'
+   end
+   # 提供列表及API绑定数据的封装，新建一个TableView不需要写太多重复的代码，包含上下拉刷新
+   s.subspec 'ListLoader' do |l|
+       l.source_files = 'EasyCoding/Classes/4.plugs/ApiListLoader/**/*'
+       l.dependency 'EasyCoding/Api'
+       l.dependency 'MJRefresh', '~> 3.4.0'
+   end
 end

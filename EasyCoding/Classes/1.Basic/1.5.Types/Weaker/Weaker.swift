@@ -40,4 +40,13 @@ open class ECWeakerArray<T: AnyObject> {
         self.checkObjectsAliving()
         try self.weakers.map( { $0.obj! }).forEach(body)
     }
+    ///循环操作对象
+    open func forEach<Type>(_ body: (Type) throws -> Void) rethrows {
+        self.checkObjectsAliving()
+        try self.weakers.forEach { (weaker) in
+            if let t = weaker.obj as? Type {
+                try body(t)
+            }
+        }
+    }
 }

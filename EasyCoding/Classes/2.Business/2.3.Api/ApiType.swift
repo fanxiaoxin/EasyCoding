@@ -12,20 +12,20 @@ import Moya
 import HandyJSON
 
 ///一个接口一个类
-public protocol FXApiType: TargetType, HandyJSON {
+public protocol ECApiType: TargetType, HandyJSON {
     var parameters: [String: Any]? { get }
     ///传入parameters的返回值
-    var paramtersFormatter: FXApiParametersFomatterType? { get }
+    var paramtersFormatter: ECApiParametersFomatterType? { get }
     ///是否将参数放于Body中否则放URL，默认GET放URL，其他放Body
     var isBodyParamters: Bool { get }
 }
 ///配置默认值
-extension FXApiType {
+extension ECApiType {
     public var method: Moya.Method { return .get }
     public var sampleData: Data { return "empty sample data".data(using: .utf8)! }
     public var headers: [String: String]? { return ["Content-type": "application/json"] }
     public var parameters: [String: Any]? { return self.toJSON() }
-    public var paramtersFormatter: FXApiParametersFomatterType? { return nil }
+    public var paramtersFormatter: ECApiParametersFomatterType? { return nil }
     
     public func finalParameters() -> [String: Any]? {
         if let fomatter = self.paramtersFormatter {
@@ -37,9 +37,9 @@ extension FXApiType {
     public var isBodyParamters: Bool { return self.method == .get ? false : true }
 }
 ///比较简单的接口，没有返回值
-public protocol FXSimpleApiType: FXApiType {
+public protocol ECSimpleApiType: ECApiType {
 }
-extension FXSimpleApiType {
+extension ECSimpleApiType {
     ///默认get参数则放在URL，其他放在body
     public var task: Task {
         if let json = self.finalParameters() {
@@ -60,16 +60,16 @@ extension FXSimpleApiType {
         }
     }
 }
-public protocol FXResponseApiType: FXSimpleApiType {
+public protocol ECResponseApiType: ECSimpleApiType {
     ///响应结构
-    associatedtype ResponseType: FXApiResponseType
+    associatedtype ResponseType: ECApiResponseType
 }
-public protocol FXPagedResponseApiType: FXResponseApiType where Self.ResponseType: FXApiPagedListResponseType {
+public protocol ECPagedResponseApiType: ECResponseApiType where Self.ResponseType: ECApiPagedListResponseType {
     ///页面请求结构
-    associatedtype PagedInfoType: FXApiPagedListRequestType
+    associatedtype PagedInfoType: ECApiPagedListRequestType
     var page:PagedInfoType { get set }
 }
-extension FXPagedResponseApiType {
+extension ECPagedResponseApiType {
     public var parameters: [String : Any]? {
         let json = self.toJSON()
         let page = self.page.toJSON()
@@ -87,10 +87,10 @@ extension FXPagedResponseApiType {
     }
 }
 ///上传接口
-public protocol FXUploadApiType: FXSimpleApiType {
+public protocol ECUploadApiType: ECSimpleApiType {
     var datas: [MultipartFormData] { get }
 }
-extension FXUploadApiType {
+extension ECUploadApiType {
     public var method: Moya.Method { return .post }
     ///默认get参数则放在URL，其他放在body
     public var task: Task {
@@ -102,10 +102,10 @@ extension FXUploadApiType {
     }
 }
 ///下载接口
-public protocol FXDownloadApiType: FXSimpleApiType {
+public protocol ECDownloadApiType: ECSimpleApiType {
     var destination: DownloadDestination { get set }
 }
-extension FXDownloadApiType {
+extension ECDownloadApiType {
     ///默认get参数则放在URL，其他放在body
     public var task: Task {
         if let json = self.finalParameters() {

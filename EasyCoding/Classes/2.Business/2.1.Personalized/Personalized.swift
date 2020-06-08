@@ -8,7 +8,7 @@
 import UIKit
 
 ///需要个性化的操作
-public protocol ECPersonalizable:class {
+public protocol ECPersonalizable:AnyObject {
     
 }
 ///个性化相关资源提供者
@@ -19,7 +19,7 @@ public protocol ECPersonalizedProviderType {
 ///个性化管理器，可用于多语言或主题等个性化操作
 public protocol ECPersonalizedManagerType: class {
     associatedtype ProviderType: ECPersonalizedProviderType
-    var targets: ECWeakerSet { get }
+    var targets: ECWeakerArray<AnyObject> { get }
     var provider: ProviderType? { get }
 }
 extension ECPersonalizedManagerType {

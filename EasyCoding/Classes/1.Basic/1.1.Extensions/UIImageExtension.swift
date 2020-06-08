@@ -1,5 +1,5 @@
 //
-//  UIImage+FXAdd.swift
+//  UIImage+ECAdd.swift
 //  EasyCoding
 //
 //  Created by Fanxx on 2018/3/23.
