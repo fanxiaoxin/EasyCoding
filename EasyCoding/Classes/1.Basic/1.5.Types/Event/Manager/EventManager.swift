@@ -57,6 +57,10 @@ extension ECEventManager where EventParameterType == ECNull {
     public func fire() {
         self.fire(for: .null)
     }
+    ///添加处理事件
+    public func callAsFunction() {
+        self.fire(for: .null)
+    }
 }
 
 public typealias ECEvent<EventParameterType> = ECEventManager<EventParameterType>
