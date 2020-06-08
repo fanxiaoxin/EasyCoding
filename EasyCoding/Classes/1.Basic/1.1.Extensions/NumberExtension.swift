@@ -1,6 +1,6 @@
 //
 //  Number+FXAdd.swift
-//  FXKit
+//  EasyCoding
 //
 //  Created by Fanxx on 2018/3/23.
 //  Copyright © 2018年 fanxx. All rights reserved.
@@ -51,12 +51,29 @@ extension EC.NamespaceImplement where Base: ECNumberExt {
 
 extension CGFloat: EC.NamespaceDefine { }
 extension EC.NamespaceImplement where Base == CGFloat {
+    ///单个像素值
     public static var pixel: CGFloat {
         return pixels(1)
     }
     ///计算像素值
     public static func pixels(_ p:CGFloat) -> CGFloat{
         return p / UIScreen.main.scale
+    }
+    ///自身为度数，转为角度
+    public static func degreesToRadians(_ degrees: CGFloat) -> CGFloat {
+        return degrees * CGFloat.pi / 180
+    }
+    ///自身角度，转为度数
+    public static func radiansToDegrees(_ radians: CGFloat) -> CGFloat  {
+        return radians * 180 / CGFloat.pi
+    }
+    ///自身为度数，转为角度
+    public var degreesToRadians: CGFloat {
+        return CGFloat.easy.degreesToRadians(self.base)
+    }
+    ///自身角度，转为度数
+    public var radiansToDegrees: CGFloat {
+        return CGFloat.easy.radiansToDegrees(self.base)
     }
 }
 

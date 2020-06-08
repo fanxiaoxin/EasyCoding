@@ -1,6 +1,6 @@
 //
 //  UIImage+FXAdd.swift
-//  FXKit
+//  EasyCoding
 //
 //  Created by Fanxx on 2018/3/23.
 //  Copyright © 2018年 fanxx. All rights reserved.
@@ -79,7 +79,68 @@ extension EC.NamespaceImplement where Base: UIImage {
         }
         return nil
     }
+    public static func color(_ color: UIColor, size: CGSize = .easy(1)) -> UIImage {
+        if (size.width <= 0 || size.height <= 0) {
+            preconditionFailure("This size: \(size) is not invalid")
+        }
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+        let context = UIGraphicsGetCurrentContext()!
+        context.setFillColor(color.cgColor)
+        context.fill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
     public func resize(insets:UIEdgeInsets) -> UIImage {
         return self.base.resizableImage(withCapInsets: insets)
+    }
+    public func by(tint color: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.base.size, false, self.base.scale)
+        let rect = CGRect(origin: .zero, size: self.base.size)
+        color.set()
+        UIRectFill(rect)
+        self.base.draw(at: .zero, blendMode: .destinationIn, alpha: 1)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage ?? self.base
+    }
+    ///旋转图片
+    public func by(rotate radians: CGFloat) -> UIImage {
+        let width = self.base.cgImage!.width
+        let height = self.base.cgImage!.height
+        let newRect = CGRect(x: 0, y: 0, width: width, height: height)
+        newRect.applying(.init(rotationAngle: radians))
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGBitmapInfo(rawValue:
+            CGBitmapInfo.byteOrderMask.rawValue |
+                CGImageAlphaInfo.premultipliedFirst.rawValue)
+        let context = CGContext(data: nil, width: Int(newRect.size.width), height: Int(newRect.size.height), bitsPerComponent: 8, bytesPerRow: Int(newRect.size.width) * 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
+        
+        context.setShouldAntialias(true)
+        context.setAllowsAntialiasing(true)
+        context.interpolationQuality = .high
+        
+        context.translateBy(x: newRect.size.width * 0.5, y: newRect.size.height * 0.5)
+        context.rotate(by: radians)
+        
+        context.draw(self.base.cgImage!, in: CGRect(x: -(CGFloat(width) * 0.5), y: -(CGFloat(height) * 0.5), width: CGFloat(width), height: CGFloat(height)))
+        
+        let imgRef = context.makeImage()
+        let img = UIImage(cgImage: imgRef!, scale: self.base.scale, orientation: self.base.imageOrientation)
+        return img
+    }
+    ///旋转图片
+    public func byRotateLeft90() -> UIImage {
+        self.by(rotate: CGFloat.easy.degreesToRadians(90))
+    }
+    ///旋转图片
+    public func byRotateRight90() -> UIImage {
+        self.by(rotate: CGFloat.easy.degreesToRadians(-90))
+    }
+    ///旋转图片
+    public func byRotate180() -> UIImage {
+        self.by(rotate: CGFloat.easy.degreesToRadians(180))
     }
 }

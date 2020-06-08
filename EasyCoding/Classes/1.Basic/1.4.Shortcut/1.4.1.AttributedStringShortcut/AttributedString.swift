@@ -22,6 +22,10 @@ public class ECAttributedString: ExpressibleByStringInterpolation, StringInterpo
         self.attributes?.forEach({ $0.apply(result) })
         return result
     }
+    public init(_ string: String) {
+           self.string = string
+           self.attributes = nil
+    }
     public init(string: String, attributes: [ECStringAttribute]?) {
            self.string = string
            self.attributes = attributes
@@ -42,7 +46,11 @@ public class ECAttributedString: ExpressibleByStringInterpolation, StringInterpo
     public func appendLiteral(_ literal:String) {
         self.append(other: ECAttributedString(stringLiteral: literal))
     }
-        
+
+    public func appendInterpolation(string literal:String, _ attributes:ECStringAttribute...) {
+        let string = ECAttributedString(string: literal, attributes: attributes)
+        self.append(other: string)
+    }
     public func appendInterpolation(_ string:ECAttributedString, _ attributes:ECStringAttribute...) {
         if string.attributes != nil {
             string.attributes!.insert(contentsOf: attributes, at: 0)

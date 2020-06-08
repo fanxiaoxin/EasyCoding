@@ -1,7 +1,7 @@
 
 //
 //  UILabelExtension.swift
-//  FXKit
+//  EasyCoding
 //
 //  Created by Fanxx on 2019/8/15.
 //

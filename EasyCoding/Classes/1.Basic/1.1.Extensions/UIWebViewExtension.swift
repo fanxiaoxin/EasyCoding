@@ -1,6 +1,6 @@
 //
 //  UIWebViewExtension.swift
-//  FXKit
+//  EasyCoding
 //
 //  Created by Fanxx on 2018/4/8.
 //  Copyright © 2018年 fanxx. All rights reserved.

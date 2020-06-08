@@ -1,6 +1,6 @@
 //
 //  UIDeviceExtension.swift
-//  FXKit
+//  EasyCoding
 //
 //  Created by Fanxx on 2018/11/21.
 //  Copyright © 2018 fanxx. All rights reserved.

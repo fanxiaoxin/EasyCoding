@@ -47,4 +47,21 @@ TODO: Add long description of the pod here.
       b.source_files = 'EasyCoding/Classes/1.Basic/**/*'
       b.dependency 'SnapKit', '~> 5.0.0'
   end
+  # 定制化的操作，比如多语言或多主题
+  s.subspec 'Personalized' do |p|
+      p.source_files = 'EasyCoding/Classes/2.Business/2.1.Personalized/**/*'
+      p.dependency 'EasyCoding/Basic'
+  end
+  # ViewController的访问控制，提供统一的加载方法，可定制加载的先决条件及跳转方式、多页面加载流程
+  s.subspec 'AccessControl' do |p|
+      p.source_files = 'EasyCoding/Classes/2.Business/2.2.AccessControl/**/*'
+      p.dependency 'EasyCoding/Basic'
+  end
+  # 将每一个API请求的相关字段都封装为一个对象，可以清晰地看到每一个API的请求地址、方式、请求结构、响应结构等操作
+  s.subspec 'Api' do |a|
+      a.source_files = 'EasyCoding/Classes/2.Business/2.3.ApiRequest/**/*'
+      a.dependency 'EasyCoding/Basic'
+      a.dependency 'Moya', '~> 13.0.0'
+      a.dependency 'HandyJSON', '~> 5.0.0'
+  end
 end

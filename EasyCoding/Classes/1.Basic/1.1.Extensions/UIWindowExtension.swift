@@ -1,6 +1,6 @@
 //
 //  UIWindowExtension.swift
-//  FXKit
+//  EasyCoding
 //
 //  Created by Fanxx on 2018/3/27.
 //  Copyright © 2018年 fanxx. All rights reserved.
@@ -44,3 +44,75 @@ extension EC.NamespaceImplement where Base: UIWindow {
     }
 }
 
+///全局变量，用于存放打开的Window
+var __easyCodingWindows: [UIWindow] = []
+extension EC.NamespaceImplement where Base: UIWindow {
+    ///当前程序的主窗口
+    public static var mainWindow: UIWindow? {
+        if let window = UIApplication.shared.delegate?.window {
+            return window ?? UIApplication.shared.keyWindow
+        }
+        return nil
+    }
+    ///一般和mainWindow是同一个
+    public static var keyWindow: UIWindow? {
+        return UIApplication.shared.keyWindow
+    }
+    ///当前最顶层的window
+    public static var topWindow: UIWindow? {
+        var top : UIWindow? = nil
+        for w in UIApplication.shared.windows {
+            if w.windowLevel.rawValue >= (top?.windowLevel.rawValue ?? 0) {
+                top = w
+            }
+        }
+        return top
+    }
+    //显示窗口
+    public func show(){
+        __easyCodingWindows.append(self.base)
+        self.base.isHidden = false
+    }
+    //关闭窗口
+    public func close(){
+        self.base.isHidden = true
+        if let index = __easyCodingWindows.firstIndex(of: self.base) {
+            __easyCodingWindows.remove(at: index)
+        }
+    }
+    //关闭所有通过EasyCoding打开的窗口
+    public static func closeAll(){
+        for window in __easyCodingWindows {
+            window.isHidden = true
+        }
+        __easyCodingWindows.removeAll()
+    }
+}
+
+extension EC.NamespaceImplement where Base: UIViewController {
+    ///通过打开新的Window显示viewController
+    public func showWindow(level:UIWindow.Level = UIWindow.Level.alert) -> UIWindow{
+        let window = UIWindow(frame:UIScreen.main.bounds)
+        window.windowLevel = level
+        window.rootViewController = self.base
+        window.easy.show()
+        return window
+    }
+    ///关闭通过showWindow打开的窗口
+    public func closeWindow(){
+        self.base.view.window?.easy.close()
+    }
+}
+
+extension EC.NamespaceImplement where Base: UIView {
+    ///通过打开新的Window显示view
+    public func showWindow(level:UIWindow.Level = UIWindow.Level.alert) -> UIWindow {
+        let controller = UIViewController()
+        controller.view = self.base
+        return controller.easy.showWindow(level: level)
+    }
+    ///关闭通过showWindow打开的窗口
+    public func closeWindow(){
+        self.base.window?.easy.close()
+    }
+}

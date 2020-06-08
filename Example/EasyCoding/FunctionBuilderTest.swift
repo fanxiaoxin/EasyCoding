@@ -33,8 +33,8 @@ struct AttributedStringBuilder {
     }
 }
 extension NSAttributedString {
-  convenience init(@AttributedStringBuilder _ content: () -> NSAttributedString) {
-    self.init(attributedString: content())
+  convenience init(@AttributedStringBuilder _ content: (Int) -> NSAttributedString) {
+    self.init(attributedString: content(3))
   }
 }
 
@@ -45,7 +45,7 @@ class TEST {
         let test1 = false
         let test2 = true
        let str =
-        NSAttributedString {
+        NSAttributedString {i in
             hello
             world
             if test1 {
@@ -58,12 +58,12 @@ class TEST {
             }
         }
         print(str)
-        let str2 = NSAttributedString{
-            "fuck you"
+        let str2 = NSAttributedString{i in
+            "fuck you\(i)"
             UIColor.red
         }
         print(str2)
-        let str3 = NSAttributedString { () -> NSAttributedString in
+        let str3 = NSAttributedString { (_) -> NSAttributedString in
             "SHit"
             UIColor.blue
         }

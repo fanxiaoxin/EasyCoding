@@ -1,6 +1,6 @@
 //
 //  UIColorExtension.swift
-//  FXKit
+//  EasyCoding
 //
 //  Created by Fanxx on 2018/4/3.
 //  Copyright © 2018年 fanxx. All rights reserved.
@@ -30,5 +30,10 @@ extension EC.NamespaceImplement where Base: UIColor {
                     green:CGFloat((rgb & 0xFF00) >> 8) / 255.0,
                     blue:CGFloat(rgb & 0xFF) / 255.0,
                     alpha:alpha)
+    }
+}
+extension UIColor {
+    public static func easy(_ rgb: UInt32) -> UIColor {
+        return Self.easy.rgb(rgb)
     }
 }

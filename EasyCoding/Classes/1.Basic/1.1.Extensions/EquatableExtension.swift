@@ -1,6 +1,6 @@
 //
 //  EnumExtension.swift
-//  FXKit
+//  EasyCoding
 //
 //  Created by Fanxx on 2019/5/22.
 //  Copyright © 2019 Fanxx. All rights reserved.

@@ -14,25 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        let a = "I'm".easy.attr(.color(.blue), .font(.systemFont(ofSize: 14)))
-        let b: ECAttributedString = "i'm \("where \("ag", .color(.red)) ", .color(.blue)) here "
-        let e = NSAttributedString.easy("I'm \("here\("fuck ", .color(.yellow))", .color(.red))  find me", .color(.blue))
-        print(e)
-//        let f:NSAttributedString =
-//            .easy(.color(.blue), .font(size: 13)) {
-//                "I'm "
-//                    .easy(.color(.red)) {
-//                    "hehe"
-//                }
-//                "haha"
-//            }
-        self.test("", "") {
-            
-        }
-    }
-    func test(_ attrs: String..., block: () -> Void) {
-        
+        self.view.easy.add(.build({ (view) in
+            view.add(UILabel.easy(.center), layout: .top, .left(3))
+        }), layout: .right(30))
     }
 
 }

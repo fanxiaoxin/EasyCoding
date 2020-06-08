@@ -1,6 +1,6 @@
 //
 //  ExtensionHeader.swift
-//  FXKit
+//  EasyCoding
 //
 //  Created by Fanxx on 2019/4/22.
 //  Copyright © 2019 Fanxx. All rights reserved.
