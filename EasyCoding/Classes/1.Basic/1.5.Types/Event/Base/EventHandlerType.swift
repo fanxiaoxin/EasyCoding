@@ -8,26 +8,12 @@
 
 import Foundation
 
-public protocol ECEventHandlerBaseType {
+public protocol ECEventHandlerType {
     ///执行事件
-    func execute(_ event:Any)
-}
-public protocol ECEventHandlerType: Equatable, ECEventHandlerBaseType {
-    ///事件类型
-    associatedtype EventType: ECEventType
-    ///执行事件
-    func execute(_ event:EventType)
+    func execute(_ param:Any)
 }
 extension ECEventHandlerType {
-    public func execute(_ event:Any) {
-        if let e = event as? EventType {
-            self.execute(e)
-        }
-    }
-}
-
-extension ECEventHandlerType where EventType == ECNull {
     public func execute() {
-        self.execute(.null)
+        self.execute(ECNull.null)
     }
 }

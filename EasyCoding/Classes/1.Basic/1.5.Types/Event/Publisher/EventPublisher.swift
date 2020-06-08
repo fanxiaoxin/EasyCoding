@@ -10,17 +10,16 @@ import UIKit
 
 ///事件发布者：管理多种事件下的分发，一般用于枚举事件，一个事件管理者只管理一个事件实例
 open class ECEventPublisher<EventType: ECEventType>: ECEventPublisherType where EventType: Hashable {
-    public typealias EventManagerType = ECEventManager<EventType>
-    public var managers: [EventType: EventManagerType] = [:]
+    public var managers: [EventType: ECEventManagerUnspecial] = [:]
     ///若该事件的管理器不存在则新建
-    public func manager(for event:EventType, allowNil: Bool) -> EventManagerType? {
+    public func manager(for event:EventType, allowNil: Bool) -> ECEventManagerUnspecialType? {
         if let manager =  self.managers[event] {
             return manager
         }
         if allowNil {
             return nil
         }else{
-            let manager = ECEventManager<EventType>()
+            let manager = ECEventManagerUnspecial()
             self.managers[event] = manager
             return manager
         }

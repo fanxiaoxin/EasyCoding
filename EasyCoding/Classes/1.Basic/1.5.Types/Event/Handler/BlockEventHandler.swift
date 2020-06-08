@@ -9,46 +9,64 @@
 import UIKit
 
 ///Block事件目前不能删除
-public struct ECBlockEventHandler<EventType: ECEventType>: ECEventHandlerType {
-    public var action: (EventType)->Void
+public struct ECBlockEventHandler: ECEventHandlerType, Equatable {
+    public var identifier: String?
+    public var action: (Any)->Void
     
-    public func execute(_ event: EventType) {
-        self.action(event)
+    public func execute(_ param: Any) {
+        self.action(param)
     }
-    public static func == (lhs: ECBlockEventHandler<EventType>, rhs: ECBlockEventHandler<EventType>) -> Bool {
-        return false
+    public static func == (lhs: ECBlockEventHandler, rhs:ECBlockEventHandler) -> Bool {
+        return lhs.identifier != nil && lhs.identifier == rhs.identifier
+    }
+}
+extension ECEventManagerBaseType {
+    ///添加处理事件
+    public func add(_ identifier: String? = nil, block: @escaping ()->Void) {
+        let handler = ECBlockEventHandler(identifier: identifier, action: { _ in
+            block()
+        })
+        self.add(handler: handler)
+    }
+    public func remove(_ identifier: String) {
+        self.removeAll { (handler) -> Bool in
+            return (handler as? ECBlockEventHandler)?.identifier == identifier
+        }
+    }
+    public func callAsFunction(_ identifier: String? = nil, block: @escaping ()->Void) {
+        self.add(identifier, block: block)
     }
 }
 extension ECEventManagerType {
     ///添加处理事件
-    public func add(block: @escaping (EventType)->Void) {
-        let handler = ECBlockEventHandler<EventType>(action: block)
-        return self.add(handler: handler)
-    }
-    ///添加处理事件
-    public func add(block: @escaping ()->Void) {
-        let handler = ECBlockEventHandler<EventType>(action:  { _ in
-            block()
+    public func add(_ identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+        let handler = ECBlockEventHandler(identifier: identifier, action: { param in
+            block(param as! EventParameterType)
         })
-        return self.add(handler: handler)
+        self.add(handler: handler)
     }
-    public func callAsFunction(block: @escaping (EventType)->Void) {
-        self.add(block: block)
-    }
-    public func callAsFunction(block: @escaping ()->Void) {
-        self.add(block: block)
+}
+extension ECEventManagerUnspecialType {
+    ///添加处理事件
+    public func add<EventParameterType>(_ identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+        let handler = ECBlockEventHandler(identifier: identifier, action: { param in
+            block(param as! EventParameterType)
+        })
+        self.add(handler: handler)
     }
 }
 
 extension ECEventPublisherType {
     ///注册事件
-    public func register(event:EventManagerType.EventType, block: @escaping (EventManagerType.EventType)->Void) {
-        return self.manager(for: event, allowNil: false)!.add(block: block)
+    public func register<EventParameterType>(event:EventType, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+        self.manager(for: event, allowNil: false)!.add(block: block)
     }
     ///注册事件
-    public func register(event:EventManagerType.EventType, block: @escaping ()->Void) {
-        return self.manager(for: event, allowNil: false)!.add(block: { _ in
-            block()
-        })
+    public func register(event:EventType,  identifier: String? = nil, block: @escaping ()->Void) {
+        self.manager(for: event, allowNil: false)!.add(block: block)
+    }
+    ///注销事件
+    public func unregister(event:EventType,  identifier: String) {
+        self.manager(for: event, allowNil: true)?.remove(identifier)
     }
 }

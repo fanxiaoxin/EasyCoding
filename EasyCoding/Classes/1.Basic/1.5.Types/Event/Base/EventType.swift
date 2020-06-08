@@ -12,6 +12,3 @@ import Foundation
 public protocol ECEventType: Equatable {
     
 }
-extension ECNull: ECEventType {
-    
-}

@@ -8,43 +8,51 @@
 
 import Foundation
 
-public struct ECObjectEventHandler<EventType: ECEventType>: ECEventHandlerType {
+public struct ECObjectEventHandler: ECEventHandlerType, Equatable {
     ///目标对象
     public weak var target: AnyObject?
     ///目标方法
     public var action: Selector
     
-    public func execute(_ event: EventType) {
-        _ = target?.perform(self.action, with: event)
+    public func execute(_ param: Any) {
+        _ = target?.perform(self.action, with: param)
     }
     
-    public static func == (lhs: ECObjectEventHandler<EventType>, rhs: ECObjectEventHandler<EventType>) -> Bool {
+    public static func == (lhs: ECObjectEventHandler, rhs: ECObjectEventHandler) -> Bool {
         return lhs.target === rhs.target && lhs.action == rhs.action
     }
 }
 
-extension ECEventManagerType {
+extension ECEventManagerBaseType {
     ///添加处理事件
     public func add(target: AnyObject, action: Selector) {
-        let handler = ECObjectEventHandler<EventType>(target: target, action: action)
-        return self.add(handler: handler)
+        let handler = ECObjectEventHandler(target: target, action: action)
+        self.add(handler: handler)
     }
     ///添加处理事件
     public func remove(target: AnyObject, action: Selector) {
-        let handler = ECObjectEventHandler<EventType>(target: target, action: action)
-        return self.remove(handler:  handler)
+        let handler = ECObjectEventHandler(target: target, action: action)
+        self.remove(handler:  handler)
     }
     ///添加处理事件
     public func remove(target: AnyObject) {
         return self.removeAll { (handler) -> Bool in
-            return (handler as? ECObjectEventHandler<EventType>)?.target === target
+            return (handler as? ECObjectEventHandler)?.target === target
         }
     }
 }
 
 extension ECEventPublisherType {
     ///注册事件
-    public func register(event:EventManagerType.EventType, target:AnyObject, action: Selector) {
+    public func register(event:EventType, target:AnyObject, action: Selector) {
         return self.manager(for: event, allowNil: false)!.add(target: target, action: action)
+    }
+    ///注销事件
+    public func unregister(event:EventType, target: AnyObject, action: Selector) {
+        self.manager(for: event, allowNil: true)?.remove(target: target, action: action)
+    }
+    ///注销事件
+    public func unregister(event:EventType, target: AnyObject) {
+        self.manager(for: event, allowNil: true)?.remove(target: target)
     }
 }

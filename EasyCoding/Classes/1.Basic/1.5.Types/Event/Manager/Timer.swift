@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class ECTimer: ECEvent {
+open class ECTimer: ECEvent<ECNull> {
     ///间隔，默认1秒
     public var interval: TimeInterval = 1
     ///使用间隔初始化
@@ -70,7 +70,8 @@ open class ECTimer: ECEvent {
             self.fire()
         }
     }
-    @discardableResult func tryAutoStop() -> Bool {
+    @discardableResult
+    func tryAutoStop() -> Bool {
         if self.isAutoStopWhenEmpty && self.handlers.count == 0 {
             self.stop()
             self.isAutoStoping = true
@@ -78,7 +79,8 @@ open class ECTimer: ECEvent {
         }
         return false
     }
-    @discardableResult func tryAutoStart() -> Bool {
+    @discardableResult
+    func tryAutoStart() -> Bool {
         if self.isRunning {
             return false
         }
@@ -99,11 +101,11 @@ open class ECTimer: ECEvent {
     func whenRemove() {
         self.tryAutoStop()
     }
-    open override func add<HandlerType>(handler: HandlerType) where EventType == HandlerType.EventType, HandlerType : ECEventHandlerType {
+    open override func add(handler: ECEventHandlerType) {
         super.add(handler: handler)
         self.whenAdd()
     }
-    open override func removeAll(where block: (ECEventHandlerBaseType) -> Bool) {
+    open override func removeAll(where block: (ECEventHandlerType) -> Bool) {
         super.removeAll(where: block)
         self.whenRemove()
     }
