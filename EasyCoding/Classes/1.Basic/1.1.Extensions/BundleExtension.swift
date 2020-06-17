@@ -17,4 +17,8 @@ extension EC.NamespaceImplement where Base : Bundle {
     public var buildVersion: String {
         return self.base.infoDictionary?["CFBundleVersion"] as? String ?? ""
     }
+    ///Swift的命名空间
+    public var namespace: String {
+        return self.base.infoDictionary?["CFBundleExecutable"] as? String ?? ""
+    }
 }

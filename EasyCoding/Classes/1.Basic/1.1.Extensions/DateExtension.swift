@@ -192,4 +192,39 @@ extension EC.NamespaceImplement where Base == TimeInterval {
         }
         return timeString as String
     }
+    ///转为时：分：秒的显示格式
+    public func timeString(withChinese: Bool = false) -> String {
+        let timeString = NSMutableString()
+        var time = self.base
+        let separators = withChinese ? ["小时","分","秒"] : [":",":",""]
+        if time > 0 {
+            let hour = Int(time / 60 / 60)
+            time = time - Double(hour * 60 * 60)
+            let minute = Int(time / 60)
+            time = time - Double(minute * 60)
+            let second = Int(time)
+            time = time - Double(second)
+            //            let nanosecond = Int(time * 1000)
+            if hour > 0 {
+                if withChinese {
+                    timeString.append("\(hour)\(separators[0])")
+                }else{
+                    timeString.append(hour >= 10 ? "\(hour)\(separators[0])" : "0\(hour)\(separators[0])")
+                }
+            }
+            if minute > 0 {
+                timeString.append(minute >= 10 ? "\(minute)\(separators[1])" : "0\(minute)\(separators[1])")
+            }else {
+                timeString.append("00\(separators[1])")
+            }
+            if second > 0 {
+                timeString.append(second >= 10 ? "\(second)\(separators[2])" : "0\(second)\(separators[2])")
+            }else {
+                timeString.append("00\(separators[2])")
+            }
+        }else{
+            timeString.append("00\(separators[1])00\(separators[2])")
+        }
+        return timeString as String
+    }
 }

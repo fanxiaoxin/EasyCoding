@@ -152,8 +152,10 @@ extension ECApiListLoader where ApiType: ECPagedResponseApiType {
                     s.listTable?.mj_footer?.endRefreshingWithNoMoreData()
                 }
                 s.lastResponse = rs
-                if s.result != nil, let list = rs.list {
-                    s.result!.append(contentsOf: list)
+                if s.result != nil {
+                    if let list = rs.list {
+                        s.result!.append(contentsOf: list)
+                    }
                 }else{
                     s.result = rs.list
                 }

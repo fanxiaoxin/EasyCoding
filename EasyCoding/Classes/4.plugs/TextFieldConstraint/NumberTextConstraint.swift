@@ -197,7 +197,7 @@ open class ECNumberTextConstraint<T:Numeric>: ECTextConstraint where T:LosslessS
             }
             if let max = self.max, max < value {
                 self.setEditing(value: max)
-                self.whenOutOfMax(value)
+                self.whenOutOfMax.fire(for: value)
                 return false
             }
             /* 最小值在编辑时不强制更改，但是结束编辑时强制

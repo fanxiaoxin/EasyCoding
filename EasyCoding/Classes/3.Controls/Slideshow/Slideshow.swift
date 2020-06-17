@@ -228,7 +228,7 @@ open class ECSlideshow: UIView,UIScrollViewDelegate {
     //点击某一页
     @objc func tapFigure(_ tap:UITapGestureRecognizer){
         if let d = self.dataSource, let index = tap.view?.tag {
-            self.whenClick(d[index])
+            self.whenClick.fire(for: d[index])
         }
     }
     deinit{

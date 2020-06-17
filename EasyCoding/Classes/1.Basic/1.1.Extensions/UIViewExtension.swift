@@ -10,6 +10,14 @@ import UIKit
 import SnapKit
 
 extension EC.NamespaceImplement where Base: UIView {
+    ///判断刘海屏的安全区域
+    public static var safeArea: UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            return UIApplication.shared.delegate?.window??.safeAreaInsets ?? .zero
+        } else {
+            return .zero
+        }
+    }
     public func layoutedSize() -> CGSize {
         if #available(iOS 9.0, *) {
             return self.base.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)

@@ -14,6 +14,8 @@ open class ECButton: UIButton {
     open var underlineWidth: CGFloat = 0
     ///下划线颜色
     open var underlineColor: UIColor? = nil
+    ///点击区域扩大
+    open var hitEdgeInsets: UIEdgeInsets = .zero
     
     func currentUnderlineColor() -> UIColor? {
         return self.underlineColor ?? self.currentTitleColor
@@ -105,6 +107,22 @@ open class ECButton: UIButton {
             }
         }
     }
+    open func hitTestBounds() -> CGRect {
+        var rect = self.bounds
+        rect.origin.x -= self.hitEdgeInsets.left
+        rect.origin.y -= self.hitEdgeInsets.top
+        rect.size.width += self.hitEdgeInsets.left + self.hitEdgeInsets.right
+        rect.size.height += self.hitEdgeInsets.top + self.hitEdgeInsets.bottom
+        return rect
+    }
+    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return self.hitTestBounds().contains(point)
+    }
+//    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+//        let bounds = self.hitTestBounds()
+//        return bounds.contains(point)
+//        return super.hitTest(point, with: event)
+//    }
 }
 
 extension ECBuildable where Self: UIView {
@@ -132,6 +150,12 @@ extension ECStyleSetting where TargetType: ECButton {
     public static func image(position:ECDirection) -> ECStyleSetting<TargetType> {
         return .init(action: { (target) in
             target.imagePosition = position
+        })
+    }
+    ///事件触发范围
+    public static func hit(inset:UIEdgeInsets) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.hitEdgeInsets = inset
         })
     }
 }

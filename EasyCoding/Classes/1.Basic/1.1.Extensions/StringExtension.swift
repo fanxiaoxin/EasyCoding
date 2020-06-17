@@ -8,12 +8,6 @@
 
 import UIKit
 
-///可转换为String
-public protocol ECStringConvertible {
-    init?(string: String)
-    func toString() -> String
-}
-
 extension EC.NamespaceImplement where Base == String {
     ///转成objc对象
     public var objc: NSString {

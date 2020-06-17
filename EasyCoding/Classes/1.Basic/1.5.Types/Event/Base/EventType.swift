@@ -9,6 +9,4 @@
 import Foundation
 
 ///事件类型
-public protocol ECEventType: Equatable {
-    
-}
+public typealias ECEventType = Equatable

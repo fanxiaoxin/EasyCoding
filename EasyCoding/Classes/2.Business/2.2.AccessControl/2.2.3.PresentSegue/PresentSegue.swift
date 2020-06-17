@@ -22,6 +22,9 @@ open class ECPresentSegue: ECPresentSegueType {
     open func performNext(segue: ECPresentSegueType, completion: (() -> Void)?) {
         segue.performAction(completion: completion)
     }
+    public init() {
+        
+    }
 }
 
 extension ECPresentSegue {

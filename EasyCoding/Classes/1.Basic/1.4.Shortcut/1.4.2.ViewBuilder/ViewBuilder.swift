@@ -10,10 +10,29 @@ import UIKit
 import SnapKit
 
 extension EC.NamespaceImplement where Base: UIView {
+    ///插入子视图并返回子视图
+    @discardableResult
+    public func insert<ViewType: UIView>(_ view:ViewType, at index: Int, layout: [ECViewLayout], ext: ECViewLayout...) -> NamespaceWrapper<ViewType> {
+        self.base.insertSubview(view, at: index)
+        if let stack = self.base as? UIStackView {
+            stack.insertArrangedSubview(view, at: index)
+        }
+        layout.apply(to: self.base, with: view)
+        ext.apply(to: self.base, with: view)
+        return view.easy
+    }
+    ///插入子视图并返回子视图
+    @discardableResult
+    public func insert<ViewType: UIView>(_ view:ViewType, at index: Int, layout: ECViewLayout...) -> NamespaceWrapper<ViewType> {
+        return self.insert(view, at: index, layout: layout)
+    }
     ///添加子视图并返回子视图
     @discardableResult
     public func add<ViewType: UIView>(_ view:ViewType, layout: [ECViewLayout], ext: ECViewLayout...) -> NamespaceWrapper<ViewType> {
         self.base.addSubview(view)
+        if let stack = self.base as? UIStackView {
+            stack.addArrangedSubview(view)
+        }
         layout.apply(to: self.base, with: view)
         ext.apply(to: self.base, with: view)
         return view.easy
@@ -27,6 +46,9 @@ extension EC.NamespaceImplement where Base: UIView {
     @discardableResult
     public func append(_ view:UIView, layout: [ECViewLayout], ext: ECViewLayout...) -> Self {
         self.base.addSubview(view)
+        if let stack = self.base as? UIStackView {
+            stack.addArrangedSubview(view)
+        }
         layout.apply(to: self.base, with: view)
         ext.apply(to: self.base, with: view)
         return self

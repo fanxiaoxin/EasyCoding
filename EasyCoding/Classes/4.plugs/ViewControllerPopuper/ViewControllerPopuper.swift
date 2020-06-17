@@ -9,6 +9,13 @@
 import UIKit
 
 extension EC.NamespaceImplement where Base: UIViewController {
+    public var popupAnimateDuration: TimeInterval {
+        let value: NSNumber? = self.getAssociated(object: "__ecPopupAnimateDuration")
+        return value?.doubleValue ?? 0.25
+    }
+    public func setPopupAnimate(duration: TimeInterval) {
+        self.setAssociated(object: NSNumber(floatLiteral: duration), key: "__ecPopupAnimateDuration")
+    }
     ///弹出框
     public func popup(direction: ECDirection? = ECDirection.none, background:UIColor? = nil, level: UIWindow.Level = .normal, frame: CGRect? = nil, completion:(()->Void)? = nil) {
         //弹出前关掉键盘
@@ -105,13 +112,13 @@ extension EC.NamespaceImplement where Base: UIViewController {
     private func popupCenter(completion:(()->Void)? = nil) {
         let view = self.base.view!
         view.transform = CGAffineTransform(scaleX: 0.1,y: 0.1)
-        UIView.animate(withDuration: 0.25, animations:{
+        UIView.animate(withDuration: self.popupAnimateDuration, animations:{
             view.transform = CGAffineTransform.identity
         }, completion: { _ in completion?() })
     }
     ///弹窗关闭
     private func popupCenterClose() {
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.popupAnimateDuration, animations: {
             self.base.view.transform = CGAffineTransform(scaleX: 0.1,y: 0.1)
         }) { (ok) in
             self.closeWindow()
@@ -121,13 +128,13 @@ extension EC.NamespaceImplement where Base: UIViewController {
     private func popupTop(completion:(()->Void)? = nil) {
         let view = self.base.view!
         view.frame.origin.y = -view.frame.size.height
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.popupAnimateDuration, animations: {
             view.frame.origin.y = 0
         }, completion: { _ in completion?() })
     }
     ///弹窗关闭
     private func popupTopClose() {
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.popupAnimateDuration, animations: {
             let view = self.base.view!
             view.frame.origin.y = -view.frame.size.height
         }) { (ok) in
@@ -139,13 +146,13 @@ extension EC.NamespaceImplement where Base: UIViewController {
         let view = self.base.view!
         let height = view.frame.size.height
         view.frame.origin.y = height == 0 ? UIScreen.main.bounds.size.height : height
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.popupAnimateDuration, animations: {
             view.frame.origin.y = 0
         }, completion: { _ in completion?() })
     }
     ///弹窗关闭
     private func popupBottomClose() {
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.popupAnimateDuration, animations: {
             let view = self.base.view!
             view.frame.origin.y = view.frame.size.height
         }) { (ok) in
@@ -157,13 +164,13 @@ extension EC.NamespaceImplement where Base: UIViewController {
     private func popupRight(completion:(()->Void)? = nil) {
         let view = self.base.view!
         view.frame.origin.x = view.frame.size.width
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.popupAnimateDuration, animations: {
             view.frame.origin.x = 0
         }, completion: { _ in completion?() })
     }
     ///弹窗关闭
     private func popupRightClose() {
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.popupAnimateDuration, animations: {
             let view = self.base.view!
             view.frame.origin.x = view.frame.size.width
         }) { (ok) in
@@ -174,13 +181,13 @@ extension EC.NamespaceImplement where Base: UIViewController {
     private func popupLeft(background:UIColor? = nil, completion:(()->Void)? = nil) {
         let view = self.base.view!
         view.frame.origin.x = -view.frame.size.width
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.popupAnimateDuration, animations: {
             view.frame.origin.x = 0
         }, completion: { _ in completion?() })
     }
     ///弹窗关闭
     private func popupLeftClose() {
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.popupAnimateDuration, animations: {
             let view = self.base.view!
             view.frame.origin.x = -view.frame.size.width
         }) { (ok) in

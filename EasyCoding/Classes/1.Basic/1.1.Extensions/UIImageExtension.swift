@@ -92,6 +92,33 @@ extension EC.NamespaceImplement where Base: UIImage {
         UIGraphicsEndImageContext()
         return image!
     }
+    ///按指定的圆角裁切
+    public func clip(corner: CGFloat) -> UIImage {
+        let width = self.base.size.width
+        let height = self.base.size.height
+        let size = CGSize(width: width, height: height)
+        UIGraphicsBeginImageContextWithOptions(size, false, self.base.scale)
+        let context = UIGraphicsGetCurrentContext()!
+        context.move(to: .easy(0, corner))
+        context.addArc(tangent1End: .zero, tangent2End: .easy(corner, 0), radius: corner)
+        context.addLine(to: .easy(width - corner, 0))
+        context.addArc(tangent1End: .easy(width, 0), tangent2End: .easy(width, corner), radius: corner)
+        context.addLine(to: .easy(width, height - corner))
+        context.addArc(tangent1End: .easy(width, height), tangent2End: .easy(width - corner, height), radius: corner)
+        context.addLine(to: .easy(corner, height))
+        context.addArc(tangent1End: .easy(0, height), tangent2End: .easy(0, height - corner), radius: corner)
+        context.addLine(to: .easy(0, corner))
+        context.closePath()
+        //先裁剪context，再画图，就会在裁剪后的path中画
+        context.clip()
+        self.base.draw(in: .easy(width, height))
+        context.drawPath(using: .fill)
+
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return image;
+    }
     public func resize(insets:UIEdgeInsets) -> UIImage {
         return self.base.resizableImage(withCapInsets: insets)
     }

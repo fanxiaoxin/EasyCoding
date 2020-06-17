@@ -10,6 +10,9 @@ import Foundation
 
 ///针对某一种事件的管理
 open class ECEventManagerBase: ECEventManagerBaseType {
+    public init() {
+        
+    }
     ///注册在该事件下的所有处理
     public internal(set) var handlers: [ECEventHandlerType] = []
     ///中断后续事件的处理，用于事件处理中中断使用，中断过后该值变为NO

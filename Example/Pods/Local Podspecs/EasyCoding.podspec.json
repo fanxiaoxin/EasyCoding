@@ -29,6 +29,72 @@
           "~> 5.0.0"
         ]
       }
+    },
+    {
+      "name": "Personalized",
+      "source_files": "EasyCoding/Classes/2.Business/2.1.Personalized/**/*",
+      "dependencies": {
+        "EasyCoding/Basic": [
+
+        ]
+      }
+    },
+    {
+      "name": "AccessControl",
+      "source_files": "EasyCoding/Classes/2.Business/2.2.AccessControl/**/*",
+      "dependencies": {
+        "EasyCoding/Basic": [
+
+        ]
+      }
+    },
+    {
+      "name": "Api",
+      "source_files": "EasyCoding/Classes/2.Business/2.3.ApiRequest/**/*",
+      "dependencies": {
+        "EasyCoding/Basic": [
+
+        ],
+        "Moya": [
+          "~> 13.0.0"
+        ],
+        "HandyJSON": [
+          "~> 5.0.0"
+        ]
+      }
+    },
+    {
+      "name": "Controls",
+      "source_files": [
+        "EasyCoding/Classes/3.Controls/**/*",
+        "EasyCoding/Classes/4.plugs/{T,V}*/**/*"
+      ],
+      "dependencies": {
+        "EasyCoding/AccessControl": [
+
+        ],
+        "JRSwizzle": [
+
+        ],
+        "YYKeyboardManager": [
+          "~> 1.0.0"
+        ],
+        "Kingfisher": [
+          "~> 5.14.0"
+        ]
+      }
+    },
+    {
+      "name": "ListLoader",
+      "source_files": "EasyCoding/Classes/4.plugs/ApiListLoader/**/*",
+      "dependencies": {
+        "EasyCoding/Api": [
+
+        ],
+        "MJRefresh": [
+          "~> 3.4.0"
+        ]
+      }
     }
   ],
   "swift_version": "5.2"

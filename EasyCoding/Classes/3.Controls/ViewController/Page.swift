@@ -184,7 +184,7 @@ extension ECPage {
         style.forEach({$0.action(button)})
         return button
     }
-    public func fxButton(_ event:String, params: Any? = nil ,_ style: ECStyleSetting<ECButton>...) -> ECButton {
+    public func ecButton(_ event:String, params: Any? = nil ,_ style: ECStyleSetting<ECButton>...) -> ECButton {
         let button = ECButton()
         self.bind(button, event: event, params: params)
         style.forEach({$0.action(button)})
