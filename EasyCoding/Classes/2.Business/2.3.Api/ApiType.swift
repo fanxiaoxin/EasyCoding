@@ -64,28 +64,28 @@ public protocol ECResponseApiType: ECSimpleApiType {
     ///响应结构
     associatedtype ResponseType: ECApiResponseType
 }
-public protocol ECPagedResponseApiType: ECResponseApiType where Self.ResponseType: ECApiPagedListResponseType {
+public protocol ECPagedResponseApiType: ECResponseApiType, ECApiPagedListRequestType where Self.ResponseType: ECApiPagedListResponseType {
     ///页面请求结构
-    associatedtype PagedInfoType: ECApiPagedListRequestType
-    var page:PagedInfoType { get set }
+//    associatedtype PagedInfoType: ECApiPagedListRequestType
+//    var page:PagedInfoType { get set }
 }
-extension ECPagedResponseApiType {
-    public var parameters: [String : Any]? {
-        let json = self.toJSON()
-        let page = self.page.toJSON()
-        guard var json1 = json else {
-            return page
-        }
-        guard let json2 = page else {
-            return json
-        }
-        json1.merge(json2, uniquingKeysWith: { v1,_ in v1 })
-        return json1
-    }
-    public mutating func mapping(mapper: HelpingMapper) {
-        mapper >>> self.page
-    }
-}
+//extension ECPagedResponseApiType {
+//    public var parameters: [String : Any]? {
+//        let json = self.toJSON()
+//        let page = self.page.toJSON()
+//        guard var json1 = json else {
+//            return page
+//        }
+//        guard let json2 = page else {
+//            return json
+//        }
+//        json1.merge(json2, uniquingKeysWith: { v1,_ in v1 })
+//        return json1
+//    }
+//    public mutating func mapping(mapper: HelpingMapper) {
+//        mapper >>> self.page
+//    }
+//}
 ///上传接口
 public protocol ECUploadApiType: ECSimpleApiType {
     var datas: [MultipartFormData] { get }

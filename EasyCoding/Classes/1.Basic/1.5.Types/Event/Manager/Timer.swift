@@ -114,4 +114,7 @@ open class ECTimer: ECEvent<ECNull> {
         super.removeAllHandlers()
         self.whenRemove()
     }
+    deinit {
+        self.stop()
+    }
 }

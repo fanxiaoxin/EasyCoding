@@ -7,6 +7,28 @@
 
 import UIKit
 
+public protocol ECBuildable {
+}
+extension UIView: ECBuildable{}
+extension ECBuildable where Self: UIView {
+    public static func build(_ builder:(NamespaceWrapper<Self>) -> Void) -> Self {
+        let b = Self()
+        builder(b.easy)
+        return b
+    }
+    public func build(_ builder:(NamespaceWrapper<Self>) -> Void) -> Self {
+        builder(self.easy)
+        return self
+    }
+}
+
+extension Array where Element: UIView {
+    ///重复生成类似视图
+    public static func `repeat`<ParamsType>(_ parameters: [ParamsType], builder: (NamespaceWrapper<Element>,ParamsType) -> Void) -> [Element] {
+        return Element.easy.repeat(parameters, builder: builder)
+    }
+}
+
 extension ECBuildable where Self: UIView {
     public static func view(_ styles: ECStyleSetting<UIView>...) -> UIView {
         return UIView().easy(styles: styles)
@@ -32,6 +54,15 @@ extension ECBuildable where Self: UIView {
     }
     public static func page(_ styles: ECStyleSetting<UIPageControl>...) -> UIPageControl {
         return UIPageControl().easy(styles: styles)
+    }
+    public static func slider(_ styles: ECStyleSetting<UISlider>...) -> UISlider {
+        return UISlider().easy(styles: styles)
+    }
+    public static func activityIndicator(_ styles: ECStyleSetting<UIActivityIndicatorView>...) -> UIActivityIndicatorView {
+        return UIActivityIndicatorView().easy(styles: styles)
+    }
+    public static func stack(_ styles: ECStyleSetting<UIStackView>...) -> UIStackView {
+        return UIStackView().easy(styles: styles)
     }
 }
 ///更细微的扩展

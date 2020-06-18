@@ -8,6 +8,28 @@
 import UIKit
 
 extension ECStyleSetting where TargetType: UIStackView {
+    ///添加子视图
+    public static func views(_ views:[UIView]) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            for view in views {
+                target.addArrangedSubview(view)
+            }
+        })
+    }
+    ///插入子视图
+    public static func insert(view:UIView, at index: Int) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.insertArrangedSubview(view, at: index)
+        })
+    }
+    ///插入子视图
+    public static func insert(views:[UIView], at index: Int) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            for view in views.reversed() {
+                target.insertArrangedSubview(view, at: index)
+            }
+        })
+    }
     ///方向
     public static func axis(_ axis:NSLayoutConstraint.Axis) -> ECStyleSetting<TargetType> {
         return .init(action: { (target) in

@@ -107,9 +107,9 @@ extension ECApiListLoader where ApiType: ECPagedResponseApiType {
             self._loadFlag += 1
             let loadFlag = self._loadFlag
             ///保留页码，用于失败时还原
-            let oldPageNumber = self.api.page.pageNumber
+            let oldPageNumber = self.api.pageNumber
             //重置页码
-            self.api.page.pageNumber = 1
+            self.api.pageNumber = 1
             self.scheme?.request(api)
             .whatever { [weak self] in loadFlag == self?._loadFlag }
             .success { [weak self] (rs) in
@@ -134,13 +134,13 @@ extension ECApiListLoader where ApiType: ECPagedResponseApiType {
                     s.didLoadedDatas(rs)
                 }
             }.failure {  [weak self] _ in
-                self?.api.page.pageNumber = oldPageNumber
+                self?.api.pageNumber = oldPageNumber
             }
         }
     }
     ///加载下一步数据
     open func loadNextPage(){
-        self.api.page.pageNumber += 1
+        self.api.pageNumber += 1
         self._loadFlag += 1
         let loadFlag = self._loadFlag
         self.scheme?.request(api)
@@ -164,7 +164,7 @@ extension ECApiListLoader where ApiType: ECPagedResponseApiType {
                 s.didLoadedDatas(rs)
             }
         }.failure { [weak self] _ in
-            self?.api.page.pageNumber -= 1
+            self?.api.pageNumber -= 1
         }
     }
 }

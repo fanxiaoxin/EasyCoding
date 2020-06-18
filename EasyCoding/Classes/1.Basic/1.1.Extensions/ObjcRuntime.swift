@@ -27,3 +27,28 @@ extension EC.NamespaceImplement where Base: NSObject {
         }
     }
 }
+
+extension EC {
+    ///提供ObjC调用继承自NSObject的Swift类的方法，防止有些类使用了Swift的特性导致对ObjC类不可见
+    ///params传的属性需在Swift中添加@objc标记
+    public static func create<T: NSObject>(object name: String, params: [String: Any]? = nil) -> T? {
+        if let cls = NSClassFromString("\(Bundle.main.easy.namespace).\(name)") as? T.Type {
+            let obj = cls.init()
+            if let ps = params {
+                obj.setValuesForKeys(ps)
+            }
+            return obj
+        }
+        return nil
+    }
+}
+extension NSObject {
+    ///提供ObjC调用继承自NSObject的Swift类的方法，防止有些类使用了Swift的特性导致对ObjC类不可见
+    @objc public class func easyCreate(_ name: String) -> Self? {
+        return EC.create(object: name)
+    }
+    ///提供ObjC调用继承自NSObject的Swift类的方法，防止有些类使用了Swift的特性导致对ObjC类不可见
+    @objc public class func easyCreate(_ name: String, params: [String: Any]) -> Self? {
+        return EC.create(object: name, params: params)
+    }
+}
