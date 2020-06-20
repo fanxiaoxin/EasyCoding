@@ -105,8 +105,8 @@ extension ECMessageBox {
     public class func createAlertLabel(_ text:String?, minHeight: CGFloat? = 98) -> ECLabel{
         let label = ECLabel()
         label.text = text
-        label.font = alertStylesheet.messageFont
-        label.textColor = alertStylesheet.fontColor
+//        label.font = alertStylesheet.messageFont
+//        label.textColor = alertStylesheet.fontColor
         label.numberOfLines = 0
         label.textAlignment = .left
         label.padding = .easy(x: 5, y: 5)

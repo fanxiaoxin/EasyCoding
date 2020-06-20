@@ -89,8 +89,14 @@ public enum ECViewLayout {
     ///优先级
     indirect case priority(ECViewLayout, ConstraintPriority)
     ///优先级
-    func priority(_ value: ConstraintPriority) -> ECViewLayout {
+    public func priority(_ value: ConstraintPriority) -> ECViewLayout {
         return .priority(self, value)
+    }
+    ///更新约束
+    indirect case update(ECViewLayout)
+    ///更新约束
+    public func update() -> ECViewLayout {
+        return .update(self)
     }
 }
 
@@ -105,23 +111,34 @@ extension ConstraintMakerEditable {
     }
 }
 extension ECViewLayout {
+    ///若是负值需要取反
+    func reverse(_ compare: ECViewLayoutCompare) -> ECViewLayoutCompare {
+        switch compare {
+        case .greatherThanOrEqual: return .lessThanOrEqual
+        case .lessThanOrEqual: return .greatherThanOrEqual
+        default: return compare
+        }
+    }
     ///应用约束
-    public func apply(to v1: UIView, with v2: UIView, compare: ECViewLayoutCompare = .equal, priority: ConstraintPriority? = nil) {
+    public func apply(to v1: UIView, with v2: UIView, compare: ECViewLayoutCompare = .equal, priority: ConstraintPriority? = nil, isUpdating: Bool = false) {
         switch self {
         case let .parent(layout):
             if let sp = v1.superview {
-                layout.apply(to: sp, with: v2, compare: compare, priority: priority)
+                layout.apply(to: sp, with: v2, compare: compare, priority: priority, isUpdating: isUpdating)
             }
             return
         case let .less(layout):
-            layout.apply(to: v1, with: v2, compare: .lessThanOrEqual, priority: priority)
+            layout.apply(to: v1, with: v2, compare: .lessThanOrEqual, priority: priority, isUpdating: isUpdating)
         case let .greather(layout):
-            layout.apply(to: v1, with: v2, compare: .greatherThanOrEqual, priority: priority)
+            layout.apply(to: v1, with: v2, compare: .greatherThanOrEqual, priority: priority, isUpdating: isUpdating)
         case let .priority(layout, value):
-            layout.apply(to: v1, with: v2, compare: compare, priority: value)
+            layout.apply(to: v1, with: v2, compare: compare, priority: value, isUpdating: isUpdating)
+        case let .update(layout):
+            layout.apply(to: v1, with: v2, compare: compare, priority: priority, isUpdating: true)
         default: break
         }
-        v2.snp.makeConstraints { (make) in
+        let maker = isUpdating ? v2.snp.updateConstraints : v2.snp.makeConstraints
+        maker { (make) in
             switch self {
             ///高度
             case let .height(os, m): make.height.compare(compare, v1).offset(os).multipliedBy(m).ec_priority(priority)
@@ -130,23 +147,23 @@ extension ECViewLayout {
             ///左-左
             case let .left(v): make.left.compare(compare, v1).offset(v).ec_priority(priority)
             ///右-右
-            case let .right(v): make.right.compare(compare, v1).offset(-v).ec_priority(priority)
+            case let .right(v): make.right.compare(reverse(compare), v1).offset(-v).ec_priority(priority)
             ///上-上
             case let .top(v): make.top.compare(compare, v1).offset(v).ec_priority(priority)
             ///下-下
-            case let .bottom(v): make.bottom.compare(compare, v1).offset(-v).ec_priority(priority)
+            case let .bottom(v): make.bottom.compare(reverse(compare), v1).offset(-v).ec_priority(priority)
             
             ///上基线
-            case let .firstBaseline(v): make.firstBaseline.compare(compare, v1).offset(-v).ec_priority(priority)
+            case let .firstBaseline(v): make.firstBaseline.compare(reverse(compare), v1).offset(-v).ec_priority(priority)
             ///下基线
-            case let .lastBaseline(v): make.lastBaseline.compare(compare, v1).offset(-v).ec_priority(priority)
+            case let .lastBaseline(v): make.lastBaseline.compare(reverse(compare), v1).offset(-v).ec_priority(priority)
                 
             ///左-右
-            case let .leftRight(v): make.right.compare(compare, v1.snp.left).offset(-v).ec_priority(priority)
+            case let .leftRight(v): make.right.compare(reverse(compare), v1.snp.left).offset(-v).ec_priority(priority)
             ///右-左
             case let .rightLeft(v): make.left.compare(compare, v1.snp.right).offset(v).ec_priority(priority)
             ///上-下
-            case let .topBottom(v): make.bottom.compare(compare, v1.snp.top).offset(-v).ec_priority(priority)
+            case let .topBottom(v): make.bottom.compare(reverse(compare), v1.snp.top).offset(-v).ec_priority(priority)
             ///下-上
             case let .bottomTop(v): make.top.compare(compare, v1.snp.bottom).offset(v).ec_priority(priority)
                 
@@ -162,11 +179,11 @@ extension ECViewLayout {
             ///左-左，右-右
             case let .marginX(left,right):
                 make.left.compare(compare, v1).offset(left).ec_priority(priority)
-                make.right.compare(compare, v1).offset(-right).ec_priority(priority)
+                make.right.compare(reverse(compare), v1).offset(-right).ec_priority(priority)
             ///上-上，下-下
             case let .marginY(top,bottom):
                 make.top.compare(compare, v1).offset(top).ec_priority(priority)
-                make.bottom.compare(compare, v1).offset(-bottom).ec_priority(priority)
+                make.bottom.compare(reverse(compare), v1).offset(-bottom).ec_priority(priority)
             ///上-上，左-左，下-下，右-右
             case let .margin(top,left,bottom,right):
                 make.edges.compare(compare, v1).inset(UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)).ec_priority(priority)

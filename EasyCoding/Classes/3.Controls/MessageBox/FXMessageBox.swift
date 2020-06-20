@@ -9,28 +9,29 @@
 import UIKit
 
 open class ECMessageBox {
-    public static var alertStylesheet: ECAlertController.Stylesheet = .default
     ///自定义视图弹出框
     open class func alert(title: String? = nil,view:UIView,buttons:[String],destructiveIndex:Int? = nil,action:((Int)->Bool)? = nil) {
-        let window = UIWindow(frame:UIScreen.main.bounds)
-        window.windowLevel = UIWindow.Level.alert
-        let controller = ECAlertController()
-        controller.stylesheet = alertStylesheet
-        controller.title = title
-        controller.contentView = view
-        controller.buttons = buttons
-        controller.destructiveIndex = destructiveIndex
-        controller.action = { i in
-            var cls = true
-            if let c = action?(i) {
-                cls = c
-            }
-            if let wd = controller.view.window, cls {
-                wd.easy.close()
-            }
-        }
-        window.rootViewController = controller
-        window.easy.show()
+//        let window = UIWindow(frame:UIScreen.main.bounds)
+//        window.windowLevel = UIWindow.Level.alert
+//        let controller = ECAlertController(contentView: view, buttons: buttons.map({ ECAlertView.Button(type: .normal, text: $0) {
+//            
+//            }}))
+//        controller.stylesheet = alertStylesheet
+//        controller.title = title
+//        controller.contentView = view
+//        controller.buttons = buttons
+//        controller.destructiveIndex = destructiveIndex
+//        controller.action = { i in
+//            var cls = true
+//            if let c = action?(i) {
+//                cls = c
+//            }
+//            if let wd = controller.view.window, cls {
+//                wd.easy.close()
+//            }
+//        }
+//        window.rootViewController = controller
+//        window.easy.show()
     }
 }
 

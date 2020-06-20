@@ -23,6 +23,15 @@ extension EC.NamespaceImplement where Base: ECStyleSetable {
         return self as! NamespaceWrapper<Base> 
     }
 }
+extension EC.NamespaceImplement where Base == [UIView] {
+    @discardableResult
+    public func style(_ style:ECStyleSetting<Base.Element>...) -> NamespaceWrapper<Base> {
+        self.base.forEach { (obj) in
+            style.forEach({ $0.action(obj)})
+        }
+        return self as! NamespaceWrapper<Base>
+    }
+}
 ///UIView默认可设置样式
 extension UIView: ECStyleSetable { }
 extension ECStyleSetable where Self: UIView {
@@ -39,7 +48,6 @@ extension ECStyleSetable where Self: UIView {
         return self
     }
 }
-
 extension ECStyleSetting {
     ///组合多个样式
     public static func sheet(_ styles:ECStyleSetting<TargetType>...) -> ECStyleSetting<TargetType> {
@@ -55,7 +63,7 @@ extension ECStyleSetting {
 
 ///静态样式表
 var ECStaticStyleSheets: [String:Any] = [:]
-extension EC.NamespaceImplement where Base: ECStyleSetable, Base: AnyObject {
+extension EC.NamespaceImplement where Base: ECStyleSetable {
     ///设置静态样式
     public static func style(_ style:ECStyleSetting<Base>...) {
         let className = String(describing: type(of: Base.self))

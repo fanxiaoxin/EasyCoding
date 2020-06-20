@@ -3,16 +3,16 @@
   "version": "0.0.1",
   "summary": "提供日常开发常用的操作及控件的封装",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/fanxiaoxin_1987@126.com/EasyCoding",
+  "homepage": "https://github.com/fanxiaoxin/EasyCoding",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "fanxiaoxin_1987@126.com": "fanxiaoxin_1987@126.com"
+    "fanxiaoxin  ": "fanxiaoxin_1987@126.com"
   },
   "source": {
-    "git": "https://github.com/fanxiaoxin_1987@126.com/EasyCoding.git",
+    "git": "https://github.com/fanxiaoxin/EasyCoding.git",
     "tag": "0.0.1"
   },
   "platforms": {
@@ -50,7 +50,7 @@
     },
     {
       "name": "Api",
-      "source_files": "EasyCoding/Classes/2.Business/2.3.ApiRequest/**/*",
+      "source_files": "EasyCoding/Classes/2.Business/2.3.Api/**/*",
       "dependencies": {
         "EasyCoding/Basic": [
 
