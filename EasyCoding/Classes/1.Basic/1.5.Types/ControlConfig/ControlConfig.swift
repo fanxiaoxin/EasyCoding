@@ -9,8 +9,17 @@ import UIKit
 
 ///用于配置控件的样式，参考ECAlertView
 public class ECControlConfig<ViewType: UIView> {
-    private var styles : [ECStyleSetting<ViewType>] = []
-    private var layouts: [ECViewLayout] = []
+    private var styles : [ECStyleSetting<ViewType>]
+    private var layouts: [ECViewLayout]
+    
+    public init() {
+        self.styles = []
+        self.layouts = []
+    }
+    public init(styles: [ECStyleSetting<ViewType>], layouts: [ECViewLayout]) {
+        self.styles = styles
+        self.layouts = layouts
+    }
     
     ///重设样式
     @discardableResult

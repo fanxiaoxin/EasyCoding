@@ -38,12 +38,14 @@ open class ECAlertView: ECPage {
             self.action = action
         }
     }
+    ///键盘的占位，保持跟键盘同步
+    internal let keyboardContainer = UIView()
     ///最外围的视图
     public let container = UIView()
     ///最外围的视图
     public let containerStack = UIStackView()
     ///标题
-    public let titleLabel = UILabel()
+    public let titleLabel = ECLabel()
     ///标题跟内容的分隔线
     public let titleSeparator = UIView()
     ///包裹内容容器
@@ -58,18 +60,10 @@ open class ECAlertView: ECPage {
     public let buttonContainerStack = UIStackView()
     ///设置按钮
     public var buttons: [Button]?
-    ///键盘的占位图，保持跟键盘同步
-    internal let keyboardPlaceholder = UIView()
     ///延时加载，由Controller去调用，在这之前须将config(可空)和buttons配置好
     open func delayLoad() {
         //背景样式
         self.apply(self, { $0.background })
-        
-        //最外围
-        self.addSubview(container)
-        self.apply(self.container, { $0.container })
-        self.container.addSubview(self.containerStack)
-        self.apply(self.containerStack, { $0.containerStack })
         
         let titleContainer = UIView()
         let titleSeparatorContainer = UIView()
@@ -81,7 +75,14 @@ open class ECAlertView: ECPage {
                                      titleSeparatorContainer,
                                      contentContainer,
                                      contentSeparatorContainer,
-                                     buttonContainerContainer].easy.style(.bg(.clear)).base))
+                                     buttonContainerContainer].easy.style(.bg(.clear), .highPriority()).base))
+        
+        self.easy.add(self.keyboardContainer.easy(.bg(.clear), .height(UIScreen.main.bounds.size.height)), layout: .top, .marginX)
+        //最外围
+        self.keyboardContainer.addSubview(self.container)
+        self.apply(self.container, { $0.container })
+        self.container.addSubview(self.containerStack)
+        self.apply(self.containerStack, { $0.containerStack })
         
         ///标题
         titleContainer.addSubview(self.titleLabel)
@@ -97,6 +98,7 @@ open class ECAlertView: ECPage {
         
         ///添加内容容器
         self.contentScrollView.addSubview(self.contentView)
+        self.contentView.easy.style(.lowPriority())
         
         ///内容跟按钮的分隔线
         contentSeparatorContainer.addSubview(self.contentSeparator)
@@ -111,13 +113,7 @@ open class ECAlertView: ECPage {
         //加载按钮
         self.loadButtons()
         //以下固定布局是为了UIScrollView尽可能地不出现滚动,外围可限制不超出屏幕，则当超出时会以滚动方式呈现
-        self.contentScrollView.easy.layout(self.contentView, .margin, .priority(.width, .init(1)), .priority(.height, .init(1)))
-        //键盘大于等于0，弹出时更新这个最小值为键盘高度
-        self.easy.add(self.keyboardPlaceholder.easy(.bg(.clear)), layout: .bottom, .marginX)
-        self.keyboardPlaceholder.easy.layout(self.container, .topBottom(5))
-        self.keyboardPlaceholder.snp.makeConstraints { (make) in
-            make.height.greaterThanOrEqualTo(0)
-        }
+        self.contentScrollView.easy.layout(self.contentView, .margin, .priority(.width, .medium), .priority(.height, .medium))
     }
     ///加载按钮
     func loadButtons() {

@@ -23,7 +23,7 @@ public class ECAlertConfig {
     ///最外围的视图
     public let containerStack = ECControlConfig<UIStackView>()
     ///标题
-    public let title = ECControlConfig<UILabel>()
+    public let title = ECControlConfig<ECLabel>()
     ///标题跟内容的分隔线
     public let titleSeparator = ECControlConfig<UIView>()
     ///内容容器，将需要显示的内容放在里面，一般为Label，也可自定义
@@ -38,8 +38,12 @@ public class ECAlertConfig {
     public let buttonSeparator = ECControlConfig<UIView>()
     ///指定类型的按钮，未设置的以normal为主
     public var buttons:[ECAlertView.ButtonType: ECControlConfig<ECButton>] = [:]
+    ///默认的标题
+    public var commonTitle: String?
+    ///常见的按钮类型默认配置
+    public var commonButtons:[ECAlertController.CommonButtonType: ECAlertController.Button] = [:]
     ///显示动画
-    public var animationForShow: ((ECAlertView) -> Void)?
+    public var animationForShow: ((ECAlertView, @escaping () -> Void) -> Void)?
     ///关闭动画，执行完需调用第二个参数回调
     public var animationForDismiss: ((ECAlertView, @escaping () -> Void) -> Void)?
     
@@ -69,12 +73,12 @@ public class ECAlertConfig {
             self.background.style(.bg(.clear))
             //容器居中偏上
             self.container.style(.bg(.white) ,.corner(4))
-            self.container.layout(.greather(.marginX(10)), .greather(.marginY(10)), .centerX, .centerY(-50))
+            self.container.layout(.greather(.marginX(20)), .greather(.marginY(20)), .center)
             self.containerStack.style(.axis(.vertical), .alignment(.fill), .distribution(.fill))
             self.containerStack.layout(.margin)
             //标题
             self.title.style(.boldFont(size: 14), .color(.black), .lines(), .center)
-            self.title.layout(.margin(20))
+            self.title.layout(.margin(20, 15, 5, 15))
             //标题跟内容的分隔线
             self.titleSeparator.style(.height(0), .bg(rgb: 0xEFEFEF))
             self.titleSeparator.layout(.margin(10, 0))
@@ -98,11 +102,20 @@ public class ECAlertConfig {
             self.button(for: .negative).style(.color(rgb: 0x656565), .color(.darkText, for: .highlighted))
             self.button(for: .positive).style(.color(rgb: 0x2D6DE1), .color(UIColor.easy.rgb(0x2D6DE1, alpha: 0.4), for: .highlighted), .boldFont(size: 15))
             self.button(for: .destructive).style(.color(.systemRed), .boldFont(size: 15))
+            //默认标题
+            self.commonTitle = nil
+            //常见按钮
+            self.commonButtons[.cancel] = ECAlertController.Button(sizeRatio: 1, type: .negative, text: "取消", action: { (alert) in
+                alert.dismiss()
+            })
+            self.commonButtons[.confirm] = ECAlertController.Button(sizeRatio: 1, type: .positive, text: "确定", action:nil)
             //显示动画
-            self.animationForShow = { view in
+            self.animationForShow = { view, completion  in
                 view.container.alpha = 0
-                UIView.animate(withDuration: 0.25) {
+                UIView.animate(withDuration: 0.25, animations: {
                     view.container.alpha = 1
+                }) { (_) in
+                    completion()
                 }
             }
             //关闭动画

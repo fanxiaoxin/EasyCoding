@@ -39,6 +39,9 @@ open class ECTextField: UITextField {
         
         NotificationCenter.default.addObserver(self, selector: #selector(ECTextField.textFieldDidChange), name: UITextField.textDidChangeNotification, object: self)
     }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     open override var font: UIFont? {
         didSet {
             self.placeHolderLabel.font = self.font
@@ -58,6 +61,11 @@ open class ECTextField: UITextField {
         }
         set {
             self.placeHolderLabel.attributedText = newValue
+        }
+    }
+    open override var text: String? {
+        didSet {
+            self.textFieldDidChange(hidePlaceHolder: false)
         }
     }
     open override var textAlignment: NSTextAlignment {
@@ -81,7 +89,8 @@ open class ECTextField: UITextField {
     }
     open override func textRect(forBounds bounds: CGRect) -> CGRect {
         var b = bounds
-        b.size.width -= self.padding.left * 2
+        b.size.width -= self.padding.left + self.padding.right
+        b.size.height -= self.padding.top + self.padding.bottom
         var rect = super.textRect(forBounds: b)
         rect.origin.x += self.padding.left
         rect.origin.y += self.padding.top
@@ -89,7 +98,8 @@ open class ECTextField: UITextField {
     }
     open override func editingRect(forBounds bounds: CGRect) -> CGRect {
         var b = bounds
-        b.size.width -= self.padding.left * 2
+        b.size.width -= self.padding.left + self.padding.right
+        b.size.height -= self.padding.top + self.padding.bottom
         var rect = super.editingRect(forBounds: b)
         rect.origin.x += self.padding.left
         rect.origin.y += self.padding.top
@@ -97,7 +107,7 @@ open class ECTextField: UITextField {
     }
 }
 extension ECBuildable where Self: UIView {
-    public static func fxText(_ styles: ECStyleSetting<ECTextField>...) -> ECTextField {
+    public static func ecText(_ styles: ECStyleSetting<ECTextField>...) -> ECTextField {
         return ECTextField().easy(styles: styles)
     }
 }

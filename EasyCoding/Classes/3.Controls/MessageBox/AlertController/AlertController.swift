@@ -15,11 +15,13 @@ open class ECAlertController: ECViewController<ECAlertView>,YYKeyboardObserver {
     public let buttons: [Button]
     ///配置
     public let config: ECAlertConfig?
+    ///用于缓存原来的keyWindow
+    private weak var keyWindow: UIWindow?
     private lazy var keyboardTap:UITapGestureRecognizer? = {
         return UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
     }()
     ///初始化必传参数
-    public init(title: String? = nil, contentView: UIView, buttons: [Button], config: ECAlertConfig? = nil) {
+    public init(title: String? = ECAlertConfig.default.commonTitle, contentView: UIView, buttons: [Button], config: ECAlertConfig? = nil) {
         self.contentView = contentView
         self.buttons = buttons
         self.config = config
@@ -64,8 +66,8 @@ open class ECAlertController: ECViewController<ECAlertView>,YYKeyboardObserver {
     }
     public func keyboardChanged(with transition: YYKeyboardTransition) {
         //键盘更新
-        self.page.keyboardPlaceholder.snp.updateConstraints { (maker) in
-            maker.height.equalTo(transition.toFrame.size.height)
+        self.page.keyboardContainer.snp.updateConstraints { (maker) in
+            maker.height.equalTo(transition.toFrame.origin.y)
         }
         UIView.animate(withDuration: transition.animationDuration, animations: { () -> Void in
             self.view.layoutIfNeeded()
@@ -85,18 +87,31 @@ open class ECAlertController: ECViewController<ECAlertView>,YYKeyboardObserver {
         self.view.endEditing(true)
     }
     ///显示
-    open func show() {
-        self.easy.showWindow(level: .alert)
-        (self.config?.animationForShow ?? ECAlertConfig.default.animationForShow)?(self.page)
+    open func show(completion: (() -> Void)? = nil) {
+        self.keyWindow = UIApplication.shared.keyWindow
+        self.easy.showWindow(level: .alert, key: true)
+        if let animation = (self.config?.animationForShow ?? ECAlertConfig.default.animationForShow){
+            animation(self.page) {
+                completion?()
+            }
+        }else{
+            completion?()
+        }
     }
     ///关闭
-    open func dismiss() {
+    open func dismiss(completion: (() -> Void)? = nil) {
+        if self.view.window?.isKeyWindow ?? false {
+            self.keyWindow?.makeKey()
+            self.keyWindow = nil
+        }
         if let animation = (self.config?.animationForDismiss ?? ECAlertConfig.default.animationForDismiss) {
             animation(self.page) { [weak self] in
                 self?.easy.closeWindow()
+                completion?()
             }
         }else{
             self.easy.closeWindow()
+            completion?()
         }
     }
 }
@@ -118,12 +133,40 @@ extension ECAlertController {
             self.action = action
         }
     }
+    ///常见的按钮类型
+    public enum CommonButtonType: Hashable {
+        ///取消
+        case cancel
+        ///确定
+        case confirm
+        ///自定义
+        case custom(Int)
+    }
 }
 
 extension ECAlertController.Button {
-    public static func cancel(_ text: String) -> Self {
-        return ECAlertController.Button(type: .negative,text: text) { (alert) in
-            alert.dismiss()
+    ///取消按钮
+    public static var cancel: Self {
+        if let btn = ECAlertConfig.default.commonButtons[.cancel] {
+            return btn
         }
+        fatalError("未配置取消按钮")
+    }
+    ///取消按钮
+    public static func cancel(_ text: String) -> Self {
+        var btn = self.cancel
+        btn.text = text
+        return btn
+    }
+    ///确定按钮
+    public static func confirm(_ text: String? = nil, action: @escaping (ECAlertController) -> Void) -> Self {
+        if var btn = ECAlertConfig.default.commonButtons[.confirm] {
+            if let t = text {
+                btn.text = t
+            }
+            btn.action = action
+            return btn
+        }
+        fatalError("未配置取消按钮")
     }
 }

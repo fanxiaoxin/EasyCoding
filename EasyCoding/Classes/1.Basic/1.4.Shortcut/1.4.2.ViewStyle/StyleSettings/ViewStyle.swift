@@ -16,6 +16,12 @@ extension ECStyleSetting where TargetType: UIView {
             target.superview?.easy(styles: styles)
         })
     }
+    ///是否触发用户事件
+    public static func userInteraction(_ isEnabled:Bool = true) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.isUserInteractionEnabled = isEnabled
+        })
+    }
     ///背景色
     public static func bg(_ color:UIColor?) -> ECStyleSetting<TargetType> {
         return .init(action: { (target) in

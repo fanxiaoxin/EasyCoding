@@ -23,7 +23,7 @@ class ViewController: UIViewController {
                      UIButton.easy(.bg(.blue), .height(20, .low), .event(self, #selector(self.test))),
                      UIView.easy(.bg(.green), .height(20, .low))]
         let stack = UIStackView()
-        self.view.easy.style(.bg(.lightGray)).add(stack.easy(.views(views),
+        self.view.easy.style(.bg(.init(white: 0.9, alpha: 1))).add(stack.easy(.views(views),
                                       .axis(.vertical), .alignment(.fill), .distribution(.fillProportionally)), layout: .margin(50))
         
         
@@ -36,17 +36,13 @@ class ViewController: UIViewController {
 //        }
     }
     @objc func test() {
-        let label = UILabel.easy(.text("这是一优话哈哈哈哈呈"), .font(size: 13), .color(.blue))
-        let config = ECAlertConfig()
-        config.background.style(.bg(.yellow))
-        config.button(for: .destructive).style(.bg(.lightGray))
-        let alert = ECAlertController(title: "看看我的标题", contentView: label, buttons: [ECAlertController.Button(type: .positive,text: "不确定", action: { _ in
-            print("FUCK")
-        }), ECAlertController.Button(type: .destructive,text: "关了我吧", action: { alert in
-                alert.dismiss()
-        })], config: nil)
-        alert.title = "我是标题"
-        alert.show()
+//        ECAlertConfig.default.message.addStyle(.boldFont(size: 20))
+//        ECAlertConfig.default.input.addStyle(.bg(.green))
+//        ECAlertConfig.default.input.layout(.margin(180, 0, 150, 0))
+        ECMessageBox.confirm(title: "看这个标题", message: "try metry metry metry metry metry metry me") { ECMessageBox.input(title: "来点东西", placeHolder: "随便输点", text: "默认文字") { (input) in
+                ECMessageBox.toast(input.text ?? "没东西啊没东西啊没东西啊没没东西啊")
+            }
+        }
     }
 
 }

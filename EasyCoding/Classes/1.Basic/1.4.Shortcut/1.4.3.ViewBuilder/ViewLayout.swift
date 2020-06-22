@@ -33,10 +33,15 @@ extension ConstraintMakerExtendable {
 
 ///视图约束
 public enum ECViewLayout {
-    ///高度(差额，比例)
-    case height(CGFloat, CGFloat)
-    ///宽度(差额，比例)
-    case width(CGFloat, CGFloat)
+    ///相对高度(差额，比例)
+    case relativeHeight(CGFloat, CGFloat)
+    ///相对宽度(差额，比例)
+    case relativeWidth(CGFloat, CGFloat)
+    
+    ///自身高度
+    case absoluteHeight(CGFloat)
+    ///自身宽度
+    case absoluteWidth(CGFloat)
     
     ///左-左
     case left(CGFloat)
@@ -140,10 +145,14 @@ extension ECViewLayout {
         let maker = isUpdating ? v2.snp.updateConstraints : v2.snp.makeConstraints
         maker { (make) in
             switch self {
-            ///高度
-            case let .height(os, m): make.height.compare(compare, v1).offset(os).multipliedBy(m).ec_priority(priority)
-            ///宽度
-            case let .width(os, m): make.width.compare(compare, v1).offset(os).multipliedBy(m).ec_priority(priority)
+            ///相对高度
+            case let .relativeHeight(os, m): make.height.compare(compare, v1).offset(os).multipliedBy(m).ec_priority(priority)
+            ///相对宽度
+            case let .relativeWidth(os, m): make.width.compare(compare, v1).offset(os).multipliedBy(m).ec_priority(priority)
+            ///绝对高度
+            case let .absoluteHeight(v): make.height.compare(compare, v).ec_priority(priority)
+            ///绝对宽度
+            case let .absoluteWidth(v): make.width.compare(compare, v).ec_priority(priority)
             ///左-左
             case let .left(v): make.left.compare(compare, v1).offset(v).ec_priority(priority)
             ///右-右
@@ -234,15 +243,15 @@ extension EC.NamespaceImplement where Base == [UIView] {
 
 ///快捷方式
 extension ECViewLayout {
-    ///高度
-    public static var height: ECViewLayout { return .height(0, 1) }
-    ///宽度
-    public static var width: ECViewLayout { return .width(0, 1) }
+    ///相对高度
+    public static var height: ECViewLayout { return .relativeHeight(0, 1) }
+    ///相对宽度
+    public static var width: ECViewLayout { return .relativeWidth(0, 1) }
     
-    ///高度(比例)
-    public static func height(_ v:CGFloat) -> ECViewLayout { return .height(0, v) }
-    ///宽度(比例)
-    public static func width(_ v:CGFloat) -> ECViewLayout { return .width(0, v) }
+    ///绝对高度
+    public static func height(_ v:CGFloat) -> ECViewLayout { return .absoluteHeight(v) }
+    ///绝对宽度
+    public static func width(_ v:CGFloat) -> ECViewLayout { return .absoluteWidth(v) }
     
     ///左左
     public static var left: ECViewLayout { return .left(0) }
