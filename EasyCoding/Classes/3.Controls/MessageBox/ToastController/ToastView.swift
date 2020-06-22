@@ -15,9 +15,10 @@ open class ECToastView: UIView {
     ///消息
     public let messageLabel = ECLabel()
     
-    public init(message: String) {
+    public init(message: String, config: ECToastConfig? = nil) {
         super.init(frame: .zero)
         self.messageLabel.text = message
+        self.config = config
         self.load()
     }
     override public init(frame: CGRect) {
