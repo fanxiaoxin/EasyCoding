@@ -248,4 +248,44 @@ extension ECStyleSetting where TargetType: UIView {
        public static func tint(rgb color:UInt32) -> ECStyleSetting<TargetType> {
            return .tint(UIColor.easy.rgb( color))
        }
+    ///点击事件
+    public static func tap(_ target:Any?, _ action: Selector) -> ECStyleSetting<TargetType> {
+        return .init(action: { (obj) in
+            let tap = UITapGestureRecognizer(target: target, action: action)
+            obj.addGestureRecognizer(tap)
+            obj.isUserInteractionEnabled = true
+        })
+    }
+    ///滑动事件
+    public static func swipe(_ target:Any?, _ action: Selector) -> ECStyleSetting<TargetType> {
+        return .init(action: { (obj) in
+            let swipe = UISwipeGestureRecognizer(target: target, action: action)
+            obj.addGestureRecognizer(swipe)
+            obj.isUserInteractionEnabled = true
+        })
+    }
+    ///拖动事件
+    public static func pan(_ target:Any?, _ action: Selector) -> ECStyleSetting<TargetType> {
+        return .init(action: { (obj) in
+            let pan = UIPanGestureRecognizer(target: target, action: action)
+            obj.addGestureRecognizer(pan)
+            obj.isUserInteractionEnabled = true
+        })
+    }
+    ///屏幕边缘动事件
+    public static func screenEdgePan(_ target:Any?, _ action: Selector) -> ECStyleSetting<TargetType> {
+        return .init(action: { (obj) in
+            let pan = UIScreenEdgePanGestureRecognizer(target: target, action: action)
+            obj.addGestureRecognizer(pan)
+            obj.isUserInteractionEnabled = true
+        })
+    }
+    ///长按事件
+    public static func longPress(_ target:Any?, _ action: Selector) -> ECStyleSetting<TargetType> {
+        return .init(action: { (obj) in
+            let longPress = UILongPressGestureRecognizer(target: target, action: action)
+            obj.addGestureRecognizer(longPress)
+            obj.isUserInteractionEnabled = true
+        })
+    }
 }
