@@ -111,54 +111,54 @@ extension ECStyleSetting where TargetType: UIView {
     }
     
     ///设置视图的高宽
-    public static func size(_ width: CGFloat,_ height: CGFloat,_ priority: ConstraintPriority = .required) -> ECStyleSetting<TargetType>  {
+    public static func size(_ width: CGFloat,_ height: CGFloat) -> ECStyleSetting<TargetType>  {
         return .init(action: { (target) in
             target.snp.makeConstraints({ (make) in
-                make.width.equalTo(width).priority(priority)
-                make.height.equalTo(height).priority(priority)
+                make.width.equalTo(width)
+                make.height.equalTo(height)
             })
         })
     }
     ///设置视图的高宽
-    public static func size(_ widthHeight: CGFloat,_ priority: ConstraintPriority = .required) -> ECStyleSetting<TargetType> {
+    public static func size(_ widthHeight: CGFloat) -> ECStyleSetting<TargetType> {
         return self.size(widthHeight, widthHeight)
     }
     ///设置视图的高度
-    public static func height(_ height: CGFloat,_ priority: ConstraintPriority = .required) -> ECStyleSetting<TargetType>  {
+    public static func height(_ height: CGFloat) -> ECStyleSetting<TargetType>  {
         return .init(action: { (target) in
             target.snp.makeConstraints({ (make) in
-                make.height.equalTo(height).priority(priority)
+                make.height.equalTo(height)
             })
         })
     }
     ///设置视图的宽度
-    public static func width(_ width: CGFloat,_ priority: ConstraintPriority = .required) -> ECStyleSetting<TargetType> {
+    public static func width(_ width: CGFloat) -> ECStyleSetting<TargetType> {
         return .init(action: { (target) in
             target.snp.makeConstraints({ (make) in
-                make.width.equalTo(width).priority(priority)
+                make.width.equalTo(width)
             })
         })
     }
     ///重新设置视图的高宽
-    public static func updateSize(width: CGFloat? = nil,height: CGFloat? = nil,_ priority: ConstraintPriority = .required) -> ECStyleSetting<TargetType>  {
+    public static func updateSize(width: CGFloat? = nil,height: CGFloat? = nil) -> ECStyleSetting<TargetType>  {
         return .init(action: { (target) in
             if let w = width {
                 target.snp.updateConstraints({ (make) in
-                    make.width.equalTo(w).priority(priority)
+                    make.width.equalTo(w)
                 })
             }
             if let h = height {
                 target.snp.updateConstraints({ (make) in
-                    make.height.equalTo(h).priority(priority)
+                    make.height.equalTo(h)
                 })
             }
         })
     }
     ///设置视图的宽高比
-    public static func aspect(ratio: CGFloat,_ priority: ConstraintPriority = .required) -> ECStyleSetting<TargetType>  {
+    public static func aspect(ratio: CGFloat) -> ECStyleSetting<TargetType>  {
         return .init(action: { (target) in
             target.snp.makeConstraints({ (make) in
-                make.width.equalTo(target.snp.height).multipliedBy(ratio).priority(priority)
+                make.width.equalTo(target.snp.height).multipliedBy(ratio)
             })
         })
     }
