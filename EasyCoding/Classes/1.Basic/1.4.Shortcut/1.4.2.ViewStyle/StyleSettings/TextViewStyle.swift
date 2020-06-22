@@ -9,19 +9,13 @@ import UIKit
 
 extension ECStyleSetting where TargetType: UITextView {
     ///文本
-    public static func text(_ text:String?) -> ECStyleSetting<TargetType> {
+    public static func text(_ text:ECControlTextType?) -> ECStyleSetting<TargetType> {
         return .init(action: { (target) in
-            target.text = text
+            text?.setText(to: target)
         })
     }
     ///富文本
-    public static func text(_ text:NSAttributedString?) -> ECStyleSetting<TargetType> {
-        return .init(action: { (target) in
-            target.attributedText = text
-        })
-    }
-    ///富文本
-    public static func attr(_ text:NSAttributedString?) -> ECStyleSetting<TargetType> {
+    public static func attr(_ text:ECAttributedString?) -> ECStyleSetting<TargetType> {
         return self.text(text)
     }
     ///字体

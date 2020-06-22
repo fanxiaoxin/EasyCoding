@@ -19,13 +19,15 @@ class ViewController: UIViewController {
         //            view.add(UILabel.easy(.center), layout: .top, .left(3))
         //        }), layout: .right(30))
         
-        let views = [UIView().easy(.bg(.red)),
-                     UIView().easy(.bg(.blue), .tap(self, #selector(self.test))),
-                     UIView().easy(.bg(.green))]
+        let views = [UIView.easy(.bg(.red)),
+                     UIView.easy(.bg(.blue), .tap(self, #selector(self.test))),
+                     UIView.easy(.bg(.green)),
+                     UILabel.easy(.attr("我是一段富文本，要问我有多\("富234234234", .boldFont(size: 20), .color(.blue)),我也不知道"), .color(.yellow),.font(size: 15), .bg(.lightGray), .lines())]
         
         views[0].easy.layout(.priority(.height(10), .low))
         views[1].easy.layout(.priority(.height(20), .low))
         views[2].easy.layout(.priority(.height(30), .low))
+        views[3].easy.layout(.priority(.height(30), .low))
         
         let stack = UIStackView()
         self.view.easy.style(.bg(.init(white: 0.9, alpha: 1))).add(stack.easy(.views(views),
@@ -44,7 +46,7 @@ class ViewController: UIViewController {
         //        ECAlertConfig.default.message.addStyle(.boldFont(size: 20))
         //        ECAlertConfig.default.input.addStyle(.bg(.green))
         //        ECAlertConfig.default.input.layout(.margin(180, 0, 150, 0))
-        ECMessageBox.confirm(title: "看这个标题", message: "try metry metry metry metry metry metry me") { ECMessageBox.input(title: "来点东西", placeHolder: "随便输点") { (input) in
+        ECMessageBox.confirm(title: "看这个标题", attr: "try metry \("trye3 ry metrry metr", .color(.red), .boldFont(size: 24)) metry metry metry me") { ECMessageBox.input(title: "来点东西", placeHolder: "随便输点") { (input) in
                 ECMessageBox.toast(input.text ?? "没东西啊没东西啊没东西啊没没东西啊")
         }.easy(.constraint(.date(mode: .time, format: "HH:mm")))
         }

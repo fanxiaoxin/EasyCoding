@@ -39,12 +39,12 @@ extension ECAlertConfig {
 ///一个高可定制性的消息弹窗
 public struct ECMessageBox {
     ///创建消息按钮
-    private static func messageLabel(_ text: String) -> UIView {
+    private static func messageLabel(_ text: ECControlTextType) -> UIView {
         let labelContainer = UIView()
         let label = ECLabel()
         labelContainer.addSubview(label)
         ECMessageBoxConfig.message.apply(for: label)
-        label.text = text
+        text.setText(to: label)
         return labelContainer
     }
     ///自定义页面
@@ -53,11 +53,15 @@ public struct ECMessageBox {
         controller.show(completion: completion)
     }
     ///自定义按钮弹窗
-    public static func alert(title: String? = ECAlertConfig.default.commonTitle, message: String, buttons:[ECAlertController.Button]) {
+    public static func alert(title: String? = ECAlertConfig.default.commonTitle, message: ECControlTextType, buttons:[ECAlertController.Button]) {
         self.alert(title: title, contentView: messageLabel(message), buttons: buttons, config: nil)
     }
     ///最普通的弹窗
-    public static func alert(title: String? = ECAlertConfig.default.commonTitle, message: String,action: (() -> Void)? = nil) {
+    public static func alert(title: String? = ECAlertConfig.default.commonTitle, attr message: ECAttributedString,action: (() -> Void)? = nil) {
+        self.alert(title: title, message: message, action: action)
+    }
+    ///最普通的弹窗
+    public static func alert(title: String? = ECAlertConfig.default.commonTitle, message: ECControlTextType,action: (() -> Void)? = nil) {
         self.alert(title: title, message: message, buttons: [.confirm(action: { (alert) in
             alert.dismiss()
             action?()
@@ -75,7 +79,11 @@ public struct ECMessageBox {
         self.alert(title: title, contentView:contentView, buttons: buttons, config: nil, completion: completion)
     }
     ///确认框
-    public static func confirm(title: String? = ECAlertConfig.default.commonTitle, message: String, action: @escaping () -> Void) {
+    public static func confirm(title: String? = ECAlertConfig.default.commonTitle, attr message: ECAttributedString, action: @escaping () -> Void) {
+        self.confirm(title: title, message: message, action: action)
+    }
+    ///确认框
+    public static func confirm(title: String? = ECAlertConfig.default.commonTitle, message: ECControlTextType, action: @escaping () -> Void) {
         self.confirm(title: title, contentView: messageLabel(message), action: { (alert) in
             alert.dismiss()
             action()

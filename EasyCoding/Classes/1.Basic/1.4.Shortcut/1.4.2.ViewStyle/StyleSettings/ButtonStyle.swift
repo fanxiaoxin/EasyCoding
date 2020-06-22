@@ -10,19 +10,13 @@ import UIKit
 
 extension ECStyleSetting where TargetType: UIButton {
     ///文本
-    public static func text(_ text:String?, for state: UIControl.State = .normal) -> ECStyleSetting<TargetType> {
+    public static func text(_ text:ECControlTextType?, for state: UIControl.State = .normal) -> ECStyleSetting<TargetType> {
         return .init(action: { (target) in
-            target.setTitle(text, for: state)
+            text?.setText(to: target, for: state)
         })
     }
     ///富文本
-    public static func text(_ text:NSAttributedString?, for state: UIControl.State = .normal) -> ECStyleSetting<TargetType> {
-        return .init(action: { (target) in
-            target.setAttributedTitle(text, for: state)
-        })
-    }
-    ///富文本
-    public static func attr(_ text:NSAttributedString?, for state: UIControl.State = .normal) -> ECStyleSetting<TargetType> {
+    public static func attr(_ text:ECAttributedString?, for state: UIControl.State = .normal) -> ECStyleSetting<TargetType> {
         return self.text(text, for: state)
     }
     ///图片

@@ -245,6 +245,7 @@
 		9C75B8FD24A03947005105B4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75B8FC24A03947005105B4 /* MessageBox.swift */; };
 		9C75B90024A07961005105B4 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75B8FF24A07961005105B4 /* ToastView.swift */; };
 		9C75B90224A079D2005105B4 /* ToastConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75B90124A079D2005105B4 /* ToastConfig.swift */; };
+		9C75B90424A0B3F1005105B4 /* ControlTextType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75B90324A0B3F1005105B4 /* ControlTextType.swift */; };
 		9CA96BF101FB79DE9C4FF009112E9B8E /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E12657A16D935486169652073DFEF0 /* AnimatedImageView.swift */; };
 		9CF386DE249C890D00440629 /* ControlConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF386DD249C890D00440629 /* ControlConfig.swift */; };
 		9D5AFF45A29507D56966ABD6DA36F34C /* Precondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A87E6332B5D8B40C9845130179B3F /* Precondition.swift */; };
@@ -880,6 +881,7 @@
 		9C75B8FC24A03947005105B4 /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		9C75B8FF24A07961005105B4 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		9C75B90124A079D2005105B4 /* ToastConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastConfig.swift; sourceTree = "<group>"; };
+		9C75B90324A0B3F1005105B4 /* ControlTextType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlTextType.swift; sourceTree = "<group>"; };
 		9CF386DD249C890D00440629 /* ControlConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlConfig.swift; sourceTree = "<group>"; };
 		9D362DA0579E85C7B88B624D36380EC0 /* Flow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		9D5230DCD4FDC74E5FC77A68A8E66FE7 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtensionHelpers.swift; path = Sources/Utility/ExtensionHelpers.swift; sourceTree = "<group>"; };
@@ -2376,6 +2378,7 @@
 			isa = PBXGroup;
 			children = (
 				F68438C02A4DC9A55156D00EFDD01E5F /* StyleSetting.swift */,
+				9C75B90324A0B3F1005105B4 /* ControlTextType.swift */,
 				171C45CD05EE0B089AFE489521373B88 /* StyleSettings */,
 			);
 			path = 1.4.2.ViewStyle;
@@ -3325,6 +3328,7 @@
 				ED82CF533CEED53DBAAEDF38BE34C931 /* OnceEventManager.swift in Sources */,
 				F64CE958AA518E9C8A77099139708E80 /* OptionsKeyboards.swift in Sources */,
 				8D1E2C86197751D89ED69A1A0E7998E4 /* OptionsKeyboardType.swift in Sources */,
+				9C75B90424A0B3F1005105B4 /* ControlTextType.swift in Sources */,
 				32C59166EF70B97DC69CAC7AB62380C3 /* OptionsPickerView.swift in Sources */,
 				D9522CC5E080971E6D779FB76FF3D673 /* OptionsTextConstraint.swift in Sources */,
 				8AC407E4904BED385358EC5D93D09CEB /* Page.swift in Sources */,
