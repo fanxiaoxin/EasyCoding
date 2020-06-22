@@ -22,8 +22,7 @@ class ViewController: UIViewController {
         let views = [UIView.easy(.bg(.red)),
                      UIView.easy(.bg(.blue), .tap(self, #selector(self.test))),
                      UIView.easy(.bg(.green)),
-                     UILabel.easy(.attr("我是一段富文本，要问我有多\("富234234234", .boldFont(size: 20), .color(.blue)),我也不知道"), .color(.yellow),.font(size: 15), .bg(.lightGray), .lines())]
-        
+                     UILabel.easy(.lines(), .attr("我是一段富文本，要问我有多\("富234234234", .boldFont(size: 20), .color(.red)),我也不知道", .color(.blue), .font(size: 14)))]
         views[0].easy.layout(.priority(.height(10), .low))
         views[1].easy.layout(.priority(.height(20), .low))
         views[2].easy.layout(.priority(.height(30), .low))

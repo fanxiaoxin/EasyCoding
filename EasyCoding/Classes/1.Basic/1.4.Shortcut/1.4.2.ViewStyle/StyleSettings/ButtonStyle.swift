@@ -15,8 +15,13 @@ extension ECStyleSetting where TargetType: UIButton {
             text?.setText(to: target, for: state)
         })
     }
-    ///富文本
-    public static func attr(_ text:ECAttributedString?, for state: UIControl.State = .normal) -> ECStyleSetting<TargetType> {
+    ///富文本，要在设属性时最后设，否则不会显示定制的样式
+    public static func attr(_ text:ECAttributedString, _ attrs: ECStringAttribute..., for state: UIControl.State = .normal) -> ECStyleSetting<TargetType> {
+        if text.attributes != nil {
+            text.attributes!.insert(contentsOf: attrs, at: 0)
+        }else{
+            text.attributes = attrs
+        }
         return self.text(text, for: state)
     }
     ///图片

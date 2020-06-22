@@ -14,8 +14,13 @@ extension ECStyleSetting where TargetType: UITextView {
             text?.setText(to: target)
         })
     }
-    ///富文本
-    public static func attr(_ text:ECAttributedString?) -> ECStyleSetting<TargetType> {
+    ///富文本，要在设属性时最后设，否则不会显示定制的样式
+    public static func attr(_ text:ECAttributedString, _ attrs: ECStringAttribute...) -> ECStyleSetting<TargetType> {
+        if text.attributes != nil {
+            text.attributes!.insert(contentsOf: attrs, at: 0)
+        }else{
+            text.attributes = attrs
+        }
         return self.text(text)
     }
     ///字体
