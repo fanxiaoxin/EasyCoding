@@ -19,9 +19,9 @@ class ViewController: UIViewController {
 //            view.add(UILabel.easy(.center), layout: .top, .left(3))
 //        }), layout: .right(30))
         
-        let views = [UIView.easy(.bg(.red), .height(10, .required)),
-                     UIButton.easy(.bg(.blue), .height(20, .low), .event(self, #selector(self.test))),
-                     UIView.easy(.bg(.green), .height(20, .low))]
+        let views = [UIView().easy.style(.bg(.red)).layout(.priority(.height(10), .low)).base,
+                     UIButton().easy.style(.bg(.blue), .event(self, #selector(self.test))).layout(.priority(.height(20), .low)).base,
+                     UIView().easy.style(.bg(.green)).layout(.priority(.height(30), .low)).base]
         let stack = UIStackView()
         self.view.easy.style(.bg(.init(white: 0.9, alpha: 1))).add(stack.easy(.views(views),
                                       .axis(.vertical), .alignment(.fill), .distribution(.fillProportionally)), layout: .margin(50))

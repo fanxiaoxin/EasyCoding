@@ -9,7 +9,16 @@ import UIKit
 
 open class ECTextField: UITextField {
     ///内边距
-    open var padding: UIEdgeInsets = UIEdgeInsets.zero
+    open var padding: UIEdgeInsets = UIEdgeInsets.zero {
+        didSet {
+            self.placeHolderLabel.snp.updateConstraints { (make) in
+                make.top.equalToSuperview().offset(self.padding.top)
+                make.bottom.equalToSuperview().offset(-self.padding.bottom)
+                make.left.equalToSuperview().offset(self.padding.left)
+                make.right.equalToSuperview().offset(-self.padding.right)
+            }
+        }
+    }
     
     public let placeHolderLabel = UILabel()
     

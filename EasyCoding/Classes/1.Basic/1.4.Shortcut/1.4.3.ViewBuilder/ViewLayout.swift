@@ -230,14 +230,23 @@ extension Array where Element == ECViewLayout {
 }
 
 extension EC.NamespaceImplement where Base: UIView {
-    public func layout(_ view: UIView, _ layout:ECViewLayout...) {
-        layout.apply(to: self.base, with: view)
+    @discardableResult
+    public func layout(_ view: UIView, _ layouts:ECViewLayout...) -> Self {
+        layouts.apply(to: self.base, with: view)
+        return self
+    }
+    @discardableResult
+    public func layout(_ layouts:ECViewLayout...) -> Self {
+        layouts.apply(to: self.base.superview ?? self.base, with: self.base)
+        return self
     }
 }
 
 extension EC.NamespaceImplement where Base == [UIView] {
-    public func layout(_ layout:ECViewLayout...) {
+    @discardableResult
+    public func layout(_ layout:ECViewLayout...) -> Self {
         layout.apply(to: self.base)
+        return self
     }
 }
 
