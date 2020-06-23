@@ -116,7 +116,7 @@ open class ECTextField: UITextField {
     }
 }
 extension ECBuildable where Self: UIView {
-    public static func ecText(_ styles: ECStyleSetting<ECTextField>...) -> ECTextField {
+    public static func easyText(_ styles: ECStyleSetting<ECTextField>...) -> ECTextField {
         return ECTextField().easy(styles: styles)
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 ///用于配置控件的样式，参考ECAlertView
-public class ECControlConfig<ViewType: UIView> {
+open class ECControlConfig<ViewType: UIView> {
     private var styles : [ECStyleSetting<ViewType>]
     private var layouts: [ECViewLayout]
     

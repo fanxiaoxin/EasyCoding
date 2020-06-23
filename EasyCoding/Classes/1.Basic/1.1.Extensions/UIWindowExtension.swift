@@ -69,9 +69,9 @@ extension EC.NamespaceImplement where Base: UIWindow {
         return top
     }
     //显示窗口
-    public func show(key: Bool = false){
+    public func show(makeKey: Bool = false){
         __easyCodingWindows.append(self.base)
-        if key {
+        if makeKey {
             self.base.makeKeyAndVisible()
         }else{
             self.base.isHidden = false
@@ -96,11 +96,11 @@ extension EC.NamespaceImplement where Base: UIWindow {
 extension EC.NamespaceImplement where Base: UIViewController {
     ///通过打开新的Window显示viewController
     @discardableResult
-    public func showWindow(level:UIWindow.Level = UIWindow.Level.alert, key:Bool = false) -> UIWindow{
+    public func showWindow(level:UIWindow.Level = UIWindow.Level.alert, makeKey:Bool = false) -> UIWindow{
         let window = UIWindow(frame:UIScreen.main.bounds)
         window.windowLevel = level
         window.rootViewController = self.base
-        window.easy.show(key: key)
+        window.easy.show(makeKey: makeKey)
         return window
     }
     ///关闭通过showWindow打开的窗口
@@ -112,10 +112,10 @@ extension EC.NamespaceImplement where Base: UIViewController {
 extension EC.NamespaceImplement where Base: UIView {
     ///通过打开新的Window显示view
     @discardableResult
-    public func showWindow(level:UIWindow.Level = UIWindow.Level.alert, key: Bool = false) -> UIWindow {
+    public func showWindow(level:UIWindow.Level = UIWindow.Level.alert, makeKey: Bool = false) -> UIWindow {
         let controller = UIViewController()
         controller.view = self.base
-        return controller.easy.showWindow(level: level, key: key)
+        return controller.easy.showWindow(level: level, makeKey: makeKey)
     }
     ///关闭通过showWindow打开的窗口
     public func closeWindow(){

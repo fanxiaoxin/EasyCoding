@@ -246,6 +246,8 @@
 		9C75B90024A07961005105B4 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75B8FF24A07961005105B4 /* ToastView.swift */; };
 		9C75B90224A079D2005105B4 /* ToastConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75B90124A079D2005105B4 /* ToastConfig.swift */; };
 		9C75B90424A0B3F1005105B4 /* ControlTextType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C75B90324A0B3F1005105B4 /* ControlTextType.swift */; };
+		9C94979324A1EEFE00C0DA4A /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C94979224A1EEFE00C0DA4A /* Data.swift */; };
+		9C94979624A201CE00C0DA4A /* CustomControlConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C94979524A201CE00C0DA4A /* CustomControlConfig.swift */; };
 		9CA96BF101FB79DE9C4FF009112E9B8E /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E12657A16D935486169652073DFEF0 /* AnimatedImageView.swift */; };
 		9CF386DE249C890D00440629 /* ControlConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF386DD249C890D00440629 /* ControlConfig.swift */; };
 		9D5AFF45A29507D56966ABD6DA36F34C /* Precondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A87E6332B5D8B40C9845130179B3F /* Precondition.swift */; };
@@ -882,6 +884,8 @@
 		9C75B8FF24A07961005105B4 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		9C75B90124A079D2005105B4 /* ToastConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastConfig.swift; sourceTree = "<group>"; };
 		9C75B90324A0B3F1005105B4 /* ControlTextType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlTextType.swift; sourceTree = "<group>"; };
+		9C94979224A1EEFE00C0DA4A /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		9C94979524A201CE00C0DA4A /* CustomControlConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControlConfig.swift; sourceTree = "<group>"; };
 		9CF386DD249C890D00440629 /* ControlConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlConfig.swift; sourceTree = "<group>"; };
 		9D362DA0579E85C7B88B624D36380EC0 /* Flow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		9D5230DCD4FDC74E5FC77A68A8E66FE7 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtensionHelpers.swift; path = Sources/Utility/ExtensionHelpers.swift; sourceTree = "<group>"; };
@@ -1221,9 +1225,10 @@
 		0A06670D9EF4E31CDD31FD9366E87D56 /* 1.0.Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				B47308BA90C3BDFFCC4C9BC9BEAB385F /* Direction.swift */,
 				E1871CD147FEAB2E11C6F35D1F39229A /* Namespace.swift */,
+				B47308BA90C3BDFFCC4C9BC9BEAB385F /* Direction.swift */,
 				2771CC8F78FD2574BF831086A39300B7 /* Null.swift */,
+				9C94979224A1EEFE00C0DA4A /* Data.swift */,
 			);
 			path = 1.0.Foundation;
 			sourceTree = "<group>";
@@ -1921,6 +1926,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF386DD249C890D00440629 /* ControlConfig.swift */,
+				9C94979524A201CE00C0DA4A /* CustomControlConfig.swift */,
 			);
 			path = ControlConfig;
 			sourceTree = "<group>";
@@ -3297,6 +3303,7 @@
 				E6B071812850D7D92F2E920323234FA4 /* EventPublisher.swift in Sources */,
 				17626980E016AB75939334CAC6AC8425 /* EventPublisherType.swift in Sources */,
 				9C3880F0249DDD00006777D9 /* AlertController.swift in Sources */,
+				9C94979324A1EEFE00C0DA4A /* Data.swift in Sources */,
 				271885BE151CD0E16DFF09B6BBB5600D /* EventTriggerable.swift in Sources */,
 				98E39E72C1E1E3D5EA67B81EF638F807 /* EventType.swift in Sources */,
 				C3BF1D9C103F79C60B846D555E00620C /* ExpirableProperty.swift in Sources */,
@@ -3383,6 +3390,7 @@
 				2803FF18FAFE8EB259E618ABEA209CD7 /* UIWebViewExtension.swift in Sources */,
 				F6EBBA3DCEE2D20E9AAFD01CC34B368B /* UIWindowExtension.swift in Sources */,
 				6DB0C49F16FE8A1AE16E1BECB6B48EDA /* UndoProperty.swift in Sources */,
+				9C94979624A201CE00C0DA4A /* CustomControlConfig.swift in Sources */,
 				F511060856B4DA68AF6FEDE1E25612BF /* URLExtension.swift in Sources */,
 				8050148A577CD36410F0719683D0B0E3 /* UserDefaultProperty.swift in Sources */,
 				67B68E27C2F350CD872F5E292C713B78 /* ViewBuilder.swift in Sources */,

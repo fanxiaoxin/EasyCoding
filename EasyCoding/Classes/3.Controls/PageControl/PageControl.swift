@@ -39,7 +39,7 @@ public class ECPageControl: UIPageControl {
 }
 
 extension ECBuildable where Self: UIView {
-    public static func fxPageControl(_ styles: ECStyleSetting<ECPageControl>...) -> ECPageControl {
+    public static func easyPageControl(_ styles: ECStyleSetting<ECPageControl>...) -> ECPageControl {
         return ECPageControl().easy(styles: styles)
     }
 }

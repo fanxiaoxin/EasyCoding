@@ -104,7 +104,7 @@ open class ECLabel: UILabel {
     }
 }
 extension ECBuildable where Self: UIView {
-    public static func fxLabel(_ styles: ECStyleSetting<ECLabel>...) -> ECLabel {
+    public static func easyLabel(_ styles: ECStyleSetting<ECLabel>...) -> ECLabel {
         return ECLabel().easy(styles: styles)
     }
 }

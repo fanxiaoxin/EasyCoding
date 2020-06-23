@@ -68,7 +68,7 @@ open class ECCheckbox: ECButton {
 }
 
 extension ECBuildable where Self: UIView {
-    public static func fxCheckbox(_ styles: ECStyleSetting<ECCheckbox>...) -> ECCheckbox {
+    public static func easyCheckbox(_ styles: ECStyleSetting<ECCheckbox>...) -> ECCheckbox {
         return ECCheckbox().easy(styles: styles)
     }
 }

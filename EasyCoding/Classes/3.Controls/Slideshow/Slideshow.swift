@@ -237,7 +237,7 @@ open class ECSlideshow: UIView,UIScrollViewDelegate {
 }
 
 extension ECBuildable where Self: UIView {
-    public static func fxSlideshow(_ styles: ECStyleSetting<ECSlideshow>...) -> ECSlideshow {
+    public static func easySlideshow(_ styles: ECStyleSetting<ECSlideshow>...) -> ECSlideshow {
         return ECSlideshow().easy(styles: styles)
     }
 }

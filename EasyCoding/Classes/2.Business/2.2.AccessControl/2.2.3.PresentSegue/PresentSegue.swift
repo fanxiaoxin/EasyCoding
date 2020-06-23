@@ -212,13 +212,15 @@ extension ECPresentSegue {
     ///使用新窗口打开
     public class Window: ECPresentSegue {
         public let level: UIWindow.Level
-        public init(level: UIWindow.Level = .alert) {
+        public let makeKey: Bool
+        public init(level: UIWindow.Level = .alert, makeKey: Bool = false) {
             self.level = level
+            self.makeKey = makeKey
             super.init()
         }
         open override func performAction(completion: (() -> Void)?) {
             if let d = self.destination {
-                d.easy.showWindow(level: level)
+                d.easy.showWindow(level: level, makeKey: makeKey)
                 completion?()
             }
         }
