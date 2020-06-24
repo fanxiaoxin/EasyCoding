@@ -68,6 +68,159 @@ public protocol ECDataErrorViewType: UIView {
 ///抽象的数据空数据页面
 public protocol ECDataEmptyViewType: UIView { }
 
+///装饰器模式
+public protocol ECDataProviderDecoratorType: ECDataProviderType {
+    associatedtype DataProviderType: ECDataProviderType where DataProviderType.DataType == DataType
+    ///包装的数据源请求器
+    var dataProvider: DataProviderType? { get }
+    
+    ///即将请求数据，可中断
+    func willRequest() -> Bool
+    ///请求数据结束
+    func didRequest()
+    ///即将响应，可中断
+    func willResponse(completion: @escaping (DataProviderType.DataType?, Error?) -> Void) -> Bool
+    ///响应结束
+    func didResponse()
+    
+    func weakSelf() -> Self?
+}
+extension ECDataProviderDecoratorType {
+    public typealias DataType = DataProviderType.DataType
+    ///即将请求数据，可中断
+    func willRequest() -> Bool { return true }
+    ///请求数据结束
+    func didRequest() {}
+    ///即将响应，可中断
+    func willResponse(completion: @escaping (DataProviderType.DataType?, Error?) -> Void) -> Bool { return true }
+    ///响应结束
+    func didResponse() {}
+}
+public protocol ECClassType : class {}
+extension ECDataProviderDecoratorType {
+    ///加载数据时直接调用内部的数据源
+    public func easyData(completion: @escaping (DataProviderType.DataType?, Error?) -> Void) {
+        if self.willRequest() {
+            self.dataProvider?.easyData { [weak self] (data, error) in
+                if self?.willResponse(completion: completion) ?? false {
+                    completion(data, error)
+                    self?.didResponse()
+                }
+            }
+            self.didRequest()
+        }
+    }
+}
+class A<DPT: ECDataProviderType>: ECDataProviderDecoratorType {
+    func weakSelf() -> Self? {
+        weak var s = self
+        return s
+    }
+    
+    typealias DataProviderType = DPT
+    var dataProvider: DPT?
+   
+}
+ /*
+///可见化数据源
+public protocol ECVisualizedDataProvider: ECDataProviderType {
+    associatedtype DataProviderType: ECDataProviderType
+    ///包装的数据源请求器
+    var dataProvider: DataProviderType? { get }
+    ///最后一次加载的响应，需要存起来，在重试的时候使用
+    var lastCompletion: ((DataProviderType.DataType?, Error?) -> Void)? { get set }
+    
+    ///数据加载中页面，如loading，常用
+    var dataLoadingView: ECDataLoadingViewType? { get }
+    ///数据请求出错页面，仅在出错时调用，建议懒加载或每次调用时创建
+    var dataErrorView: ECDataErrorViewType? { get }
+    ///数据为空时显示的页面，仅在数据为空时调用，建议懒加载或每次调用时创建
+    var dataEmptyView: ECDataEmptyViewType? { get }
+    
+    ///要加载请求中页面的View
+    var dataLoadingParentView: UIView? { get set }
+    ///要加载请求出错页面的View
+    var dataErrorParentView: UIView? { get set }
+    ///要加载空数据页面的View
+    var dataEmptyParentView: UIView? { get set }
+    
+    ///加载请求中页面，在该方法中将self.dataLoadingView加载到self.dataLoadingParentView
+    func loadLoadingView()
+    ///加载请求出错页面，在该方法中将self.dataErrorView加载到self.dataErrorParentView
+    func loadErrorView()
+    ///加载空数据页面，在该方法中将self.dataEmptyView加载到self.dataEmptyParentView
+    func loadEmptyView()
+    
+    ///重试加载数据
+    func retry()
+}
+extension ECVisualizedDataProvider where Self: AnyObject {
+//    public typealias DataType = DataProviderType.DataType
+    ///加载数据时直接调用内部的数据源
+    public func easyData(completion: @escaping (DataProviderType.DataType?, Error?) -> Void) {
+        self.dataProvider?.easyData { [weak self] (data, error) in
+            completion(data, error)
+            self?.lastCompletion = completion
+        }
+    }
+    ///要显示目标的视图
+    public var targetView: UIView? {
+        get {
+            return self.dataErrorParentView ?? self.dataEmptyParentView ?? self.dataLoadingParentView
+        }
+        set {
+//            self.dataErrorParentView = newValue
+//            self.dataEmptyParentView = newValue
+//            self.dataLoadingParentView = newValue
+        }
+    }
+    ///加载请求中页面，默认加载到父视图中间
+    public func loadLoadingView() {
+        if let empty = self.dataLoadingView, let parent = self.dataLoadingParentView {
+            parent.easy.add(empty, layout: .center)
+        }
+    }
+    ///加载请求出错页面，默认填充父视图
+    public func loadErrorView() {
+        if let empty = self.dataErrorView, let parent = self.dataErrorParentView {
+            parent.easy.add(empty, layout: .margin)
+        }
+    }
+    ///加载空数据页面，默认填充父视图
+    public func loadEmptyView() {
+        if let empty = self.dataEmptyView, let parent = self.dataEmptyParentView {
+            parent.easy.add(empty, layout: .margin)
+        }
+    }
+    
+    ///重试加载数据
+    public func retry() {
+        if let last = self.lastCompletion {
+            self.easyData(completion: last)
+        }
+    }
+}
+class AAProvider<DataProviderType: ECDataProviderType>: ECVisualizedDataProvider {
+    
+    var lastCompletion: ((DataType?, Error?) -> Void)?
+    
+    var dataLoadingView: ECDataLoadingViewType?
+    
+    var dataErrorView: ECDataErrorViewType?
+    
+    var dataEmptyView: ECDataEmptyViewType?
+    
+    var dataLoadingParentView: UIView?
+    
+    var dataErrorParentView: UIView?
+    
+    var dataEmptyParentView: UIView?
+    
+    
+    var dataProvider: DataProviderType?
+    
+}
+
 
 ///可请求异步数据的类型
 public protocol ECAyncDataRequestable {
@@ -108,7 +261,7 @@ extension ECAyncDataRequestable {
                 let errorView = self.dataErrorView
                 errorView.error = err
                 errorView.retryAction = self.reloadData
-                self.load(dataErrorView: errorView)
+//                self.load(dataErrorView: errorView)
             }else{
                 
             }
@@ -124,7 +277,7 @@ extension ECAyncDataRequestable where Self: UIViewController {
     var incorrectDataParentView: UIView { return self.view }
 }
 
-
+*/
 class T4 {
     @ECProperty.Clamping(min: 1, max: 5)
     var test: Int = 4
