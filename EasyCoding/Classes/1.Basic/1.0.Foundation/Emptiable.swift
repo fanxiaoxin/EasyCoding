@@ -1,0 +1,38 @@
+//
+//  Emptiable.swift
+//  EasyCoding
+//
+//  Created by 范晓鑫 on 2020/6/25.
+//
+
+import UIKit
+
+// MARK: - 内容可空协议
+
+///代表可空内容，如空字符串、空数组、空字典等有实体但无内容的情况
+/**
+ * 不同于Nullable，后者指没有实例，前者指有实例但具体内容为空
+ */
+public protocol ECEmptiable {
+    ///内容是否为空
+    var isEmpty: Bool { get }
+}
+
+// MARK: - 默认重载基础类型
+
+extension String: ECEmptiable {}
+extension Array: ECEmptiable {
+    public var isEmpty: Bool {
+        return self.count == 0
+    }
+}
+extension Dictionary: ECEmptiable {
+    public var isEmpty: Bool {
+        return self.count == 0
+    }
+}
+extension Data: ECEmptiable {
+    public var isEmpty: Bool {
+        return self.count == 0
+    }
+}

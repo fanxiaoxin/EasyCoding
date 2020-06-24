@@ -54,73 +54,23 @@ class ViewController: UIViewController {
     
 }
 
-///抽象的数据请求中页面，比如菊花或者自定义的炫酷加载动画
-public protocol ECDataLoadingViewType: UIView {
-    
-}
-///抽象的数据请求错误页面
-public protocol ECDataErrorViewType: UIView {
-    ///设置错误内容
-    var error: Error? { get set }
-    ///重试操作，由控件去设置，继承方只管在重试按钮调用就行
-    var retryAction: (() -> Void)? { get set }
-}
-///抽象的数据空数据页面
-public protocol ECDataEmptyViewType: UIView { }
 
-///装饰器模式
-public protocol ECDataProviderDecoratorType: ECDataProviderType {
-    associatedtype DataProviderType: ECDataProviderType where DataProviderType.DataType == DataType
-    ///包装的数据源请求器
-    var dataProvider: DataProviderType? { get }
+
+class ECDataLoadingProvider<DataProviderType: ECDataProviderType>: ECDataLoadingDecoratorType {
     
-    ///即将请求数据，可中断
-    func willRequest() -> Bool
-    ///请求数据结束
-    func didRequest()
-    ///即将响应，可中断
-    func willResponse(completion: @escaping (DataProviderType.DataType?, Error?) -> Void) -> Bool
-    ///响应结束
-    func didResponse()
-    
-    func weakSelf() -> Self?
-}
-extension ECDataProviderDecoratorType {
-    public typealias DataType = DataProviderType.DataType
-    ///即将请求数据，可中断
-    func willRequest() -> Bool { return true }
-    ///请求数据结束
-    func didRequest() {}
-    ///即将响应，可中断
-    func willResponse(completion: @escaping (DataProviderType.DataType?, Error?) -> Void) -> Bool { return true }
-    ///响应结束
-    func didResponse() {}
-}
-public protocol ECClassType : class {}
-extension ECDataProviderDecoratorType {
-    ///加载数据时直接调用内部的数据源
-    public func easyData(completion: @escaping (DataProviderType.DataType?, Error?) -> Void) {
-        if self.willRequest() {
-            self.dataProvider?.easyData { [weak self] (data, error) in
-                if self?.willResponse(completion: completion) ?? false {
-                    completion(data, error)
-                    self?.didResponse()
-                }
-            }
-            self.didRequest()
-        }
+    var targetView: UIView?
+
+    var loadingView: ECDataLoadingViewType {
+        return UIView() as! ECDataLoadingViewType
     }
+    var dataProvider: DataProviderType?
 }
-class A<DPT: ECDataProviderType>: ECDataProviderDecoratorType {
-    func weakSelf() -> Self? {
-        weak var s = self
-        return s
-    }
-    
-    typealias DataProviderType = DPT
-    var dataProvider: DPT?
-   
-}
+//func xx() {
+//    let a = ECDataLoadingProvider<[String]>()
+//    a.easyData { (data) in
+//        let str = data
+//    }
+//}
  /*
 ///可见化数据源
 public protocol ECVisualizedDataProvider: ECDataProviderType {
