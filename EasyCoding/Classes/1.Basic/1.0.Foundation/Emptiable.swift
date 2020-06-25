@@ -36,3 +36,14 @@ extension Data: ECEmptiable {
         return self.count == 0
     }
 }
+
+// MARK: - 可空类型也可直接.isEmpty来调用，即使为nil也会返回true，前提是强制不加问号
+
+extension Optional: ECEmptiable {
+    public var isEmpty: Bool {
+        switch self {
+        case .none: return true
+        case let .some(value): return (value as? ECEmptiable)?.isEmpty ?? false
+        }
+    }
+}

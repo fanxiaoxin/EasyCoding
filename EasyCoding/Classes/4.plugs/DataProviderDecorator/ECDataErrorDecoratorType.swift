@@ -7,46 +7,35 @@
 
 import UIKit
 
-///抽象的数据请求错误页面
-public protocol ECDataErrorViewType: UIView {
-    ///设置错误内容
-    var error: Error? { get set }
-    ///重试操作，由控件去设置，继承方只管在重试按钮调用就行
-    var retryAction: (() -> Void)? { get set }
-}
 ///数据请求错误装饰器，用于在数据请求异常时包装显示错误页面提供重试按钮等内容
-protocol ECDataErrorDecoratorType: ECDataVisualizedDecoratorType {
-    ///请求异常视图
-    var errorView: ECDataErrorViewType { get }
+public protocol ECDataErrorDecoratorType: ECDataVisualizedDecoratorType {
     ///记录最后一次请求异常信息，用于显示
     var lastError: Error? { get set }
     ///记录最后一次请求方法，用于重试
-    var lastCompletion: ((DataType?, Error?) -> Void)? { get set }
+    var lastCompletion: ((Result<DataType, Error>) -> Void)? { get set }
+    ///重新加载数据
+//    func reloadData()
 }
 ///请求异常页面的默认添加方式，可直接重写
 extension ECDataErrorDecoratorType {
+    ///请求时不显示自身
+    public func didRequest() {
+        self.unload()
+    }
     ///请求结束后如异常则显示异常页面，但不中断回调，防止干扰业务
-    public func willResponse(for data: DataType?, error: Error?, completion: @escaping (DataType?, Error?) -> Void) -> Bool {
-        if let err = error {
-            self.lastError = err
-            self.lastCompletion = completion
-            self.load()
+    public func didResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) {
+        switch result {
+        case let .failure(error):
+        self.lastError = error
+        self.lastCompletion = completion
+        self.load()
+        default: break
         }
-        return true
     }
-    ///默认加载错误页面布满父视图
-    public func load() {
-        let view = self.errorView
-        view.error = self.lastError
-        view.retryAction = { [weak self] in
-            if let s = self, let completion = self?.lastCompletion {
-                s.easyData(completion: completion)
-            }
+    ///重新加载数据
+    public func reloadData() {
+        if let completion = self.lastCompletion {
+            self.easyData(completion: completion)
         }
-        self.targetView?.easy.add(view, layout: .margin)
-    }
-    ///默认将异常页面删除
-    public func unload() {
-        self.errorView.removeFromSuperview()
     }
 }
