@@ -84,9 +84,9 @@ class I {
 }
 
 class ECDataLoadingProvider<DataProviderType: ECDataProviderType>: ECDataErrorDecoratorType {
-    var lastError: Error?
+    var error: Error?
     
-    var lastCompletion: ( (Result<DataType, Error>) -> Void)?
+    var completion: ( (Result<DataType, Error>) -> Void)?
     
 //    var targetView: UIView?
     
