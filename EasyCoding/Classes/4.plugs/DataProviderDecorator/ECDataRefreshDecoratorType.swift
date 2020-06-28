@@ -11,7 +11,7 @@ import UIKit
 public protocol ECDataRefreshDecoratorType: ECDataProviderDecoratorType {
     ///用于判断刷新控件是否已加载
     var isRereshInited: Bool { get set }
-    ///记录最后一次请求方法，用于重试
+    ///记录最后一次请求方法，用于刷新
     var completion: ((Result<DataType, Error>) -> Void)? { get set }
     ///初始化控件，在第一次数据加载成功后调用
     func initRefresh()
