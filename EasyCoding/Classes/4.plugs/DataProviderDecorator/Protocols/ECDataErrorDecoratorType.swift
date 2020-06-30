@@ -11,8 +11,7 @@ import UIKit
 public protocol ECDataErrorDecoratorType: ECDataProviderGenericDecoratorType {
     ///记录最后一次请求异常信息，用于显示
     var error: Error? { get set }
-    ///设置最后一次请求方法，用于重试，需要手动设置
-    var reloadCompletion: ((Result<DataType, Error>) -> Void)? { get set }
+    
     ///装载可视化界面
     func load()
     ///卸载可视化界面
@@ -41,7 +40,7 @@ extension ECDataErrorDecoratorType {
     }
     ///重新加载数据
     public func reloadData() {
-        if let completion = self.reloadCompletion {
+        if let completion = self.originalCompletion {
             self.easyData(completion: completion)
         }
     }

@@ -11,8 +11,6 @@ import UIKit
 public protocol ECDataRefreshDecoratorType: ECDataProviderGenericDecoratorType {
     ///用于判断刷新控件是否已加载
     var isRereshInited: Bool { get set }
-    ///设置最后一次请求方法，用于刷新，需要手动设置
-    var reloadCompletion: ((Result<DataType, Error>) -> Void)? { get set }
     ///初始化控件，在第一次数据加载成功后调用
     func initRefresh()
     ///开始刷新操作，可在此重置数据参数
@@ -50,7 +48,7 @@ extension ECDataRefreshDecoratorType {
     public func beginReresh() {}
     ///重新加载数据
     public func reloadData() {
-        if let completion = self.reloadCompletion {
+        if let completion = self.originalCompletion {
             self.easyData(completion: completion)
         }
     }

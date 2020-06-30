@@ -16,7 +16,7 @@ open class ECDataErrorToastDecorator<DataType>: ECDataErrorDecoratorType {
     
     public var reloadCompletion: ((Result<DataType, Error>) -> Void)?
     
-    public var dataProvider: ((@escaping (Result<DataType, Error>) -> Void) -> Void)?
+    public var dataProvider: ((@escaping (Result<DataType, Error>) -> Void, @escaping (Result<DataType, Error>) -> Void) -> Void)?
     
     open func load() {
         if let message = self.error?.localizedDescription {

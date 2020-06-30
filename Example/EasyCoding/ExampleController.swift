@@ -46,16 +46,20 @@ class ExampleController: ECViewController<ExampleView>, UITableViewDataSource {
         //            //自定义列表，可多组，可异步
         //            //日期
         //        }
-        refresh.reloadCompletion = { [weak self] (result) in
-            switch result {
-            case let .success(datas):
-                self?.datas = datas
-                self?.page.tableView.reloadData()
-            default: break
-            }
+//        refresh.reloadCompletion = { [weak self] (result) in
+//            switch result {
+//            case let .success(datas):
+//                self?.datas = datas
+//                self?.page.tableView.reloadData()
+//            default: break
+//            }
+//        }
+//        error.reloadCompletion = refresh.reloadCompletion
+//        error.reloadData()
+        error.easyDataWithoutError { [weak self] (datas) in
+            self?.datas = datas
+            self?.page.tableView.reloadData()
         }
-        error.reloadCompletion = refresh.reloadCompletion
-        error.reloadData()
     }
     var datas: [String]?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

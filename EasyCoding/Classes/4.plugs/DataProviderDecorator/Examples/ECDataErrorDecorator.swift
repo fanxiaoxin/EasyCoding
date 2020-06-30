@@ -21,10 +21,10 @@ open class ECDataErrorDecorator<DataType>: ECDataErrorDecoratorType {
     
     public var error: Error?
     
-    public var reloadCompletion: ((Result<DataType, Error>) -> Void)?
+    ///设置最后一次原始请求操作，可用于重试
+    public var originalCompletion: ((Result<DataType, Error>) -> Void)?
     
-    ///缓存指定类型的获取数据方法，避免需要在类型里面加泛型特定类
-    open var dataProvider: ((_ completion:@escaping (Result<DataType, Error>) -> Void) -> Void)?
+    public var dataProvider: ((@escaping (Result<DataType, Error>) -> Void, @escaping (Result<DataType, Error>) -> Void) -> Void)?
     
     ///要加载到的页面，若为空则加载到keywindow
     open weak var targetView: UIView?

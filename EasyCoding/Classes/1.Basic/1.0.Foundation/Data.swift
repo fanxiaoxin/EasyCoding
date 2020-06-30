@@ -16,6 +16,11 @@ public protocol ECDataProviderType {
     ///请求数据
     /// * completion    请求完成操作
     func easyData(completion: @escaping (Result<DataType, Error>) -> Void)
+    
+    ///注入专用的调用接口的方法
+    /// * original completion    用户请求的操作
+    /// * injected completion    被注入后的操作
+    func easyData(original completion:@escaping (Result<DataType, Error>) -> Void, injected injectedCompletion: @escaping (Result<DataType, Error>) -> Void)
 }
 extension ECDataProviderType {
     ///请求数据，无视错误操作
@@ -26,6 +31,12 @@ extension ECDataProviderType {
             default: break
             }
         }
+    }
+    ///注入专用的调用接口的方法
+    /// * original completion    用户请求的操作
+    /// * injected completion    被注入后的操作
+    public func easyData(original completion:@escaping (Result<DataType, Error>) -> Void, injected injectedCompletion: @escaping (Result<DataType, Error>) -> Void) {
+        self.easyData(completion: injectedCompletion)
     }
 }
 
@@ -125,6 +136,8 @@ public protocol ECDataProviderInjectable: ECDataProviderType {
     func willResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) -> Bool
     ///响应结束
     func didResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void)
+    ///设置最后一次原始请求操作，可用于重试，默认无视，需要则继承
+    var originalCompletion: ((Result<DataType, Error>) -> Void)? { get set }
 }
 extension ECDataProviderInjectable {
     ///即将请求数据，可中断
@@ -135,6 +148,15 @@ extension ECDataProviderInjectable {
     public func willResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) -> Bool { return true }
     ///响应结束
     public func didResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) {}
+    ///原始请求操作，默认无视
+    public var originalCompletion: ((Result<DataType, Error>) -> Void)? {
+        get{
+            return nil
+        }
+        set{}
+    }
+}
+extension ECDataProviderType {
 }
 
 // MARK: -装饰器模式协议: ECDataProviderDecoratorType
@@ -147,16 +169,32 @@ public protocol ECDataProviderDecoratorType: class, ECDataProviderInjectable {
 }
 ///默认添加注入，本想限制该协议只能使用在DataType相等的情况，但编译器一直无法通过，只能这样实现
 extension ECDataProviderDecoratorType where DataProviderType.DataType == DataType {
-    public func easyData(completion: @escaping (Result<DataType, Error>) -> Void) {
+    ///注入专用的调用接口的方法
+    /// * original completion    用户请求的操作
+    /// * injected completion    被注入后的操作
+    public func easyData(original completion:@escaping (Result<DataType, Error>) -> Void, injected injectedCompletion: @escaping (Result<DataType, Error>) -> Void) {
         if self.willRequest() {
-            self.dataProvider?.easyData { [weak self] (result) in
-                if self?.willResponse(for: result, completion: completion) ?? true {
-                    completion(result)
-                    self?.didResponse(for: result, completion: completion)
+            self.dataProvider?.easyData(original: completion, injected: { [weak self] (result) in
+                if self?.willResponse(for: result, completion: injectedCompletion) ?? true {
+                    self?.originalCompletion = completion
+                    injectedCompletion(result)
+                    self?.didResponse(for: result, completion: injectedCompletion)
                 }
-            }
+            })
             self.didRequest()
         }
+    }
+    public func easyData(completion: @escaping (Result<DataType, Error>) -> Void) {
+        self.easyData(original: completion, injected: completion)
+//        if self.willRequest() {
+//            self.dataProvider?.easyData { [weak self] (result) in
+//                if self?.willResponse(for: result, completion: completion) ?? true {
+//                    completion(result)
+//                    self?.didResponse(for: result, completion: completion)
+//                }
+//            }
+//            self.didRequest()
+//        }
     }
 }
 
@@ -165,7 +203,7 @@ extension ECDataProviderDecoratorType where DataProviderType.DataType == DataTyp
 ///通用的装饰器，不指定特定ECDataProviderType
 public protocol ECDataProviderGenericDecoratorType: class, ECDataProviderInjectable {
     ///缓存指定类型的获取数据方法，避免需要在类型里面加泛型特定类
-    var dataProvider: ( (_ completion:@escaping (Result<DataType, Error>) -> Void) -> Void)? { get set }
+    var dataProvider: ( (_ completion:@escaping (Result<DataType, Error>) -> Void,_ injectedCompletion: @escaping (Result<DataType, Error>) -> Void) -> Void)? { get set }
     ///默认需实现空构造函数
     init()
     ///使用特定Provider初始化构造函数
@@ -179,16 +217,32 @@ extension ECDataProviderGenericDecoratorType {
         self.init()
         self.set(provider: provider)
     }
-    public func easyData(completion: @escaping (Result<DataType, Error>) -> Void) {
+    ///注入专用的调用接口的方法
+    /// * original completion    用户请求的操作
+    /// * injected completion    被注入后的操作
+    public func easyData(original completion:@escaping (Result<DataType, Error>) -> Void, injected injectedCompletion: @escaping (Result<DataType, Error>) -> Void) {
         if self.willRequest() {
-            self.dataProvider? { [weak self] (result) in
-                if self?.willResponse(for: result, completion: completion) ?? true {
-                    completion(result)
-                    self?.didResponse(for: result, completion: completion)
+            self.dataProvider?(completion, { [weak self] (result) in
+                if self?.willResponse(for: result, completion: injectedCompletion) ?? true {
+                    self?.originalCompletion = completion
+                    injectedCompletion(result)
+                    self?.didResponse(for: result, completion: injectedCompletion)
                 }
-            }
+            })
             self.didRequest()
         }
+    }
+    public func easyData(completion: @escaping (Result<DataType, Error>) -> Void) {
+        self.easyData(original: completion, injected: completion)
+//        if self.willRequest() {
+//            self.dataProvider? { [weak self] (result) in
+//                if self?.willResponse(for: result, completion: completion) ?? true {
+//                    completion(result)
+//                    self?.didResponse(for: result, completion: completion)
+//                }
+//            }
+//            self.didRequest()
+//        }
     }
     ///设置数据提供器
     public func set<DataProviderType: ECDataProviderType>(provider: DataProviderType) where DataProviderType.DataType == DataType {
