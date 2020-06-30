@@ -23,9 +23,9 @@ extension ECStyleSetting where TargetType: UITableView {
         })
     }
     ///分隔线样式
-    public static func separator(_ style:UITableViewCell.SeparatorStyle? = nil, color:UIColor? = nil, insets: UIEdgeInsets? = nil) -> ECStyleSetting<TargetType> {
+    public static func separator(_ style:UITableViewCell.SeparatorStyle, color:UIColor? = nil, insets: UIEdgeInsets? = nil) -> ECStyleSetting<TargetType> {
         return .init(action: { (target) in
-            if let s = style { target.separatorStyle = s }
+            target.separatorStyle = style
             if let s = color { target.separatorColor = s }
             if let s = insets { target.separatorInset = s }
         })

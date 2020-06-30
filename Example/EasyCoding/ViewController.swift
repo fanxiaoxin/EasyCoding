@@ -40,40 +40,47 @@ class ViewController: UIViewController {
         //            make.centerY.equalTo(views[0].snp.bottom)
         //            make.centerY.equalTo(views[1].snp.top)
         //        }
-        
-        
-        I.load(["A","B","C"])
-        
-        I.load(ECDataError<[String]>("sdb"))
-        let s: String? = nil
-        let b: Optional<String> = "s"
-
-        print(s.isEmpty)
-        print(b.isEmpty)
-        
-        I.load(P())
     }
+    
     @objc func test() {
         //        ECAlertConfig.default.message.addStyle(.boldFont(size: 20))
         //        ECAlertConfig.default.input.addStyle(.bg(.green))
         //        ECAlertConfig.default.input.layout(.margin(180, 0, 150, 0))
-        ECMessageBox.confirm(title: "看这个标题", attr: "try metry \("trye3 ry metrry metr", .color(.red), .boldFont(size: 24)) metry metry metry me") { [weak self] in
-            //自定义视图
-            //自定义列表，可多组，可异步
-            //日期
-        }
+        //        ECMessageBox.confirm(title: "看这个标题", attr: "try metry \("trye3 ry metrry metr", .color(.red), .boldFont(size: 24)) metry metry metry me") { [weak self] in
+        //            //自定义视图
+        //            //自定义列表，可多组，可异步
+        //            //日期
+        //        }
+        
+        self.load(ExampleController())
     }
     
 }
 class P: ECDataProviderType {
     typealias DataType = [String]
-    
+    var count = 0
     func easyData(completion: @escaping (Result<DataType, Error>) -> Void) {
-        completion(.success(["aa","BBBBB"]))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            //            completion(.success(["aa","BBBBB"]))
+            //            completion(.success([]))
+            if let s = self {
+                if s.count < 2 || s.count.in(4,5) {
+                    completion(.failure(ECDataError<DataType>("我是一个错")))
+                }else if s.count.in(8,9 ){
+                    completion(.success([]))
+                }else{
+                    completion(.success(["aa","BBBBB"]))
+                }
+                s.count += 1
+            }
+        }
+    }
+    deinit {
+        print("P die")
     }
 }
 class I {
-   class func load<DataProviderType: ECDataProviderType>(_ provider: DataProviderType) where DataProviderType.DataType == [String] {
+    class func load<DataProviderType: ECDataProviderType>(_ provider: DataProviderType) where DataProviderType.DataType == [String] {
         provider.easyData { (result) in
             switch result {
             case let .success(values): print(values)
@@ -82,32 +89,6 @@ class I {
         }
     }
 }
-
-class ECDataLoadingProvider<DataProviderType: ECDataProviderType>: ECDataErrorDecoratorType {
-    var error: Error?
-    
-    var completion: ( (Result<DataType, Error>) -> Void)?
-    
-//    var targetView: UIView?
-    
-    func load() {
-        
-    }
-    
-    func unload() {
-        
-    }
-    
-    var dataProvider: DataProviderType?
-    
-    
-}
-//func xx() {
-//    let a = ECDataLoadingProvider<[String]>()
-//    a.easyData { (data) in
-//        let str = data
-//    }
-//}
 
 class T4 {
     @ECProperty.Clamping(min: 1, max: 5)

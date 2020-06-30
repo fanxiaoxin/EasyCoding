@@ -8,18 +8,21 @@
 import UIKit
 
 ///数据请求错误装饰器，用于在数据请求异常时包装显示错误页面提供重试按钮等内容
-public protocol ECDataErrorDecoratorType: ECDataVisualizedDecoratorType {
+public protocol ECDataErrorDecoratorType: ECDataProviderGenericDecoratorType {
     ///记录最后一次请求异常信息，用于显示
     var error: Error? { get set }
-    ///记录最后一次请求方法，用于重试
-    var completion: ((Result<DataType, Error>) -> Void)? { get set }
-    ///重新加载数据
-//    func reloadData()
+    ///设置最后一次请求方法，用于重试，需要手动设置
+    var reloadCompletion: ((Result<DataType, Error>) -> Void)? { get set }
+    ///装载可视化界面
+    func load()
+    ///卸载可视化界面
+    func unload()
 }
 ///请求异常页面的默认添加方式，可直接重写
 extension ECDataErrorDecoratorType {
     ///请求时不显示自身
     public func didRequest() {
+        //重新请求也卸载
         self.unload()
     }
     ///请求结束后如异常则显示异常页面，但不中断回调，防止干扰业务
@@ -27,16 +30,18 @@ extension ECDataErrorDecoratorType {
         switch result {
         case let .failure(error):
         self.error = error
-        self.completion = completion
+//        self.completion = completion
         self.load()
         case .success(_):
         self.error = nil
-        self.completion = nil
+//        self.completion = nil
+        //成功也卸载
+        self.unload()
         }
     }
     ///重新加载数据
     public func reloadData() {
-        if let completion = self.completion {
+        if let completion = self.reloadCompletion {
             self.easyData(completion: completion)
         }
     }

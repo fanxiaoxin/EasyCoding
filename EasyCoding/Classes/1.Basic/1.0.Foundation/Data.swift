@@ -94,6 +94,25 @@ extension ECDataError: CustomStringConvertible {
     }
 }
 
+extension ECDataError: LocalizedError {
+    public var errorDescription: String? {
+        return self.message
+    }
+
+    public var failureReason: String? {
+        return self.message
+    }
+
+    public var helpAnchor: String? {
+        return self.message
+    }
+
+    public var recoverySuggestion: String? {
+        return self.message
+    }
+}
+
+
 // MARK: -可注入操作的协议: ECDataProviderInjectable
 
 ///提供数据请求过程中的可注入方法
@@ -131,12 +150,49 @@ extension ECDataProviderDecoratorType where DataProviderType.DataType == DataTyp
     public func easyData(completion: @escaping (Result<DataType, Error>) -> Void) {
         if self.willRequest() {
             self.dataProvider?.easyData { [weak self] (result) in
-                if self?.willResponse(for: result, completion: completion) ?? false {
+                if self?.willResponse(for: result, completion: completion) ?? true {
                     completion(result)
                     self?.didResponse(for: result, completion: completion)
                 }
             }
             self.didRequest()
         }
+    }
+}
+
+// MARK: -不特定类型装饰器类型: ECDataProviderGenericDecoratorType
+
+///通用的装饰器，不指定特定ECDataProviderType
+public protocol ECDataProviderGenericDecoratorType: class, ECDataProviderInjectable {
+    ///缓存指定类型的获取数据方法，避免需要在类型里面加泛型特定类
+    var dataProvider: ( (_ completion:@escaping (Result<DataType, Error>) -> Void) -> Void)? { get set }
+    ///默认需实现空构造函数
+    init()
+    ///使用特定Provider初始化构造函数
+    init<DataProviderType: ECDataProviderType>(provider: DataProviderType) where DataProviderType.DataType == DataType
+    
+    ///设置数据提供器
+    func set<DataProviderType: ECDataProviderType>(provider: DataProviderType) where DataProviderType.DataType == DataType
+}
+extension ECDataProviderGenericDecoratorType {
+    public init<DataProviderType: ECDataProviderType>(provider: DataProviderType) where DataProviderType.DataType == DataType {
+        self.init()
+        self.set(provider: provider)
+    }
+    public func easyData(completion: @escaping (Result<DataType, Error>) -> Void) {
+        if self.willRequest() {
+            self.dataProvider? { [weak self] (result) in
+                if self?.willResponse(for: result, completion: completion) ?? true {
+                    completion(result)
+                    self?.didResponse(for: result, completion: completion)
+                }
+            }
+            self.didRequest()
+        }
+    }
+    ///设置数据提供器
+    public func set<DataProviderType: ECDataProviderType>(provider: DataProviderType) where DataProviderType.DataType == DataType {
+        ///此处不用weak，可使provider被当前类持有
+        self.dataProvider = provider.easyData
     }
 }

@@ -8,8 +8,11 @@
 import UIKit
 
 ///数据请求成功但数据为空装饰器，用于在数据请求后包装空数据页面
-public protocol ECDataEmptyDecoratorType: ECDataVisualizedDecoratorType {
-    
+public protocol ECDataEmptyDecoratorType: ECDataProviderGenericDecoratorType {
+    ///装载可视化界面
+    func load()
+    ///卸载可视化界面
+    func unload()
 }
 ///空数据页面的默认添加方式，可直接重写
 extension ECDataEmptyDecoratorType {
@@ -23,8 +26,11 @@ extension ECDataEmptyDecoratorType {
         case let .success(data):
             if let content = data as? ECEmptiable, content.isEmpty {
                 self.load()
+            }else{
+                self.unload()
             }
-        default: break
+        case .failure(_):
+            self.unload()
         }
     }
 }

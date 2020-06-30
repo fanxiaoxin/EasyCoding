@@ -37,7 +37,9 @@ TODO: Add long description of the pod here.
   # s.resource_bundles = {
   #   'EasyCoding' => ['EasyCoding/Assets/*.png']
   # }
-
+  s.resource_bundles = {
+      'EasyCoding' => ['EasyCoding/Assets/*.xcassets']
+  }
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
@@ -66,11 +68,14 @@ TODO: Add long description of the pod here.
   end
   # 提供一些控件及界面相关的工具
   s.subspec 'Controls' do |c|
-    c.source_files = 'EasyCoding/Classes/3.Controls/**/*','EasyCoding/Classes/4.plugs/{T,V}*/**/*'
+    c.source_files = 'EasyCoding/Classes/3.Controls/**/*','EasyCoding/Classes/4.plugs/{T,V,D}*/**/*'
     c.dependency 'EasyCoding/AccessControl'
     c.dependency 'JRSwizzle'
     c.dependency 'YYKeyboardManager', '~> 1.0.0'
     c.dependency 'Kingfisher', '~> 5.14.0'
+    c.resource_bundles = {
+        'EasyCoding' => ['EasyCoding/Assets/*.xcassets']
+    }
    end
    # 提供列表及API绑定数据的封装，新建一个TableView不需要写太多重复的代码，包含上下拉刷新
    s.subspec 'ListLoader' do |l|

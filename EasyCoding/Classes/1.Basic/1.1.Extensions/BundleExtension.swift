@@ -22,3 +22,12 @@ extension EC.NamespaceImplement where Base : Bundle {
         return self.base.infoDictionary?["CFBundleExecutable"] as? String ?? ""
     }
 }
+extension Bundle {
+    ///获取easyCoding的bundle
+    public static var easyCoding: Bundle {
+        guard let url = Bundle(for: ECNoParamEvent.self).url(forResource: "EasyCoding", withExtension: "bundle"), let bundle = Bundle(url: url) else {
+            return .main
+        }
+        return bundle
+    }
+}
