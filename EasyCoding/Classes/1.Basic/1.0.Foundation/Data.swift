@@ -23,6 +23,12 @@ public protocol ECDataProviderType {
     func easyData(original completion:@escaping (Result<DataType, Error>) -> Void, injected injectedCompletion: @escaping (Result<DataType, Error>) -> Void)
 }
 extension ECDataProviderType {
+    ///注入专用的调用接口的方法
+    /// * original completion    用户请求的操作
+    /// * injected completion    被注入后的操作
+    public func easyData(original completion:@escaping (Result<DataType, Error>) -> Void, injected injectedCompletion: @escaping (Result<DataType, Error>) -> Void) {
+        self.easyData(completion: injectedCompletion)
+    }
     ///请求数据，无视错误操作
     public func easyDataWithoutError(completion: @escaping (DataType) -> Void) {
         self.easyData { result in
@@ -31,12 +37,6 @@ extension ECDataProviderType {
             default: break
             }
         }
-    }
-    ///注入专用的调用接口的方法
-    /// * original completion    用户请求的操作
-    /// * injected completion    被注入后的操作
-    public func easyData(original completion:@escaping (Result<DataType, Error>) -> Void, injected injectedCompletion: @escaping (Result<DataType, Error>) -> Void) {
-        self.easyData(completion: injectedCompletion)
     }
 }
 
@@ -127,7 +127,9 @@ extension ECDataError: LocalizedError {
 // MARK: -可注入操作的协议: ECDataProviderInjectable
 
 ///提供数据请求过程中的可注入方法
-public protocol ECDataProviderInjectable: ECDataProviderType {
+public protocol ECDataProviderInjectable {
+    ///所提供的数据类型
+    associatedtype DataType
     ///即将请求数据，可中断
     func willRequest() -> Bool
     ///请求数据结束
@@ -137,7 +139,7 @@ public protocol ECDataProviderInjectable: ECDataProviderType {
     ///响应结束
     func didResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void)
     ///设置最后一次原始请求操作，可用于重试，默认无视，需要则继承
-    var originalCompletion: ((Result<DataType, Error>) -> Void)? { get set }
+    var lastCompletion: ((Result<DataType, Error>) -> Void)? { get set }
 }
 extension ECDataProviderInjectable {
     ///即将请求数据，可中断
@@ -148,8 +150,8 @@ extension ECDataProviderInjectable {
     public func willResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) -> Bool { return true }
     ///响应结束
     public func didResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) {}
-    ///原始请求操作，默认无视
-    public var originalCompletion: ((Result<DataType, Error>) -> Void)? {
+    ///最后一次请求操作，默认无视
+    public var lastCompletion: ((Result<DataType, Error>) -> Void)? {
         get{
             return nil
         }
@@ -159,10 +161,10 @@ extension ECDataProviderInjectable {
 extension ECDataProviderType {
 }
 
-// MARK: -装饰器模式协议: ECDataProviderDecoratorType
+// MARK: - 装饰器模式协议: ECDataProviderDecoratorType
 
 ///装饰器模式，可继承该协议实现请求数据的过程中插入各种操作，如添加空数据页、请求错误页、请求加载Loading动画、请求日志等操作
-public protocol ECDataProviderDecoratorType: class, ECDataProviderInjectable {
+public protocol ECDataProviderDecoratorType: class, ECDataProviderInjectable, ECDataProviderType {
     associatedtype DataProviderType: ECDataProviderType
     ///需要装饰的数据类型
     var dataProvider : DataProviderType? { get set }
@@ -176,7 +178,7 @@ extension ECDataProviderDecoratorType where DataProviderType.DataType == DataTyp
         if self.willRequest() {
             self.dataProvider?.easyData(original: completion, injected: { [weak self] (result) in
                 if self?.willResponse(for: result, completion: injectedCompletion) ?? true {
-                    self?.originalCompletion = completion
+                    self?.lastCompletion = completion
                     injectedCompletion(result)
                     self?.didResponse(for: result, completion: injectedCompletion)
                 }
@@ -198,25 +200,16 @@ extension ECDataProviderDecoratorType where DataProviderType.DataType == DataTyp
     }
 }
 
-// MARK: -不特定类型装饰器类型: ECDataProviderGenericDecoratorType
+// MARK: - (废弃)不特定类型装饰器类型: ECDataProviderGenericDecoratorType
 
 ///通用的装饰器，不指定特定ECDataProviderType
-public protocol ECDataProviderGenericDecoratorType: class, ECDataProviderInjectable {
+public protocol ECDataProviderGenericDecoratorType: class, ECDataProviderInjectable, ECDataProviderType {
     ///缓存指定类型的获取数据方法，避免需要在类型里面加泛型特定类
     var dataProvider: ( (_ completion:@escaping (Result<DataType, Error>) -> Void,_ injectedCompletion: @escaping (Result<DataType, Error>) -> Void) -> Void)? { get set }
-    ///默认需实现空构造函数
-    init()
-    ///使用特定Provider初始化构造函数
-    init<DataProviderType: ECDataProviderType>(provider: DataProviderType) where DataProviderType.DataType == DataType
-    
     ///设置数据提供器
     func set<DataProviderType: ECDataProviderType>(provider: DataProviderType) where DataProviderType.DataType == DataType
 }
 extension ECDataProviderGenericDecoratorType {
-    public init<DataProviderType: ECDataProviderType>(provider: DataProviderType) where DataProviderType.DataType == DataType {
-        self.init()
-        self.set(provider: provider)
-    }
     ///注入专用的调用接口的方法
     /// * original completion    用户请求的操作
     /// * injected completion    被注入后的操作
@@ -224,7 +217,7 @@ extension ECDataProviderGenericDecoratorType {
         if self.willRequest() {
             self.dataProvider?(completion, { [weak self] (result) in
                 if self?.willResponse(for: result, completion: injectedCompletion) ?? true {
-                    self?.originalCompletion = completion
+                    self?.lastCompletion = completion
                     injectedCompletion(result)
                     self?.didResponse(for: result, completion: injectedCompletion)
                 }

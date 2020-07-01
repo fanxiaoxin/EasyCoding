@@ -52,32 +52,9 @@ class ViewController: UIViewController {
         //            //日期
         //        }
         
-        self.load(ExampleController())
+        self.load(DataPluginController())
     }
     
-}
-class P: ECDataProviderType {
-    typealias DataType = [String]
-    var count = 0
-    func easyData(completion: @escaping (Result<DataType, Error>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            //            completion(.success(["aa","BBBBB"]))
-            //            completion(.success([]))
-            if let s = self {
-                if s.count < 2 || s.count.in(4,5) {
-                    completion(.failure(ECDataError<DataType>("我是一个错")))
-                }else if s.count.in(8,9 ){
-                    completion(.success([]))
-                }else{
-                    completion(.success(["aa","BBBBB"]))
-                }
-                s.count += 1
-            }
-        }
-    }
-    deinit {
-        print("P die")
-    }
 }
 class I {
     class func load<DataProviderType: ECDataProviderType>(_ provider: DataProviderType) where DataProviderType.DataType == [String] {
