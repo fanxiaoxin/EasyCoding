@@ -8,9 +8,6 @@
 import UIKit
 
 open class ECDataLoadingDecorator<DataType>: ECDataLoadingDecoratorType {
-    deinit {
-        print(NSStringFromClass(Self.self) + "die")
-    }
     public var dataProvider: ((@escaping (Result<DataType, Error>) -> Void, @escaping (Result<DataType, Error>) -> Void) -> Void)?
     ///要加载到的页面，若为空则加载到keywindow
     open weak var targetView: UIView?

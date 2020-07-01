@@ -9,10 +9,6 @@ import UIKit
 
 open class ECDataEmptyDecorator<DataType>: ECDataEmptyDecoratorType {
     public var dataProvider: ((@escaping (Result<DataType, Error>) -> Void, @escaping (Result<DataType, Error>) -> Void) -> Void)?
-    
-    deinit {
-        print(NSStringFromClass(Self.self) + "die")
-    }
     ///开始请求时卸载
     open var unloadIfRequest: Bool = true
     ///要加载到的页面，若为空则加载到keywindow

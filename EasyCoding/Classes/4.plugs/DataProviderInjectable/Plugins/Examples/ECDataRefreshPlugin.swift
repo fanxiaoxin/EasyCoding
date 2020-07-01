@@ -10,10 +10,6 @@ import MJRefresh
 
 ///数据刷新装饰器，用于刷新控件，比如下拉刷新
 open class ECDataRefreshPlugin<DataType>: ECDataRefreshPluginBase<DataType> {
-    deinit {
-        print(NSStringFromClass(Self.self) + "die")
-    }
-    
     //要显示下拉刷新的视图
     open var targetView: UIScrollView?
     

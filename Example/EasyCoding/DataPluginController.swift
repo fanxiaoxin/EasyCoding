@@ -41,9 +41,6 @@ class DataPluginController: ECViewController<DataPluginView>, UITableViewDataSou
         }
         
         self.dataManager.dataProvider = provider
-        refresh.plugins = [error, empty, toast]
-//        loading.plugins = [refresh]
-//        error.plugins = [loading, refresh]
         self.dataManager.plugins = [loading, error, empty, toast, refresh]
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "来吧", style: .plain, target: self, action: #selector(self.onTest))
         

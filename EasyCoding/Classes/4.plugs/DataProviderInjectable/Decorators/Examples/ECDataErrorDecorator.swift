@@ -15,9 +15,6 @@ public protocol ECDataErrorViewType: UIView {
 }
 
 open class ECDataErrorDecorator<DataType>: ECDataErrorDecoratorType {
-    deinit {
-        print(NSStringFromClass(Self.self) + "die")
-    }
     
     public var error: Error?
     

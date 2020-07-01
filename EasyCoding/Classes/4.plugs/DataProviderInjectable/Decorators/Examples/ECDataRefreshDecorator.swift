@@ -10,10 +10,7 @@ import MJRefresh
 
 ///数据刷新装饰器，用于刷新控件，比如下拉刷新
 open class ECDataRefreshDecorator<DataType>: ECDataRefreshDecoratorType {
-    deinit {
-        print(NSStringFromClass(Self.self) + "die")
-    }
-   
+
    public var dataProvider: ((@escaping (Result<DataType, Error>) -> Void, @escaping (Result<DataType, Error>) -> Void) -> Void)?
     
     public var isRereshInited: Bool = false
