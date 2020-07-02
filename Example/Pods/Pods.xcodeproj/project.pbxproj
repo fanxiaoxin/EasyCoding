@@ -1987,12 +1987,12 @@
 			path = DataProvider;
 			sourceTree = "<group>";
 		};
-		9CF0929524ADB93C00B176F6 /* 2.0.Setting */ = {
+		9CF0929524ADB93C00B176F6 /* 2.1.Setting */ = {
 			isa = PBXGroup;
 			children = (
 				EB3D5C4F14684EB0FBDCB93D4822DB19 /* ECSetting.swift */,
 			);
-			path = 2.0.Setting;
+			path = 2.1.Setting;
 			sourceTree = "<group>";
 		};
 		9CF0929624ADC2D100B176F6 /* Data */ = {
@@ -2112,7 +2112,7 @@
 		BB3CA6D32BAF720670E1B792CECA29D0 /* 2.Business */ = {
 			isa = PBXGroup;
 			children = (
-				9CF0929524ADB93C00B176F6 /* 2.0.Setting */,
+				9CF0929524ADB93C00B176F6 /* 2.1.Setting */,
 				8E5E9628CB0A5A73E7C9E70ABD9DBEFA /* 2.2.Personalized */,
 				520DA10F3F126CB624B59FA1EAE3CF38 /* 2.3.AccessControl */,
 				BAC24571152C74B8FC21206DC0459E49 /* 2.4.Api */,

@@ -7,14 +7,18 @@
 
 import UIKit
 
-open class ECDataLoadingPlugin<DataType>: ECDataLoadingPluginBase<DataType> {
+open class ECDataLoadingDecorator<DataType>: ECDataLoadingDecoratorType {
+    public var dataProvider: ((@escaping (Result<DataType, Error>) -> Void, @escaping (Result<DataType, Error>) -> Void) -> Void)?
     ///要加载到的页面，若为空则加载到keywindow
     open weak var targetView: UIView?
     ///加载页
     open lazy var loadingView: UIView = {
         return ECLoadingView()
     }()
-    open override func load() {
+    public init() {
+        
+    }
+    open func load() {
         if let target = self.targetView ?? UIApplication.shared.keyWindow {
             if let superView = self.loadingView.superview, superView == target {
                 self.loadingView.tag += 1
@@ -24,7 +28,7 @@ open class ECDataLoadingPlugin<DataType>: ECDataLoadingPluginBase<DataType> {
             }
         }
     }
-    open override func unload() {
+    open func unload() {
         if self.loadingView.tag == 0 {
             self.loadingView.removeFromSuperview()
         }else{

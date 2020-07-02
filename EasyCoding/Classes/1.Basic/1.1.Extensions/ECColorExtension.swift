@@ -31,6 +31,10 @@ extension EC.NamespaceImplement where Base: UIColor {
                     blue:CGFloat(rgb & 0xFF) / 255.0,
                     alpha:alpha)
     }
+    ///替换透明度
+    public func alpha(_ value: CGFloat) -> UIColor {
+        return self.base.withAlphaComponent(value)
+    }
 }
 extension UIColor {
     public static func easy(_ rgb: UInt32) -> UIColor {

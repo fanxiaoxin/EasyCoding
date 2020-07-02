@@ -72,21 +72,21 @@ public class ECAlertConfig {
             //背景透明
             self.background.style(.bg(.clear))
             //容器居中偏上
-            self.container.style(.bg(.white) ,.corner(4))
+            self.container.style(.bg(.white) ,.corner(ECSetting.corner))
             self.container.layout(.greather(.marginX(20)), .greather(.marginY(20)), .center)
             self.containerStack.style(.axis(.vertical), .alignment(.fill), .distribution(.fill))
             self.containerStack.layout(.margin)
             //标题
-            self.title.style(.boldFont(size: 14), .color(.black), .lines(), .center)
+            self.title.style(.font(ECSetting.Font.normal.easy.bold), .color(ECSetting.Color.text), .lines(), .center)
             self.title.layout(.margin(20, 15, 5, 15))
             //标题跟内容的分隔线
-            self.titleSeparator.style(.height(0), .bg(rgb: 0xEFEFEF))
+            self.titleSeparator.style(.height(0), .bg(ECSetting.Color.separator))
             self.titleSeparator.layout(.margin(10, 0))
             //内容容器，将需要显示的内容放在里面，一般为Label，也可自定义
             self.content.style(.width(250))
             self.content.layout(.margin)
             //内容跟按钮的分隔线
-            self.contentSeparator.style(.height(CGFloat.easy.pixel), .bg(rgb: 0xEFEFEF))
+            self.contentSeparator.style(.height(CGFloat.easy.pixel), .bg(ECSetting.Color.separator))
             self.contentSeparator.layout(.margin)
             //放置所有按钮的容器
             self.buttonContainer.style(.height(44))
@@ -94,14 +94,14 @@ public class ECAlertConfig {
             self.buttonContainerStack.style(.axis(.horizontal), .alignment(.fill), .distribution(.fill))
             self.buttonContainerStack.layout(.margin)
             //按钮之间的分隔线
-            self.buttonSeparator.style(.width(CGFloat.easy.pixel), .bg(rgb: 0xEFEFEF))
+            self.buttonSeparator.style(.width(CGFloat.easy.pixel), .bg(ECSetting.Color.separator))
             self.buttonSeparator.layout(.margin(0, 8))
             //按钮
             self.button(for: .normal).layout(.margin)
-            self.button(for: .normal).style(.color(rgb: 0x333333), .color(UIColor.easy.rgb(0x333333, alpha: 0.4), for: .highlighted), .font(size: 15))
-            self.button(for: .negative).style(.color(rgb: 0x656565), .color(.darkText, for: .highlighted))
-            self.button(for: .positive).style(.color(rgb: 0x2D6DE1), .color(UIColor.easy.rgb(0x2D6DE1, alpha: 0.4), for: .highlighted), .boldFont(size: 15))
-            self.button(for: .destructive).style(.color(.systemRed), .boldFont(size: 15))
+            self.button(for: .normal).style(.color(ECSetting.Color.text), .color(ECSetting.Color.text.withAlphaComponent(0.4), for: .highlighted), .font(size: 15))
+            self.button(for: .negative).style(.color(ECSetting.Color.darkText), .color(ECSetting.Color.text.withAlphaComponent(0.4), for: .highlighted))
+            self.button(for: .positive).style(.color(ECSetting.Color.main), .color(ECSetting.Color.main.withAlphaComponent(0.4), for: .highlighted), .boldFont(size: 15))
+            self.button(for: .destructive).style(.color(ECSetting.Color.red), .boldFont(size: 15))
             //默认标题
             self.commonTitle = nil
             //常见按钮
@@ -128,4 +128,10 @@ public class ECAlertConfig {
             }
         }
     }
+}
+
+//将相关配置汇总起来
+extension ECSetting {
+    ///弹窗全局配置
+    public var Alert: ECAlertConfig { return ECAlertConfig.default }
 }

@@ -33,7 +33,7 @@ public class ECToastConfig {
             self.container.style(.bg(.lightGray) ,.corner(16))
             self.container.layout(.greather(.marginX(20)), .bottom(75 + UIView.easy.safeArea.bottom), .centerX, .greather(.height(32)))
             //消息
-            self.message.style(.color(.white), .font(size: UIFont.systemFontSize), .lines())
+            self.message.style(.color(.white), .font(ECSetting.Font.normal), .lines())
             self.message.layout(.margin(15, 8))
             //显示动画
             self.animationForShow = nil
@@ -47,4 +47,10 @@ public class ECToastConfig {
             }
         }
     }
+}
+
+//将相关全局配置汇总起来
+extension ECSetting {
+    ///Toast全局配置
+    public var Toast: ECToastConfig { return ECToastConfig.default }
 }

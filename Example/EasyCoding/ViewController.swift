@@ -40,19 +40,17 @@ class ViewController: UIViewController {
         //            make.centerY.equalTo(views[0].snp.bottom)
         //            make.centerY.equalTo(views[1].snp.top)
         //        }
+        
+        let families = UIFont.familyNames
+        for family in families {
+            print("\(family) : \(UIFont.fontNames(forFamilyName: family))")
+        }
     }
     
     @objc func test() {
-        //        ECAlertConfig.default.message.addStyle(.boldFont(size: 20))
-        //        ECAlertConfig.default.input.addStyle(.bg(.green))
-        //        ECAlertConfig.default.input.layout(.margin(180, 0, 150, 0))
-        //        ECMessageBox.confirm(title: "看这个标题", attr: "try metry \("trye3 ry metrry metr", .color(.red), .boldFont(size: 24)) metry metry metry me") { [weak self] in
-        //            //自定义视图
-        //            //自定义列表，可多组，可异步
-        //            //日期
-        //        }
-        
-        self.load(DataPluginController())
+        ECMessageBox.confirm(title: "看这个标题", attr: "try metry \("trye3 ry metrry metr", .color(.red), .boldFont(size: 24)) metry metry metry me") { [weak self] in
+            self?.load(DataPluginController())
+        }
     }
     
 }

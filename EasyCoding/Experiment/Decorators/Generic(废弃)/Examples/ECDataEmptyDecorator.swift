@@ -7,7 +7,10 @@
 
 import UIKit
 
-open class ECDataEmptyPlugin<DataType>: ECDataEmptyPluginBase<DataType> {
+open class ECDataEmptyDecorator<DataType>: ECDataEmptyDecoratorType {
+    public var dataProvider: ((@escaping (Result<DataType, Error>) -> Void, @escaping (Result<DataType, Error>) -> Void) -> Void)?
+    ///开始请求时卸载
+    open var unloadIfRequest: Bool = true
     ///要加载到的页面，若为空则加载到keywindow
     open weak var targetView: UIView?
     ///空数据页
@@ -19,12 +22,15 @@ open class ECDataEmptyPlugin<DataType>: ECDataEmptyPluginBase<DataType> {
         .parent(.marginX, .bottom)
         return view
     }()
+    public init() {
+        
+    }
     
-    open override func load() {
+    open func load() {
         self.targetView?.easy.add(self.emptyView, layout: .center)
     }
     
-    open override func unload() {
+    open func unload() {
         self.emptyView.removeFromSuperview()
     }
 }

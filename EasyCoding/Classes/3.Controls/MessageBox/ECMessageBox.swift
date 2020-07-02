@@ -10,11 +10,11 @@ import UIKit
 ///消息窗配置
 public struct ECMessageBoxConfig {
     ///消息内容
-    public static let message = ECControlConfig<ECLabel>(styles: [.font(size: 14), .color(.black), .lines(), .lowPriority()], layouts: [.margin(25, 15)])
+    public static let message = ECControlConfig<ECLabel>(styles: [.font(ECSetting.Font.normal), .color(ECSetting.Color.text), .lines(), .lowPriority()], layouts: [.margin(25, 15)])
     ///确认弹框的确认按钮位置，默认右边，(右下同义，左上同义)
     public static var confirmButtonDirection: ECDirection = .right
     ///输入框
-    public static let input = ECControlConfig<ECTextField>(styles: [.font(size: 14), .color(.black), .lowPriority(), .height(44), .padding(.easy(x: 15, y: 0))], layouts: [.margin])
+    public static let input = ECControlConfig<ECTextField>(styles: [.font(ECSetting.Font.normal), .color(ECSetting.Color.text), .lowPriority(), .height(44), .padding(.easy(x: 15, y: 0))], layouts: [.margin])
 }
 ///扩展AlertConfig，简化使用复杂度，统一在AlertConfig里配置
 extension ECAlertConfig {
