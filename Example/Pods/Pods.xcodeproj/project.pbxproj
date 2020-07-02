@@ -1407,6 +1407,7 @@
 		2C895FBCCA26F13813AB3D10A8207CC7 /* 4.plugs */ = {
 			isa = PBXGroup;
 			children = (
+				9CF0929324ADB83D00B176F6 /* DataProvider */,
 				35163760A48375ED55B02911D4B5AA58 /* ApiListLoader */,
 				EB52ECE865FCFF0B1F92B53153F26323 /* TextFieldConstraint */,
 				F17EB1CA886B1AED6D49EA752FC31EBE /* ViewControllerPlug */,
@@ -1978,22 +1979,12 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		9CF0929324ADB83D00B176F6 /* 2.1.DataProvider */ = {
+		9CF0929324ADB83D00B176F6 /* DataProvider */ = {
 			isa = PBXGroup;
 			children = (
-				9CF0929424ADB8E000B176F6 /* Base */,
 				188E039FDED58CEB9F94AE6E243DFC54 /* Injectable */,
 			);
-			path = 2.1.DataProvider;
-			sourceTree = "<group>";
-		};
-		9CF0929424ADB8E000B176F6 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				DF59BDF6CAB2879DF54EAF97DDF8C5AB /* ECData.swift */,
-				9CEFAD0F24AC65010034E156 /* ECDataPluginDecorator.swift */,
-			);
-			path = Base;
+			path = DataProvider;
 			sourceTree = "<group>";
 		};
 		9CF0929524ADB93C00B176F6 /* 2.0.Setting */ = {
@@ -2002,6 +1993,15 @@
 				EB3D5C4F14684EB0FBDCB93D4822DB19 /* ECSetting.swift */,
 			);
 			path = 2.0.Setting;
+			sourceTree = "<group>";
+		};
+		9CF0929624ADC2D100B176F6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DF59BDF6CAB2879DF54EAF97DDF8C5AB /* ECData.swift */,
+				9CEFAD0F24AC65010034E156 /* ECDataPluginDecorator.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		AA0FDD0203DC149220F1871492D1957D /* ImagePicker */ = {
@@ -2113,7 +2113,6 @@
 			isa = PBXGroup;
 			children = (
 				9CF0929524ADB93C00B176F6 /* 2.0.Setting */,
-				9CF0929324ADB83D00B176F6 /* 2.1.DataProvider */,
 				8E5E9628CB0A5A73E7C9E70ABD9DBEFA /* 2.2.Personalized */,
 				520DA10F3F126CB624B59FA1EAE3CF38 /* 2.3.AccessControl */,
 				BAC24571152C74B8FC21206DC0459E49 /* 2.4.Api */,
@@ -2300,6 +2299,7 @@
 		DAC44E6DF823E42818967482F517FFC3 /* 1.5.Types */ = {
 			isa = PBXGroup;
 			children = (
+				9CF0929624ADC2D100B176F6 /* Data */,
 				26E18AA8495C837E60CFBDD67C61509B /* ControlConfig */,
 				0AA1433EA598DF36B6D04B195A6602FE /* Event */,
 				4C3C5B3D7DCD57F7B1B91AD29DCE06FF /* Regex */,
