@@ -10,51 +10,25 @@ import UIKit
 import EasyCoding
 
 class DataPluginController: ECViewController<DataPluginView>, UITableViewDataSource {
-    let dataManager = ECDataManager<Provider>()
+//    let dataProvider = ECViewDataDecorator<Provider>()
+//    let dataProvider = ECViewDataRefreshDecorator<Provider>()
+    let dataProvider = ECViewDataPagedDecorator<Provider>()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.page.tableView.dataSource = self
-
-        let refresh = ECDataRefreshPlugin<[String]>()
-        let loading = ECDataLoadingPlugin<[String]>()
-        let error = ECDataErrorPlugin<[String]>()
-        let toast = ECDataErrorToastPlugin<[String]>()
-        let empty = ECDataEmptyPlugin<[String]>()
         
         let provider = Provider()
+        self.dataProvider.dataProvider = provider
+        self.dataProvider.targetView = self.page.tableView
         
-        loading.targetView = self.page.tableView
-        empty.targetView = self.page.tableView
-        refresh.targetView = self.page.tableView
-        error.targetView = self.page.tableView
-    
-        empty.unloadIfRequest = false
-        
-        toast.activate({ [weak refresh] in
-            return refresh?.isRereshInited ?? false
-        })
-        error.activate ({ [weak refresh] in
-            return !(refresh?.isRereshInited ?? true)
-        })
-        loading.activate { [weak refresh] () -> Bool in
-            return !(refresh?.isRereshInited ?? true)
-        }
-        
-        self.dataManager.dataProvider = provider
-        self.dataManager.plugins = [loading, error, empty, toast, refresh]
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "来吧", style: .plain, target: self, action: #selector(self.onTest))
-        
-        
     }
     @objc func onTest() {
-//        if refresh.isRereshInited {
-//            loading.reloadData()
-//        }else{
-            self.dataManager.easyDataWithoutError { [weak self] (datas) in
-                self?.datas = datas
-                self?.page.tableView.reloadData()
-            }
-//        }
+        self.dataProvider.easyDataWithoutError { [weak self] (datas) in
+            self?.datas = datas
+            self?.page.tableView.reloadData()
+        }
     }
     var datas: [String]?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,7 +51,15 @@ class DataPluginView: ECPage {
 }
 
 extension DataPluginController {
-    class Provider: ECDataProviderType {
+    class Provider: ECDataPagedProviderType {
+        var page: Int = 1
+        
+        func merge(data1: [String], data2: [String]) -> [String] {
+            var data = data1
+            data.append(contentsOf: data2)
+            return data
+        }
+        
         typealias DataType = [String]
         var count = 0
         func easyData(completion: @escaping (Result<DataType, Error>) -> Void) {
@@ -95,6 +77,9 @@ extension DataPluginController {
                     s.count += 1
                 }
             }
+        }
+        var isLastPage: Bool {
+            return page >= 5
         }
         deinit {
             print("P die")
