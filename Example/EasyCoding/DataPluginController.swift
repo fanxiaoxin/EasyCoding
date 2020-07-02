@@ -17,7 +17,6 @@ class DataPluginController: ECViewController<DataPluginView>, UITableViewDataSou
         super.viewDidLoad()
         
         self.page.tableView.dataSource = self
-        
         let provider = Provider()
         self.dataProvider.dataProvider = provider
         self.dataProvider.targetView = self.page.tableView
@@ -29,6 +28,22 @@ class DataPluginController: ECViewController<DataPluginView>, UITableViewDataSou
             self?.datas = datas
             self?.page.tableView.reloadData()
         }
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print(self.page.tableView.frame)
+        print(UIView.easy.safeArea)
+        if #available(iOS 11.0, *) {
+            print(self.page.tableView.safeAreaInsets)
+        } else {
+            // Fallback on earlier versions
+        }
+        print(self.page.tableView.scrollIndicatorInsets)
+        
+        print(self.page.tableView.contentInset)
+        
+        
+        
     }
     var datas: [String]?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,7 +61,7 @@ class DataPluginView: ECPage {
     override func load() {
         self.backgroundColor = .white
         
-        self.easy.add(tableView.easy(.cell(UITableViewCell.self), .separator(.none)), layout: .margin(50))
+        self.easy.add(tableView.easy(.cell(UITableViewCell.self), .separator(.none)), layout: .margin)
     }
 }
 

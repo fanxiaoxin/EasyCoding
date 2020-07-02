@@ -261,6 +261,10 @@ extension ECViewLayout {
     public static func height(_ v:CGFloat) -> ECViewLayout { return .absoluteHeight(v) }
     ///绝对宽度
     public static func width(_ v:CGFloat) -> ECViewLayout { return .absoluteWidth(v) }
+    ///绝对大小
+    public static func size(_ widthHeight:CGFloat) -> ECViewLayout { return .set([.absoluteWidth(widthHeight), .absoluteHeight(widthHeight)]) }
+    ///绝对大小
+    public static func size(_ width:CGFloat, _ height: CGFloat) -> ECViewLayout { return .set([.absoluteWidth(width), .absoluteHeight(height)]) }
     
     ///左左
     public static var left: ECViewLayout { return .left(0) }
@@ -307,6 +311,8 @@ extension ECViewLayout {
     public static func margin(_ v:CGFloat) -> ECViewLayout { return .margin(v, v, v, v) }
     ///四周贴边
     public static var margin: ECViewLayout { return .margin(0,0,0,0) }
+    ///边距
+    public static func margin(_ edge:UIEdgeInsets) -> ECViewLayout { return .margin(edge.top, edge.left, edge.bottom, edge.right) }
 }
 //父视图扩展
 extension ECViewLayout {

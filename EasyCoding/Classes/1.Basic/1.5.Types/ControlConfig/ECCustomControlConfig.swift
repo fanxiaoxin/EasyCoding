@@ -8,29 +8,19 @@
 import UIKit
 
 ///自定义控件的配置
-open class ECCustomControlConfig<ViewType: UIView> {
-    private var layouts: [ECViewLayout]
+open class ECCustomControlConfig<ViewType: UIView>: ECControlConfig<ViewType> {
     ///显示动画
     public var animationForShow: ((ViewType) -> Void)?
     ///关闭动画，执行完需调用第二个参数回调
     public var animationForDismiss: ((ViewType, @escaping () -> Void) -> Void)?
     
-    public init() {
-        self.layouts = []
-    }
     public init(layouts: [ECViewLayout]) {
-        self.layouts = layouts
-    }
-    
-    ///重设布局
-    @discardableResult
-    open func layout(_ layouts: ECViewLayout...) -> Self {
-        self.layouts = layouts
-        return self
+        super.init(styles: [], layouts: layouts)
     }
     ///在指定的页面上显示
     open func show(_ view: ViewType, at superView: UIView) {
-        superView.easy.add(view, layout: self.layouts)
+        superView.addSubview(view)
+        self.apply(for: view)
         self.animationForShow?(view)
     }
     ///隐藏

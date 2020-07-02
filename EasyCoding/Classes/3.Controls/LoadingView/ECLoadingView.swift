@@ -16,7 +16,7 @@ open class ECLoadingView: UIView {
     ///每个小球的大小
     open var circleSize: CGFloat = 6 { didSet { self.needRedraw = true } }
     ///整个Loading的大小
-    open var size: CGSize = CGSize(width: 50, height: 50) { didSet { self.needRedraw = true } }
+    open var defaultSize: CGSize = CGSize(width: 50, height: 50) { didSet { self.needRedraw = true } }
     ///颜色
     open var color: UIColor = ECSetting.Color.main { didSet { self.needRedraw = true } }
     ///用于设置及判断是否需要重新创建动画
@@ -34,7 +34,7 @@ open class ECLoadingView: UIView {
         }
     }
     open override var intrinsicContentSize: CGSize {
-        return self.size
+        return self.defaultSize
     }
     ///根据参数创建动画层
     open func creatAnimationLayout() -> CALayer {
@@ -66,8 +66,7 @@ open class ECLoadingView: UIView {
         //运行一次是否移除动画
         animation.isRemovedOnCompletion = false
         
-        let x: CGFloat = 0//-self.size.width / 2
-        let y: CGFloat = -self.size.height
+        let size = self.bounds.size
         
         let beginTime: CFTimeInterval = 0
         let beginTimes: [CFTimeInterval] = .init(unsafeUninitializedCapacity: self.circleCount) { (buffer, count) in
@@ -83,7 +82,7 @@ open class ECLoadingView: UIView {
             let angle = CGFloat.pi / CGFloat(self.circleCount) * 2 * CGFloat(i)
             let circle = creatCircle(angle: angle,
                                      size: circleSize,
-                                     origin: CGPoint(x: x, y: y + 50),
+                                     origin: .zero,
                                      containerSize: size,
                                      color: color)
             animation.beginTime = beginTime + beginTimes[i]
@@ -131,5 +130,38 @@ open class ECLoadingView: UIView {
         layer.path = path.cgPath
         
         return layer;
+    }
+}
+
+extension ECStyleSetting where TargetType: ECLoadingView {
+    ///转一圈所需的时间
+    public static func duration(_ duration: TimeInterval) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.duration =  duration
+        })
+    }
+    ///小球个数
+    public static func circle(count: Int) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.circleCount = count
+        })
+    }
+    ///每个小球的大小
+    public static func circle(size: CGFloat) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.circleSize =  size
+        })
+    }
+    ///颜色
+    public static func color(_ color: UIColor) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.color =  color
+        })
+    }
+    ///颜色
+    public static func color(rgb color: UInt32) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.color = .easy(color)
+        })
     }
 }

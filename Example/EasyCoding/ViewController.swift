@@ -41,10 +41,6 @@ class ViewController: UIViewController {
         //            make.centerY.equalTo(views[1].snp.top)
         //        }
         
-        let families = UIFont.familyNames
-        for family in families {
-            print("\(family) : \(UIFont.fontNames(forFamilyName: family))")
-        }
     }
     
     @objc func test() {
@@ -52,7 +48,6 @@ class ViewController: UIViewController {
             self?.load(DataPluginController())
         }
     }
-    
 }
 class I {
     class func load<DataProviderType: ECDataProviderType>(_ provider: DataProviderType) where DataProviderType.DataType == [String] {
