@@ -271,7 +271,6 @@
 		9C3BC13C24AF29A1008C258D /* ECPresentAnimation.Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3BC13B24AF29A1008C258D /* ECPresentAnimation.Fade.swift */; };
 		9C4F7AB024AD6A4600187C9D /* ECDataPagedDecoratorBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F7AAF24AD6A4600187C9D /* ECDataPagedDecoratorBase.swift */; };
 		9C4F7AB424AD873800187C9D /* ECDataPagedDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F7AB324AD873800187C9D /* ECDataPagedDecorator.swift */; };
-		9C8107AD24AEC4D200C61E30 /* ECPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8107AC24AEC4D200C61E30 /* ECPopup.swift */; };
 		9C8107B024AED6E600C61E30 /* ECPresentAnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8107AF24AED6E600C61E30 /* ECPresentAnimationType.swift */; };
 		9C8107B224AED6ED00C61E30 /* ECPresentAnimation.Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8107B124AED6ED00C61E30 /* ECPresentAnimation.Popup.swift */; };
 		9C8107B624AEE36000C61E30 /* ECPresentAnimation.SlideOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8107B524AEE36000C61E30 /* ECPresentAnimation.SlideOut.swift */; };
@@ -917,7 +916,6 @@
 		9C4F7AAF24AD6A4600187C9D /* ECDataPagedDecoratorBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataPagedDecoratorBase.swift; sourceTree = "<group>"; };
 		9C4F7AB324AD873800187C9D /* ECDataPagedDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataPagedDecorator.swift; sourceTree = "<group>"; };
 		9C521562E5BCE2DBE49FE99BFB4F9FD9 /* EasyCoding.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = EasyCoding.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9C8107AC24AEC4D200C61E30 /* ECPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPopup.swift; sourceTree = "<group>"; };
 		9C8107AF24AED6E600C61E30 /* ECPresentAnimationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentAnimationType.swift; sourceTree = "<group>"; };
 		9C8107B124AED6ED00C61E30 /* ECPresentAnimation.Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentAnimation.Popup.swift; sourceTree = "<group>"; };
 		9C8107B524AEE36000C61E30 /* ECPresentAnimation.SlideOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentAnimation.SlideOut.swift; sourceTree = "<group>"; };
@@ -1962,14 +1960,6 @@
 			path = Examples;
 			sourceTree = "<group>";
 		};
-		9C8107AB24AEC4BD00C61E30 /* Popup */ = {
-			isa = PBXGroup;
-			children = (
-				9C8107AC24AEC4D200C61E30 /* ECPopup.swift */,
-			);
-			path = Popup;
-			sourceTree = "<group>";
-		};
 		9C8107AE24AED6CE00C61E30 /* PresentAnimation */ = {
 			isa = PBXGroup;
 			children = (
@@ -2607,7 +2597,6 @@
 		F9AE2F686774B573F817CF476C162EDF /* 3.Controls */ = {
 			isa = PBXGroup;
 			children = (
-				9C8107AB24AEC4BD00C61E30 /* Popup */,
 				8925E43FCB2D9A30CA9FF4AA1290A025 /* Button */,
 				67E173BE428F1D6DBC967A4252B6B8E9 /* CollectionLayout */,
 				8A00FF7CDAD1DBC128D8E92049C72D58 /* GesturePasswordView */,
@@ -3619,7 +3608,6 @@
 				2FA1948F4674A0F4F0644372F308D1A2 /* ECRegex.swift in Sources */,
 				4E330C3D658B43432E5BCF972B8E2920 /* ECRejectTypePrecondition.swift in Sources */,
 				9C8107B024AED6E600C61E30 /* ECPresentAnimationType.swift in Sources */,
-				9C8107AD24AEC4D200C61E30 /* ECPopup.swift in Sources */,
 				B33AF1D193EE1EB241F310219D697BF4 /* ECScrollViewStyle.swift in Sources */,
 				C4101E91F03176B07DD2A858AB67CB82 /* ECSetting.swift in Sources */,
 				37B792DB7BBA2B3088E3D53DF48F5F7A /* ECSimpleLocalized.swift in Sources */,
