@@ -39,13 +39,11 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         case 1: self.load(PopupController())
         case 2:
             ECSetting.Alert.container.addStyle(.border(.systemBlue))
-//            ECSetting.Alert.presentAnimation = ECPresentAnimation.Popup(anchor: .easy(1))
-            ECSetting.Alert.presentAnimation = ECPresentAnimation.SlideOut(direction: .right)
             ECMessageBox.confirm(message: "点下我") {
                 print("你点了确定")
             }
         case 3:
-            self.page.animationView.easy.slideOut(direction: .top)
+            self.page.animationView.easy.slideOut(direction: .right)
         default: break
         }
     }
@@ -59,8 +57,8 @@ class View: ECPage {
     override func load() {
         self.easy.add(tableView.easy(.cell(UITableViewCell.self, identifier: "Cell")), layout: .margin)
         
-        self.easy.add(animationView.easy(.bg(.systemGreen), .hidden()), layout: .center, .size(200))
-            .add(button("DismissAnimation", .text("关闭"), .bg(.blue), .color(.white), .corner(4)), layout: .size(80, 44), .center)
+        self.easy.add(animationView.easy(.bg(.systemYellow), .corner(8), .hidden()), layout: .center, .size(200))
+            .add(button("DismissAnimation", .text("关闭"), .bg(.systemGreen), .color(.white), .corner(4)), layout: .size(80, 44), .center)
     }
 }
 ///Swift5.1: Some 泛型

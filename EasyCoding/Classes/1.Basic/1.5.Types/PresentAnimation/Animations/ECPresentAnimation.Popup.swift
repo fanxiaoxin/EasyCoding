@@ -54,4 +54,20 @@ extension EC.NamespaceImplement where Base: UIView {
         self.show(animation: animation, completion: completion)
         return animation
     }
+    ///通过打开新的Window显示view
+    @discardableResult
+    public func popupWindow(anchor: CGPoint? = nil, completion: (() -> Void)? = nil) -> UIWindow{
+        let animation = ECPresentAnimation.Popup(anchor: anchor)
+        return self.showWindow(animation: animation, completion: completion)
+    }
+}
+
+
+extension EC.NamespaceImplement where Base: UIViewController {
+    ///通过打开新的Window显示viewController
+    @discardableResult
+    public func popupWindow(anchor: CGPoint? = nil, completion: (() -> Void)? = nil) -> UIWindow{
+        let animation = ECPresentAnimation.Popup(anchor: anchor)
+        return self.showWindow(animation: animation, completion: completion)
+    }
 }

@@ -83,8 +83,8 @@ extension ECPresentSegue {
         return p
     }
     ///Popup的常规场景
-    public static func popup(content view: UIView) -> Popup {
-        let p = Popup()
+    public static func popup(content view: UIView, anchor: CGPoint? = nil) -> Popup {
+        let p = popup(animation: ECPresentAnimation.Popup(anchor: anchor))
         p.contentView = view
         return p
     }

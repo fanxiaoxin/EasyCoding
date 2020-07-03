@@ -48,7 +48,7 @@ open class ECTestSettingManager {
         }
     }
     @objc open func show() {
-        controller.easy.showWindow(animation: ECPresentAnimation.Popup())
+        controller.easy.popupWindow()
     }
     @objc open func hide() {
         controller.easy.dismissWindow()

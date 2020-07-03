@@ -29,22 +29,6 @@ class DataPluginController: ECViewController<DataPluginView>, UITableViewDataSou
             self?.page.tableView.reloadData()
         }
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print(self.page.tableView.frame)
-        print(UIView.easy.safeArea)
-        if #available(iOS 11.0, *) {
-            print(self.page.tableView.safeAreaInsets)
-        } else {
-            // Fallback on earlier versions
-        }
-        print(self.page.tableView.scrollIndicatorInsets)
-        
-        print(self.page.tableView.contentInset)
-        
-        
-        
-    }
     var datas: [String]?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.datas?.count ?? 0
@@ -95,9 +79,6 @@ extension DataPluginController {
         }
         var isLastPage: Bool {
             return page >= 5
-        }
-        deinit {
-            print("P die")
         }
     }
 
