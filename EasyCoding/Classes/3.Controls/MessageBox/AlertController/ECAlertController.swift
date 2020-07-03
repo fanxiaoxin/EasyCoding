@@ -89,9 +89,9 @@ open class ECAlertController: ECViewController<ECAlertView>,YYKeyboardObserver {
     ///显示
     open func show(completion: (() -> Void)? = nil) {
         self.keyWindow = UIApplication.shared.keyWindow
-        self.easy.showWindow(level: .alert, makeKey: true)
-        if let animation = (self.config?.animationForShow ?? ECAlertConfig.default.animationForShow){
-            animation(self.page) {
+        self.easy.openWindow(level: .alert, makeKey: true)
+        if let animation = (self.config?.presentAnimation ?? ECAlertConfig.default.presentAnimation){
+            animation.show(view: self.page.container) {
                 completion?()
             }
         }else{
@@ -104,8 +104,8 @@ open class ECAlertController: ECViewController<ECAlertView>,YYKeyboardObserver {
             self.keyWindow?.makeKey()
             self.keyWindow = nil
         }
-        if let animation = (self.config?.animationForDismiss ?? ECAlertConfig.default.animationForDismiss) {
-            animation(self.page) { [weak self] in
+        if let animation = (self.config?.presentAnimation ?? ECAlertConfig.default.presentAnimation) {
+            animation.dismiss(view: self.page.container) { [weak self] in
                 self?.easy.closeWindow()
                 completion?()
             }

@@ -42,10 +42,8 @@ public class ECAlertConfig {
     public var commonTitle: String?
     ///常见的按钮类型默认配置
     public var commonButtons:[ECAlertController.CommonButtonType: ECAlertController.Button] = [:]
-    ///显示动画
-    public var animationForShow: ((ECAlertView, @escaping () -> Void) -> Void)?
-    ///关闭动画，执行完需调用第二个参数回调
-    public var animationForDismiss: ((ECAlertView, @escaping () -> Void) -> Void)?
+    ///呈现动画
+    public var presentAnimation: ECPresentAnimationType?
     
     ///默认的按钮样式
     public var button: ECControlConfig<ECButton> {
@@ -72,7 +70,7 @@ public class ECAlertConfig {
             //背景透明
             self.background.style(.bg(.clear))
             //容器居中偏上
-            self.container.style(.bg(.white) ,.corner(ECSetting.corner))
+            self.container.style(.bg(.white) ,.corner(ECSetting.corner), .border(ECSetting.Color.separator))
             self.container.layout(.greather(.marginX(20)), .greather(.marginY(20)), .center)
             self.containerStack.style(.axis(.vertical), .alignment(.fill), .distribution(.fill))
             self.containerStack.layout(.margin)
@@ -109,23 +107,8 @@ public class ECAlertConfig {
                 alert.dismiss()
             })
             self.commonButtons[.confirm] = ECAlertController.Button(sizeRatio: 1, type: .positive, text: "确定", action:nil)
-            //显示动画
-            self.animationForShow = { view, completion  in
-                view.container.alpha = 0
-                UIView.animate(withDuration: 0.25, animations: {
-                    view.container.alpha = 1
-                }) { (_) in
-                    completion()
-                }
-            }
-            //关闭动画
-            self.animationForDismiss = { view, completion in
-                UIView.animate(withDuration: 0.25, animations: {
-                    view.container.alpha = 0
-                }) { (_) in
-                    completion()
-                }
-            }
+            //呈现动画
+            self.presentAnimation = ECPresentAnimation.Popup()
         }
     }
 }
@@ -133,5 +116,5 @@ public class ECAlertConfig {
 //将相关配置汇总起来
 extension ECSetting {
     ///弹窗全局配置
-    public var Alert: ECAlertConfig { return ECAlertConfig.default }
+    public static var Alert: ECAlertConfig { return ECAlertConfig.default }
 }

@@ -48,10 +48,10 @@ open class ECTestSettingManager {
         }
     }
     @objc open func show() {
-        controller.easy.popup(direction: .right)
+        controller.easy.showWindow(animation: ECPresentAnimation.Popup())
     }
     @objc open func hide() {
-        controller.easy.popupClose()
+        controller.easy.dismissWindow()
     }
     open func configable() -> [ECTestSettingItem] {
         return []

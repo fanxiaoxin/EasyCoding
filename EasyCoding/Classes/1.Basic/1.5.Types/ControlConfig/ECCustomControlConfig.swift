@@ -9,10 +9,8 @@ import UIKit
 
 ///自定义控件的配置
 open class ECCustomControlConfig<ViewType: UIView>: ECControlConfig<ViewType> {
-    ///显示动画
-    public var animationForShow: ((ViewType) -> Void)?
-    ///关闭动画，执行完需调用第二个参数回调
-    public var animationForDismiss: ((ViewType, @escaping () -> Void) -> Void)?
+    ///呈现动画
+    public var presentAnimation: ECPresentAnimationType?
     
     public init(layouts: [ECViewLayout]) {
         super.init(styles: [], layouts: layouts)
@@ -21,12 +19,12 @@ open class ECCustomControlConfig<ViewType: UIView>: ECControlConfig<ViewType> {
     open func show(_ view: ViewType, at superView: UIView) {
         superView.addSubview(view)
         self.apply(for: view)
-        self.animationForShow?(view)
+        self.presentAnimation?.show(view: view, completion: nil)
     }
     ///隐藏
     open func dismiss(_ view: ViewType) {
-        if let animation = self.animationForDismiss {
-            animation(view) { [weak view] in
+        if let animation = self.presentAnimation {
+            animation.dismiss(view: view) { [weak view] in
                 view?.removeFromSuperview()
             }
         }else{

@@ -61,7 +61,6 @@
 		1C0264BE030E084CB0CA6AC7BC87846C /* EasyCoding-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C3AFD23F625BAF66FA8A88C139F8472F /* EasyCoding-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C4326F1146E18644123B2222B6F31AA /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D0308F5C752FC1A03573CB310C393F /* ConstraintAttributes.swift */; };
 		1C82F0F4EA0167F00918EECDE3BA1B77 /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F425A3DE52655DE8A1B278421CE0F82 /* ConstraintMaker.swift */; };
-		1CC8387674D65952AC44190628335D96 /* ECViewControllerPopuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102A07043A28DB773D7DC746648706A9 /* ECViewControllerPopuper.swift */; };
 		1D5F32312629D06AEF44FA223ADAA494 /* MJRefreshBackFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 865208BC48F2409104E40A4D4D6858A6 /* MJRefreshBackFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E562D83C09C97F27873B98D4F2AB57D /* ECOptionsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E6F4DBFE21642C97BFDB9E83CE6CFE /* ECOptionsPickerView.swift */; };
 		1E68C68235A51392D640301BCAFD0901 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9211E60968B97E24D10DC1E828D15A8F /* MJRefreshComponent.m */; };
@@ -269,8 +268,13 @@
 		9A4B6ED4002ABE45F4F79FF2597008C5 /* ECLabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA31A123FE26B9EF534D26E77F4460 /* ECLabelExtension.swift */; };
 		9B0DCDCA1B7FCAA9676F12BB49A6459D /* EnumType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85141888D69980ED3FDB37E18BC3025 /* EnumType.swift */; };
 		9B62F5DFE6CE27A5E6D07862EC7B46AD /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CDC73DE7B6070E8FD093426F30AD4 /* ImageModifier.swift */; };
+		9C3BC13C24AF29A1008C258D /* ECPresentAnimation.Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3BC13B24AF29A1008C258D /* ECPresentAnimation.Fade.swift */; };
 		9C4F7AB024AD6A4600187C9D /* ECDataPagedDecoratorBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F7AAF24AD6A4600187C9D /* ECDataPagedDecoratorBase.swift */; };
 		9C4F7AB424AD873800187C9D /* ECDataPagedDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F7AB324AD873800187C9D /* ECDataPagedDecorator.swift */; };
+		9C8107AD24AEC4D200C61E30 /* ECPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8107AC24AEC4D200C61E30 /* ECPopup.swift */; };
+		9C8107B024AED6E600C61E30 /* ECPresentAnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8107AF24AED6E600C61E30 /* ECPresentAnimationType.swift */; };
+		9C8107B224AED6ED00C61E30 /* ECPresentAnimation.Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8107B124AED6ED00C61E30 /* ECPresentAnimation.Popup.swift */; };
+		9C8107B624AEE36000C61E30 /* ECPresentAnimation.SlideOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8107B524AEE36000C61E30 /* ECPresentAnimation.SlideOut.swift */; };
 		9C8E40C124AC6CD800853BDD /* ECDataEmptyPluginBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E40BD24AC6CD700853BDD /* ECDataEmptyPluginBase.swift */; };
 		9C8E40C224AC6CD800853BDD /* ECDataRefreshPluginBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E40BE24AC6CD700853BDD /* ECDataRefreshPluginBase.swift */; };
 		9C8E40C324AC6CD800853BDD /* ECDataLoadingPluginBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E40BF24AC6CD700853BDD /* ECDataLoadingPluginBase.swift */; };
@@ -280,6 +284,15 @@
 		9C8E40CC24AC739F00853BDD /* ECDataErrorPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E40C724AC739F00853BDD /* ECDataErrorPlugin.swift */; };
 		9C8E40CD24AC739F00853BDD /* ECDataErrorToastPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E40C824AC739F00853BDD /* ECDataErrorToastPlugin.swift */; };
 		9C8E40CE24AC739F00853BDD /* ECDataLoadingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E40C924AC739F00853BDD /* ECDataLoadingPlugin.swift */; };
+		9CDA6B6624AF151A00C4A69D /* ECPresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA6B6424AF151800C4A69D /* ECPresentAnimation.swift */; };
+		9CDA6B6824AF15C500C4A69D /* ECPresentSegue.Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA6B6724AF15C500C4A69D /* ECPresentSegue.Push.swift */; };
+		9CDA6B6A24AF15EC00C4A69D /* ECPresentSegue.MultiPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA6B6924AF15EC00C4A69D /* ECPresentSegue.MultiPush.swift */; };
+		9CDA6B6C24AF162000C4A69D /* ECPresentSegue.Replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA6B6B24AF162000C4A69D /* ECPresentSegue.Replace.swift */; };
+		9CDA6B6E24AF163A00C4A69D /* ECPresentSegue.Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA6B6D24AF163A00C4A69D /* ECPresentSegue.Present.swift */; };
+		9CDA6B7024AF166400C4A69D /* ECPresentSegue.TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA6B6F24AF166400C4A69D /* ECPresentSegue.TabBar.swift */; };
+		9CDA6B7224AF174A00C4A69D /* ECPresentSegue.Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA6B7124AF174A00C4A69D /* ECPresentSegue.Content.swift */; };
+		9CDA6B7424AF176100C4A69D /* ECPresentSegue.Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA6B7324AF176100C4A69D /* ECPresentSegue.Window.swift */; };
+		9CDA6B7624AF180100C4A69D /* ECPresentSegue.Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA6B7524AF180100C4A69D /* ECPresentSegue.Popup.swift */; };
 		9CEFAD1024AC65010034E156 /* ECDataPluginDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFAD0F24AC65010034E156 /* ECDataPluginDecorator.swift */; };
 		9CF0928E24AD92A900B176F6 /* ECViewDataDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0928D24AD92A900B176F6 /* ECViewDataDecorator.swift */; };
 		9CF0929024ADAA8200B176F6 /* ECViewDataRefreshDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0928F24ADAA8200B176F6 /* ECViewDataRefreshDecorator.swift */; };
@@ -633,7 +646,6 @@
 		0F0E660C8ACA572167A8CA1D324CD082 /* ECViewControllerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewControllerType.swift; sourceTree = "<group>"; };
 		101F81B9E4DBF92BF30DB2509BDE981E /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
 		1021B2DD640F65900CB79835D1AA17DA /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+MJExtension.h"; path = "MJRefresh/UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
-		102A07043A28DB773D7DC746648706A9 /* ECViewControllerPopuper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewControllerPopuper.swift; sourceTree = "<group>"; };
 		106FEA25A3A6BD1C2BCC6A82AE24208D /* ECViewLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewLayout.swift; sourceTree = "<group>"; };
 		10A2BD0FD5114625339DC300E024C662 /* YYKeyboardManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = YYKeyboardManager.modulemap; sourceTree = "<group>"; };
 		1109896BCBCFB7F248D2A260EA12C9BB /* Plugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Plugin.swift; path = Sources/Moya/Plugin.swift; sourceTree = "<group>"; };
@@ -901,9 +913,14 @@
 		9B0DE041A45F012F45CFB276571FDD68 /* Pods-EasyCoding_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EasyCoding_Tests-umbrella.h"; sourceTree = "<group>"; };
 		9C03BB4CC4B3577710273BA03F6F7A1E /* ECKingfisherStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECKingfisherStyle.swift; sourceTree = "<group>"; };
 		9C16A5934B2AC7E494B6B38F64DA0D1F /* Kingfisher-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Kingfisher-Info.plist"; sourceTree = "<group>"; };
+		9C3BC13B24AF29A1008C258D /* ECPresentAnimation.Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentAnimation.Fade.swift; sourceTree = "<group>"; };
 		9C4F7AAF24AD6A4600187C9D /* ECDataPagedDecoratorBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataPagedDecoratorBase.swift; sourceTree = "<group>"; };
 		9C4F7AB324AD873800187C9D /* ECDataPagedDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataPagedDecorator.swift; sourceTree = "<group>"; };
 		9C521562E5BCE2DBE49FE99BFB4F9FD9 /* EasyCoding.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = EasyCoding.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9C8107AC24AEC4D200C61E30 /* ECPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPopup.swift; sourceTree = "<group>"; };
+		9C8107AF24AED6E600C61E30 /* ECPresentAnimationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentAnimationType.swift; sourceTree = "<group>"; };
+		9C8107B124AED6ED00C61E30 /* ECPresentAnimation.Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentAnimation.Popup.swift; sourceTree = "<group>"; };
+		9C8107B524AEE36000C61E30 /* ECPresentAnimation.SlideOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentAnimation.SlideOut.swift; sourceTree = "<group>"; };
 		9C8E40BD24AC6CD700853BDD /* ECDataEmptyPluginBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECDataEmptyPluginBase.swift; sourceTree = "<group>"; };
 		9C8E40BE24AC6CD700853BDD /* ECDataRefreshPluginBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECDataRefreshPluginBase.swift; sourceTree = "<group>"; };
 		9C8E40BF24AC6CD700853BDD /* ECDataLoadingPluginBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECDataLoadingPluginBase.swift; sourceTree = "<group>"; };
@@ -914,6 +931,15 @@
 		9C8E40C824AC739F00853BDD /* ECDataErrorToastPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECDataErrorToastPlugin.swift; sourceTree = "<group>"; };
 		9C8E40C924AC739F00853BDD /* ECDataLoadingPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECDataLoadingPlugin.swift; sourceTree = "<group>"; };
 		9CA55756C2222C4BA991C4078E9FD2E8 /* ECPage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPage.swift; sourceTree = "<group>"; };
+		9CDA6B6424AF151800C4A69D /* ECPresentAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentAnimation.swift; sourceTree = "<group>"; };
+		9CDA6B6724AF15C500C4A69D /* ECPresentSegue.Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.Push.swift; sourceTree = "<group>"; };
+		9CDA6B6924AF15EC00C4A69D /* ECPresentSegue.MultiPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.MultiPush.swift; sourceTree = "<group>"; };
+		9CDA6B6B24AF162000C4A69D /* ECPresentSegue.Replace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.Replace.swift; sourceTree = "<group>"; };
+		9CDA6B6D24AF163A00C4A69D /* ECPresentSegue.Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.Present.swift; sourceTree = "<group>"; };
+		9CDA6B6F24AF166400C4A69D /* ECPresentSegue.TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.TabBar.swift; sourceTree = "<group>"; };
+		9CDA6B7124AF174A00C4A69D /* ECPresentSegue.Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.Content.swift; sourceTree = "<group>"; };
+		9CDA6B7324AF176100C4A69D /* ECPresentSegue.Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.Window.swift; sourceTree = "<group>"; };
+		9CDA6B7524AF180100C4A69D /* ECPresentSegue.Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.Popup.swift; sourceTree = "<group>"; };
 		9CE699800FFCF7934336F0C65A18279D /* ECCustomControlConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECCustomControlConfig.swift; sourceTree = "<group>"; };
 		9CEFAD0F24AC65010034E156 /* ECDataPluginDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataPluginDecorator.swift; sourceTree = "<group>"; };
 		9CF0928D24AD92A900B176F6 /* ECViewDataDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECViewDataDecorator.swift; sourceTree = "<group>"; };
@@ -1411,7 +1437,6 @@
 				35163760A48375ED55B02911D4B5AA58 /* ApiListLoader */,
 				EB52ECE865FCFF0B1F92B53153F26323 /* TextFieldConstraint */,
 				F17EB1CA886B1AED6D49EA752FC31EBE /* ViewControllerPlug */,
-				F5200E3D0AE2FFEE6C5C34FF20BACA0C /* ViewControllerPopuper */,
 			);
 			name = 4.plugs;
 			path = EasyCoding/Classes/4.plugs;
@@ -1724,8 +1749,8 @@
 		6BE933646156532612CA8CFCC76DCFBF /* 2.2.3.PresentSegue */ = {
 			isa = PBXGroup;
 			children = (
-				6303A2890F926FD06FB40CF6E2CE58DC /* ECPresentSegue.swift */,
-				0EA1F533B4CDE2E618A5BB9E0290D708 /* ECPresentSegueType.swift */,
+				9CDA6B6224AF14E500C4A69D /* Base */,
+				9CDA6B6324AF14EA00C4A69D /* Segues */,
 			);
 			path = 2.2.3.PresentSegue;
 			sourceTree = "<group>";
@@ -1937,6 +1962,42 @@
 			path = Examples;
 			sourceTree = "<group>";
 		};
+		9C8107AB24AEC4BD00C61E30 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				9C8107AC24AEC4D200C61E30 /* ECPopup.swift */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
+		9C8107AE24AED6CE00C61E30 /* PresentAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				9C8107B324AED77900C61E30 /* Base */,
+				9C8107B424AED78100C61E30 /* Animations */,
+			);
+			path = PresentAnimation;
+			sourceTree = "<group>";
+		};
+		9C8107B324AED77900C61E30 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				9C8107AF24AED6E600C61E30 /* ECPresentAnimationType.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		9C8107B424AED78100C61E30 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				9CDA6B6424AF151800C4A69D /* ECPresentAnimation.swift */,
+				9C3BC13B24AF29A1008C258D /* ECPresentAnimation.Fade.swift */,
+				9C8107B124AED6ED00C61E30 /* ECPresentAnimation.Popup.swift */,
+				9C8107B524AEE36000C61E30 /* ECPresentAnimation.SlideOut.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		9C8E40B524AC6B9400853BDD /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
@@ -1967,6 +2028,30 @@
 				9C8E40C624AC739F00853BDD /* ECDataRefreshPlugin.swift */,
 			);
 			path = Examples;
+			sourceTree = "<group>";
+		};
+		9CDA6B6224AF14E500C4A69D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				0EA1F533B4CDE2E618A5BB9E0290D708 /* ECPresentSegueType.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		9CDA6B6324AF14EA00C4A69D /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				6303A2890F926FD06FB40CF6E2CE58DC /* ECPresentSegue.swift */,
+				9CDA6B6724AF15C500C4A69D /* ECPresentSegue.Push.swift */,
+				9CDA6B6924AF15EC00C4A69D /* ECPresentSegue.MultiPush.swift */,
+				9CDA6B6B24AF162000C4A69D /* ECPresentSegue.Replace.swift */,
+				9CDA6B6D24AF163A00C4A69D /* ECPresentSegue.Present.swift */,
+				9CDA6B6F24AF166400C4A69D /* ECPresentSegue.TabBar.swift */,
+				9CDA6B7124AF174A00C4A69D /* ECPresentSegue.Content.swift */,
+				9CDA6B7324AF176100C4A69D /* ECPresentSegue.Window.swift */,
+				9CDA6B7524AF180100C4A69D /* ECPresentSegue.Popup.swift */,
+			);
+			path = Segues;
 			sourceTree = "<group>";
 		};
 		9CF0928C24AD913A00B176F6 /* Common */ = {
@@ -2299,6 +2384,7 @@
 		DAC44E6DF823E42818967482F517FFC3 /* 1.5.Types */ = {
 			isa = PBXGroup;
 			children = (
+				9C8107AE24AED6CE00C61E30 /* PresentAnimation */,
 				9CF0929624ADC2D100B176F6 /* Data */,
 				26E18AA8495C837E60CFBDD67C61509B /* ControlConfig */,
 				0AA1433EA598DF36B6D04B195A6602FE /* Event */,
@@ -2508,14 +2594,6 @@
 			path = EasyCoding/Classes/1.Basic;
 			sourceTree = "<group>";
 		};
-		F5200E3D0AE2FFEE6C5C34FF20BACA0C /* ViewControllerPopuper */ = {
-			isa = PBXGroup;
-			children = (
-				102A07043A28DB773D7DC746648706A9 /* ECViewControllerPopuper.swift */,
-			);
-			path = ViewControllerPopuper;
-			sourceTree = "<group>";
-		};
 		F5680D15CB29ADFB998ED9523212D928 /* OptionsTextConstraint */ = {
 			isa = PBXGroup;
 			children = (
@@ -2529,6 +2607,7 @@
 		F9AE2F686774B573F817CF476C162EDF /* 3.Controls */ = {
 			isa = PBXGroup;
 			children = (
+				9C8107AB24AEC4BD00C61E30 /* Popup */,
 				8925E43FCB2D9A30CA9FF4AA1290A025 /* Button */,
 				67E173BE428F1D6DBC967A4252B6B8E9 /* CollectionLayout */,
 				8A00FF7CDAD1DBC128D8E92049C72D58 /* GesturePasswordView */,
@@ -3442,6 +3521,7 @@
 				3B65EDD27F2C11C9C04849E902486D5C /* ECApiStructure.swift in Sources */,
 				8377B3E5736E920624A74F18D6AA15B6 /* ECApiType.swift in Sources */,
 				758C71C0DB5A69E5F93182B9F0FCD4BA /* ECAtomicProperty.swift in Sources */,
+				9CDA6B7624AF180100C4A69D /* ECPresentSegue.Popup.swift in Sources */,
 				56007BCA73905C04F1AE471A7E3C812A /* ECAttributedString.swift in Sources */,
 				10DF127C4E2EC9474E48B3E8AEB74AF0 /* ECAttributedStringOperator.swift in Sources */,
 				A35E7BA6AD2106A0D271D03F8E2D7D03 /* ECBlockEventHandler.swift in Sources */,
@@ -3451,6 +3531,7 @@
 				EF761F5FF57E57DA15FCECE05AA70626 /* ECButtonStyle.swift in Sources */,
 				38B914CFC922D6D44DE533865DCC24C4 /* ECCheckbox.swift in Sources */,
 				C56FF9188903DABF55401DCF49E955B8 /* ECClampingProperty.swift in Sources */,
+				9CDA6B7424AF176100C4A69D /* ECPresentSegue.Window.swift in Sources */,
 				94A8C83E681C5A98C14437A03B854C4C /* ECCollectionViewApiLoader.swift in Sources */,
 				EB6372CEC28B59494A0CE55FEBC8E694 /* ECCollectionViewFixedColumnsLayout.swift in Sources */,
 				71B74BD3ED6E700C321C18969A35EE41 /* ECControlConfig.swift in Sources */,
@@ -3473,23 +3554,29 @@
 				550233604E6D0AEF9B9EF02E125982F6 /* ECEventManager.swift in Sources */,
 				2CD7ACBD34EF37B32AD8E9CC501E99B3 /* ECEventManagerType.swift in Sources */,
 				537CE05D176618BC5E6686A8C6A04EC7 /* ECEventPublisher.swift in Sources */,
+				9C8107B224AED6ED00C61E30 /* ECPresentAnimation.Popup.swift in Sources */,
+				9CDA6B6E24AF163A00C4A69D /* ECPresentSegue.Present.swift in Sources */,
 				FFC66AE4952C82191FB8BFFF9780B4CF /* ECEventPublisherType.swift in Sources */,
 				B660D4913FCF77F8751BCFDAB3CF9286 /* ECEventTriggerable.swift in Sources */,
+				9CDA6B7024AF166400C4A69D /* ECPresentSegue.TabBar.swift in Sources */,
 				06257F0AC42E058F515E92F6F8D7E6AA /* ECEventType.swift in Sources */,
 				035FFA4C9AF3E63FB1DF9E1038D041BD /* ECExpirableProperty.swift in Sources */,
 				EC2292FADE6DC9F5339F075D8F45FEC3 /* ECExpressibleLiteralExtension.swift in Sources */,
 				BB7C652B8CF5A9CD243AAE7BC8CEBACB /* ECExtensionHeader.swift in Sources */,
 				07D9AE9AD73450C810123CCCC1CA892C /* ECFlow.swift in Sources */,
+				9C3BC13C24AF29A1008C258D /* ECPresentAnimation.Fade.swift in Sources */,
 				CE432C67DBA9FC270E1ADD61FAECFFBA /* ECFlowCenter.swift in Sources */,
 				12FCE46FE6349908180E83BADD369478 /* ECFlowController.swift in Sources */,
 				4C4D4918B2C26EFF1BFC85C9A7170070 /* ECFlowState.swift in Sources */,
 				45BE2651C92D4A412E5673114A7C2B29 /* ECFlowStep.swift in Sources */,
 				8E36291B41777885B22EC4E35187B39A /* ECGesturePasswordView.swift in Sources */,
+				9CDA6B6624AF151A00C4A69D /* ECPresentAnimation.swift in Sources */,
 				4B0E9C132CCC8CF0F70993AB73F24734 /* ECHandyJSONExtension.swift in Sources */,
 				627D52C683CBF9FEE385645E850135AD /* ECImagePicker.swift in Sources */,
 				047AAB6028F0C2BB8E2AEB260F802A71 /* ECImageViewStyle.swift in Sources */,
 				C44FC6ED72DB00F76618BC041B1DAF42 /* ECKingfisherStyle.swift in Sources */,
 				1703DD3AC8F3350F3356FF751EC3F357 /* ECLabel.swift in Sources */,
+				9CDA6B6A24AF15EC00C4A69D /* ECPresentSegue.MultiPush.swift in Sources */,
 				60DE4AD2D7C15C9EE45F46C97CD1CFB6 /* ECLabelStyle.swift in Sources */,
 				F8D3C2B31B0B152274C4428C58655556 /* ECLazyProperty.swift in Sources */,
 				8D6AC6968EC3DC21C3CA4E4F6F7D37A7 /* ECLengthTextConstraint.swift in Sources */,
@@ -3515,19 +3602,24 @@
 				B9E60DFA0FC25FF73D7872DC5AEC1E06 /* ECPageControl.swift in Sources */,
 				D66A80DCE9A9141A3F96A2D5FB028E5B /* ECPageControlStyle.swift in Sources */,
 				547EE3856BC997F6531B7A83DED59406 /* ECParagraphStyle.swift in Sources */,
+				9CDA6B6824AF15C500C4A69D /* ECPresentSegue.Push.swift in Sources */,
 				E598D1D09567D954C437638EB1AA765D /* ECPersonalized.swift in Sources */,
 				158914557596FB4BA51963D3BD7C7BE1 /* ECPicker.swift in Sources */,
 				9C8E40CD24AC739F00853BDD /* ECDataErrorToastPlugin.swift in Sources */,
 				8B62CCD1AC8697E0EE92AF714E4830B4 /* ECPickerView.swift in Sources */,
+				9C8107B624AEE36000C61E30 /* ECPresentAnimation.SlideOut.swift in Sources */,
 				0692969065D30044EAB8AC0C0A871A0C /* ECPrecondition.swift in Sources */,
 				AE6EDC6055C062CDA308BF0DDCA58306 /* ECPresentSegue.swift in Sources */,
 				E860878134164CFDDECFAA20FC1A0F30 /* ECPresentSegueType.swift in Sources */,
 				9C4F7AB024AD6A4600187C9D /* ECDataPagedDecoratorBase.swift in Sources */,
+				9CDA6B6C24AF162000C4A69D /* ECPresentSegue.Replace.swift in Sources */,
 				5CCE9147D9C92AB47EE605FF8908F03C /* ECPropertyWrapper.swift in Sources */,
 				9CF0929024ADAA8200B176F6 /* ECViewDataRefreshDecorator.swift in Sources */,
 				68AAA38850DD01B27614C2136AA5F3FA /* ECProtocolButton.swift in Sources */,
 				2FA1948F4674A0F4F0644372F308D1A2 /* ECRegex.swift in Sources */,
 				4E330C3D658B43432E5BCF972B8E2920 /* ECRejectTypePrecondition.swift in Sources */,
+				9C8107B024AED6E600C61E30 /* ECPresentAnimationType.swift in Sources */,
+				9C8107AD24AEC4D200C61E30 /* ECPopup.swift in Sources */,
 				B33AF1D193EE1EB241F310219D697BF4 /* ECScrollViewStyle.swift in Sources */,
 				C4101E91F03176B07DD2A858AB67CB82 /* ECSetting.swift in Sources */,
 				37B792DB7BBA2B3088E3D53DF48F5F7A /* ECSimpleLocalized.swift in Sources */,
@@ -3547,6 +3639,7 @@
 				E1D80A22E1869C84CAE29F4F5BBE9A55 /* ECTestSettingItem.swift in Sources */,
 				9CEFAD1024AC65010034E156 /* ECDataPluginDecorator.swift in Sources */,
 				C71EB3521F140CF098AC266487AA95FC /* ECTestSettingManager.swift in Sources */,
+				9CDA6B7224AF174A00C4A69D /* ECPresentSegue.Content.swift in Sources */,
 				2E0DCBB26A812D6709CED005D37C3611 /* ECTextConstraint.swift in Sources */,
 				07AC1654DEE4B428500FA3FCBCD43E28 /* ECTextField.swift in Sources */,
 				FEAD3C4E489E9AAA3D7A98FB07C84588 /* ECTextFieldStyle.swift in Sources */,
@@ -3577,7 +3670,6 @@
 				C02F04D256B109BD3C3134F78E70EAAE /* ECViewControllerAccessable.swift in Sources */,
 				823E89B381B327498B50C15A93C4A2B5 /* ECViewControllerKeyboardAdaptPlug.swift in Sources */,
 				FF6E19AF86B2C7824BE82BC8FDC65252 /* ECViewControllerPlug.swift in Sources */,
-				1CC8387674D65952AC44190628335D96 /* ECViewControllerPopuper.swift in Sources */,
 				862A9AB13F6AEA4230B193C55E5840F7 /* ECViewControllerType.swift in Sources */,
 				9C8E40CA24AC739F00853BDD /* ECDataEmptyPlugin.swift in Sources */,
 				5A05BCB59E0DCDDC243DA27A580024C5 /* ECViewLayout.swift in Sources */,

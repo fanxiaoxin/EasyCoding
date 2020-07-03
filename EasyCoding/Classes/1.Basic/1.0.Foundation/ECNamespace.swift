@@ -75,6 +75,10 @@ public struct EC {}
 extension EC {
     public typealias NamespaceDefine = NamespaceWrappable
     public typealias NamespaceImplement = TypeWrapperProtocol
+    ///添加EasyCoding前缀
+    internal static func key(_ key: String) -> String {
+        return "EasyCoding." + key
+    }
 }
 /* 示例
  extension UIColor: Easy.NamespaceDefine {}

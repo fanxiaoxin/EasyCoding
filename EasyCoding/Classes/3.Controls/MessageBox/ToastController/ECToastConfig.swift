@@ -52,5 +52,5 @@ public class ECToastConfig {
 //将相关全局配置汇总起来
 extension ECSetting {
     ///Toast全局配置
-    public var Toast: ECToastConfig { return ECToastConfig.default }
+    public static var Toast: ECToastConfig { return ECToastConfig.default }
 }

@@ -9,12 +9,15 @@
 import Foundation
 
 extension EC.NamespaceImplement where Base: NSObject {
-    public func getAssociated<T>(object key: String) -> T? {
+    public func getAssociatedObject(_ key: String) -> Any? {
         if let idx = UnsafeRawPointer(bitPattern: key.hashValue) {
-            return objc_getAssociatedObject(self.base, idx) as? T
+            return objc_getAssociatedObject(self.base, idx)
         }else{
             return nil
         }
+    }
+    public func getAssociated<T>(object key: String) -> T? {
+        return self.getAssociatedObject(key) as? T
     }
     public func setAssociated<T>(object:T, key: String) {
         if let idx = UnsafeRawPointer(bitPattern: key.hashValue) {
@@ -24,6 +27,11 @@ extension EC.NamespaceImplement where Base: NSObject {
     public func setWeakAssociated<T>(object:T, key: String) {
         if let idx = UnsafeRawPointer(bitPattern: key.hashValue) {
             objc_setAssociatedObject(self.base, idx, object, .OBJC_ASSOCIATION_ASSIGN);
+        }
+    }
+    public func removeAssociated(object key: String) {
+        if let idx = UnsafeRawPointer(bitPattern: key.hashValue) {
+            objc_setAssociatedObject(self.base, idx, nil, .OBJC_ASSOCIATION_ASSIGN);
         }
     }
 }
