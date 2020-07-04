@@ -49,6 +49,51 @@ class DataPluginView: ECPage {
     }
 }
 
+protocol TEST3: ECDataProviderType {
+    var haha: String {get set}
+    func xx()
+}
+extension ECDataProviderDecoratorType where DataProviderType: TEST3 {
+    var haha: String {
+        get {  return self.dataProvider?.haha ?? "" }
+        set { self.dataProvider?.haha = newValue }
+    }
+    func xx() {
+        self.dataProvider?.xx()
+    }
+}
+extension ECDataPluginDecorator : TEST3 where DataProviderType: TEST3 {
+    
+}
+class KK: TEST3, ECDataPagedProviderType {
+    var page: Int = 1
+    
+    func merge(data1: String, data2: String) -> String {
+        return ""
+    }
+    
+    func easyData(completion: @escaping (Result<String, Error>) -> Void) {
+        
+    }
+    
+    typealias DataType = String
+    
+    var haha: String = ""
+    
+    func xx() {
+        
+    }
+    
+    
+}
+func xx<T: TEST3>(_ xx: T) {
+    
+}
+func bb() {
+    xx(KK())
+    xx(ECDataPagedDecorator<KK>())
+    
+}
 extension DataPluginController {
     class Provider: ECDataPagedProviderType {
         var page: Int = 1
