@@ -7,26 +7,6 @@
 
 import UIKit
 
-///分页数据
-public protocol ECDataPagedProviderType : ECDataProviderType {
-    ///首页的值，可用于重置下拉刷新或者判断是否刷新
-    var firstPage: Int { get }
-    ///设置页码
-    var page: Int { get set }
-    ///是否最后一页，若当前为最后一页则没有下拉加载新的页数
-    var isLastPage: Bool { get }
-    ///整合两个数据，用于加载下一页时跟上一页进行合并
-    func merge(data1: DataType, data2: DataType) -> DataType
-}
-extension ECDataPagedProviderType {
-    ///第一页的值，默认为1
-    public var firstPage: Int { return 1 }
-    ///是否第一页，若当前为第1页则说明是刷新数据
-    public var isFirstPage: Bool { return self.page == self.firstPage }
-    ///是否最后一页，若当前为最后一页则没有下拉加载新的页数
-    public var isLastPage: Bool { return false }
-}
-
 ///分页数据装饰器
 open class ECDataPagedDecoratorBase<DataProviderType: ECDataPagedProviderType>: ECDataPluginDecorator<DataProviderType> {
     // MARK: 数据加载操作

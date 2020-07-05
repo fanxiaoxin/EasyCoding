@@ -20,7 +20,7 @@ class DataPluginController: ECViewController<DataPluginView>, UITableViewDataSou
         let provider = Provider()
         self.dataProvider.dataProvider = provider
         self.dataProvider.targetView = self.page.tableView
-        
+
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "来吧", style: .plain, target: self, action: #selector(self.onTest))
     }
     @objc func onTest() {

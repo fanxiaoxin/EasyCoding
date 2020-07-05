@@ -1,10 +1,49 @@
 PODS:
-  - EasyCoding (0.1.0)
+  - Alamofire (4.9.1)
+  - EasyCoding (0.0.2):
+    - EasyCoding/AccessControl (= 0.0.2)
+    - EasyCoding/Api (= 0.0.2)
+    - EasyCoding/Basic (= 0.0.2)
+    - EasyCoding/Controls (= 0.0.2)
+    - EasyCoding/ListLoader (= 0.0.2)
+    - EasyCoding/Personalized (= 0.0.2)
+  - EasyCoding/AccessControl (0.0.2):
+    - EasyCoding/Basic
+  - EasyCoding/Api (0.0.2):
+    - EasyCoding/Basic
+    - HandyJSON (~> 5.0.0)
+    - Moya (~> 13.0.0)
+  - EasyCoding/Basic (0.0.2):
+    - SnapKit (~> 5.0.0)
+  - EasyCoding/Controls (0.0.2):
+    - EasyCoding/AccessControl
+    - JRSwizzle
+    - Kingfisher (~> 5.14.0)
+    - YYKeyboardManager (~> 1.0.0)
+  - EasyCoding/ListLoader (0.0.2):
+    - EasyCoding/Api
+    - MJRefresh (~> 3.4.0)
+  - EasyCoding/Personalized (0.0.2):
+    - EasyCoding/Basic
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
+  - HandyJSON (5.0.1)
+  - JRSwizzle (1.0)
+  - Kingfisher (5.14.0):
+    - Kingfisher/Core (= 5.14.0)
+  - Kingfisher/Core (5.14.0)
+  - MJRefresh (3.4.3)
+  - Moya (13.0.1):
+    - Moya/Core (= 13.0.1)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
+  - Result (4.1.0)
+  - SnapKit (5.0.1)
+  - YYKeyboardManager (1.0.1)
 
 DEPENDENCIES:
   - EasyCoding (from `../`)
@@ -12,16 +51,34 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - FBSnapshotTestCase
+    - HandyJSON
+    - JRSwizzle
+    - Kingfisher
+    - MJRefresh
+    - Moya
+    - Result
+    - SnapKit
+    - YYKeyboardManager
 
 EXTERNAL SOURCES:
   EasyCoding:
     :path: "../"
 
 SPEC CHECKSUMS:
-  EasyCoding: 5cb7e12f91e40344597adf2ba71020486dfa0b04
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  EasyCoding: c9226140cf69eaeb5e01ed5a1b04f96180952bb7
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
+  JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
+  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+  MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  YYKeyboardManager: ff53d2e80d1808567a7f004028bd200d9469a89f
 
 PODFILE CHECKSUM: 28e40c9cced2596fbd9228828fed2be45333f945
 
-COCOAPODS: 1.9.2
+COCOAPODS: 1.9.3
