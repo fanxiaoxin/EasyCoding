@@ -49,7 +49,7 @@ public class haha<DataProviderType: ECDataProviderType, SectionType, ItemType>: 
 }
 
 ///章节数据
-public protocol ECListDataType: ECDataType {
+public protocol ECListDataProviderType: ECDataProviderType {
     associatedtype SectionType
     associatedtype ItemType
     ///汇总对象
@@ -61,7 +61,7 @@ public protocol ECListDataType: ECDataType {
     ///列表数据
     var items: [ItemType]? { get }
 }
-extension ECListDataType {
+extension ECListDataProviderType {
     ///汇总对象
     var sections: [SectionType]? {
         if let section = self.section {
