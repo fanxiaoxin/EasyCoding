@@ -127,3 +127,8 @@ open class ECDataPluginDecorator<DataProviderType: ECDataProviderType>: ECDataPl
 extension ECDataPluginDecorator: ECDataPagedProviderType where DataProviderType: ECDataPagedProviderType {
     
 }
+
+extension ECDataPluginDecorator: ECDataListProviderType where DataProviderType: ECDataListProviderType {
+    public typealias SectionType = DataProviderType.SectionType
+    public typealias ModelType = DataProviderType.ModelType
+}

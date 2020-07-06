@@ -171,7 +171,7 @@ extension EC.NamespaceImplement where Base: UIView {
         }
     }*/
 }
-
+/* 废弃，用StackView代替
 extension EC.NamespaceImplement where Base: UIView {
     func getVisibleConstraints() -> [NSLayoutConstraint]? {
         return self.getAssociated(object: "ecVisibleConstraints")
@@ -348,3 +348,4 @@ extension EC.NamespaceImplement where Base: NSLayoutConstraint {
         self.setAssociated(object: value, key: "ecVisibleConstant")
     }
 }
+*/

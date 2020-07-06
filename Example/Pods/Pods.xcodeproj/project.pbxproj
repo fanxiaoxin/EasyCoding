@@ -284,6 +284,11 @@
 		99C89293F7A21CDC6D6BC43FC4FAD35A /* ECViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9393255A94DADC7F5CCA945C0FBC72 /* ECViewStyle.swift */; };
 		9B0574F5B5A1AABFCFF3E238B0683AB1 /* ECControlTextType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE086541FB1E67C62048EEF19306639C /* ECControlTextType.swift */; };
 		9B644BF6495737D60FD1C0A58EC4F544 /* ECFlowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391D1157BEFC8C2626AA7772DA3A5764 /* ECFlowState.swift */; };
+		9C2C2A8F24B2C9480078A225 /* ECCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C2A8E24B2C9480078A225 /* ECCollectionViewDataSource.swift */; };
+		9C2C2A9124B2C9550078A225 /* ECPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C2A9024B2C9550078A225 /* ECPickerViewDataSource.swift */; };
+		9C2C2A9724B2D5590078A225 /* ECListControlDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C2A9624B2D5590078A225 /* ECListControlDataSource.swift */; };
+		9C2C2A9924B2F2790078A225 /* ECCollectinoViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C2A9824B2F2790078A225 /* ECCollectinoViewStyle.swift */; };
+		9C51FA3624B2BBC2007540CA /* ECTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51FA3524B2BBC2007540CA /* ECTableViewDataSource.swift */; };
 		9C79112BC15181F0774DF188B3F4BDD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD765A2062F093EA3F393D9FD2FB280 /* Foundation.framework */; };
 		9D65089019D558E5A9661F2DCAD20313 /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87362F5B0138E9BD366742AF03D483 /* SwiftSupport.swift */; };
 		9E0A05882BDA16EF7B31F2E7CC5A4FA0 /* ECTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEF649DD6E2C0486ADD3B67F147694 /* ECTableViewExtension.swift */; };
@@ -368,7 +373,6 @@
 		CAA583CD7089B1270533884BC02FFA79 /* MJRefreshAutoGifFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 616C17CBE589AE32471C8A784D154A54 /* MJRefreshAutoGifFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB40D39B24B1788000D69EF9 /* ECDataPagedProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40D39A24B1788000D69EF9 /* ECDataPagedProviderType.swift */; };
 		CB40D39D24B178CE00D69EF9 /* ECDataListProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40D39C24B178CE00D69EF9 /* ECDataListProviderType.swift */; };
-		CB40D3A224B17B9B00D69EF9 /* ECTabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40D3A124B17B9B00D69EF9 /* ECTabelView.swift */; };
 		CBC084099EF5FB6F5D8901C3711AC5EA /* ECClampingProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3D7F3EB69EEE3EEC9AD91DEC91AA9B /* ECClampingProperty.swift */; };
 		CD706B22A22A0EC2C0165B6F717F5496 /* ECOptionsKeyboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B519AAB847C20BA90CB907047C17D /* ECOptionsKeyboardType.swift */; };
 		CE1DE334D672BD985A99664452CA0DC0 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B1588F24B91A837D08EC662B6471AA /* Kingfisher.framework */; };
@@ -935,6 +939,11 @@
 		9AA02904DAFE1E3B4F0FA56457E90485 /* KingfisherOptionsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherOptionsInfo.swift; path = Sources/General/KingfisherOptionsInfo.swift; sourceTree = "<group>"; };
 		9B0DE041A45F012F45CFB276571FDD68 /* Pods-EasyCoding_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EasyCoding_Tests-umbrella.h"; sourceTree = "<group>"; };
 		9C16A5934B2AC7E494B6B38F64DA0D1F /* Kingfisher-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Kingfisher-Info.plist"; sourceTree = "<group>"; };
+		9C2C2A8E24B2C9480078A225 /* ECCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		9C2C2A9024B2C9550078A225 /* ECPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPickerViewDataSource.swift; sourceTree = "<group>"; };
+		9C2C2A9624B2D5590078A225 /* ECListControlDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECListControlDataSource.swift; sourceTree = "<group>"; };
+		9C2C2A9824B2F2790078A225 /* ECCollectinoViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECCollectinoViewStyle.swift; sourceTree = "<group>"; };
+		9C51FA3524B2BBC2007540CA /* ECTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECTableViewDataSource.swift; sourceTree = "<group>"; };
 		9CBC5BAA8A34F718BE1D773B802D776F /* ECDatePickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDatePickerView.swift; sourceTree = "<group>"; };
 		9D5230DCD4FDC74E5FC77A68A8E66FE7 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtensionHelpers.swift; path = Sources/Utility/ExtensionHelpers.swift; sourceTree = "<group>"; };
 		9D76FF1FE12444158859C95DF0FF874C /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateHeader.h; path = MJRefresh/Custom/Header/MJRefreshStateHeader.h; sourceTree = "<group>"; };
@@ -1036,7 +1045,6 @@
 		CB3525C8D2B1AEC9F81A26525B5C997A /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackNormalFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.m; sourceTree = "<group>"; };
 		CB40D39A24B1788000D69EF9 /* ECDataPagedProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataPagedProviderType.swift; sourceTree = "<group>"; };
 		CB40D39C24B178CE00D69EF9 /* ECDataListProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataListProviderType.swift; sourceTree = "<group>"; };
-		CB40D3A124B17B9B00D69EF9 /* ECTabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECTabelView.swift; sourceTree = "<group>"; };
 		CB426434CF1F33BAAE799B5363CF58F0 /* ECTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECTextField.swift; sourceTree = "<group>"; };
 		CB762E7381499759C57B819197556283 /* ECScrollViewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECScrollViewStyle.swift; sourceTree = "<group>"; };
 		CBBDF4717B046897DDED22FFDE289C6B /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Sources/Networking/SessionDelegate.swift; sourceTree = "<group>"; };
@@ -1701,7 +1709,6 @@
 		494B97C0C7BAB79549826CD913DADF4F /* 3.Controls */ = {
 			isa = PBXGroup;
 			children = (
-				CB40D39E24B17B5400D69EF9 /* TableView */,
 				75D6E5BADF4CD637591C195A48367D6D /* Button */,
 				D5E6E2D65C15F36139961649408CFDB2 /* CollectionLayout */,
 				B8CDC24D2857F6521041C92428516860 /* GesturePasswordView */,
@@ -2112,6 +2119,17 @@
 			path = Picker;
 			sourceTree = "<group>";
 		};
+		9C51FA3424B2BB98007540CA /* ListControlDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				9C2C2A9624B2D5590078A225 /* ECListControlDataSource.swift */,
+				9C51FA3524B2BBC2007540CA /* ECTableViewDataSource.swift */,
+				9C2C2A8E24B2C9480078A225 /* ECCollectionViewDataSource.swift */,
+				9C2C2A9024B2C9550078A225 /* ECPickerViewDataSource.swift */,
+			);
+			path = ListControlDataSource;
+			sourceTree = "<group>";
+		};
 		9E1D2125CB6293060250E09C86FE076F /* PresentAnimation */ = {
 			isa = PBXGroup;
 			children = (
@@ -2296,14 +2314,6 @@
 				3B7221A3466A975F029110A6D873948D /* ECDataPluginDecorator.swift */,
 			);
 			path = Decorators;
-			sourceTree = "<group>";
-		};
-		CB40D39E24B17B5400D69EF9 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				CB40D3A124B17B9B00D69EF9 /* ECTabelView.swift */,
-			);
-			path = TableView;
 			sourceTree = "<group>";
 		};
 		CD7C897CD7DF63FD57A392D222726AF8 /* OptionsTextConstraint */ = {
@@ -2492,6 +2502,7 @@
 				673CC466780A9556199D2ECB7DFB8529 /* ECTextFieldStyle.swift */,
 				04A1422E6F7934531195757001D30487 /* ECTextViewStyle.swift */,
 				8A9393255A94DADC7F5CCA945C0FBC72 /* ECViewStyle.swift */,
+				9C2C2A9824B2F2790078A225 /* ECCollectinoViewStyle.swift */,
 			);
 			path = StyleSettings;
 			sourceTree = "<group>";
@@ -2703,6 +2714,7 @@
 		FF44CA39D615C6A3311B5A52DF788B3A /* 4.plugs */ = {
 			isa = PBXGroup;
 			children = (
+				9C51FA3424B2BB98007540CA /* ListControlDataSource */,
 				E57A2E32CFF765129895CDE8E41B0EA8 /* ApiListLoader */,
 				8766272D3712F73D70120A6D2706C4DA /* DataProvider */,
 				2440F20F800FE2DAEFC159893EE69257 /* TextFieldConstraint */,
@@ -3632,7 +3644,6 @@
 				144353FFBEE2A83B5B38A416C5D76D39 /* ECEventTriggerable.swift in Sources */,
 				F6F32E52D7F0369AEA6D3088BAA0E69B /* ECEventType.swift in Sources */,
 				314A5F9BC027C4EA4929E5C131DDF604 /* ECExpirableProperty.swift in Sources */,
-				CB40D3A224B17B9B00D69EF9 /* ECTabelView.swift in Sources */,
 				DE4E17D89361F961A5E682148EE9755E /* ECExpressibleLiteralExtension.swift in Sources */,
 				F95FFA6F8FD35A4E718A93704BB50872 /* ECExtensionHeader.swift in Sources */,
 				5BFB71BF8BB30EF2F22AA906AEE80393 /* ECFlow.swift in Sources */,
@@ -3644,6 +3655,7 @@
 				EC4D0EC6C09137A18BA1D7A43B817A1A /* ECGesturePasswordView.swift in Sources */,
 				9E822591D94C6AF338A24FD68EAFEC18 /* ECHandyJSONExtension.swift in Sources */,
 				8462B36F1675062779F163680741CBA8 /* ECImageExtension.swift in Sources */,
+				9C2C2A9724B2D5590078A225 /* ECListControlDataSource.swift in Sources */,
 				C1646F7CC0DA38086D56B1883A05E1AC /* ECImagePicker.swift in Sources */,
 				0A0DEB2D7A65C03225B1529357E4A8F7 /* ECImageViewStyle.swift in Sources */,
 				15EB9E485FCEFFBC39F92DAED0964881 /* ECKingfisherStyle.swift in Sources */,
@@ -3654,6 +3666,7 @@
 				40948E800058099859A0753419C95F9C /* ECLengthTextConstraint.swift in Sources */,
 				5A3CE9B22D3E26ED076BFC9C23282DB9 /* ECLoadingView.swift in Sources */,
 				7E8B439335B98F6354F9E0D43A6E027F /* ECLocalized.swift in Sources */,
+				9C2C2A8F24B2C9480078A225 /* ECCollectionViewDataSource.swift in Sources */,
 				BE20DE76CCF2BDE3FF44F534380FA816 /* ECMessageBox.swift in Sources */,
 				89158AA3D9D51E81FBB2755D3AFB5E7D /* ECMJRefreshStyle.swift in Sources */,
 				BC7D65542FC7AC0CB9B5091FB941AE72 /* ECNamespace.swift in Sources */,
@@ -3701,6 +3714,7 @@
 				572F36EE9F54FC0CE84A512F2C0937C9 /* ECSetting.swift in Sources */,
 				AA9CAAB36B51A88D0602FE20FB8D1A3C /* ECSimpleLocalized.swift in Sources */,
 				AF7075C51198CD6771035206891AE464 /* ECSimplePrecondition.swift in Sources */,
+				9C2C2A9924B2F2790078A225 /* ECCollectinoViewStyle.swift in Sources */,
 				80BC7FE7229DC7ECB987F10BFEF0BE32 /* ECSliderStyle.swift in Sources */,
 				D15A0C2A066D24F7F620EA58532ED1B5 /* ECSlideshow.swift in Sources */,
 				F22F49FBD1055F848B90EB28D84822A2 /* ECStackViewStyle.swift in Sources */,
@@ -3717,6 +3731,7 @@
 				C5E3285821FE77768879258698CEB37B /* ECTestSettingManager.swift in Sources */,
 				1349EC245B49DAB910556B81F588B318 /* ECTextConstraint.swift in Sources */,
 				E6925369B409D533468DCF67C2AE28B3 /* ECTextField.swift in Sources */,
+				9C2C2A9124B2C9550078A225 /* ECPickerViewDataSource.swift in Sources */,
 				53F5A88160CA64819DE561189AACA4F5 /* ECTextFieldStyle.swift in Sources */,
 				8AD93C1480486451BAC18E1D460BB505 /* ECTextView.swift in Sources */,
 				03F628FFFB118D985E8216F6AC7936F1 /* ECTextViewStyle.swift in Sources */,
@@ -3741,6 +3756,7 @@
 				12A25970D704F5E8CC66764A3EAF22A0 /* ECViewDataRefreshDecorator.swift in Sources */,
 				10675AA3B837292922E897B0AF450830 /* ECViewExtension.swift in Sources */,
 				7150E861AD13154ED15E574FB2A92BD1 /* ECViewLayout.swift in Sources */,
+				9C51FA3624B2BBC2007540CA /* ECTableViewDataSource.swift in Sources */,
 				99C89293F7A21CDC6D6BC43FC4FAD35A /* ECViewStyle.swift in Sources */,
 				F006B82F042634F601EA6F220094936C /* ECWeaker.swift in Sources */,
 				6B0C43ADB32348EB75DBAA38254A114A /* ECWindowExtension.swift in Sources */,

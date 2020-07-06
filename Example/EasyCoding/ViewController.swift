@@ -20,7 +20,7 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 7
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
@@ -29,6 +29,9 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         case 1: cell.textLabel?.text = "Popup"
         case 2: cell.textLabel?.text = "Alert"
         case 3: cell.textLabel?.text = "呈现动画"
+        case 4: cell.textLabel?.text = "TableView数据源"
+        case 5: cell.textLabel?.text = "CollectionView数据源"
+        case 6: cell.textLabel?.text = "PickerView数据源"
         default: break
         }
         return cell
@@ -44,6 +47,9 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
             }
         case 3:
             self.page.animationView.easy.slideOut(direction: .right)
+        case 4: self.load(TableViewDataSourceController())
+        case 5: self.load(CollectionViewDataSourceController())
+        case 6: self.load(PickerViewDataSourceController())
         default: break
         }
     }

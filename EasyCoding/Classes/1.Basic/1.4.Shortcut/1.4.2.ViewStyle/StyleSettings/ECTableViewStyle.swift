@@ -22,6 +22,20 @@ extension ECStyleSetting where TargetType: UITableView {
             target.rowHeight = UITableView.automaticDimension
         })
     }
+    ///Section头部高
+    public static func sectionHeader(height:CGFloat) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.sectionHeaderHeight = height
+            target.estimatedSectionHeaderHeight = height
+        })
+    }
+    ///Section底部高
+    public static func sectionFooter(height:CGFloat) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.sectionFooterHeight = height
+            target.estimatedSectionFooterHeight = height
+        })
+    }
     ///分隔线样式
     public static func separator(_ style:UITableViewCell.SeparatorStyle, color:UIColor? = nil, insets: UIEdgeInsets? = nil) -> ECStyleSetting<TargetType> {
         return .init(action: { (target) in
