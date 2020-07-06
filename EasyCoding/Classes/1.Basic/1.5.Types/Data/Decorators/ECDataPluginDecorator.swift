@@ -132,3 +132,4 @@ extension ECDataPluginDecorator: ECDataListProviderType where DataProviderType: 
     public typealias SectionType = DataProviderType.SectionType
     public typealias ModelType = DataProviderType.ModelType
 }
+

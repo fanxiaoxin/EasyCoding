@@ -1,5 +1,5 @@
 //
-//  ECPickerViewDataSource.swift
+//  ECPickerViewMultiDataSource.swift
 //  EasyCoding
 //
 //  Created by JY_NEW on 2020/7/6.
@@ -7,54 +7,41 @@
 
 import UIKit
 
-open class ECPickerViewCell<ModelType>: UIView {
-    public let textLabel = UILabel()
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.load()
-    }
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.load()
-    }
-    ///初始化方法
-    open func load() {
-        if ModelType.self == String.self {
-            self.easy.add(textLabel.easy(.font(ECSetting.Font.normal), .color(ECSetting.Color.text), .center), layout: .margin)
-        }
-    }
-    ///加载模型数据
-    open func load(model: ModelType, component: Int, row: Int) {
-        if let text = model as? String {
-            self.textLabel.text = text
-        }
-    }
-}
-open class ECPickerViewDataSource<DataProviderType: ECDataListProviderType>: ECListControlDataSource<DataProviderType>, UIPickerViewDataSource, UIPickerViewDelegate {
-    ///当前操作的tableView
-    open weak var pickerView: UIPickerView? {
+class ECPickerViewMultiDataSource<DataProviderType: ECDataListChainProviderType>: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
+    ///总列数
+    open var numberOfComponents: Int = 0
+    ///全部数据
+    open var datas: [[Any]]?
+      ///数据源
+    open var dataProvider: DataProviderType? {
         didSet {
-            self.pickerView?.dataSource = self
-            self.pickerView?.delegate = self
+            self.numberOfComponents = self.dataProvider?.numberOfDataProviders ?? 0
         }
     }
-    ///设置Cell的类型
-    open var viewForCell: () -> ECPickerViewCell<ModelType> = { ECPickerViewCell<ModelType>() }
+    ///设置Cell的类型，需返回ECPickerViewCell
+    open var viewForCell: () -> UIView = { ECPickerViewCell<DataProviderType.ModelType>() }
     ///行宽比例，不能比数据源的值小
     open var cellWidthProportions: [CGFloat]?
     ///行高
     open var cellHeight: CGFloat = 32
     open var actionForSelect: ((ModelType,Int, Int) -> Void)?
-   
-    open override func refreshControl() {
-        self.pickerView?.reloadAllComponents()
+    
+    /// 刷新数据，请求数据并刷新显示
+    open func reloadData() {
+        self.dataProvider?.easyDataWithoutError { [weak self] (data) in
+            if let s = self, let provider = s.dataProvider {
+                s.sections = provider.sections(for: data)
+                s.datas = provider.lists(for: data)
+                s.indexTitles = provider.indexTitles(for: data)
+                s.refreshControl()
+            }
+        }
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return self.numberOfComponents
     }
     
-    open func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return self.datas?.count ?? 0
-    }
-    
-    open func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.datas?[component].count ?? 0
     }
     
@@ -98,4 +85,5 @@ open class ECPickerViewDataSource<DataProviderType: ECDataListProviderType>: ECL
             self.actionForSelect?(model, component, row)
         }
     }
+
 }

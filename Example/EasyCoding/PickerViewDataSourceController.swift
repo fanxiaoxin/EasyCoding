@@ -14,7 +14,7 @@ class PickerViewDataSourceController: ECViewController<PickerViewDataSourceView>
     override func viewDidLoad() {
         super.viewDidLoad()
         let provider = ECViewDataDecorator<Provider>()
-        provider.targetView = self.page.pickerView
+        provider.targetView = self.page.stateView
         provider.dataProvider = Provider()
         self.dataSource.dataProvider = provider
         self.dataSource.pickerView = self.page.pickerView
@@ -22,14 +22,20 @@ class PickerViewDataSourceController: ECViewController<PickerViewDataSourceView>
         self.dataSource.actionForSelect = { model, _ , _ in
             print(model)
         }
-        
+        provider.plugins.append(.result(success: { [weak self] (_) in
+            self?.page.stateView.isHidden = true
+        }, failure: {  [weak self] (_) in
+            self?.page.stateView.isHidden = false
+        }))
         self.dataSource.reloadData()
     }
 }
 class PickerViewDataSourceView: ECPage {
     let pickerView = UIPickerView()
+    let stateView = UIView()
     override func load() {
         self.easy.style(.bg(.yellow)).add(pickerView.easy(.bg(.green)), layout: .top, .marginX)
+            .next(stateView.easy(.bg(.white)), layout: .margin)
     }
 }
 extension PickerViewDataSourceController {
@@ -41,6 +47,7 @@ extension PickerViewDataSourceController {
         func easyData(completion: @escaping (Result<[String], Error>) -> Void) {
             DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) {
                 completion(.success(["我也A","我也B","我也C","我也D"]))
+//                completion(.failure(ECDataError<DataType>("oh no")))
             }
         }
         
