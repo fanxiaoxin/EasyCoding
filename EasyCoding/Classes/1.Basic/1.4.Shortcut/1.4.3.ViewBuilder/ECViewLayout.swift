@@ -241,15 +241,21 @@ extension EC.NamespaceImplement where Base: UIView {
         return self
     }
 }
-
+/*
 extension EC.NamespaceImplement where Base == [UIView] {
     @discardableResult
     public func layout(_ layout:ECViewLayout...) -> Self {
         layout.apply(to: self.base)
         return self
     }
+}*/
+extension EC.NamespaceArrayImplement where Element: UIView {
+    @discardableResult
+    public func layout(_ layout:ECViewLayout...) -> Self {
+        layout.apply(to: self.base)
+        return self
+    }
 }
-
 ///快捷方式
 extension ECViewLayout {
     ///相对高度

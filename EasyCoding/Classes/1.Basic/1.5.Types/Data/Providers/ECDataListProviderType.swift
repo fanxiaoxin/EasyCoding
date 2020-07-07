@@ -82,9 +82,15 @@ extension ECDataListProviderType where Self: ECDataProviderDecoratorType, DataPr
     }
 }
 
-extension ECDataListProviderType where DataType == Array<ModelType> {
+extension ECDataListProviderType where DataType == [ModelType] {
     ///列表数据
     public func list(for data: DataType) -> [ModelType] {
+        return data
+    }
+}
+extension ECDataListProviderType where DataType == [[ModelType]] {
+    ///列表数据
+    public func lists(for data: DataType) -> [[ModelType]] {
         return data
     }
 }

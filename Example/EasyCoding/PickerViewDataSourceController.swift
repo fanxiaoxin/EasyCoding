@@ -34,7 +34,7 @@ class PickerViewDataSourceView: ECPage {
     let pickerView = UIPickerView()
     let stateView = UIView()
     override func load() {
-        self.easy.style(.bg(.yellow)).add(pickerView.easy(.bg(.green)), layout: .top, .marginX)
+        self.easy.style(.bg(.white)).add(pickerView, layout: .top, .marginX)
             .next(stateView.easy(.bg(.white)), layout: .margin)
     }
 }

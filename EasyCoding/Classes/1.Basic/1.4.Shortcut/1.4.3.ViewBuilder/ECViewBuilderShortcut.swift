@@ -11,12 +11,12 @@ public protocol ECBuildable {
 }
 extension UIView: ECBuildable{}
 extension ECBuildable where Self: UIView {
-    public static func build(_ builder:(NamespaceWrapper<Self>) -> Void) -> Self {
+    public static func build(_ builder:(ECNamespaceWrapper<Self>) -> Void) -> Self {
         let b = Self()
         builder(b.easy)
         return b
     }
-    public func build(_ builder:(NamespaceWrapper<Self>) -> Void) -> Self {
+    public func build(_ builder:(ECNamespaceWrapper<Self>) -> Void) -> Self {
         builder(self.easy)
         return self
     }
@@ -24,7 +24,7 @@ extension ECBuildable where Self: UIView {
 
 extension Array where Element: UIView {
     ///重复生成类似视图
-    public static func `repeat`<ParamsType>(_ parameters: [ParamsType], builder: (NamespaceWrapper<Element>,ParamsType) -> Void) -> [Element] {
+    public static func `repeat`<ParamsType>(_ parameters: [ParamsType], builder: (ECNamespaceWrapper<Element>,ParamsType) -> Void) -> [Element] {
         return Element.easy.repeat(parameters, builder: builder)
     }
 }
@@ -69,7 +69,7 @@ extension ECBuildable where Self: UIView {
 extension EC.NamespaceImplement where Base: UIView {
     ///添加ScrollView，返回ScrollView的内容页
     @discardableResult
-    public func scroll(_ scrollView: UIScrollView? = nil, contentView: UIView? = nil, orientation:ECOrientation = .portrait, layout:[ECViewLayout] = [], style: ECStyleSetting<UIScrollView>...) -> NamespaceWrapper<UIView> {
+    public func scroll(_ scrollView: UIScrollView? = nil, contentView: UIView? = nil, orientation:ECOrientation = .portrait, layout:[ECViewLayout] = [], style: ECStyleSetting<UIScrollView>...) -> ECNamespaceWrapper<UIView> {
         let scroll = scrollView ?? UIScrollView()
         style.forEach({$0.action(scroll)})
         let content = contentView ?? UIView()

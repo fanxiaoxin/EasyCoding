@@ -7,47 +7,175 @@
 
 import UIKit
 
-class ECPickerViewMultiDataSource<DataProviderType: ECDataListChainProviderType>: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
-    ///总列数
-    open var numberOfComponents: Int = 0
-    ///全部数据
-    open var datas: [[Any]]?
-      ///数据源
-    open var dataProvider: DataProviderType? {
+open class ECPickerViewMultiDataSourceBase<FirstType: ECDataListProviderType>: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
+    ///当前操作的tableView
+    open weak var pickerView: UIPickerView? {
         didSet {
-            self.numberOfComponents = self.dataProvider?.numberOfDataProviders ?? 0
+            self.pickerView?.dataSource = self
+            self.pickerView?.delegate = self
         }
     }
+    ///总列数
+    open var numberOfComponents: Int {
+        return 1
+    }
+    ///全部数据
+    open var datas: [[Any]]?
+    
+    ///数据源
+    open var firstDataProvider: FirstType?
+    ///数据源请求前设置参数
+    open var prepareForFirstData: ((FirstType) -> Void)?
     ///设置Cell的类型，需返回ECPickerViewCell
-    open var viewForCell: () -> UIView = { ECPickerViewCell<DataProviderType.ModelType>() }
+    open var viewForFirstCell: () -> ECPickerViewCell<FirstType.ModelType> = { ECPickerViewCell<FirstType.ModelType>() }
+    ///选择了第一项
+    open var actionForFirstSelect: ((FirstType.ModelType, Int) -> Void)?
+    
+    ///获取选中的数据
+    open var selectedModels:[Any]? {
+        if let datas = self.datas, let picker = self.pickerView {
+            var models:[Any] = []
+            for i in 0..<datas.count {
+                models.append(datas[i][picker.selectedRow(inComponent: i)])
+            }
+            return models
+        }
+        return nil
+    }
+    ///获取选中的数据
+    open var selectedFirstModel:FirstType.ModelType? {
+        if let datas = self.datas, let picker = self.pickerView, datas.count > 0 {
+            return datas[0][picker.selectedRow(inComponent: 0)] as? FirstType.ModelType
+        }
+        return nil
+    }
+    ///显示加载中视图
+    open var viewForLoading: () -> UIView = {
+        let view = UIActivityIndicatorView()
+        view.startAnimating()
+        return view
+    }
     ///行宽比例，不能比数据源的值小
     open var cellWidthProportions: [CGFloat]?
     ///行高
     open var cellHeight: CGFloat = 32
-    open var actionForSelect: ((ModelType,Int, Int) -> Void)?
     
+    ///将多个数组合并成一个
+    public func merge<Element>(lists: [[Element]]) -> [Element] {
+        var result: [Element] = []
+        for list in lists {
+            result.append(contentsOf: list)
+        }
+        return result
+    }
+    ///只允许同时只有一个数据在刷新
+    private var _loadingFlag = 0
+    public func loadingFlag() -> Int {
+        self._loadingFlag += 1
+        return self._loadingFlag
+    }
     /// 刷新数据，请求数据并刷新显示
     open func reloadData() {
-        self.dataProvider?.easyDataWithoutError { [weak self] (data) in
-            if let s = self, let provider = s.dataProvider {
-                s.sections = provider.sections(for: data)
-                s.datas = provider.lists(for: data)
-                s.indexTitles = provider.indexTitles(for: data)
-                s.refreshControl()
+        //显示loading
+        self.datas = nil
+        self.pickerView?.reloadAllComponents()
+        if let provider = self.firstDataProvider {
+            self.prepareForFirstData?(provider)
+            let flag = self.loadingFlag()
+            provider.easyDataWithoutError { [weak self] (data) in
+                if let s = self, let provider = s.firstDataProvider, s._loadingFlag == flag {
+                    let list = s.merge(lists: provider.lists(for: data))
+                    s.datas = [list]
+                    s.pickerView?.reloadAllComponents()
+                    if let first = list.first {
+                        s.loadComponent(model: first, index: 1)
+                    }
+                }
             }
         }
     }
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    open func setDatas(_ datas: [Any], index: Int) {
+        if let allDatas = self.datas {
+            if allDatas.count <= index {
+                if allDatas.count == index {
+                    self.datas?.append(datas)
+                }
+            }else{
+                self.datas?[index] = datas
+            }
+        }else{
+            if index == 0 {
+                self.datas = [datas]
+            }
+        }
+    }
+    
+    /// 加载数据完成
+    /// - Parameters:
+    ///   - datas: 数据
+    ///   - index: 列数
+    ///   - loadingFlag: 必须在请求数据前获取，在请求结束后传入
+    open func loadComponentCompleted(_ datas: [Any], index: Int, loadingFlag: Int) {
+        if self._loadingFlag == loadingFlag {
+            self.setDatas(datas, index: index)
+            self.pickerView?.reloadComponent(index)
+            if let first = datas.first {
+                self.loadComponent(model: first, index: index + 1)
+            }
+        }
+    }
+    ///子类重载
+    open func loadComponent(model: Any, index: Int) {
+        if index >= self.numberOfComponents {
+            return
+        }
+        if index < self.numberOfComponents {
+            ///加载前把数据清除显示loading
+            while self.datas?.count ?? 0 > index {
+                self.datas?.removeLast()
+            }
+            for i in index..<self.numberOfComponents {
+                self.pickerView?.reloadComponent(i)
+            }
+        }
+    }
+    ///子类重载
+    open func viewForCell(component: Int, reusing view: UIView?) -> UIView {
+        if component == 0 {
+            return (view as? ECPickerViewCell<FirstType.ModelType>) ?? self.viewForFirstCell()
+        }
+        return UIView()
+    }
+    ///加载模型数据
+    open func loadCell(_ cell: UIView , model: Any, component: Int, row: Int) {
+        if component == 0 {
+            if let view = cell as? ECPickerViewCell<FirstType.ModelType>, let m = model as? FirstType.ModelType {
+                view.load(model: m, component: component, row: row)
+            }
+        }
+    }
+    ///选则了某一项
+    open func select(model: Any, component: Int, row: Int) {
+        if component == 0, let m = model as? FirstType.ModelType {
+            self.actionForFirstSelect?(m, row)
+        }
+    }
+    open func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return self.numberOfComponents
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.datas?[component].count ?? 0
+    open func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if let datas = self.datas {
+            if datas.count > component {
+                return datas[component].count
+            }
+        }
+        return 1
     }
     
     open func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         let width = pickerView.bounds.size.width
-        let count = self.datas?.count ?? 1
+        let count = self.numberOfComponents
         if let widths = self.cellWidthProportions, count > 1 {
             var all: CGFloat = 0
             for i in 0..<count {
@@ -67,23 +195,231 @@ class ECPickerViewMultiDataSource<DataProviderType: ECDataListChainProviderType>
         return self.cellHeight
     }
     open func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        if let model = self.datas?[component][row] {
-            let cell: ECPickerViewCell<ModelType>
-            if let c = view as? ECPickerViewCell<ModelType> {
-                cell = c
-            }else{
-                cell = self.viewForCell()
+        if let datas = self.datas {
+            if datas.count > component {
+                let model = datas[component][row]
+                let cell = self.viewForCell(component: component, reusing: view)
+                self.loadCell(cell, model: model, component: component, row: row)
+                return cell
             }
-            cell.load(model: model, component: component, row: row)
-            return cell
         }
-        return UIView()
+        return self.viewForLoading()
     }
     
     open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if let model = self.datas?[component][row] {
-            self.actionForSelect?(model, component, row)
+        if let datas = self.datas {
+            if datas.count > component {
+                let model = datas[component][row]
+                self.select(model: model, component: component, row: row)
+                if component < self.numberOfComponents - 1 {
+                    self.loadComponent(model: model, index: component + 1)
+                }
+            }
         }
     }
+    
+}
+///两个数据源
+open class ECPickerViewDataSource2<FirstType: ECDataListProviderType, SecondType: ECDataListProviderType>: ECPickerViewMultiDataSourceBase<FirstType> {
+    open override var numberOfComponents: Int {
+        return 2
+    }
+    ///数据源
+    open var secondDataProvider: SecondType?
+    ///数据源请求前设置参数
+    open var prepareForSecondData: ((FirstType.ModelType, SecondType) -> Void)?
+    ///设置Cell的类型，需返回ECPickerViewCell
+    open var viewForSecondCell: () -> ECPickerViewCell<SecondType.ModelType> = { ECPickerViewCell<SecondType.ModelType>() }
+    ///选择了第一项
+    open var actionForSecondSelect: ((SecondType.ModelType, Int) -> Void)?
+    ///获取选中的数据
+    open var selectedSecondModel:SecondType.ModelType? {
+        if let datas = self.datas, let picker = self.pickerView, datas.count > 1 {
+            return datas[1][picker.selectedRow(inComponent: 1)] as? SecondType.ModelType
+        }
+        return nil
+    }
+    ///子类重载
+    open override func loadComponent(model: Any, index: Int) {
+        super.loadComponent(model: model, index: index)
+        if index == 1, let provider = self.secondDataProvider {
+            self.prepareForSecondData?(model as! FirstType.ModelType, provider)
+            let flag = self.loadingFlag()
+            provider.easyDataWithoutError { [weak self] (data) in
+                if let s = self, let provider = s.secondDataProvider {
+                    let list = s.merge(lists: provider.lists(for: data))
+                    s.loadComponentCompleted(list, index: 1, loadingFlag: flag)
+                }
+            }
+        }
+    }
+    ///子类重载
+    open override func viewForCell(component: Int, reusing view: UIView?) -> UIView {
+        if component == 1 {
+            return (view as? ECPickerViewCell<SecondType.ModelType>) ?? self.viewForSecondCell()
+        }
+        return super.viewForCell(component: component, reusing: view)
+    }
+    ///加载模型数据
+    open override func loadCell(_ cell: UIView , model: Any, component: Int, row: Int) {
+        super.loadCell(cell, model: model, component: component, row: row)
+        if component == 1 {
+            if let view = cell as? ECPickerViewCell<SecondType.ModelType>, let m = model as? SecondType.ModelType {
+                view.load(model: m, component: component, row: row)
+            }
+        }
+    }
+    ///选则了某一项
+    open override func select(model: Any, component: Int, row: Int) {
+        super.select(model: model, component: component, row: row)
+        if component == 1, let m = model as? SecondType.ModelType {
+            self.actionForSecondSelect?(m, row)
+        }
+    }
+}
+///三个数据源
+open class ECPickerViewDataSource3<FirstType: ECDataListProviderType, SecondType: ECDataListProviderType, ThirdType: ECDataListProviderType>: ECPickerViewDataSource2<FirstType, SecondType> {
+    open override var numberOfComponents: Int {
+        return 3
+    }
+    ///数据源
+    open var thirdDataProvider: ThirdType?
+    ///数据源请求前设置参数
+    open var prepareForThirdData: ((SecondType.ModelType, ThirdType) -> Void)?
+    ///设置Cell的类型，需返回ECPickerViewCell
+    open var viewForThirdCell: () -> ECPickerViewCell<ThirdType.ModelType> = { ECPickerViewCell<ThirdType.ModelType>() }
+    ///选择了第一项
+    open var actionForThirdSelect: ((ThirdType.ModelType, Int) -> Void)?
+    ///获取选中的数据
+    open var selectedThirdModel:ThirdType.ModelType? {
+        if let datas = self.datas, let picker = self.pickerView, datas.count > 2 {
+            return datas[2][picker.selectedRow(inComponent: 2)] as? ThirdType.ModelType
+        }
+        return nil
+    }
+    ///子类重载
+    open override func loadComponent(model: Any, index: Int) {
+        super.loadComponent(model: model, index: index)
+        if index == 2, let provider = self.thirdDataProvider {
+            self.prepareForThirdData?(model as! SecondType.ModelType, provider)
+            let flag = self.loadingFlag()
+            provider.easyDataWithoutError { [weak self] (data) in
+                if let s = self, let provider = s.thirdDataProvider {
+                    let list = s.merge(lists: provider.lists(for: data))
+                    s.loadComponentCompleted(list, index: 2, loadingFlag: flag)
+                }
+            }
+        }
+    }
+    ///子类重载
+    open override func viewForCell(component: Int, reusing view: UIView?) -> UIView {
+        if component == 2 {
+            return (view as? ECPickerViewCell<ThirdType.ModelType>) ?? self.viewForThirdCell()
+        }
+        return super.viewForCell(component: component, reusing: view)
+    }
+    ///加载模型数据
+    open override func loadCell(_ cell: UIView , model: Any, component: Int, row: Int) {
+        super.loadCell(cell, model: model, component: component, row: row)
+        if component == 2 {
+            if let view = cell as? ECPickerViewCell<ThirdType.ModelType>, let m = model as? ThirdType.ModelType {
+                view.load(model: m, component: component, row: row)
+            }
+        }
+    }
+    ///选则了某一项
+    open override func select(model: Any, component: Int, row: Int) {
+        super.select(model: model, component: component, row: row)
+        if component == 2, let m = model as? ThirdType.ModelType {
+            self.actionForThirdSelect?(m, row)
+        }
+    }
+}
+///四个数据源
+open class ECPickerViewDataSource4<FirstType: ECDataListProviderType, SecondType: ECDataListProviderType, ThirdType: ECDataListProviderType, FourthType: ECDataListProviderType>: ECPickerViewDataSource3<FirstType, SecondType, ThirdType> {
+    open override var numberOfComponents: Int {
+        return 4
+    }
+    ///数据源
+    open var fourthDataProvider: FourthType?
+    ///数据源请求前设置参数
+    open var prepareForFourthData: ((ThirdType.ModelType, FourthType) -> Void)?
+    ///设置Cell的类型，需返回ECPickerViewCell
+    open var viewForFourthCell: () -> ECPickerViewCell<FourthType.ModelType> = { ECPickerViewCell<FourthType.ModelType>() }
+    ///选择了第一项
+    open var actionForFourthSelect: ((FourthType.ModelType, Int) -> Void)?
+    ///获取选中的数据
+    open var selectedFourthModel: FourthType.ModelType? {
+        if let datas = self.datas, let picker = self.pickerView, datas.count > 3 {
+            return datas[3][picker.selectedRow(inComponent: 3)] as? FourthType.ModelType
+        }
+        return nil
+    }
+    ///子类重载
+    open override func loadComponent(model: Any, index: Int) {
+        super.loadComponent(model: model, index: index)
+        if index == 3, let provider = self.fourthDataProvider {
+            self.prepareForFourthData?(model as! ThirdType.ModelType, provider)
+            let flag = self.loadingFlag()
+            provider.easyDataWithoutError { [weak self] (data) in
+                if let s = self, let provider = s.fourthDataProvider {
+                    let list = s.merge(lists: provider.lists(for: data))
+                    s.loadComponentCompleted(list, index: 3, loadingFlag: flag)
+                }
+            }
+        }
+    }
+    ///子类重载
+    open override func viewForCell(component: Int, reusing view: UIView?) -> UIView {
+        if component == 3 {
+            return (view as? ECPickerViewCell<FourthType.ModelType>) ?? self.viewForFourthCell()
+        }
+        return super.viewForCell(component: component, reusing: view)
+    }
+    ///加载模型数据
+    open override func loadCell(_ cell: UIView , model: Any, component: Int, row: Int) {
+        super.loadCell(cell, model: model, component: component, row: row)
+        if component == 3 {
+            if let view = cell as? ECPickerViewCell<FourthType.ModelType>, let m = model as? FourthType.ModelType {
+                view.load(model: m, component: component, row: row)
+            }
+        }
+    }
+    ///选则了某一项
+    open override func select(model: Any, component: Int, row: Int) {
+        super.select(model: model, component: component, row: row)
+        if component == 3, let m = model as? FourthType.ModelType {
+            self.actionForFourthSelect?(m, row)
+        }
+    }
+}
 
+extension EC.NamespaceImplement where Base: UIPickerView {
+    ///创建EC数据源
+    public func createDataSource<FirstType: ECDataListProviderType, SecondType: ECDataListProviderType>(providers first: FirstType, _ second: SecondType) -> ECPickerViewDataSource2<FirstType,SecondType> {
+        let dataSource = ECPickerViewDataSource2<FirstType,SecondType>()
+        dataSource.firstDataProvider = first
+        dataSource.secondDataProvider = second
+        dataSource.pickerView = self.base
+        return dataSource
+    }
+    ///创建EC数据源
+    public func createDataSource<FirstType: ECDataListProviderType, SecondType: ECDataListProviderType, ThirdType: ECDataListProviderType>(providers first: FirstType, _ second: SecondType,_ third: ThirdType) -> ECPickerViewDataSource3<FirstType,SecondType,ThirdType> {
+        let dataSource = ECPickerViewDataSource3<FirstType,SecondType,ThirdType>()
+        dataSource.firstDataProvider = first
+        dataSource.secondDataProvider = second
+        dataSource.thirdDataProvider = third
+        dataSource.pickerView = self.base
+        return dataSource
+    }
+    ///创建EC数据源
+    public func createDataSource<FirstType: ECDataListProviderType, SecondType: ECDataListProviderType, ThirdType: ECDataListProviderType, FourthType: ECDataListProviderType>(providers first: FirstType, _ second: SecondType,_ third: ThirdType,_ fourth: FourthType) -> ECPickerViewDataSource4<FirstType,SecondType,ThirdType,FourthType> {
+        let dataSource = ECPickerViewDataSource4<FirstType,SecondType,ThirdType,FourthType>()
+        dataSource.firstDataProvider = first
+        dataSource.secondDataProvider = second
+        dataSource.thirdDataProvider = third
+        dataSource.fourthDataProvider = fourth
+        dataSource.pickerView = self.base
+        return dataSource
+    }
 }

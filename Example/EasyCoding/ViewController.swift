@@ -20,7 +20,7 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 8
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
@@ -32,6 +32,7 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         case 4: cell.textLabel?.text = "TableView数据源"
         case 5: cell.textLabel?.text = "CollectionView数据源"
         case 6: cell.textLabel?.text = "PickerView数据源"
+        case 7: cell.textLabel?.text = "PickerView多数据源"
         default: break
         }
         return cell
@@ -50,6 +51,7 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         case 4: self.load(TableViewDataSourceController())
         case 5: self.load(CollectionViewDataSourceController())
         case 6: self.load(PickerViewDataSourceController())
+        case 7: self.load(PickerViewMultiDataSourceController())
         default: break
         }
     }

@@ -45,6 +45,18 @@ open class ECPickerViewDataSource<DataProviderType: ECDataListProviderType>: ECL
     ///行高
     open var cellHeight: CGFloat = 32
     open var actionForSelect: ((ModelType,Int, Int) -> Void)?
+    
+    ///获取选中的数据
+    open var selectedModels:[ModelType]? {
+        if let datas = self.datas, let picker = self.pickerView {
+            var models:[ModelType] = []
+            for i in 0..<datas.count {
+                models.append(datas[i][picker.selectedRow(inComponent: i)])
+            }
+            return models
+        }
+        return nil
+    }
    
     open override func refreshControl() {
         self.pickerView?.reloadAllComponents()
@@ -97,5 +109,15 @@ open class ECPickerViewDataSource<DataProviderType: ECDataListProviderType>: ECL
         if let model = self.datas?[component][row] {
             self.actionForSelect?(model, component, row)
         }
+    }
+}
+
+extension EC.NamespaceImplement where Base: UIPickerView {
+    ///创建EC数据源
+    public func createDataSource<DataProviderType: ECDataProviderType>(provider: DataProviderType) -> ECPickerViewDataSource<DataProviderType> {
+        let dataSource = ECPickerViewDataSource<DataProviderType>()
+        dataSource.dataProvider = provider
+        dataSource.pickerView = self.base
+        return dataSource
     }
 }

@@ -54,6 +54,18 @@ open class ECCollectionViewDataSource<DataProviderType: ECDataListProviderType>:
     ///设置移动事件
     open var actionForMove: ((UICollectionView, IndexPath, IndexPath) -> Void)?
     
+    ///获取选中的数据
+    open var selectedModels:[ModelType]? {
+        if let datas = self.datas, let collection = self.collectionView, let indexPaths = collection.indexPathsForSelectedItems {
+            var models:[ModelType] = []
+            for indexPath in indexPaths {
+                models.append(datas[indexPath.section][indexPath.row])
+            }
+            return models
+        }
+        return nil
+    }
+    
     open override func refreshControl() {
         self.collectionView?.reloadData()
     }
@@ -111,5 +123,15 @@ open class ECCollectionViewDataSource<DataProviderType: ECDataListProviderType>:
     }
     open func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
          self.actionForMove?(collectionView, sourceIndexPath, destinationIndexPath)
+    }
+}
+
+extension EC.NamespaceImplement where Base: UICollectionView {
+    ///创建EC数据源
+    public func createDataSource<DataProviderType: ECDataProviderType>(provider: DataProviderType) -> ECCollectionViewDataSource<DataProviderType> {
+        let dataSource = ECCollectionViewDataSource<DataProviderType>()
+        dataSource.dataProvider = provider
+        dataSource.collectionView = self.base
+        return dataSource
     }
 }

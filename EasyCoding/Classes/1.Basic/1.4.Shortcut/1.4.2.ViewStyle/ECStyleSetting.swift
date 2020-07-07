@@ -18,18 +18,28 @@ public struct ECStyleSetting<TargetType> {
 public protocol ECStyleSetable { }
 extension EC.NamespaceImplement where Base: ECStyleSetable {
     @discardableResult
-    public func style(_ style:ECStyleSetting<Base>...) -> NamespaceWrapper<Base> {
+    public func style(_ style:ECStyleSetting<Base>...) -> ECNamespaceWrapper<Base> {
         style.forEach({$0.action(self.base)})
-        return self as! NamespaceWrapper<Base> 
+        return self as! ECNamespaceWrapper<Base> 
     }
 }
+/*
 extension EC.NamespaceImplement where Base == [UIView] {
     @discardableResult
-    public func style(_ style:ECStyleSetting<Base.Element>...) -> NamespaceWrapper<Base> {
+    public func style(_ style:ECStyleSetting<Base.Element>...) -> ECNamespaceWrapper<Base> {
         self.base.forEach { (obj) in
             style.forEach({ $0.action(obj)})
         }
-        return self as! NamespaceWrapper<Base>
+        return self as! ECNamespaceWrapper<Base>
+    }
+}*/
+extension EC.NamespaceArrayImplement where Element: UIView {
+    @discardableResult
+    public func style(_ style:ECStyleSetting<Element>...) -> ECNamespaceArrayWrapper<Element> {
+        self.base.forEach { (obj) in
+            style.forEach({ $0.action(obj)})
+        }
+        return self as! ECNamespaceArrayWrapper<Element>
     }
 }
 ///UIView默认可设置样式

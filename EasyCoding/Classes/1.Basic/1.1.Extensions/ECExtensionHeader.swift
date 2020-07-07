@@ -9,9 +9,10 @@
 import UIKit
 
 extension NSObject: EC.NamespaceDefine {}
-extension Array: EC.NamespaceDefine {}
 extension URL: EC.NamespaceDefine {}
 extension String: EC.NamespaceDefine { }
 extension Date: EC.NamespaceDefine { }
 //extension NSAttributedString.Key: EC.NamespaceDefine {}
 
+extension Array: EC.NamespaceArrayDefine {}
+extension Dictionary: EC.NamespaceDictionaryDefine {}

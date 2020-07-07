@@ -65,6 +65,17 @@ open class ECTableViewDataSource<DataProviderType: ECDataListProviderType>: ECLi
     open var actionForEdit: ((UITableView, UITableViewCell.EditingStyle, ModelType, IndexPath) -> Void)?
     ///设置移动事件
     open var actionForMove: ((UITableView, IndexPath, IndexPath) -> Void)?
+    ///获取选中的数据
+    open var selectedModels:[ModelType]? {
+        if let datas = self.datas, let table = self.tableView, let indexPaths = table.indexPathsForSelectedRows {
+            var models:[ModelType] = []
+            for indexPath in indexPaths {
+                models.append(datas[indexPath.section][indexPath.row])
+            }
+            return models
+        }
+        return nil
+    }
     
     open override func refreshControl() {
         self.tableView?.reloadData()
@@ -163,5 +174,14 @@ open class ECTableViewDataSource<DataProviderType: ECDataListProviderType>: ECLi
             }
         }
         return nil
+    }
+}
+extension EC.NamespaceImplement where Base: UITableView {
+    ///创建EC数据源
+    public func createDataSource<DataProviderType: ECDataProviderType>(provider: DataProviderType) -> ECTableViewDataSource<DataProviderType> {
+        let dataSource = ECTableViewDataSource<DataProviderType>()
+        dataSource.dataProvider = provider
+        dataSource.tableView = self.base
+        return dataSource
     }
 }
