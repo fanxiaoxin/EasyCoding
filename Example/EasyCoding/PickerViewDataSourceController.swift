@@ -14,6 +14,9 @@ class PickerViewDataSourceController: ECViewController<PickerViewDataSourceView>
     override func viewDidLoad() {
         super.viewDidLoad()
         let provider = ECViewDataDecorator<Provider>()
+        provider.loading.activate(false)
+        self.page.stateView.isHidden = true
+        
         provider.targetView = self.page.stateView
         provider.dataProvider = Provider()
         self.dataSource.dataProvider = provider
@@ -22,11 +25,11 @@ class PickerViewDataSourceController: ECViewController<PickerViewDataSourceView>
         self.dataSource.actionForSelect = { model, _ , _ in
             print(model)
         }
-        provider.plugins.append(.result(success: { [weak self] (_) in
-            self?.page.stateView.isHidden = true
-        }, failure: {  [weak self] (_) in
-            self?.page.stateView.isHidden = false
-        }))
+//        provider.plugins.append(.result(success: { [weak self] (_) in
+//            self?.page.stateView.isHidden = true
+//        }, failure: {  [weak self] (_) in
+//            self?.page.stateView.isHidden = false
+//        }))
         self.dataSource.reloadData()
     }
 }

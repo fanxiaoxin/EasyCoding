@@ -41,7 +41,7 @@ open class ECToastView: UIView {
     }
     ///显示
     open func show(completion: (() -> Void)? = nil) {
-        let window = UIApplication.shared.keyWindow!
+        let window = UIWindow.easy.topWindow ?? UIApplication.shared.keyWindow!
         window.easy.add(self, layout: .margin)
         if let animation = (self.config?.animationForShow ?? ECToastConfig.default.animationForShow){
             animation(self) {

@@ -65,8 +65,8 @@ extension EC.NamespaceImplement where Base: UIViewController {
 extension EC.NamespaceImplement where Base: UIView {
      ///通过打开新的Window显示viewController
     @discardableResult
-    public func showWindow(level:UIWindow.Level = UIWindow.Level.alert, makeKey:Bool = false, animation: ECPresentAnimationType? = nil, completion: (() -> Void)? = nil) -> UIWindow{
-        let window = self.openWindow(level: level, makeKey: makeKey)
+    public func showWindow(level:UIWindow.Level = UIWindow.Level.alert, makeKey:Bool = false, useOwnFrame: Bool = true, animation: ECPresentAnimationType? = nil, completion: (() -> Void)? = nil) -> UIWindow{
+        let window = self.openWindow(level: level, makeKey: makeKey, useOwnFrame: useOwnFrame)
         if let am = animation {
             self.show(animation: am, completion: completion)
         }else{

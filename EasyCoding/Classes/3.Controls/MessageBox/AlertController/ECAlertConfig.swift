@@ -96,10 +96,10 @@ public class ECAlertConfig {
             self.buttonSeparator.layout(.margin(0, 8))
             //按钮
             self.button(for: .normal).layout(.margin)
-            self.button(for: .normal).style(.color(ECSetting.Color.text), .color(ECSetting.Color.text.withAlphaComponent(0.4), for: .highlighted), .font(size: 15))
+            self.button(for: .normal).style(.color(ECSetting.Color.text), .color(ECSetting.Color.text.withAlphaComponent(0.4), for: .highlighted), .font(ECSetting.Font.big))
             self.button(for: .negative).style(.color(ECSetting.Color.darkText), .color(ECSetting.Color.text.withAlphaComponent(0.4), for: .highlighted))
-            self.button(for: .positive).style(.color(ECSetting.Color.main), .color(ECSetting.Color.main.withAlphaComponent(0.4), for: .highlighted), .boldFont(size: 15))
-            self.button(for: .destructive).style(.color(ECSetting.Color.red), .boldFont(size: 15))
+            self.button(for: .positive).style(.color(ECSetting.Color.main), .color(ECSetting.Color.main.withAlphaComponent(0.4), for: .highlighted), .font(ECSetting.Font.big.easy.bold))
+            self.button(for: .destructive).style(.color(ECSetting.Color.red), .font(ECSetting.Font.big.easy.bold))
             //默认标题
             self.commonTitle = nil
             //常见按钮

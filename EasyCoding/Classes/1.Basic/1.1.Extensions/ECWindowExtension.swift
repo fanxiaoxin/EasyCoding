@@ -110,12 +110,21 @@ extension EC.NamespaceImplement where Base: UIViewController {
 }
 
 extension EC.NamespaceImplement where Base: UIView {
-    ///通过打开新的Window显示view
+    
+    /// 通过打开新的Window显示view
+    /// - Parameters:
+    ///   - level: Window级别
+    ///   - makeKey: 是否keywindow
+    ///   - useOwnFrame: 是否使用自身大小及位置
+    /// - Returns: 打开的Window
     @discardableResult
-    public func openWindow(level:UIWindow.Level = UIWindow.Level.alert, makeKey: Bool = false) -> UIWindow {
+    public func openWindow(level:UIWindow.Level = UIWindow.Level.alert, makeKey: Bool = false, useOwnFrame: Bool = true) -> UIWindow {
         let controller = UIViewController()
+        let frame = useOwnFrame ? self.base.frame : UIScreen.main.bounds
         controller.view = self.base
-        return controller.easy.openWindow(level: level, makeKey: makeKey)
+        let window = controller.easy.openWindow(level: level, makeKey: makeKey)
+        window.frame = frame
+        return window
     }
     ///关闭通过showWindow打开的窗口
     public func closeWindow(){

@@ -20,7 +20,7 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return 9
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
@@ -33,6 +33,7 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         case 5: cell.textLabel?.text = "CollectionView数据源"
         case 6: cell.textLabel?.text = "PickerView数据源"
         case 7: cell.textLabel?.text = "PickerView多数据源"
+        case 8: cell.textLabel?.text = "键盘"
         default: break
         }
         return cell
@@ -52,6 +53,13 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         case 5: self.load(CollectionViewDataSourceController())
         case 6: self.load(PickerViewDataSourceController())
         case 7: self.load(PickerViewMultiDataSourceController())
+        case 8:
+            let keyboard = ECToolbarPickerKeyboard<[String]>(provider: ["A","B","C","D"])
+            keyboard.toolbar.titleLabel.text = "我是标题"
+            keyboard.inputReceive = { value in
+                print(value)
+            }
+            keyboard.show()
         default: break
         }
     }

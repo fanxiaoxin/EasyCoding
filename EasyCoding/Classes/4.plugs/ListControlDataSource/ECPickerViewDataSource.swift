@@ -40,6 +40,12 @@ open class ECPickerViewDataSource<DataProviderType: ECDataListProviderType>: ECL
     }
     ///设置Cell的类型
     open var viewForCell: () -> ECPickerViewCell<ModelType> = { ECPickerViewCell<ModelType>() }
+    ///显示加载中视图
+    open lazy var viewForLoading: UIView? = {
+        let view = UIActivityIndicatorView()
+        view.startAnimating()
+        return view
+    }()
     ///行宽比例，不能比数据源的值小
     open var cellWidthProportions: [CGFloat]?
     ///行高
@@ -63,11 +69,11 @@ open class ECPickerViewDataSource<DataProviderType: ECDataListProviderType>: ECL
     }
     
     open func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return self.datas?.count ?? 0
+        return self.datas?.count ?? (self.viewForLoading == nil ? 0 : 1)
     }
     
     open func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.datas?[component].count ?? 0
+        return self.datas?[component].count ?? (self.viewForLoading == nil ? 0 : 1)
     }
     
     open func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
@@ -102,7 +108,7 @@ open class ECPickerViewDataSource<DataProviderType: ECDataListProviderType>: ECL
             cell.load(model: model, component: component, row: row)
             return cell
         }
-        return UIView()
+        return self.viewForLoading ?? UIView()
     }
     
     open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
