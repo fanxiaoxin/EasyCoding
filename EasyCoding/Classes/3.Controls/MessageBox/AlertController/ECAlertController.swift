@@ -15,6 +15,8 @@ open class ECAlertController: ECViewController<ECAlertView>,YYKeyboardObserver {
     public let buttons: [Button]
     ///配置
     public let config: ECAlertConfig?
+    ///执行动画
+    private var animationGroup = ECPresentAnimation.Group()
     ///用于缓存原来的keyWindow
     private weak var keyWindow: UIWindow?
     private lazy var keyboardTap:UITapGestureRecognizer? = {
@@ -52,6 +54,16 @@ open class ECAlertController: ECViewController<ECAlertView>,YYKeyboardObserver {
         }
         
         self.page.contentView.easy.add(self.contentView, layout: .margin)
+        
+        //设置动画
+        if let bgAnimation = self.config?.backgroundPresentAnimation ?? ECAlertConfig.default.backgroundPresentAnimation {
+            self.animationGroup.animations.append((tag: nil, delay: 0, aniamtion: bgAnimation))
+        }
+        if let animation = (self.config?.presentAnimation ?? ECAlertConfig.default.presentAnimation){
+            self.page.container.easy.tag(1001)
+            self.animationGroup.animations.append((tag: 1001, delay: 0, aniamtion: animation))
+        }
+               
     }
     //控制键盘
     override open func viewDidAppear(_ animated: Bool) {
@@ -90,13 +102,7 @@ open class ECAlertController: ECViewController<ECAlertView>,YYKeyboardObserver {
     open func show(completion: (() -> Void)? = nil) {
         self.keyWindow = UIApplication.shared.keyWindow
         self.easy.openWindow(level: .alert, makeKey: true)
-        if let animation = (self.config?.presentAnimation ?? ECAlertConfig.default.presentAnimation){
-            animation.show(view: self.page.container) {
-                completion?()
-            }
-        }else{
-            completion?()
-        }
+        self.animationGroup.show(view: self.page, completion: completion)
     }
     ///关闭
     open func dismiss(completion: (() -> Void)? = nil) {
@@ -104,13 +110,8 @@ open class ECAlertController: ECViewController<ECAlertView>,YYKeyboardObserver {
             self.keyWindow?.makeKey()
             self.keyWindow = nil
         }
-        if let animation = (self.config?.presentAnimation ?? ECAlertConfig.default.presentAnimation) {
-            animation.dismiss(view: self.page.container) { [weak self] in
-                self?.easy.closeWindow()
-                completion?()
-            }
-        }else{
-            self.easy.closeWindow()
+        self.animationGroup.dismiss(view: self.page) { [weak self] in
+            self?.easy.closeWindow()
             completion?()
         }
     }

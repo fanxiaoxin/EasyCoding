@@ -19,8 +19,8 @@ open class ECTextConstraint: NSObject,UITextFieldDelegate {
     weak var textFieldDelegate: UITextFieldDelegate?
     ///切换delegate的设置到自定义属性
     static var swizzleTextFieldDelegateMethod: Int = {
-        try? UITextField.jr_swizzleMethod(#selector(getter: UITextField.delegate), withMethod: #selector(getter: UITextField.__fx_text_delegate))
-        try? UITextField.jr_swizzleMethod(#selector(setter: UITextField.delegate), withMethod: #selector(setter: UITextField.__fx_text_delegate))
+        try? UITextField.jr_swizzleMethod(#selector(getter: UITextField.delegate), withMethod: #selector(getter: UITextField.__ec_text_delegate))
+        try? UITextField.jr_swizzleMethod(#selector(setter: UITextField.delegate), withMethod: #selector(setter: UITextField.__ec_text_delegate))
         return 0
     }()
     public convenience init(other constraint:ECTextConstraint) {
@@ -79,27 +79,27 @@ extension EC.NamespaceImplement where Base: UITextField {
         objc_setAssociatedObject(self.base, &fx_key_textfield_textconstraiint, textConstraint, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         textConstraint?.textFieldDelegate = oldDelegate
         if let c = textConstraint {
-            self.base.__fx_text_delegate = c
+            self.base.__ec_text_delegate = c
         }else{
-            self.base.__fx_text_delegate = textConstraint
+            self.base.__ec_text_delegate = textConstraint
         }
         textConstraint?.textField = self.base
     }
 }
 extension UITextField {
-    @objc var __fx_text_delegate:  UITextFieldDelegate? {
+    @objc var __ec_text_delegate:  UITextFieldDelegate? {
         get{
             if let c = self.easy.textConstraint {
                 return c.textFieldDelegate
             }else{
-                return self.__fx_text_delegate
+                return self.__ec_text_delegate
             }
         }
         set{
             if let c = self.easy.textConstraint {
                 c.textFieldDelegate = newValue
             }else{
-                self.__fx_text_delegate = newValue
+                self.__ec_text_delegate = newValue
             }
         }
     }

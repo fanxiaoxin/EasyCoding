@@ -21,6 +21,7 @@
 		9C2C2A9B24B301060078A225 /* PickerViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C2A9A24B301060078A225 /* PickerViewDataSourceController.swift */; };
 		9C8C36F12487382C00305113 /* FunctionBuilderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C36F02487382C00305113 /* FunctionBuilderTest.swift */; };
 		9C8E40D024AC751400853BDD /* DataPluginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E40CF24AC751400853BDD /* DataPluginController.swift */; };
+		9CBCAC8724B5C93800F09747 /* TextConstraintController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBCAC8624B5C93800F09747 /* TextConstraintController.swift */; };
 		9CD9DD1324B4330400C39419 /* PickerViewMultiDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD9DD1224B4330400C39419 /* PickerViewMultiDataSourceController.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		9C2C2A9A24B301060078A225 /* PickerViewDataSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDataSourceController.swift; sourceTree = "<group>"; };
 		9C8C36F02487382C00305113 /* FunctionBuilderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionBuilderTest.swift; sourceTree = "<group>"; };
 		9C8E40CF24AC751400853BDD /* DataPluginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPluginController.swift; sourceTree = "<group>"; };
+		9CBCAC8624B5C93800F09747 /* TextConstraintController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConstraintController.swift; sourceTree = "<group>"; };
 		9CD9DD1224B4330400C39419 /* PickerViewMultiDataSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewMultiDataSourceController.swift; sourceTree = "<group>"; };
 		D774970F978473E8483D11B0 /* Pods-EasyCoding_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyCoding_Example.release.xcconfig"; path = "Target Support Files/Pods-EasyCoding_Example/Pods-EasyCoding_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EE8E0EA78E6E0338CD4A3460 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				9C2C2A9424B2D1F60078A225 /* CollectionViewDataSourceController.swift */,
 				9C2C2A9A24B301060078A225 /* PickerViewDataSourceController.swift */,
 				9CD9DD1224B4330400C39419 /* PickerViewMultiDataSourceController.swift */,
+				9CBCAC8624B5C93800F09747 /* TextConstraintController.swift */,
 				9C8C36F02487382C00305113 /* FunctionBuilderTest.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -394,6 +397,7 @@
 				9C212EBD24ADEFD400D9B228 /* PopupController.swift in Sources */,
 				9CD9DD1324B4330400C39419 /* PickerViewMultiDataSourceController.swift in Sources */,
 				9C8C36F12487382C00305113 /* FunctionBuilderTest.swift in Sources */,
+				9CBCAC8724B5C93800F09747 /* TextConstraintController.swift in Sources */,
 				9C2C2A9324B2CA250078A225 /* TableViewDataSourceController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				9C8E40D024AC751400853BDD /* DataPluginController.swift in Sources */,

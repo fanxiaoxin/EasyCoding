@@ -12,17 +12,20 @@ extension ECPresentAnimation {
     public struct Popup: ECPresentAnimationType {
         ///弹窗的起止位置从0至1，默认居中(0.5, 0.5)
         public let anchor: CGPoint
+        ///起始缩放，默认从0.01到1
+        public let startScale: CGPoint
         ///动画时长
-        public var duration: TimeInterval = 0.25
-        public init(anchor: CGPoint? = nil) {
-            self.anchor = anchor ?? .easy(0.5, 0.5)
+        public var duration: TimeInterval = ECConstant.animationDuration
+        public init(anchor: CGPoint? = nil, startScale: CGPoint? = nil) {
+            self.anchor = anchor ?? .easy(0.5)
+            self.startScale = startScale ?? .easy(0.01)
         }
         public func show(view: UIView, completion: (() -> Void)?) {
             let orginAnchor = view.layer.anchorPoint
             view.easy.anchor(self.anchor)
             
             view.alpha = 0
-            view.transform = .init(scaleX: 0.1, y: 0.1)
+            view.transform = .init(scaleX: self.startScale.x, y: self.startScale.y)
             UIView.animate(withDuration: self.duration, animations: {
                 view.alpha = 1
                 view.transform = .identity
@@ -36,7 +39,7 @@ extension ECPresentAnimation {
             let orginAnchor = view.layer.anchorPoint
             view.easy.anchor(self.anchor)
             UIView.animate(withDuration: self.duration, animations: {
-                view.transform = .init(scaleX: 0.1, y: 0.1)
+                view.transform = .init(scaleX: self.startScale.x, y: self.startScale.y)
                 view.alpha = 0
             }) { (_) in
                 //重设置旧的锚点

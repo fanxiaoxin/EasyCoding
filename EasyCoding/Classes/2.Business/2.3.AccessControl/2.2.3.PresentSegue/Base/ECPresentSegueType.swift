@@ -79,10 +79,10 @@ extension ECPresentSegueType {
 }
 extension EC.NamespaceImplement where Base: UIViewController {
     public var currentSegue: ECPresentSegueType? {
-        return self.getAssociated(object: "ECPresentSegueType")
+        return self.getAssociated(object: EC.key("PresentSegueType"))
     }
     internal func set(currentSegue: ECPresentSegueType?) {
-        self.setAssociated(object: currentSegue, key: "ECPresentSegueType")
+        self.setAssociated(object: currentSegue, key: EC.key("PresentSegueType"))
     }
     public func present(_ viewController: UIViewController ,segue: ECPresentSegueType){
         weak var source = self.base

@@ -39,7 +39,6 @@
 		0FE85DB2492F6A824C1F399535D239DC /* MJRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 992DE3A1CE9B83E1D25312752E1B0AEF /* MJRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1001C58F00AC3A795A69E1B7A6D30810 /* ECCollectionViewFixedColumnsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2291F58156520D44C0CCAE70CA92F2D4 /* ECCollectionViewFixedColumnsLayout.swift */; };
 		10675AA3B837292922E897B0AF450830 /* ECViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043F9BA2BBCCE3292515879D7A8673EB /* ECViewExtension.swift */; };
-		11344CD52195FCED15F24061AC291B79 /* ECOptionsTextConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148D96A22F0DE9329528968B8E0131E0 /* ECOptionsTextConstraint.swift */; };
 		11B327AA6223B4055336B048E12E87F2 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B271131484526AE66FBA9D2A9BE812 /* Metadata.swift */; };
 		11C410135C7E89353B480AC8DE0BFB77 /* UIApplication+StrictKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCED4E609346BB470DDC8637F8FC284 /* UIApplication+StrictKeyWindow.m */; };
 		129356E3AA788AD92E6978A4320262E2 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6871286C09BF5E29CB2B54DFD0C02BD6 /* Placeholder.swift */; };
@@ -185,7 +184,6 @@
 		624E53B9D1369E15A24AB64825C7E342 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE434AF9A88DA9475155030277B49974 /* Result.framework */; };
 		62A9169C6647692060A2A5B3A24DD484 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D0308F5C752FC1A03573CB310C393F /* ConstraintAttributes.swift */; };
 		62D0D987AE1E18EA9EF060E214F384C7 /* ECDateTextConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A6FC82BB7803371C8EAEF6ECE8ADB7 /* ECDateTextConstraint.swift */; };
-		62DCE7F6F9A5AF242C65354234179589 /* ECOptionsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E01ECC1D20C866FB2E9AA1CDA5F88 /* ECOptionsPickerView.swift */; };
 		6336CCF303CEC3370A9ED3D46DA958F7 /* MJRefreshBackGifFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 797800FF527EF4BD90D3B5C85ADBBF19 /* MJRefreshBackGifFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		634D9393C364A28B87411A4B301EE5FC /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39589D2C93A80EE459D58254F904F4A /* NetworkLoggerPlugin.swift */; };
 		63B8D64C397734850C4B1161BDBD9A5D /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BA9A04564D502703CB0CD695481B3D /* UIScrollView+MJExtension.m */; };
@@ -296,6 +294,14 @@
 		9C61149A24B483E600799650 /* ECToolbarPickerKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61149924B483E600799650 /* ECToolbarPickerKeyboard.swift */; };
 		9C79112BC15181F0774DF188B3F4BDD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD765A2062F093EA3F393D9FD2FB280 /* Foundation.framework */; };
 		9CD9DD1624B454DF00C39419 /* ECKeyboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD9DD1524B454DF00C39419 /* ECKeyboardType.swift */; };
+		9CDB1C9024B5584F00011609 /* ECConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C8F24B5584F00011609 /* ECConstant.swift */; };
+		9CDB1C9424B55E3A00011609 /* ECPresentAnimation.Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C9324B55E3A00011609 /* ECPresentAnimation.Group.swift */; };
+		9CDB1C9724B5760700011609 /* ECPopupKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C9624B5760700011609 /* ECPopupKeyboard.swift */; };
+		9CDB1C9924B5A58300011609 /* ECPopupListKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C9824B5A58300011609 /* ECPopupListKeyboard.swift */; };
+		9CDB1C9B24B5B0E300011609 /* ECToolbarCustomKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C9A24B5B0E300011609 /* ECToolbarCustomKeyboard.swift */; };
+		9CDB1C9D24B5C0C600011609 /* ECKeyboardTextConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C9C24B5C0C600011609 /* ECKeyboardTextConstraint.swift */; };
+		9CDB1C9F24B5C2B900011609 /* ECTextualizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C9E24B5C2B900011609 /* ECTextualizable.swift */; };
+		9CDB1CA424B5C53600011609 /* ECPickerTextConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1CA324B5C53600011609 /* ECPickerTextConstraint.swift */; };
 		9D65089019D558E5A9661F2DCAD20313 /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87362F5B0138E9BD366742AF03D483 /* SwiftSupport.swift */; };
 		9E0A05882BDA16EF7B31F2E7CC5A4FA0 /* ECTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEF649DD6E2C0486ADD3B67F147694 /* ECTableViewExtension.swift */; };
 		9E822591D94C6AF338A24FD68EAFEC18 /* ECHandyJSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6756FABA88B131BFC8D46972792ED1 /* ECHandyJSONExtension.swift */; };
@@ -380,7 +386,6 @@
 		CB40D39B24B1788000D69EF9 /* ECDataPagedProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40D39A24B1788000D69EF9 /* ECDataPagedProviderType.swift */; };
 		CB40D39D24B178CE00D69EF9 /* ECDataListProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40D39C24B178CE00D69EF9 /* ECDataListProviderType.swift */; };
 		CBC084099EF5FB6F5D8901C3711AC5EA /* ECClampingProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3D7F3EB69EEE3EEC9AD91DEC91AA9B /* ECClampingProperty.swift */; };
-		CD706B22A22A0EC2C0165B6F717F5496 /* ECOptionsKeyboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B519AAB847C20BA90CB907047C17D /* ECOptionsKeyboardType.swift */; };
 		CE1DE334D672BD985A99664452CA0DC0 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B1588F24B91A837D08EC662B6471AA /* Kingfisher.framework */; };
 		CE8DD598CDBE09825987AE301B80C8A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD765A2062F093EA3F393D9FD2FB280 /* Foundation.framework */; };
 		CECC14DD16AF20D41BD503881DB73838 /* Pods-EasyCoding_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B0DE041A45F012F45CFB276571FDD68 /* Pods-EasyCoding_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -391,7 +396,6 @@
 		D15326473BB4BBBF1E92E995E0E093A5 /* ECPresentSegueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91784D5AD74D2F23E1E58DE56E2537 /* ECPresentSegueType.swift */; };
 		D15A0C2A066D24F7F620EA58532ED1B5 /* ECSlideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69DE6F5A300C3F41C28314DD8CF3443 /* ECSlideshow.swift */; };
 		D17EAA0BBC6BB41EBEEB228300DCFDC1 /* ECToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D6DCE50B64E85756DB033208E99DCB /* ECToastView.swift */; };
-		D2B32442FB77CBF00815885C413EC927 /* ECOptionsKeyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64166073D410806D8C5E3EC01553525 /* ECOptionsKeyboards.swift */; };
 		D3AAA92D5067B171E812A6A2578B1B58 /* ContextDescriptorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1317BCC935C788DB4820D9546A1A0ED3 /* ContextDescriptorType.swift */; };
 		D3C486EA008EA16120E81E3B9F7C45F0 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D5858DE1402E20A3D4D6ABB2ADA3D /* TargetType.swift */; };
 		D3D8C379C6E4FB487E5ABD6800AD7B7E /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE67729DB86C291C23542E36FB6BD15 /* DispatchQueue+Alamofire.swift */; };
@@ -404,13 +408,11 @@
 		DB3ACF4815873FD36D859D56E13951A6 /* Pods-EasyCoding_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 516620CD4958FB1F17FB6A19A5BE3D8F /* Pods-EasyCoding_Tests-dummy.m */; };
 		DB43BC2BFD47588E97519952CF08C642 /* ECEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5421FF0519EC9FBF01AB4D0C6BD065E8 /* ECEventManager.swift */; };
 		DCCFE1DF553E9CF78460D3AFAA6049A2 /* Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F8076D10F548FEFC86DA5F46035B7 /* Kingfisher.swift */; };
-		DD5A5F447574BA9AADE28C9A6E696D42 /* ECDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBC5BAA8A34F718BE1D773B802D776F /* ECDatePickerView.swift */; };
 		DE4D7ECB5C2F8D04CD2EB43305B7DDFB /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A651ACD79FB549D8CE8E0DA577139E2F /* ConstraintView.swift */; };
 		DE4E17D89361F961A5E682148EE9755E /* ECExpressibleLiteralExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D272BB21CF5151AB575D02AE175CAB /* ECExpressibleLiteralExtension.swift */; };
 		E0B8D095C732352C854D365B9E5B993D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C0B3536101DF59C4BDE2E0B02601D8 /* UIKit.framework */; };
 		E1ABC6C0244C4513CFD38659C66A410A /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F587EB22AC0D93D7C5079CD92D921E /* ImageCache.swift */; };
 		E1BF554E1A382D09BEAB59089573CD39 /* ImageDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F409CD3FE84F6D5B2154FBBDA460BC3B /* ImageDrawing.swift */; };
-		E26C761BA94FA80D1E646A38448C052D /* ECPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E171237698E2789A64D8EAB2115B3379 /* ECPickerView.swift */; };
 		E2F91EC785DB2072D26AA01C307AF45D /* ECParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D078D7A6F3231F0CF54118F4175E8C /* ECParagraphStyle.swift */; };
 		E3747EC31FCCA97D75A81FC700CF7E24 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBB95D4FDFE4386A50415EF37F3C022 /* ResponseSerialization.swift */; };
 		E41F4E0452A52D4D083A3F93CB57B61F /* ECApiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37518C2F827008F114CE753C88FA4B6 /* ECApiType.swift */; };
@@ -648,7 +650,6 @@
 		070066F6F2748CC3B45B436F760DE3CC /* MJRefreshAutoGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoGifFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoGifFooter.m; sourceTree = "<group>"; };
 		075B8791094CF27CC7747E8AC20A290D /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
 		07A623B7D0303C4EB1E0B8576CFD2BBF /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
-		084E01ECC1D20C866FB2E9AA1CDA5F88 /* ECOptionsPickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECOptionsPickerView.swift; sourceTree = "<group>"; };
 		08D078D7A6F3231F0CF54118F4175E8C /* ECParagraphStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECParagraphStyle.swift; sourceTree = "<group>"; };
 		0910F267D35B617DCC117342A993C1A2 /* Moya-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Moya-Info.plist"; sourceTree = "<group>"; };
 		0A5B0A233C0CC309309B6E0A345F9B6D /* ExtendCustomModelType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtendCustomModelType.swift; path = Source/ExtendCustomModelType.swift; sourceTree = "<group>"; };
@@ -674,7 +675,6 @@
 		1400383C54188ABDD8B86CF016640973 /* JRSwizzle-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JRSwizzle-Info.plist"; sourceTree = "<group>"; };
 		148453D005BAAFC2AB2A05D67C6BD39F /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		148ACC736CC9D9C533160578645D35A3 /* HandyJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HandyJSON.h; path = Source/HandyJSON.h; sourceTree = "<group>"; };
-		148D96A22F0DE9329528968B8E0131E0 /* ECOptionsTextConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECOptionsTextConstraint.swift; sourceTree = "<group>"; };
 		14BAC78D15077947D8CFB1D868E1AEF2 /* Runtime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Runtime.swift; path = Sources/Utility/Runtime.swift; sourceTree = "<group>"; };
 		15174E47929FE22C4CCF5C14C29DF6C4 /* ECSimplePrecondition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECSimplePrecondition.swift; sourceTree = "<group>"; };
 		1705CD11D146DD8C013AEC643208E44C /* ConstraintDirectionalInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsets.swift; path = Source/ConstraintDirectionalInsets.swift; sourceTree = "<group>"; };
@@ -955,8 +955,15 @@
 		9C51FA3524B2BBC2007540CA /* ECTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECTableViewDataSource.swift; sourceTree = "<group>"; };
 		9C61149524B46F7200799650 /* ECToolbarKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECToolbarKeyboard.swift; sourceTree = "<group>"; };
 		9C61149924B483E600799650 /* ECToolbarPickerKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECToolbarPickerKeyboard.swift; sourceTree = "<group>"; };
-		9CBC5BAA8A34F718BE1D773B802D776F /* ECDatePickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDatePickerView.swift; sourceTree = "<group>"; };
 		9CD9DD1524B454DF00C39419 /* ECKeyboardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECKeyboardType.swift; sourceTree = "<group>"; };
+		9CDB1C8F24B5584F00011609 /* ECConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECConstant.swift; sourceTree = "<group>"; };
+		9CDB1C9324B55E3A00011609 /* ECPresentAnimation.Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentAnimation.Group.swift; sourceTree = "<group>"; };
+		9CDB1C9624B5760700011609 /* ECPopupKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPopupKeyboard.swift; sourceTree = "<group>"; };
+		9CDB1C9824B5A58300011609 /* ECPopupListKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPopupListKeyboard.swift; sourceTree = "<group>"; };
+		9CDB1C9A24B5B0E300011609 /* ECToolbarCustomKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECToolbarCustomKeyboard.swift; sourceTree = "<group>"; };
+		9CDB1C9C24B5C0C600011609 /* ECKeyboardTextConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECKeyboardTextConstraint.swift; sourceTree = "<group>"; };
+		9CDB1C9E24B5C2B900011609 /* ECTextualizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECTextualizable.swift; sourceTree = "<group>"; };
+		9CDB1CA324B5C53600011609 /* ECPickerTextConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPickerTextConstraint.swift; sourceTree = "<group>"; };
 		9D5230DCD4FDC74E5FC77A68A8E66FE7 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtensionHelpers.swift; path = Sources/Utility/ExtensionHelpers.swift; sourceTree = "<group>"; };
 		9D76FF1FE12444158859C95DF0FF874C /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateHeader.h; path = MJRefresh/Custom/Header/MJRefreshStateHeader.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -999,7 +1006,6 @@
 		AB2520DA9F5E4E029D3010D5DA06B4A0 /* MJRefreshBackStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackStateFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.m; sourceTree = "<group>"; };
 		AB51389ADE76DFBF8C480A44950FB597 /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Source/Logger.swift; sourceTree = "<group>"; };
 		AC369DC1E65E138B83EFB08B0CD1407D /* ECObjcRuntime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECObjcRuntime.swift; sourceTree = "<group>"; };
-		AC3B519AAB847C20BA90CB907047C17D /* ECOptionsKeyboardType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECOptionsKeyboardType.swift; sourceTree = "<group>"; };
 		AC6241E313CF963B207F7295FE5DB5B2 /* Pods-EasyCoding_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EasyCoding_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		AC6D253443E4C1E2F2A3892353ED5B32 /* ECExpirableProperty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECExpirableProperty.swift; sourceTree = "<group>"; };
 		AC7DEAE2A20A6026C83C831ECF0B5878 /* ECSetting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECSetting.swift; sourceTree = "<group>"; };
@@ -1023,7 +1029,6 @@
 		B4F778798CDEC672693A35256762B1B3 /* ECDeviceExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDeviceExtension.swift; sourceTree = "<group>"; };
 		B55ACB84BB1915FF42987226280B0417 /* Pods-EasyCoding_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EasyCoding_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B613C5063581F9218860ABCB2F080290 /* HandyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HandyJSON-umbrella.h"; sourceTree = "<group>"; };
-		B64166073D410806D8C5E3EC01553525 /* ECOptionsKeyboards.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECOptionsKeyboards.swift; sourceTree = "<group>"; };
 		B67256CB5B3775BB94A703F8031DD6C4 /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
 		B6C8D4E56B05227F085F2240087FE6D9 /* ECActivityIndicatorViewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECActivityIndicatorViewStyle.swift; sourceTree = "<group>"; };
 		B7A2F96B6B3A1DDB3B4846BD825E387E /* ECTableViewApiLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECTableViewApiLoader.swift; sourceTree = "<group>"; };
@@ -1104,7 +1109,6 @@
 		E051A1F7094EE109051CA7A1F1B988E7 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
 		E06093178B70577A047CC46D1727E34A /* EasyCoding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EasyCoding.release.xcconfig; sourceTree = "<group>"; };
 		E07AD9DA331E42733503981B0FFF0B4A /* ImageProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProcessor.swift; path = Sources/Image/ImageProcessor.swift; sourceTree = "<group>"; };
-		E171237698E2789A64D8EAB2115B3379 /* ECPickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPickerView.swift; sourceTree = "<group>"; };
 		E17F6187FE86DFB360A387F59A89284F /* ECNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECNavigationController.swift; sourceTree = "<group>"; };
 		E1EBC0367A20D328F655129D4284F171 /* Pods-EasyCoding_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EasyCoding_Example-dummy.m"; sourceTree = "<group>"; };
 		E1EC52D2279113C14D1F678146400B21 /* Export.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Export.swift; path = Source/Export.swift; sourceTree = "<group>"; };
@@ -1422,11 +1426,8 @@
 		2440F20F800FE2DAEFC159893EE69257 /* TextFieldConstraint */ = {
 			isa = PBXGroup;
 			children = (
-				23A6FC82BB7803371C8EAEF6ECE8ADB7 /* ECDateTextConstraint.swift */,
-				5DB25A1C0B99EBD078FBFF6F54168167 /* ECLengthTextConstraint.swift */,
-				2549B150022D399FEA8FB7EBBB4CDA4D /* ECNumberTextConstraint.swift */,
-				842A31C97D2F50788D16230665348866 /* ECTextConstraint.swift */,
-				CD7C897CD7DF63FD57A392D222726AF8 /* OptionsTextConstraint */,
+				9CDB1CA024B5C4E000011609 /* Base */,
+				9CDB1CA124B5C50F00011609 /* TextConstraints */,
 			);
 			path = TextFieldConstraint;
 			sourceTree = "<group>";
@@ -2117,6 +2118,8 @@
 				CD3109682240E7DD47E98304CA8D9AC6 /* ECEmptiable.swift */,
 				38879B048BC498B433F4183F70791731 /* ECNamespace.swift */,
 				3F46036482870BD9BC878E9684677B4B /* ECNull.swift */,
+				9CDB1C8F24B5584F00011609 /* ECConstant.swift */,
+				9CDB1C9E24B5C2B900011609 /* ECTextualizable.swift */,
 			);
 			path = 1.0.Foundation;
 			sourceTree = "<group>";
@@ -2124,10 +2127,7 @@
 		99E3C1A0EDAACBAE79BFC9BC609E70CB /* Picker */ = {
 			isa = PBXGroup;
 			children = (
-				9CBC5BAA8A34F718BE1D773B802D776F /* ECDatePickerView.swift */,
-				084E01ECC1D20C866FB2E9AA1CDA5F88 /* ECOptionsPickerView.swift */,
 				7AA768D34F28E2AA5A17F1F2986F383C /* ECPicker.swift */,
-				E171237698E2789A64D8EAB2115B3379 /* ECPickerView.swift */,
 			);
 			path = Picker;
 			sourceTree = "<group>";
@@ -2157,6 +2157,7 @@
 			children = (
 				9C61149524B46F7200799650 /* ECToolbarKeyboard.swift */,
 				9C61149924B483E600799650 /* ECToolbarPickerKeyboard.swift */,
+				9CDB1C9A24B5B0E300011609 /* ECToolbarCustomKeyboard.swift */,
 			);
 			path = Toolbar;
 			sourceTree = "<group>";
@@ -2166,6 +2167,44 @@
 			children = (
 				9C61149724B483A800799650 /* Base */,
 				9C61149824B483BD00799650 /* Toolbar */,
+				9CDB1C9524B575F500011609 /* Popup */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		9CDB1C9524B575F500011609 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				9CDB1C9624B5760700011609 /* ECPopupKeyboard.swift */,
+				9CDB1C9824B5A58300011609 /* ECPopupListKeyboard.swift */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
+		9CDB1CA024B5C4E000011609 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				842A31C97D2F50788D16230665348866 /* ECTextConstraint.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		9CDB1CA124B5C50F00011609 /* TextConstraints */ = {
+			isa = PBXGroup;
+			children = (
+				9CDB1CA224B5C52300011609 /* Keyboard */,
+				23A6FC82BB7803371C8EAEF6ECE8ADB7 /* ECDateTextConstraint.swift */,
+				5DB25A1C0B99EBD078FBFF6F54168167 /* ECLengthTextConstraint.swift */,
+				2549B150022D399FEA8FB7EBBB4CDA4D /* ECNumberTextConstraint.swift */,
+			);
+			path = TextConstraints;
+			sourceTree = "<group>";
+		};
+		9CDB1CA224B5C52300011609 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				9CDB1C9C24B5C0C600011609 /* ECKeyboardTextConstraint.swift */,
+				9CDB1CA324B5C53600011609 /* ECPickerTextConstraint.swift */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -2358,16 +2397,6 @@
 			path = Decorators;
 			sourceTree = "<group>";
 		};
-		CD7C897CD7DF63FD57A392D222726AF8 /* OptionsTextConstraint */ = {
-			isa = PBXGroup;
-			children = (
-				B64166073D410806D8C5E3EC01553525 /* ECOptionsKeyboards.swift */,
-				AC3B519AAB847C20BA90CB907047C17D /* ECOptionsKeyboardType.swift */,
-				148D96A22F0DE9329528968B8E0131E0 /* ECOptionsTextConstraint.swift */,
-			);
-			path = OptionsTextConstraint;
-			sourceTree = "<group>";
-		};
 		CE15AC2D326543B64BF015AFC8D770DB /* Decorators */ = {
 			isa = PBXGroup;
 			children = (
@@ -2437,6 +2466,7 @@
 			isa = PBXGroup;
 			children = (
 				041AA87555CED188CE9AC82B86729EF5 /* ECPresentAnimation.swift */,
+				9CDB1C9324B55E3A00011609 /* ECPresentAnimation.Group.swift */,
 				A5C91AE7AA7AFAF6932E08A131AF3046 /* ECPresentAnimation.Fade.swift */,
 				FE6281571CBE14A3C6951DB61B9AFE18 /* ECPresentAnimation.Popup.swift */,
 				24FFFA0EB9D592363D7ECE671C10B967 /* ECPresentAnimation.SlideOut.swift */,
@@ -3635,10 +3665,12 @@
 				8AE37C784C69C3830B12B71D230817D7 /* ECAlertView.swift in Sources */,
 				9C61149624B46F7200799650 /* ECToolbarKeyboard.swift in Sources */,
 				E451C6D4EEA87EE23B500BC06C26B7E8 /* ECApiListLoader.swift in Sources */,
+				9CDB1C9424B55E3A00011609 /* ECPresentAnimation.Group.swift in Sources */,
 				C2BACDD9DC1B303A31FE4292CCDB7693 /* ECApiPluginType.swift in Sources */,
 				5081C6FE3C00CFA8DD6A1E3F04840CFA /* ECApiRequestable.swift in Sources */,
 				754AD23D16B0DF0592DC958B12EEE922 /* ECApiRequestScheme.swift in Sources */,
 				F34CB05D6000E5B4B1FBB0AEFF78670A /* ECApiStructure.swift in Sources */,
+				9CDB1C9724B5760700011609 /* ECPopupKeyboard.swift in Sources */,
 				E41F4E0452A52D4D083A3F93CB57B61F /* ECApiType.swift in Sources */,
 				409C1C1C32237A9D92FEE2210B4C0806 /* ECAtomicProperty.swift in Sources */,
 				EE25640A20766A0083AC6E94E4897E73 /* ECAttributedString.swift in Sources */,
@@ -3651,6 +3683,7 @@
 				CBC084099EF5FB6F5D8901C3711AC5EA /* ECClampingProperty.swift in Sources */,
 				375D1003105A65157C45C5A114A59547 /* ECCollectionViewApiLoader.swift in Sources */,
 				1001C58F00AC3A795A69E1B7A6D30810 /* ECCollectionViewFixedColumnsLayout.swift in Sources */,
+				9CDB1C9F24B5C2B900011609 /* ECTextualizable.swift in Sources */,
 				390AFDA915742D349C07194D1C4662AB /* ECColorExtension.swift in Sources */,
 				16020ACFF8559DC46548C73E189B306A /* ECControlConfig.swift in Sources */,
 				6FAA3B51461B159DB334489CAC3409CD /* ECControlStyle.swift in Sources */,
@@ -3663,6 +3696,7 @@
 				9C61149A24B483E600799650 /* ECToolbarPickerKeyboard.swift in Sources */,
 				4B61B3D7D85C8D1A6C3ED5B832E77EFA /* ECDataErrorPlugin.swift in Sources */,
 				271298DC2FC4E20C8A8B51642B017B1A /* ECDataErrorPluginBase.swift in Sources */,
+				9CDB1C9924B5A58300011609 /* ECPopupListKeyboard.swift in Sources */,
 				FC145C63131DC012D3AFE7F0D2330D0A /* ECDataErrorToastPlugin.swift in Sources */,
 				CB40D39D24B178CE00D69EF9 /* ECDataListProviderType.swift in Sources */,
 				D6D667FB4D8F16E477FB868674BCC682 /* ECDataLoadingPlugin.swift in Sources */,
@@ -3673,7 +3707,6 @@
 				1D57B7EA0D59DAB96019D39F30D563CD /* ECDataRefreshPlugin.swift in Sources */,
 				7146C686E25A6F88B74B3BFDE25E0462 /* ECDataRefreshPluginBase.swift in Sources */,
 				5120753EB596E592C1248FA39EFCD556 /* ECDateExtension.swift in Sources */,
-				DD5A5F447574BA9AADE28C9A6E696D42 /* ECDatePickerView.swift in Sources */,
 				62D0D987AE1E18EA9EF060E214F384C7 /* ECDateTextConstraint.swift in Sources */,
 				9C2C2AA324B326060078A225 /* ECDataProviderMerger.swift in Sources */,
 				7EE6D12F90E585091EFA69BFC7214025 /* ECDelayInitProperty.swift in Sources */,
@@ -3709,6 +3742,7 @@
 				02D93F98BBA950771C46111DA55CD353 /* ECLabelExtension.swift in Sources */,
 				2277478C11BB0933967AD12FE65466C8 /* ECLabelStyle.swift in Sources */,
 				0F43AE8D5F99A57AF0F3CB2B383AE3E7 /* ECLazyProperty.swift in Sources */,
+				9CDB1CA424B5C53600011609 /* ECPickerTextConstraint.swift in Sources */,
 				40948E800058099859A0753419C95F9C /* ECLengthTextConstraint.swift in Sources */,
 				5A3CE9B22D3E26ED076BFC9C23282DB9 /* ECLoadingView.swift in Sources */,
 				7E8B439335B98F6354F9E0D43A6E027F /* ECLocalized.swift in Sources */,
@@ -3723,10 +3757,6 @@
 				B34ADD7016FC722F9CBC8EE923A1BDEC /* ECObjcRuntime.swift in Sources */,
 				A11ECF821A3006DE728CB9A2A95DE883 /* ECObjectEventHandler.swift in Sources */,
 				3730F59D1C7746DF9E17E52ABD18573F /* ECOnceEventManager.swift in Sources */,
-				D2B32442FB77CBF00815885C413EC927 /* ECOptionsKeyboards.swift in Sources */,
-				CD706B22A22A0EC2C0165B6F717F5496 /* ECOptionsKeyboardType.swift in Sources */,
-				62DCE7F6F9A5AF242C65354234179589 /* ECOptionsPickerView.swift in Sources */,
-				11344CD52195FCED15F24061AC291B79 /* ECOptionsTextConstraint.swift in Sources */,
 				05518020E0A27DA4A79ECF3AE20D9AE4 /* ECPage.swift in Sources */,
 				210C9A88A60AC927AE36D2DFA93D182D /* ECPageControl.swift in Sources */,
 				CB40D39B24B1788000D69EF9 /* ECDataPagedProviderType.swift in Sources */,
@@ -3734,7 +3764,7 @@
 				E2F91EC785DB2072D26AA01C307AF45D /* ECParagraphStyle.swift in Sources */,
 				232EB86A91781EC62DBDDEB3D51ED7F7 /* ECPersonalized.swift in Sources */,
 				B00DD89BE2D46A60CBE8ED4D616E2809 /* ECPicker.swift in Sources */,
-				E26C761BA94FA80D1E646A38448C052D /* ECPickerView.swift in Sources */,
+				9CDB1C9024B5584F00011609 /* ECConstant.swift in Sources */,
 				4A33906E85CE10EFBD726B93E6C0F654 /* ECPrecondition.swift in Sources */,
 				849599790C30BCAA0FD1330A16CAED10 /* ECPresentAnimation.Fade.swift in Sources */,
 				6B22F2601B3B25390BBCF408E948F98E /* ECPresentAnimation.Popup.swift in Sources */,
@@ -3750,6 +3780,7 @@
 				70FCB0262892F32142549DC29A243DBD /* ECPresentSegue.Push.swift in Sources */,
 				AAE93CB0A45502F36DC301D6C4EE0A57 /* ECPresentSegue.Replace.swift in Sources */,
 				73177FFEB9E305B78BC76F8892D789F4 /* ECPresentSegue.swift in Sources */,
+				9CDB1C9D24B5C0C600011609 /* ECKeyboardTextConstraint.swift in Sources */,
 				8781870530A17531A16DD0485A8F13C6 /* ECPresentSegue.TabBar.swift in Sources */,
 				049AA3FFC6E08F51EF22DEF4CE228481 /* ECPresentSegue.Window.swift in Sources */,
 				D15326473BB4BBBF1E92E995E0E093A5 /* ECPresentSegueType.swift in Sources */,
@@ -3788,6 +3819,7 @@
 				8A070C5F4405E8C2CB03FD8EB784083C /* ECToastConfig.swift in Sources */,
 				D17EAA0BBC6BB41EBEEB228300DCFDC1 /* ECToastView.swift in Sources */,
 				190218D9870D257D39FA57AA11DFA959 /* ECUndoProperty.swift in Sources */,
+				9CDB1C9B24B5B0E300011609 /* ECToolbarCustomKeyboard.swift in Sources */,
 				B191E449A8D1A185DC1EA6160D29810E /* ECURLExtension.swift in Sources */,
 				5B021125D94EA090D239E8B49F871B31 /* ECUserDefaultProperty.swift in Sources */,
 				7C3985CEA322EBEFB5C749EEF5007D64 /* ECViewBuilder.swift in Sources */,

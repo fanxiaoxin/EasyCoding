@@ -12,15 +12,28 @@ import EasyCoding
 
 class ViewController: ECViewController<View>, UITableViewDataSource, UITableViewDelegate {
     
+    let popupRect = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
        
         self.page.tableView.dataSource = self
         self.page.tableView.delegate = self
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "键盘", style: .plain, target: self, action: #selector(self.test))
+        
+        self.page.easy.add(popupRect.easy(.bg(.gray)), layout: .top(20), .left(20), .size(80, 30))
+    }
+    @objc func test() {
+        let keyboard = ECPopupListKeyboard<[String]>(from: popupRect)
+        keyboard.dataProvider = ["A","B","C","D"]
+//        keyboard.minSize = .easy(80, 100)
+        keyboard.inputReceive = { value in
+            print(value)
+        }
+        keyboard.show()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 10
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
@@ -34,6 +47,7 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         case 6: cell.textLabel?.text = "PickerView数据源"
         case 7: cell.textLabel?.text = "PickerView多数据源"
         case 8: cell.textLabel?.text = "键盘"
+        case 9: cell.textLabel?.text = "TextField输入限制"
         default: break
         }
         return cell
@@ -44,6 +58,12 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         case 1: self.load(PopupController())
         case 2:
             ECSetting.Alert.container.addStyle(.border(.systemBlue))
+//            ECSetting.Alert.backgroundPresentAnimation = ECPresentAnimation.FadeColor(to: .init(white: 0, alpha: 0.4))
+//            ECSetting.Alert.presentAnimation = ECPresentAnimation.Popup(anchor: .easy(1))
+            
+//            ECSetting.Alert.background.addStyle(.bg(.yellow))
+//ECSetting.Alert.backgroundPresentAnimation = ECPresentAnimation.Fade()
+//                        ECSetting.Alert.presentAnimation = nil
             ECMessageBox.confirm(message: "点下我") {
                 print("你点了确定")
             }
@@ -54,12 +74,21 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         case 6: self.load(PickerViewDataSourceController())
         case 7: self.load(PickerViewMultiDataSourceController())
         case 8:
-            let keyboard = ECToolbarPickerKeyboard<[String]>(provider: ["A","B","C","D"])
-            keyboard.toolbar.titleLabel.text = "我是标题"
-            keyboard.inputReceive = { value in
-                print(value)
-            }
-            keyboard.show()
+            let provider = PickerViewDataSourceController.Provider()
+//            let keyboard = ECToolbarPickerKeyboard<PickerViewDataSourceController.Provider>(provider: provider)
+//            let keyboard = ECToolbarDatePickerKeyboard()
+//            keyboard.isHiddenForTouchBackground = true
+//            keyboard.picker.datePickerMode = .date
+//            keyboard.toolbar.titleLabel.text = "我是标题"
+//            keyboard.inputReceive = { value in
+//                print(value)
+//            }
+//            keyboard.show()
+            ECPicker.create("来个列表", dataProvider: provider) { (model) in
+                print(model)
+            }.show()
+        case 9: self.load(TextConstraintController())
+            
         default: break
         }
     }
@@ -71,10 +100,20 @@ class View: ECPage {
     let tableView = UITableView()
     let animationView = UIView()
     override func load() {
+        
         self.easy.add(tableView.easy(.cell(UITableViewCell.self, identifier: "Cell")), layout: .margin)
         
         self.easy.add(animationView.easy(.bg(.systemYellow), .corner(8), .hidden()), layout: .center, .size(200))
             .add(button("DismissAnimation", .text("关闭"), .bg(.systemGreen), .color(.white), .corner(4)), layout: .size(80, 44), .center)
+    }
+}
+class PopupKeyboard: ECPopupKeyboard<String> {
+    override func load() {
+        self.contentView.easy.style(.bg(.green))
+    }
+    override func dismiss() {
+        super.dismiss()
+        self.input("FUCK")
     }
 }
 ///Swift5.1: Some 泛型

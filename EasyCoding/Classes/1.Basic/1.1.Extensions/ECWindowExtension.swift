@@ -118,10 +118,15 @@ extension EC.NamespaceImplement where Base: UIView {
     ///   - useOwnFrame: 是否使用自身大小及位置
     /// - Returns: 打开的Window
     @discardableResult
-    public func openWindow(level:UIWindow.Level = UIWindow.Level.alert, makeKey: Bool = false, useOwnFrame: Bool = true) -> UIWindow {
+    public func openWindow(level:UIWindow.Level = UIWindow.Level.alert, makeKey: Bool = false, useOwnFrame: Bool = true, layouts: [ECViewLayout]? = nil) -> UIWindow {
         let controller = UIViewController()
         let frame = useOwnFrame ? self.base.frame : UIScreen.main.bounds
-        controller.view = self.base
+        ///默认填充
+        if let layout = layouts, layout.count > 0 {
+            controller.view.easy.add(self.base, layout: layout)
+        }else{
+            controller.view = self.base
+        }
         let window = controller.easy.openWindow(level: level, makeKey: makeKey)
         window.frame = frame
         return window

@@ -53,9 +53,8 @@ extension EC.NamespaceImplement where Base: UIView {
         for view in self.base.subviews {
             if let v = view as? ViewType {
                 body(v)
-            }else{
-                view.easy.forEachAllSubviews(body: body)
             }
+            view.easy.forEachAllSubviews(body: body)
         }
     }
     ///查找第一个指定条件的视图
@@ -96,29 +95,38 @@ extension EC.NamespaceImplement where Base: UIView {
     }
     ///打标记
     public func tag(_ tag: Int) {
-        self.setAssociated(object: tag, key: EC.key("View.Tag"))
+        self.setAssociated(object: NSNumber(integerLiteral: tag), key: EC.key("View.Tag"))
     }
     ///获取当前标记
     public var tag: Int? {
-        return self.getAssociated(object: EC.key("View.Tag"))
+        let value: NSNumber? = self.getAssociated(object: EC.key("View.Tag"))
+        return value?.intValue
     }
-    ///获取指定标记的所有子视图(包含子视图的子视图)
-    public func viewsWithTag(_ tag: Int) -> [UIView]? {
-        var views: [UIView] = []
-        self.forEachAllSubviews { view in
-            if view.easy.getAssociated(object: EC.key("View.Tag")) == tag {
-                views.append(view)
+    ///获取指定标记的所有子视图(包含子视图的子视图), nil则返回自身
+    public func viewsWithTag(_ tag: Int?) -> [UIView]? {
+        if let value = tag {
+            var views: [UIView] = []
+            self.forEachAllSubviews { view in
+                if view.easy.tag == value {
+                    views.append(view)
+                }
             }
-        }
-        if views.count > 0 {
-            return views
+            if views.count > 0 {
+                return views
+            }else{
+                return nil
+            }
         }else{
-            return nil
+            return [self.base]
         }
     }
-    ///获取指定标记的第一个子视图(包含子视图的子视图)
-    public func viewWithTag(_ tag: Int) -> UIView? {
-        return self.first(where: { $0.easy.getAssociated(object: EC.key("View.Tag")) == tag })
+    ///获取指定标记的第一个子视图(包含子视图的子视图), nil则返回自身
+    public func viewWithTag(_ tag: Int?) -> UIView? {
+        if let value = tag {
+            return self.first(where: { $0.easy.tag == value })
+        }else{
+            return self.base
+        }
     }
     ///因为直接设置锚点位置会乱，所以需要同步设置center以修正位置
     ///注意该方法只能在布局确定后才可以使用，或未布局完使用位置照样会乱

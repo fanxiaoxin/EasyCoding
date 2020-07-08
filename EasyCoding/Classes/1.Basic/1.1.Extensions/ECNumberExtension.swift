@@ -43,8 +43,35 @@ extension EC.NamespaceImplement where Base: ECNumberExt {
         formatter.positiveFormat = format
         return formatter.string(from: self.objc) ?? self.objc.description
     }
-    public func between(_ v1: Self, _ v2: Self) -> Bool {
-        return v1.objc.doubleValue < self.objc.doubleValue && v2.objc.doubleValue > self.objc.doubleValue
+    ///判断当前值是否在两个值中间
+    public func isBetween(_ v1: Self.Base, _ v2: Self.Base) -> Bool {
+        return v1.easy.objc.doubleValue < self.objc.doubleValue && v2.easy.objc.doubleValue > self.objc.doubleValue
+    }
+    ///若当前值在两个值中间则取当前值，若超过最大值则取最大值，小于最小值则取最小值
+    public func between(_ v1: Self.Base, _ v2: Self.Base) -> Self.Base {
+        let d1 = v1.easy.objc.doubleValue
+        let d2 = v2.easy.objc.doubleValue
+        let d = self.objc.doubleValue
+        let max: Double, min: Double
+        let m1: Self.Base, m2: Self.Base
+        if d1 > d2 {
+            max = d1
+            min = d2
+            m1 = v1
+            m2 = v2
+        }else{
+            max = d2
+            min = d1
+            m1 = v2
+            m2 = v1
+        }
+        if d > max {
+            return m1
+        }else if d < min {
+            return m2
+        }else{
+            return self.base
+        }
     }
 }
 

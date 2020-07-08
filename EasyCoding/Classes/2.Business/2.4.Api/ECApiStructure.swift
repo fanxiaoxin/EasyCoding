@@ -28,7 +28,6 @@ public protocol ECApiPagedListResponseType: ECApiListResponseType {
 }
 ///API列表请求结构
 public protocol ECApiPagedListRequestType: HandyJSON {
-    ///返回是否列表是否已到底
-    var pageSize: Int { get set }
-    var pageNumber: Int { get set }
+    ///页数
+    var page: Int { get set }
 }

@@ -44,6 +44,8 @@ public class ECAlertConfig {
     public var commonButtons:[ECAlertController.CommonButtonType: ECAlertController.Button] = [:]
     ///呈现动画
     public var presentAnimation: ECPresentAnimationType?
+    ///背景呈现动画
+    public var backgroundPresentAnimation: ECPresentAnimationType?
     
     ///默认的按钮样式
     public var button: ECControlConfig<ECButton> {
@@ -109,6 +111,8 @@ public class ECAlertConfig {
             self.commonButtons[.confirm] = ECAlertController.Button(sizeRatio: 1, type: .positive, text: "确定", action:nil)
             //呈现动画
             self.presentAnimation = ECPresentAnimation.Popup()
+            //背景为透明所以不需要呈现动画
+            self.backgroundPresentAnimation = nil
         }
     }
 }

@@ -18,7 +18,7 @@ open class ECTableViewCell<ModelType>: UITableViewCell {
     }
     ///初始化方法
     open func load() { }
-    ///ECTableViewDataSource第一次加载
+    ///ECTableViewDataSource第一次加载，手动注册不会调用该方法
     open func awakeFromDataSource() { }
     ///加载模型数据
     open func load(model: ModelType, indexPath: IndexPath) {
@@ -57,10 +57,14 @@ open class ECTableViewDataSource<DataProviderType: ECDataListProviderType>: ECLi
     }
     ///设置Cell的类型，以后IOS13可以改为用some 协议的方式
     open var typeForCell: (ModelType, IndexPath) -> ECTableViewCell<ModelType>.Type = { _, _ in ECTableViewCell<ModelType>.self }
+    ///设置Cell的标识，用于已添加Cell到TableView的缓存
+    open var identifierForCell: ((ModelType, IndexPath) -> String)?
     ///设置SectionHeader的View
-    open var typeForSectionHeader: (SectionType, Int) -> ECTableViewSectionHeaderFooterView<SectionType>.Type? = { _, _ in nil }
+    open var typeForSectionHeader: ((SectionType, Int) -> ECTableViewSectionHeaderFooterView<SectionType>.Type)?
     ///设置SectionFooter的View
-    open var typeForSectionFooter: (SectionType, Int) -> ECTableViewSectionHeaderFooterView<SectionType>.Type? = { _, _ in nil }
+    open var typeForSectionFooter: ((SectionType, Int) -> ECTableViewSectionHeaderFooterView<SectionType>.Type)?
+    ///设置点击事件
+    open var actionForSelect: ((UITableView, ModelType, IndexPath) -> Void)?
     ///设置编辑事件
     open var actionForEdit: ((UITableView, UITableViewCell.EditingStyle, ModelType, IndexPath) -> Void)?
     ///设置移动事件
@@ -78,6 +82,14 @@ open class ECTableViewDataSource<DataProviderType: ECDataListProviderType>: ECLi
     }
     
     open override func refreshControl() {
+        if self.sections == nil && self.tableView?.delegate === self {
+            if self.typeForSectionHeader == nil {
+                self.tableView?.sectionHeaderHeight = 0
+            }
+            if self.typeForSectionFooter == nil {
+                self.tableView?.sectionFooterHeight = 0
+            }
+        }
         self.tableView?.reloadData()
     }
     
@@ -103,17 +115,20 @@ open class ECTableViewDataSource<DataProviderType: ECDataListProviderType>: ECLi
     }
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let model = self.datas?[indexPath.section][indexPath.row] {
-            let cellType = self.typeForCell(model, indexPath)
-            let identifier = NSStringFromClass(cellType)
             let cell: ECTableViewCell<ModelType>
-            if let c = tableView.dequeueReusableCell(withIdentifier:identifier) {
+            if let identifier = self.identifierForCell?(model, indexPath), let c = tableView.dequeueReusableCell(withIdentifier: identifier)  {
                 cell = c as! ECTableViewCell<ModelType>
             }else{
-                tableView.register(cellType, forCellReuseIdentifier: identifier)
-                cell = tableView.dequeueReusableCell(withIdentifier:identifier) as! ECTableViewCell<ModelType>
-                cell.awakeFromDataSource()
+                let cellType = self.typeForCell(model, indexPath)
+                let identifier = NSStringFromClass(cellType)
+                if let c = tableView.dequeueReusableCell(withIdentifier:identifier) {
+                    cell = c as! ECTableViewCell<ModelType>
+                }else{
+                    tableView.register(cellType, forCellReuseIdentifier: identifier)
+                    cell = tableView.dequeueReusableCell(withIdentifier:identifier) as! ECTableViewCell<ModelType>
+                    cell.awakeFromDataSource()
+                }
             }
-            
             cell.load(model: model, indexPath: indexPath)
             
             return cell
@@ -149,15 +164,15 @@ open class ECTableViewDataSource<DataProviderType: ECDataListProviderType>: ECLi
     
     // MARK: Delegate - Section Header & Footer
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.tableView(tableView, viewForHeaderFooterInSection: section)
+        return self.tableView(tableView, viewForHeaderFooterInSection: section, builder: self.typeForSectionHeader)
     }
 
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return self.tableView(tableView, viewForHeaderFooterInSection: section)
+        return self.tableView(tableView, viewForHeaderFooterInSection: section, builder: self.typeForSectionFooter)
     }
-    open func tableView(_ tableView: UITableView, viewForHeaderFooterInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForHeaderFooterInSection section: Int, builder: ((SectionType, Int) -> ECTableViewSectionHeaderFooterView<SectionType>.Type)?) -> UIView? {
         if let model = self.sections?[section] {
-            if let viewType = self.typeForSectionHeader(model, section) {
+            if let viewType = builder?(model, section) {
                 let identifier = NSStringFromClass(viewType)
                 let view: ECTableViewSectionHeaderFooterView<SectionType>
                 if let v = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier) {
@@ -174,6 +189,11 @@ open class ECTableViewDataSource<DataProviderType: ECDataListProviderType>: ECLi
             }
         }
         return nil
+    }
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let model = self.datas?[indexPath.section][indexPath.row] {
+            self.actionForSelect?(tableView, model, indexPath)
+        }
     }
 }
 extension EC.NamespaceImplement where Base: UITableView {

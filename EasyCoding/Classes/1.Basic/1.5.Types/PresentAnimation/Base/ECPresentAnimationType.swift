@@ -9,12 +9,17 @@ import UIKit
 
 ///用来定制加载卸载动画，仅实现动画效果，不管添加删除view
 public protocol ECPresentAnimationType {
+    ///动画时长
+    var duration: TimeInterval { get }
     ///显示
     func show(view: UIView, completion: (() -> Void)?)
     ///隐藏
     func dismiss(view: UIView, completion: (() -> Void)?)
 }
-
+extension ECPresentAnimationType {
+    ///动画时长默认
+    public var duration: TimeInterval { return ECConstant.animationDuration }
+}
 extension EC.NamespaceImplement where Base: UIView {
     ///通过指定的动画显示
     public func show(animation: ECPresentAnimationType, completion: (() -> Void)? = nil) {

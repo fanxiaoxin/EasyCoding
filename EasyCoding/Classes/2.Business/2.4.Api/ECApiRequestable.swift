@@ -23,3 +23,26 @@ extension ECApiRequestable {
         return handler
     }
 }
+public struct ECApiDataProvider<ApiType: ECResponseApiType>: ECDataProviderType {
+    public typealias DataType = ApiType.ResponseType
+    
+    public let api: ApiType
+    public let scheme: ECApiRequestSchemeType
+    public init(api: ApiType, scheme: ECApiRequestSchemeType) {
+        self.api = api
+        self.scheme = scheme
+    }
+    
+    public func easyData(completion: @escaping (Result<ApiType.ResponseType, Error>) -> Void) {
+        self.scheme.request(self.api).success { data in
+            completion(.success(data))
+        }.failure { error in
+            completion(.failure(error))
+        }
+    }
+}
+extension ECResponseApiType {
+    public func dataProvider(for scheme: ECApiRequestSchemeType) -> ECApiDataProvider<Self> {
+        return ECApiDataProvider<Self>(api: self, scheme: scheme)
+    }
+}

@@ -41,11 +41,7 @@ open class ECPickerViewDataSource<DataProviderType: ECDataListProviderType>: ECL
     ///设置Cell的类型
     open var viewForCell: () -> ECPickerViewCell<ModelType> = { ECPickerViewCell<ModelType>() }
     ///显示加载中视图
-    open lazy var viewForLoading: UIView? = {
-        let view = UIActivityIndicatorView()
-        view.startAnimating()
-        return view
-    }()
+    open var viewForLoading: (() -> UIView)? = { UIActivityIndicatorView.easy(.start()) }
     ///行宽比例，不能比数据源的值小
     open var cellWidthProportions: [CGFloat]?
     ///行高
@@ -63,7 +59,6 @@ open class ECPickerViewDataSource<DataProviderType: ECDataListProviderType>: ECL
         }
         return nil
     }
-   
     open override func refreshControl() {
         self.pickerView?.reloadAllComponents()
     }
@@ -108,12 +103,26 @@ open class ECPickerViewDataSource<DataProviderType: ECDataListProviderType>: ECL
             cell.load(model: model, component: component, row: row)
             return cell
         }
-        return self.viewForLoading ?? UIView()
+        return self.viewForLoading?() ?? UIView()
     }
     
     open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if let model = self.datas?[component][row] {
             self.actionForSelect?(model, component, row)
+        }
+    }
+}
+extension ECPickerViewDataSource where ModelType: Equatable {
+    ///设置选中值，
+    public func setSelectedModels(_ models: [ModelType]) {
+        self.whenDataLoaded.add { [weak self] in
+            if let s = self, let datas = s.datas {
+                for i in 0..<datas.count {
+                    if models.count > i,let idx = datas[i].firstIndex(of: models[i]) {
+                        s.pickerView?.selectRow(idx, inComponent: i, animated: true)
+                    }
+                }
+            }
         }
     }
 }

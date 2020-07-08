@@ -18,6 +18,8 @@ open class ECListControlDataSource<DataProviderType: ECDataListProviderType>: NS
     open var indexTitles: [String]?
     ///列表数据
     open var datas: [[ModelType]]?
+    ///数据加载完成事件，若有需要在数据加载完后执行的操作可直接添加进来，执行过一次就会删除
+    public let whenDataLoaded = ECOnceEvent()
 
     /// 刷新数据，请求数据并刷新显示
     open func reloadData() {
@@ -26,6 +28,7 @@ open class ECListControlDataSource<DataProviderType: ECDataListProviderType>: NS
                 s.sections = provider.sections(for: data)
                 s.datas = provider.lists(for: data)
                 s.indexTitles = provider.indexTitles(for: data)
+                s.whenDataLoaded()
                 s.refreshControl()
             }
         }

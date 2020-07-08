@@ -13,7 +13,7 @@ extension ECPresentAnimation {
         ///侧滑起始位置，默认为下，none无效
         public let direction: ECDirection
         ///动画时长
-        public var duration: TimeInterval = 0.25
+        public var duration: TimeInterval = ECConstant.animationDuration
         public init(direction: ECDirection? = nil) {
             self.direction = direction ?? .bottom
         }

@@ -8,8 +8,11 @@
 import UIKit
 
 ///底下弹出带工具栏的键盘，内容为空，使用需继承
-open class ECToolbarKeyboard<InputType>: UIView, ECKeyboardType {
+open class ECToolbarKeyboard<InputType>: UIView, ECKeyboardType, UIGestureRecognizerDelegate {
+    ///点击背景区域自动关闭
+    open var isHiddenForTouchBackground = false
     open var inputReceive: ((InputType) -> Void)?
+    open lazy var actionForClose: () -> Void = { [weak self] in self?.dismiss() }
     ///工具栏
     public let toolbar = Toolbar()
     ///工具栏跟内容的分隔线
@@ -53,15 +56,44 @@ open class ECToolbarKeyboard<InputType>: UIView, ECKeyboardType {
         self.toolbar.confirmButton.addTarget(self, action: #selector(self.confirm), for: .touchUpInside)
     }
     ///获取当前值
-    open func currentValue() -> InputType {
-        fatalError("未实现")
+    open func currentValue() -> InputType? {
+        return nil
     }
     @objc func cancel() {
-        self.dismiss()
+        self.actionForClose()
     }
     @objc func confirm() {
-        self.input(self.currentValue())
-        self.dismiss()
+        if let value = self.currentValue() {
+            self.input(value)
+        }
+        self.actionForClose()
+    }
+    public func show() {
+        var frame = self.frame
+        if frame.origin == .zero {
+            frame.origin = self.defaultFrame.origin
+        }
+        if frame.size.width == 0 {
+            frame.size.width = self.defaultFrame.size.width
+        }
+        if frame.size.height == 0 {
+            frame.size.height = self.defaultFrame.size.height
+        }
+        self.frame = frame
+        if self.isHiddenForTouchBackground {
+            let view = UIView(frame: UIScreen.main.bounds)
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.cancel))
+            tap.delegate = self
+            view.addGestureRecognizer(tap)
+            view.addSubview(self)
+            view.easy.openWindow()
+            self.easy.show(animation: ECPresentAnimation.SlideOut(direction: .bottom))
+        }else{
+            self.easy.showWindow(animation: ECPresentAnimation.SlideOut(direction: .bottom))
+        }
+    }
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return touch.view == self.superview
     }
     public class Toolbar: UIView {
         public let titleLabel = ECLabel()

@@ -50,11 +50,7 @@ open class ECPickerViewMultiDataSourceBase<FirstType: ECDataListProviderType>: N
         return nil
     }
     ///显示加载中视图
-    open var viewForLoading: () -> UIView = {
-        let view = UIActivityIndicatorView()
-        view.startAnimating()
-        return view
-    }
+    open var viewForLoading: () -> UIView = { UIActivityIndicatorView.easy(.start()) }
     ///行宽比例，不能比数据源的值小
     open var cellWidthProportions: [CGFloat]?
     ///行高

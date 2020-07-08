@@ -31,6 +31,17 @@ class PickerViewDataSourceController: ECViewController<PickerViewDataSourceView>
 //            self?.page.stateView.isHidden = false
 //        }))
         self.dataSource.reloadData()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "设置重置", style: .plain, target: self, action: #selector(self.reset))
+    }
+    var models: [String]?
+    @objc func reset() {
+        if let models = self.models {
+            self.models = nil
+            self.dataSource.setSelectedModels(models)
+        }else{
+            self.models = self.dataSource.selectedModels
+        }
     }
 }
 class PickerViewDataSourceView: ECPage {

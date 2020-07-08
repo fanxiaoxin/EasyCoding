@@ -16,6 +16,8 @@ extension ECPresentSegue {
         public let makeKey: Bool
         ///呈现动画
         open var animation: ECPresentAnimationType?
+        ///执行动画
+        private var animationGroup = ECPresentAnimation.Group()
         ///窗口的样式设置
         open var windowStyles: [ECStyleSetting<UIWindow>] = []
         /// 使用新窗口打开
@@ -33,6 +35,10 @@ extension ECPresentSegue {
         open func animation(for view: UIView) -> ECPresentAnimationType? {
             return self.animation
         }
+        ///获取动画，可重载
+        open func animation(for window: UIWindow) -> ECPresentAnimationType? {
+            return ECPresentAnimation.FadeColor()
+        }
         ///获取用来做动画的视图，可重载
         open func viewForAnimation() -> UIView? {
             return self.destination?.view
@@ -40,20 +46,24 @@ extension ECPresentSegue {
         open override func performAction(completion: (() -> Void)?) {
             if let d = self.destination {
                 let window = d.easy.openWindow(level: level, makeKey: makeKey)
-                if let view = self.viewForAnimation(), let am = self.animation(for: view) {
-                    view.easy.show(animation: am, completion: completion)
-                }else{
-                    completion?()
-                }
                 self.windowStyles.forEach { (style) in
                     style.action(window)
                 }
+                self.animationGroup.animations.removeAll()
+                if let am = self.animation(for: window) {
+                    animationGroup.animations.append((tag: nil, delay: 0, aniamtion: am))
+                }
+                if let view = self.viewForAnimation(), let am = self.animation(for: view) {
+                    view.easy.tag(1001)
+                    animationGroup.animations.append((tag: 1001, delay: 0, aniamtion: am))
+                }
+                animationGroup.show(view: window, completion: completion)
             }
         }
         open override func unwindAction() {
             weak var controller = self.destination
-            if let view = self.viewForAnimation() {
-                view.easy.dismiss {
+            if let window = controller?.view.window {
+                self.animationGroup.dismiss(view: window) {
                     controller?.easy.closeWindow()
                 }
             }
