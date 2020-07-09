@@ -32,7 +32,7 @@ open class ECDataPagedDecorator<DataProviderType: ECDataPagedProviderType>: ECDa
     open override func endRefresh() {
         self.header.endRefreshing()
         //若刷新的时候不是只有一页则设置可上拉加载更多
-        if !(self.dataProvider?.isLastPage ?? true) {
+        if let data = self.data, !self.isLastPage(for: data) {
             self.footer.resetNoMoreData()
         }
     }
@@ -44,13 +44,13 @@ open class ECDataPagedDecorator<DataProviderType: ECDataPagedProviderType>: ECDa
             self?.loadMore()
         }
         //若初始化的时候只有一页则设置已全部加载
-        if self.dataProvider?.isLastPage ?? true {
+        if self.data == nil || self.isLastPage(for: self.data!) {
             self.footer.endRefreshingWithNoMoreData()
         }
     }
     ///结束加载更多操作
     open override func endLoadMore() {
-        if self.dataProvider?.isLastPage ?? true {
+        if self.data == nil || self.isLastPage(for: self.data!) {
             self.footer.endRefreshingWithNoMoreData()
         }else{
             self.footer.endRefreshing()

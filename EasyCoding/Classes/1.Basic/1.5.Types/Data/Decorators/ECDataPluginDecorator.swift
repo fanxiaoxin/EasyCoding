@@ -67,27 +67,27 @@ open class ECDataPlugin<DataType>: ECDataProviderInjectable {
 //        self.delegate?.reloadData(for: self)
     }
     
-    open func willRequest() -> Bool {
+    open func willRequest(for provider: Any) -> Bool {
         for p in self.plugins {
             p.isActivating = p.isActivated()
-            if p.isActivating && !p.willRequest() {
+            if p.isActivating && !p.willRequest(for: provider) {
                 return false
             }
         }
         return true
     }
-    open func didRequest() {
+    open func didRequest(for provider: Any) {
         for p in self.plugins {
             if p.isActivating {
-                p.didRequest()
+                p.didRequest(for: provider)
             }
         }
     }
-    open func willResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) -> Result<DataType, Error>? {
+    open func willResponse(for provider: Any, result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) -> Result<DataType, Error>? {
         var newResult = result
         for p in self.plugins.reversed() {
             if p.isActivating {
-                guard let r = p.willResponse(for: newResult, completion: completion) else {
+                guard let r = p.willResponse(for:provider, result: newResult, completion: completion) else {
                     return nil
                 }
                 newResult = r
@@ -95,10 +95,10 @@ open class ECDataPlugin<DataType>: ECDataProviderInjectable {
         }
         return newResult
     }
-    open func didResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) {
+    open func didResponse(for provider: Any, result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) {
         for p in self.plugins.reversed() {
             if p.isActivating {
-                p.didResponse(for: result, completion: completion)
+                p.didResponse(for:provider, result: result, completion: completion)
             }
         }
     }

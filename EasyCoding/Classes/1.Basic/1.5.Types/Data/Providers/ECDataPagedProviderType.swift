@@ -14,7 +14,7 @@ public protocol ECDataPagedProviderType : ECDataProviderType {
     ///设置页码
     var page: Int { get set }
     ///是否最后一页，若当前为最后一页则没有下拉加载新的页数
-    var isLastPage: Bool { get }
+    func isLastPage(for data: DataType) -> Bool
     ///整合两个数据，用于加载下一页时跟上一页进行合并
     func merge(data1: DataType, data2: DataType) -> DataType
 }
@@ -24,7 +24,7 @@ extension ECDataPagedProviderType {
     ///是否第一页，若当前为第1页则说明是刷新数据
     public var isFirstPage: Bool { return self.page == self.firstPage }
     ///是否最后一页，若当前为最后一页则没有下拉加载新的页数
-    public var isLastPage: Bool { return true }
+    public func isLastPage(for data: DataType) -> Bool { return true }
 }
 ///默认所有装饰器都可直接装饰该类型
 extension ECDataPagedProviderType where Self: ECDataProviderDecoratorType, DataProviderType: ECDataPagedProviderType, DataProviderType.DataType == DataType {
@@ -40,9 +40,7 @@ extension ECDataPagedProviderType where Self: ECDataProviderDecoratorType, DataP
         }
     }
     ///是否最后一页，若当前为最后一页则没有下拉加载新的页数
-    public var isLastPage: Bool {
-        return self.dataProvider?.isLastPage ?? true
-    }
+    public func isLastPage(for data: DataType) -> Bool { self.dataProvider?.isLastPage(for: data) ?? true }
     ///整合两个数据，用于加载下一页时跟上一页进行合并
     public func merge(data1: DataType, data2: DataType) -> DataType {
         return self.dataProvider?.merge(data1: data1, data2: data2) ?? data1

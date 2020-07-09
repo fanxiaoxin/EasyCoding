@@ -9,6 +9,8 @@ import UIKit
 
 ///常用的单页数据加载
 public class ECViewDataDecorator<DataProviderType: ECDataProviderType>: ECDataPluginDecorator<DataProviderType> {
+    ///日志
+    public let log = ECDataLogPlugin<DataProviderType.DataType>()
     ///加载框
     public let loading = ECDataLoadingPlugin<DataProviderType.DataType>()
     ///加载错误页面
@@ -26,6 +28,6 @@ public class ECViewDataDecorator<DataProviderType: ECDataProviderType>: ECDataPl
     public override init() {
         super.init()
         empty.unloadWhenRequest = true
-        self.plugins = [loading, error, empty]
+        self.plugins = [log, loading, error, empty]
     }
 }

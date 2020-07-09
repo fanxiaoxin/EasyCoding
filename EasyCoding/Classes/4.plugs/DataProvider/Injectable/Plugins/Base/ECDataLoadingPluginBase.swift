@@ -14,13 +14,13 @@ open class ECDataLoadingPluginBase<DataType>: ECDataPlugin<DataType>  {
     ///卸载可视化界面
     open func unload() { }
     ///请求时加载页面
-    open override func didRequest() {
-        super.didRequest()
+    open override func didRequest(for provider: Any) {
+        super.didRequest(for: provider)
         self.load()
     }
     ///请求结束后卸载页面
-    open override func didResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) {
-        super.didResponse(for: result, completion: completion)
+    open override func didResponse(for provider: Any, result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) {
+        super.didResponse(for: provider, result: result, completion: completion)
         self.unload()
     }
 }

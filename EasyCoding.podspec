@@ -68,11 +68,12 @@ TODO: Add long description of the pod here.
   end
   # 提供一些控件及界面相关的工具
   s.subspec 'Controls' do |c|
-    c.source_files = 'EasyCoding/Classes/3.Controls/**/*','EasyCoding/Classes/4.plugs/{T,V,D}*/**/*'
+    c.source_files = 'EasyCoding/Classes/3.Controls/**/*','EasyCoding/Classes/4.plugs/{T,V,D,L}*/**/*'
     c.dependency 'EasyCoding/AccessControl'
     c.dependency 'JRSwizzle'
     c.dependency 'YYKeyboardManager', '~> 1.0.0'
     c.dependency 'Kingfisher', '~> 5.14.0'
+    c.dependency 'MJRefresh', '~> 3.4.0'
     c.resource_bundles = {
         'EasyCoding' => ['EasyCoding/Assets/*.xcassets']
     }

@@ -9,6 +9,8 @@ import UIKit
 
 ///常用的分页数据加载
 public class ECViewDataPagedDecorator<DataProviderType: ECDataPagedProviderType>: ECDataPagedDecorator<DataProviderType> {
+    ///日志
+    public let log = ECDataLogPlugin<DataProviderType.DataType>()
     ///加载框
     public let loading = ECDataLoadingPlugin<DataProviderType.DataType>()
     ///加载错误页面
@@ -43,6 +45,6 @@ public class ECViewDataPagedDecorator<DataProviderType: ECDataPagedProviderType>
             return (self?.data).isEmpty
         }
         
-        self.plugins = [loading, error, empty, errorToast]
+        self.plugins = [log, loading, error, empty, errorToast]
     }
 }

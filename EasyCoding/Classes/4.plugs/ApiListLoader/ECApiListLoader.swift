@@ -33,7 +33,7 @@ open class ECApiListLoader<ApiType: ECResponseApiType, CellType: ECApiListCellTy
         case cellDidLoaded
     }
     ///API请求方案
-    public var scheme: ECApiRequestSchemeType?
+    public var scheme: ECApiManagerType?
     ///列表控件
     public var listTable: CellType.TableType?
     ///接口
@@ -121,7 +121,7 @@ extension ECApiListLoader where ApiType: ECPagedResponseApiType {
                             self?.loadNextPage()
                         })
                     }
-                    if rs.isEnd {
+                    if rs.isEnd(for: s.api) {
                         s.listTable?.mj_footer?.endRefreshingWithNoMoreData()
                     }else{
                         s.listTable?.mj_footer?.resetNoMoreData()
@@ -148,7 +148,7 @@ extension ECApiListLoader where ApiType: ECPagedResponseApiType {
         .success { [weak self] (rs) in
             if let s = self {
                 s.listTable?.mj_footer?.endRefreshing()
-                if rs.isEnd {
+                if rs.isEnd(for: s.api) {
                     s.listTable?.mj_footer?.endRefreshingWithNoMoreData()
                 }
                 s.lastResponse = rs

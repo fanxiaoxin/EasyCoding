@@ -35,6 +35,6 @@ public class ECViewDataRefreshDecorator<DataProviderType: ECDataProviderType>: E
             return !(refresh?.isRereshInited ?? true)
         }
         
-        self.plugins = [loading, error, empty, errorToast, refresh]
+        self.plugins = [log, loading, error, empty, errorToast, refresh]
     }
 }

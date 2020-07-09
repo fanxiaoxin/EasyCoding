@@ -87,8 +87,8 @@ open class ECDataPagedDecoratorBase<DataProviderType: ECDataPagedProviderType>: 
     ///结束加载更多操作
     open func endLoadMore() {}
     
-    open override func willRequest() -> Bool {
-        if super.willRequest() {
+    open override func willRequest(for provider: Any) -> Bool {
+        if super.willRequest(for: provider) {
             if !self.initRefreshOnlySuccess && !self.isRereshInited {
                 self.initRefresh()
                 self.isRereshInited = true
@@ -110,6 +110,7 @@ open class ECDataPagedDecoratorBase<DataProviderType: ECDataPagedProviderType>: 
         return false
     }
     ///请求结束前保存刷新处理用于刷新时调用
+    /*
     open override func willResponse(for result: Result<DataProviderType.DataType, Error>, completion: @escaping (Result<DataProviderType.DataType, Error>) -> Void) -> Result<DataProviderType.DataType, Error>? {
         if let result = super.willResponse(for: result, completion: completion) {
             //因为有可能在刷新的同时又加载更多或者反过来，所以需要同时调用结束，不区分上下拉
@@ -138,5 +139,31 @@ open class ECDataPagedDecoratorBase<DataProviderType: ECDataPagedProviderType>: 
             return result
         }
         return nil
+    }*/
+    open override func didResponse(for provider: Any, result: Result<DataProviderType.DataType, Error>, completion: @escaping (Result<DataProviderType.DataType, Error>) -> Void) {
+        //因为有可能在刷新的同时又加载更多或者反过来，所以需要同时调用结束，不区分上下拉
+        if self.isRereshInited {
+            self.endRefresh()
+        }
+        if self.isLoadMoreInited {
+            self.endLoadMore()
+        }
+        switch result {
+        case let .success(data):
+            ///首次加载时设置数据
+            if self.data == nil {
+                self.data = data
+            }
+            if !self.isRereshInited {
+                self.initRefresh()
+                self.isRereshInited = true
+            }
+            if !self.isLoadMoreInited {
+                self.initLoadMore()
+                self.isLoadMoreInited = true
+            }
+        default: break
+        }
+        super.didResponse(for: provider, result: result, completion: completion)
     }
 }

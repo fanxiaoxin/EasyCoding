@@ -22,12 +22,17 @@ public protocol ECApiListResponseType: ECApiResponseType {
     ///返回列表数据
     var list: [ModelType]? { get }
 }
-public protocol ECApiPagedListResponseType: ECApiListResponseType {
-    ///返回是否列表是否已到底
-    var isEnd: Bool { get }
+extension ECApiListResponseType {
+    
 }
 ///API列表请求结构
 public protocol ECApiPagedListRequestType: HandyJSON {
     ///页数
     var page: Int { get set }
+}
+public protocol ECApiPagedListResponseType: ECApiListResponseType {
+    ///返回是否列表是否已到底
+    func isEnd(for api: ECApiPagedListRequestType) -> Bool
+    ///整合两页数据
+    func merge(data: Self) -> Self
 }

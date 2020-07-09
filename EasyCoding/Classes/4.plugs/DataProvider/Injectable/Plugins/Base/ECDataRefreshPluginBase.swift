@@ -20,8 +20,8 @@ open class ECDataRefreshPluginBase<DataType>: ECDataPlugin<DataType> {
     ///结束刷新操作
     open func endRefresh() {}
     ///请求时开始刷新
-    open override func willRequest() -> Bool {
-        if super.willRequest() {
+    open override func willRequest(for provider: Any) -> Bool {
+        if super.willRequest(for: provider) {
             if !self.initRefreshOnlySuccess && !self.isRereshInited {
                 self.initRefresh()
                 self.isRereshInited = true
@@ -35,8 +35,8 @@ open class ECDataRefreshPluginBase<DataType>: ECDataPlugin<DataType> {
         }
     }
     ///请求结束后如保存刷新处理用于刷新时调用
-    open override func didResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) {
-        super.didResponse(for: result, completion: completion)
+    open override func didResponse(for provider: Any, result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) {
+        super.didResponse(for: provider, result: result, completion: completion)
         if self.isRereshInited {
             self.endRefresh()
         }

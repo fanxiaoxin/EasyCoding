@@ -47,3 +47,13 @@ extension Date: ECTextualizable {
 extension NSObject: ECTextualizable {
     public var text: String { return self.description }
 }
+///获取最适合的字条串表示
+public func ECText(_ obj: Any) -> String {
+    if let o = obj as? ECTextualizable {
+        return o.text
+    }else if let o = obj as? CustomStringConvertible {
+        return o.description
+    } else {
+        return "\(obj)"
+    }
+}

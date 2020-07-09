@@ -8,8 +8,8 @@
 import UIKit
 import Moya
 
-///API请求方案(包含API请求的所有额外参数，用于包装Provider及错误处理)
-public protocol ECApiRequestSchemeType {
+///API请求管理(包含API请求的所有额外参数，用于包装Provider及错误处理)
+public protocol ECApiManagerType {
     ///回调队列
     var callbackQueue: DispatchQueue? { get }
     ///进度处理
@@ -44,7 +44,7 @@ public class ECApiResultHandling<ResponseType> {
     }
 }
 
-extension ECApiRequestSchemeType {
+extension ECApiManagerType {
     ///回调队列
     public var callbackQueue: DispatchQueue? { return .none }
     ///进度处理
@@ -60,10 +60,10 @@ extension ECApiRequestSchemeType {
     }
     ///调用接口
     @discardableResult
-    public func request<ApiType: ECResponseApiType>(_ api: ApiType) -> ECApiResultHandling<ApiType.ResponseType> {
+    public func request<ApiType: ECResponseApiType>(_ api: ApiType, callbackQueue: DispatchQueue? = nil, progress: ProgressBlock? = nil) -> ECApiResultHandling<ApiType.ResponseType> {
         let provider = self.provider(for: api)
         let handling = ECApiResultHandling<ApiType.ResponseType>()
-        handling.canceller = provider.request(api, callbackQueue: self.callbackQueue, progress: self.progress) { (result) in
+        handling.canceller = provider.request(api, callbackQueue: callbackQueue ?? self.callbackQueue, progress: progress ?? self.progress) { (result) in
             if handling.whateverHandler?() ?? true {
                 switch result {
                 case let .failure(error):
@@ -107,9 +107,9 @@ extension ECApiRequestSchemeType {
     }
     ///下载比较特殊，不较验结构，若要校验则使用request方法
     @discardableResult
-    public func download<ApiType: ECDownloadApiType>(_ target: ApiType) -> ECApiResultHandling<DownloadDestination> {
+    public func download<ApiType: ECDownloadApiType>(_ target: ApiType, callbackQueue: DispatchQueue? = nil, progress: ProgressBlock? = nil) -> ECApiResultHandling<DownloadDestination> {
         let handling = ECApiResultHandling<DownloadDestination>()
-        handling.canceller = self.provider(for: target).request(target, callbackQueue: self.callbackQueue, progress: self.progress) { (result) in
+        handling.canceller = self.provider(for: target).request(target, callbackQueue: callbackQueue ?? self.callbackQueue, progress: progress ?? self.progress) { (result) in
             if handling.whateverHandler?() ?? true {
                 switch result {
                 case let .failure(error) :
@@ -124,6 +124,7 @@ extension ECApiRequestSchemeType {
     }
 }
 ///隐式调用API方案，无任何错误及调用过程处理，只有在成功时才会回调
-public class ECImplicitApiRequestScheme: ECApiRequestSchemeType {
-    public init() {}
+open class ECImplicitApiManager: ECApiManagerType {
+    public static let shared = ECImplicitApiManager()
+    private init() {}
 }

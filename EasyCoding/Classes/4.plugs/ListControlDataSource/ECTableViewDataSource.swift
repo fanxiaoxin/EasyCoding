@@ -23,9 +23,7 @@ open class ECTableViewCell<ModelType>: UITableViewCell {
     ///加载模型数据
     open func load(model: ModelType, indexPath: IndexPath) {
         //默认设置Text值
-        if let text = model as? String {
-            self.textLabel?.text = text
-        }
+        self.textLabel?.text = ECText(model)
     }
 }
 open class ECTableViewSectionHeaderFooterView<SectionType>: UITableViewHeaderFooterView {

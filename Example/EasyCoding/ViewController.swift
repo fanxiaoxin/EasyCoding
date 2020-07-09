@@ -33,7 +33,7 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         keyboard.show()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 11
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
@@ -48,6 +48,7 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
         case 7: cell.textLabel?.text = "PickerView多数据源"
         case 8: cell.textLabel?.text = "键盘"
         case 9: cell.textLabel?.text = "TextField输入限制"
+        case 10: cell.textLabel?.text = "Api"
         default: break
         }
         return cell
@@ -88,6 +89,7 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
                 print(model)
             }.show()
         case 9: self.load(TextConstraintController())
+        case 10: self.load(ApiController())
             
         default: break
         }

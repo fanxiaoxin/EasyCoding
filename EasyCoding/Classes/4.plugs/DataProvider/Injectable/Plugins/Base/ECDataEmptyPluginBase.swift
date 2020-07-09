@@ -20,15 +20,15 @@ open class ECDataEmptyPluginBase<DataType>: ECDataPlugin<DataType> {
         }
     }
     ///请求时不显示自身
-    open override func didRequest() {
-        super.didRequest()
+    open override func didRequest(for provider: Any) {
+        super.didRequest(for: provider)
         if self.unloadWhenRequest {
             self.unload()
         }
     }
     ///请求结束后如成功但数据为空则显示空数据页面，但不中断回调，防止干扰业务
-    open  override func didResponse(for result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) {
-        super.didResponse(for: result, completion: completion)
+    open  override func didResponse(for provider: Any, result: Result<DataType, Error>, completion: @escaping (Result<DataType, Error>) -> Void) {
+        super.didResponse(for: provider,result: result, completion: completion)
         switch result {
         case let .success(data):
             if self.isEmpty(data) {
