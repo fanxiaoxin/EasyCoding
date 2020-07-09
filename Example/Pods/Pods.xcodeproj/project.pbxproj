@@ -126,7 +126,6 @@
 		3680589CEA30E94BAA1CAD86AB00C426 /* BuiltInBasicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE168FCB058A712E27B45B3129F6AE2 /* BuiltInBasicType.swift */; };
 		36826F21D7C2AF2B9769C0598A7B865D /* ECViewControllerPlug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1329BF17FC02C0C35182924628398D37 /* ECViewControllerPlug.swift */; };
 		3730F59D1C7746DF9E17E52ABD18573F /* ECOnceEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554737C35DB54DCECEA1AD794A13D5CE /* ECOnceEventManager.swift */; };
-		375D1003105A65157C45C5A114A59547 /* ECCollectionViewApiLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397351B3CF54825B151A32E94C8E923 /* ECCollectionViewApiLoader.swift */; };
 		385A038489EADDD0D6445CD88FD5BA9C /* RetryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3C3426DD0C53CA9EC1FA2D96A104B /* RetryStrategy.swift */; };
 		38A63C74CC3F4475E40DF95B2E532D07 /* ECPresentSegue.Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7508C24AE6C8129AF20F419135E3B03 /* ECPresentSegue.Content.swift */; };
 		390AFDA915742D349C07194D1C4662AB /* ECColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01847B8E2BE6440DA43FDEF08DC69C16 /* ECColorExtension.swift */; };
@@ -197,7 +196,6 @@
 		67581A6A1EAB2B25EC4079AA055C8719 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8026A815CFC557DE34F66A7D4258ADE6 /* SnapKit.framework */; };
 		682B1B40EC65528989D54C1F1DD7C2D2 /* MultiTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2F2C45EF6896FE607840A351E3AD1 /* MultiTarget.swift */; };
 		68E1458E73651071555CC16A6970A8D8 /* ImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FE3DC74D4A465A98E2369E55B91589 /* ImageView+Kingfisher.swift */; };
-		69380C8927173772A65EC23A9F81E620 /* ECTableViewApiLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A2F96B6B3A1DDB3B4846BD825E387E /* ECTableViewApiLoader.swift */; };
 		69B791F15EC3DF3591FF24FE327F9438 /* ECPresentSegue.MultiPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DBB4B56243034CCED014565407A37 /* ECPresentSegue.MultiPush.swift */; };
 		6AE239C5D116E1C06F5705699FB9EAF0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F2D43C2A4672E89EB180840796A4FC9 /* XCTest.framework */; };
 		6B0C43ADB32348EB75DBAA38254A114A /* ECWindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C58473907FC0ED574121B1DF60B8B /* ECWindowExtension.swift */; };
@@ -251,7 +249,6 @@
 		864508AD5AF5CAF2226863AEA8F62573 /* ExtensionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5230DCD4FDC74E5FC77A68A8E66FE7 /* ExtensionHelpers.swift */; };
 		8781870530A17531A16DD0485A8F13C6 /* ECPresentSegue.TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24516DB42C0F9A4D12043A9F6C1566CB /* ECPresentSegue.TabBar.swift */; };
 		88396E68DC05A379282F3B374F75F43C /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F5B5FC609074D00BAD8C1210C05F1A /* FBSnapshotTestController.m */; };
-		89158AA3D9D51E81FBB2755D3AFB5E7D /* ECMJRefreshStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AEB60EEE1E5A9E21EA5FC96D4A687E /* ECMJRefreshStyle.swift */; };
 		89911021E591DFE307F24FCFD7F5BB3D /* ECNumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECB90FB0CF2BE4DB2D89A4F15750514 /* ECNumberExtension.swift */; };
 		89AF489BDC33491BC31E858DA927F1E9 /* ECScrollViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB762E7381499759C57B819197556283 /* ECScrollViewStyle.swift */; };
 		8A070C5F4405E8C2CB03FD8EB784083C /* ECToastConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2CE225A65D3734E9DB53FA9634E9E /* ECToastConfig.swift */; };
@@ -302,6 +299,7 @@
 		9CDB1C9D24B5C0C600011609 /* ECKeyboardTextConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C9C24B5C0C600011609 /* ECKeyboardTextConstraint.swift */; };
 		9CDB1C9F24B5C2B900011609 /* ECTextualizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C9E24B5C2B900011609 /* ECTextualizable.swift */; };
 		9CDB1CA424B5C53600011609 /* ECPickerTextConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1CA324B5C53600011609 /* ECPickerTextConstraint.swift */; };
+		9CE2018324B6E50700D0C01C /* ECMJRefreshStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE2018224B6E50700D0C01C /* ECMJRefreshStyle.swift */; };
 		9D65089019D558E5A9661F2DCAD20313 /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87362F5B0138E9BD366742AF03D483 /* SwiftSupport.swift */; };
 		9E0A05882BDA16EF7B31F2E7CC5A4FA0 /* ECTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEF649DD6E2C0486ADD3B67F147694 /* ECTableViewExtension.swift */; };
 		9E822591D94C6AF338A24FD68EAFEC18 /* ECHandyJSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6756FABA88B131BFC8D46972792ED1 /* ECHandyJSONExtension.swift */; };
@@ -416,7 +414,6 @@
 		E2F91EC785DB2072D26AA01C307AF45D /* ECParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D078D7A6F3231F0CF54118F4175E8C /* ECParagraphStyle.swift */; };
 		E3747EC31FCCA97D75A81FC700CF7E24 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBB95D4FDFE4386A50415EF37F3C022 /* ResponseSerialization.swift */; };
 		E41F4E0452A52D4D083A3F93CB57B61F /* ECApiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37518C2F827008F114CE753C88FA4B6 /* ECApiType.swift */; };
-		E451C6D4EEA87EE23B500BC06C26B7E8 /* ECApiListLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B83B9E6E9F2008F93394F27BDE0304 /* ECApiListLoader.swift */; };
 		E591CC9A41B73D95EB2265D5FA473EC1 /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67256CB5B3775BB94A703F8031DD6C4 /* ConstraintViewDSL.swift */; };
 		E606812FC6647C2AD2B9F9F2B405FAD5 /* ECCustomControlConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB60F0C4B72C6C845BE85C21BA2471 /* ECCustomControlConfig.swift */; };
 		E6925369B409D533468DCF67C2AE28B3 /* ECTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB426434CF1F33BAAE799B5363CF58F0 /* ECTextField.swift */; };
@@ -758,7 +755,6 @@
 		422864631717956C4F7ACE2921AB2284 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
 		42F08AFACB0EA712FEA2D1A86C635423 /* FBSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
 		431C6997D4479D176A0DE2D47FCAF000 /* ECPageControlStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPageControlStyle.swift; sourceTree = "<group>"; };
-		4397351B3CF54825B151A32E94C8E923 /* ECCollectionViewApiLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECCollectionViewApiLoader.swift; sourceTree = "<group>"; };
 		43B4DC5C1A95EA3B3CC468A454BF7A59 /* BuiltInBridgeType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BuiltInBridgeType.swift; path = Source/BuiltInBridgeType.swift; sourceTree = "<group>"; };
 		43C2317A54B8B9B4EE65CEA1F06BF1C4 /* WKInterfaceImage+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WKInterfaceImage+Kingfisher.swift"; path = "Sources/Extensions/WKInterfaceImage+Kingfisher.swift"; sourceTree = "<group>"; };
 		4423A6D7AC3B3A39F4DAE7CE7C0ED237 /* URL+Moya.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URL+Moya.swift"; path = "Sources/Moya/URL+Moya.swift"; sourceTree = "<group>"; };
@@ -780,7 +776,6 @@
 		4BCFFA5D2B45F7315F65DFD143C0455F /* EasyCoding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EasyCoding.debug.xcconfig; sourceTree = "<group>"; };
 		4C379F3EF6D5600C1677B17DD725C4CA /* ECPresentSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.swift; sourceTree = "<group>"; };
 		4C5A17B4F9ADB05ABB0685F0831B3CED /* FBSnapshotTestCasePlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCasePlatform.m; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.m; sourceTree = "<group>"; };
-		50B83B9E6E9F2008F93394F27BDE0304 /* ECApiListLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECApiListLoader.swift; sourceTree = "<group>"; };
 		50F587EB22AC0D93D7C5079CD92D921E /* ImageCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = Sources/Cache/ImageCache.swift; sourceTree = "<group>"; };
 		50FA14A71E11F9D6C31D3922721E322B /* MJRefreshConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshConst.h; path = MJRefresh/MJRefreshConst.h; sourceTree = "<group>"; };
 		50FCD4089ECD1102CA107C30B091728D /* SnapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.release.xcconfig; sourceTree = "<group>"; };
@@ -964,6 +959,7 @@
 		9CDB1C9C24B5C0C600011609 /* ECKeyboardTextConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECKeyboardTextConstraint.swift; sourceTree = "<group>"; };
 		9CDB1C9E24B5C2B900011609 /* ECTextualizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECTextualizable.swift; sourceTree = "<group>"; };
 		9CDB1CA324B5C53600011609 /* ECPickerTextConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPickerTextConstraint.swift; sourceTree = "<group>"; };
+		9CE2018224B6E50700D0C01C /* ECMJRefreshStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMJRefreshStyle.swift; sourceTree = "<group>"; };
 		9D5230DCD4FDC74E5FC77A68A8E66FE7 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtensionHelpers.swift; path = Sources/Utility/ExtensionHelpers.swift; sourceTree = "<group>"; };
 		9D76FF1FE12444158859C95DF0FF874C /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateHeader.h; path = MJRefresh/Custom/Header/MJRefreshStateHeader.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -1031,7 +1027,6 @@
 		B613C5063581F9218860ABCB2F080290 /* HandyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HandyJSON-umbrella.h"; sourceTree = "<group>"; };
 		B67256CB5B3775BB94A703F8031DD6C4 /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
 		B6C8D4E56B05227F085F2240087FE6D9 /* ECActivityIndicatorViewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECActivityIndicatorViewStyle.swift; sourceTree = "<group>"; };
-		B7A2F96B6B3A1DDB3B4846BD825E387E /* ECTableViewApiLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECTableViewApiLoader.swift; sourceTree = "<group>"; };
 		B7F45C9A72AD0605B060094AF714816C /* ECViewControllerAccessable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewControllerAccessable.swift; sourceTree = "<group>"; };
 		B8E66B6ADF87DD534A6F457D965C7422 /* ECPrecondition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPrecondition.swift; sourceTree = "<group>"; };
 		B92F2ECB5F3E2666070ADD778C0B232C /* HandyJSON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HandyJSON.debug.xcconfig; sourceTree = "<group>"; };
@@ -1120,7 +1115,6 @@
 		E70A028CAFA138AA4BB378A2A5B51EA2 /* SnapKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SnapKit-Info.plist"; sourceTree = "<group>"; };
 		E730EAFA361E507043FFA7C074C562CA /* Task.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Sources/Moya/Task.swift; sourceTree = "<group>"; };
 		E7508C24AE6C8129AF20F419135E3B03 /* ECPresentSegue.Content.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.Content.swift; sourceTree = "<group>"; };
-		E7AEB60EEE1E5A9E21EA5FC96D4A687E /* ECMJRefreshStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECMJRefreshStyle.swift; sourceTree = "<group>"; };
 		E7BE82B72F844A4CE75A58EAB97F27CB /* UIView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+MJExtension.h"; path = "MJRefresh/UIView+MJExtension.h"; sourceTree = "<group>"; };
 		E8454661D0D5EB1FAECA57A1DE35D8AB /* ECImageExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECImageExtension.swift; sourceTree = "<group>"; };
 		E8E11BE00F0D174BF3F33548D22A1F18 /* MangledName.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MangledName.swift; path = Source/MangledName.swift; sourceTree = "<group>"; };
@@ -1419,6 +1413,7 @@
 			isa = PBXGroup;
 			children = (
 				C1C1AB0301E6998507E54CFABDC4AEF8 /* ECKingfisherStyle.swift */,
+				9CE2018224B6E50700D0C01C /* ECMJRefreshStyle.swift */,
 			);
 			path = OtherPodStyle;
 			sourceTree = "<group>";
@@ -2579,17 +2574,6 @@
 			path = StyleSettings;
 			sourceTree = "<group>";
 		};
-		E57A2E32CFF765129895CDE8E41B0EA8 /* ApiListLoader */ = {
-			isa = PBXGroup;
-			children = (
-				50B83B9E6E9F2008F93394F27BDE0304 /* ECApiListLoader.swift */,
-				4397351B3CF54825B151A32E94C8E923 /* ECCollectionViewApiLoader.swift */,
-				E7AEB60EEE1E5A9E21EA5FC96D4A687E /* ECMJRefreshStyle.swift */,
-				B7A2F96B6B3A1DDB3B4846BD825E387E /* ECTableViewApiLoader.swift */,
-			);
-			path = ApiListLoader;
-			sourceTree = "<group>";
-		};
 		E6ADF93F82FA3F54B34564D33E17BDB9 /* MJRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -2787,7 +2771,6 @@
 			isa = PBXGroup;
 			children = (
 				9C51FA3424B2BB98007540CA /* ListControlDataSource */,
-				E57A2E32CFF765129895CDE8E41B0EA8 /* ApiListLoader */,
 				8766272D3712F73D70120A6D2706C4DA /* DataProvider */,
 				2440F20F800FE2DAEFC159893EE69257 /* TextFieldConstraint */,
 				9526500360CE422477904ECAD6A5BD2C /* ViewControllerPlug */,
@@ -3664,7 +3647,6 @@
 				5B38C78AF0176B272692CD2485F47A6D /* ECAlertController.swift in Sources */,
 				8AE37C784C69C3830B12B71D230817D7 /* ECAlertView.swift in Sources */,
 				9C61149624B46F7200799650 /* ECToolbarKeyboard.swift in Sources */,
-				E451C6D4EEA87EE23B500BC06C26B7E8 /* ECApiListLoader.swift in Sources */,
 				9CDB1C9424B55E3A00011609 /* ECPresentAnimation.Group.swift in Sources */,
 				C2BACDD9DC1B303A31FE4292CCDB7693 /* ECApiPluginType.swift in Sources */,
 				5081C6FE3C00CFA8DD6A1E3F04840CFA /* ECApiRequestable.swift in Sources */,
@@ -3681,7 +3663,6 @@
 				968DD29267590F42BC45CFF159B89ED1 /* ECButtonStyle.swift in Sources */,
 				3B5B3CD65E30F79B374852627C0636E3 /* ECCheckbox.swift in Sources */,
 				CBC084099EF5FB6F5D8901C3711AC5EA /* ECClampingProperty.swift in Sources */,
-				375D1003105A65157C45C5A114A59547 /* ECCollectionViewApiLoader.swift in Sources */,
 				1001C58F00AC3A795A69E1B7A6D30810 /* ECCollectionViewFixedColumnsLayout.swift in Sources */,
 				9CDB1C9F24B5C2B900011609 /* ECTextualizable.swift in Sources */,
 				390AFDA915742D349C07194D1C4662AB /* ECColorExtension.swift in Sources */,
@@ -3748,7 +3729,6 @@
 				7E8B439335B98F6354F9E0D43A6E027F /* ECLocalized.swift in Sources */,
 				9C2C2A8F24B2C9480078A225 /* ECCollectionViewDataSource.swift in Sources */,
 				BE20DE76CCF2BDE3FF44F534380FA816 /* ECMessageBox.swift in Sources */,
-				89158AA3D9D51E81FBB2755D3AFB5E7D /* ECMJRefreshStyle.swift in Sources */,
 				BC7D65542FC7AC0CB9B5091FB941AE72 /* ECNamespace.swift in Sources */,
 				90C3938F953CE1390CC8240B8571D1C4 /* ECNavigationController.swift in Sources */,
 				92A50558214894519C645A2DA3EC4CD2 /* ECNull.swift in Sources */,
@@ -3800,9 +3780,9 @@
 				12DDC17B846C07794271794A4108C00C /* ECStringAttribute.swift in Sources */,
 				30B326085B940695BD4905DDA3E9D364 /* ECStringAttributeShortcut.swift in Sources */,
 				14DEEE86DFB350230B6CCD2B1CFC38AA /* ECStringExtension.swift in Sources */,
+				9CE2018324B6E50700D0C01C /* ECMJRefreshStyle.swift in Sources */,
 				2D67F2BE67FF59CD289A623F52EF3AEA /* ECStringProperty.swift in Sources */,
 				EE0619FA34D64F5042431DD58E8EB82A /* ECStyleSetting.swift in Sources */,
-				69380C8927173772A65EC23A9F81E620 /* ECTableViewApiLoader.swift in Sources */,
 				9E0A05882BDA16EF7B31F2E7CC5A4FA0 /* ECTableViewExtension.swift in Sources */,
 				460058ECA5022C0C51E099DA6799BDFD /* ECTableViewStyle.swift in Sources */,
 				26BD430791447F2ACC518DF5A2A779C2 /* ECTestSettingController.swift in Sources */,
