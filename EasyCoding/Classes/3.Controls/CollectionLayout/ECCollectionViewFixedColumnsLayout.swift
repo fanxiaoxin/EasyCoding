@@ -16,28 +16,36 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
         case none
     }
     ///边距
-    public var padding: UIEdgeInsets = .zero
+    open var padding: UIEdgeInsets = .zero
     ///间距
-    public var spacing: CGPoint = .zero
+    open var spacing: CGPoint = .zero
     ///列数
-    public var numberOfColumns: Int = 2
+    open var numberOfColumns: Int = 2
     ///行对齐，默认顶部对齐，不对齐则乱序
-    public var lineAlignment: LineAlignment = .top
+    open var lineAlignment: LineAlignment = .top
     ///高度，可根据宽度获取，不设则默认正方型
-    public var heightForWidth: (_ width: CGFloat, _ indexPath: IndexPath) -> CGFloat = { width, _ in width }
+    open var heightForWidth: (_ width: CGFloat, _ indexPath: IndexPath) -> CGFloat = { width, _ in width }
+    ///Header尺寸
+    open var headerReferenceSize: CGSize = .zero
+    ///Footer尺寸
+    open var footerReferenceSize: CGSize = .zero
+    ///Section内边距
+    open var sectionInset: UIEdgeInsets = .zero
     
-    //CollectionView会在初次布局时首先调用该方法
-    //CollectionView会在布局失效后、重新查询布局之前调用此方法
-    //子类中必须重写该方法并调用超类的方法
-    private var __attributes : [UICollectionViewLayoutAttributes]?
+    private var __cellAttributes : [UICollectionViewLayoutAttributes]?
+    private var __headerAttributes : [UICollectionViewLayoutAttributes]?
+    private var __footerAttributes : [UICollectionViewLayoutAttributes]?
     private var __itemWidth: CGFloat = 0
     private var __lastColHeights: [CGFloat] = []
     private var __lastRowAttributes: [UICollectionViewLayoutAttributes] = []
+    //CollectionView会在初次布局时首先调用该方法
+    //CollectionView会在布局失效后、重新查询布局之前调用此方法
+    //子类中必须重写该方法并调用超类的方法
     open override func prepare() {
         super.prepare()
         
         if let width = self.collectionView?.bounds.size.width {
-            let w = (width - self.padding.left - self.padding.right + self.spacing.x) / CGFloat(self.numberOfColumns) - self.spacing.x
+            let w = (width - self.padding.easy.leftRight - self.sectionInset.easy.leftRight + self.spacing.x) / CGFloat(self.numberOfColumns) - self.spacing.x
             self.__itemWidth = w
         }else{
             self.__itemWidth = 0
@@ -46,15 +54,15 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
         if let collectionView = self.collectionView, collectionView.numberOfSections > 0 {
             var attrs: [UICollectionViewLayoutAttributes] = []
             ///初始化每一列的最大高度
-            __lastColHeights = .init(repeating: self.padding.top, count: self.numberOfColumns)
+            __lastColHeights = .init(repeating: self.padding.top + self.sectionInset.top, count: self.numberOfColumns)
             if self.lineAlignment == .none {
                 //无序特殊处理
                 var col = 0
                 self.forEachIndexPaths(for: collectionView) { (indexPath) in
                     ///换Section时重设高度
-                    if indexPath.row == 0 {
-                        let max = __lastColHeights.max() ?? self.padding.top
-                        for i in 0..<__lastColHeights.count { __lastColHeights[i] = max }
+                    if indexPath.row == 0 && indexPath.section != 0 {
+                        let max = __lastColHeights.max() ?? self.padding.top + self.sectionInset.top
+                        for i in 0..<__lastColHeights.count { __lastColHeights[i] = max - self.spacing.y + self.sectionInset.easy.topBottom }
                         //重置列
                         col = 0
                     }
@@ -70,13 +78,14 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
                 }
                 self.aligLastRowFrame()
             }else{
+                self.__lastRowAttributes.removeAll()
                 //有序统一处理
                 self.forEachIndexPaths(for: collectionView) { (indexPath) in
                     let col = indexPath.row % self.numberOfColumns
                     ///换Section或换行时重设高度
-                    if col == 0 {
-                        let max = __lastColHeights.max() ?? self.padding.top
-                        for i in 0..<__lastColHeights.count { __lastColHeights[i] = max }
+                    if col == 0 && indexPath.section != 0  {
+                        let max = __lastColHeights.max() ?? self.padding.top + self.sectionInset.top
+                        for i in 0..<__lastColHeights.count { __lastColHeights[i] = max - self.spacing.y + self.sectionInset.easy.topBottom }
                         ///对齐上一行的布局
                         self.aligLastRowFrame()
                         //每换一行清空
@@ -91,9 +100,9 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
                 }
                 self.aligLastRowFrame()
             }
-            __attributes = attrs
+            __cellAttributes = attrs
         }else{
-            __attributes = nil
+            __cellAttributes = nil
         }
     }
     func forEachIndexPaths(for collectionView: UICollectionView, block: (IndexPath) -> Void) {
@@ -108,12 +117,12 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
         //最后一行重设对齐
         switch self.lineAlignment {
         case .center:
-            let max = __lastColHeights.max() ?? self.padding.top + self.spacing.y
+            let max = __lastColHeights.max() ?? self.padding.top + self.sectionInset.top + self.spacing.y
             for attribute in self.__lastRowAttributes {
                 attribute.frame.origin.y += (max - self.spacing.y - attribute.frame.origin.y - attribute.frame.size.height) / 2
             }
         case .bottom:
-            let max = __lastColHeights.max() ?? self.padding.top + self.spacing.y
+            let max = __lastColHeights.max() ?? self.padding.top + self.sectionInset.top + self.spacing.y
             for attribute in self.__lastRowAttributes {
                 attribute.frame.origin.y += max - self.spacing.y -  attribute.frame.origin.y - attribute.frame.size.height
             }
@@ -126,7 +135,7 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
         let size = CGSize(width: self.__itemWidth, height: self.heightForWidth(self.__itemWidth, indexPath))
         
         let col = indexPath.row % self.numberOfColumns
-        let origin = CGPoint(x: padding.left + CGFloat(col) * (__itemWidth + spacing.x), y: __lastColHeights[col])
+        let origin = CGPoint(x: padding.left + self.sectionInset.left + CGFloat(col) * (__itemWidth + spacing.x), y: __lastColHeights[col])
         attribute.frame = CGRect(origin: origin, size: size)
         
         return attribute
@@ -161,7 +170,7 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
             }
         }
 
-        let origin = CGPoint(x: padding.left + CGFloat(targetCol) * (__itemWidth + spacing.x), y: __lastColHeights[targetCol])
+        let origin = CGPoint(x: padding.left + self.sectionInset.left + CGFloat(targetCol) * (__itemWidth + spacing.x), y: __lastColHeights[targetCol])
         attribute.frame = CGRect(origin: origin, size: size)
         
         return (attribute, targetCol)
@@ -174,8 +183,8 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
         if let cv = self.collectionView {
             let width = cv.bounds.size.width
             ///最后一个cell的底部加上边距就是高度
-            let max = __lastColHeights.max() ?? self.padding.top + spacing.y
-            let height = max - spacing.y + self.padding.bottom
+            let max = __lastColHeights.max() ?? self.padding.top + self.sectionInset.top + spacing.y
+            let height = max - spacing.y + self.padding.bottom + self.sectionInset.bottom
             return CGSize(width: width, height: height)
         }
         return .zero
@@ -184,7 +193,7 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
     ///UICollectionViewLayoutAttributes 对象包含cell或view的布局信息。
     ///子类必须重载该方法，并返回该区域内所有元素的布局信息，包括cell,追加视图和装饰视图。
     open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return self.__attributes
+        return self.__cellAttributes?.easy.union(self.__headerAttributes, self.__footerAttributes)
     }
     ///返回指定indexPath的item的布局信息。子类必须重载该方法,该方法
     ///只能为cell提供布局信息，不能为补充视图和装饰视图提供。
@@ -194,7 +203,7 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
             index += self.collectionView?.numberOfItems(inSection: i) ?? 0
         }
         index += indexPath.row
-        return __attributes?[index]
+        return __cellAttributes?[index]
     }
     /*
      ///如果你的布局支持追加视图的话，必须重载该方法，该方法返回的是

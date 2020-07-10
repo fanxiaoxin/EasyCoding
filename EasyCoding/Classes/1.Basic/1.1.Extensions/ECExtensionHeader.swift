@@ -16,3 +16,7 @@ extension Date: EC.NamespaceDefine { }
 
 extension Array: EC.NamespaceArrayDefine {}
 extension Dictionary: EC.NamespaceDictionaryDefine {}
+
+extension CGFloat: EC.NamespaceDefine { }
+extension Decimal: EC.NamespaceDefine { }
+extension UIEdgeInsets: EC.NamespaceDefine {}

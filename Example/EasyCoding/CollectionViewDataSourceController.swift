@@ -30,12 +30,13 @@ class CollectionViewDataSourceController: ECViewController<CollectionViewDataSou
 }
 class CollectionViewDataSourceView: ECPage {
     let layout = ECCollectionViewFixedColumnsLayout()
+//    let layout = UICollectionViewFlowLayout()
     @ECProperty.DelayInit
     var collectionView: UICollectionView
     override func load() {
-        
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         self.easy.style(.bg(.yellow)).add(collectionView.easy(.bg(.white), .cell(CollectionViewDataSourceCell.self), .header(CollectionViewDataSourceHeader.self)), layout: .margin)
+        layout.sectionInset = .easy(top: 5, left: 10, bottom: 15, right: 20)
         layout.numberOfColumns = 3
         layout.lineAlignment = .none
         var heights: [CGFloat] = []
@@ -63,7 +64,7 @@ class CollectionViewDataSourceCell: ECCollectionViewCell<String> {
 class CollectionViewDataSourceHeader: ECCollectionSupplementaryView<String> {
     let textLabel = UILabel()
     override func load() {
-        self.easy.add(textLabel.easy(.color(.red)), layout: .margin)
+        self.easy.style(.bg(.green)).add(textLabel.easy(.color(.red)), layout: .margin)
     }
     override func load(model: String, indexPath: IndexPath) {
         self.textLabel.text = model

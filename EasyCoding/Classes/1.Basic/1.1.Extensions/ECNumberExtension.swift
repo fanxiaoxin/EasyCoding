@@ -76,7 +76,6 @@ extension EC.NamespaceImplement where Base: ECNumberExt {
 }
 
 
-extension CGFloat: EC.NamespaceDefine { }
 extension EC.NamespaceImplement where Base == CGFloat {
     ///单个像素值
     public static var pixel: CGFloat {
@@ -104,7 +103,6 @@ extension EC.NamespaceImplement where Base == CGFloat {
     }
 }
 
-extension Decimal: EC.NamespaceDefine { }
 extension EC.NamespaceImplement where Base == Decimal {
     public func round(_ scale:Int, mode:NSDecimalNumber.RoundingMode) -> Decimal {
         var result = Decimal()
@@ -156,5 +154,14 @@ extension UIEdgeInsets {
     }
     public static func easy(_ xy: CGFloat = 0) -> UIEdgeInsets {
         return UIEdgeInsets(top: xy, left: xy, bottom: xy, right: xy)
+    }
+}
+
+extension EC.NamespaceImplement where Base == UIEdgeInsets {
+    public var leftRight: CGFloat {
+        return self.base.left + self.base.right
+    }
+    public var topBottom: CGFloat {
+        return self.base.top + self.base.bottom
     }
 }
