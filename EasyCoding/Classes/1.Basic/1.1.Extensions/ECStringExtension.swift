@@ -149,6 +149,14 @@ extension EC.NamespaceImplement where Base == String {
         }
         return result
     }
+    ///添加路径，自动补齐"/"
+    public func appendingPathComponent(_ path: String) -> String{
+        if self.base.hasSuffix("/") {
+            return self.base + path
+        }else{
+            return self.base + "/" + path
+        }
+    }
     ///将html字符串转码成普通字符串
     public var html: String? {
         if let data = self.base.data(using: .unicode) {

@@ -65,9 +65,11 @@ class ViewController: ECViewController<View>, UITableViewDataSource, UITableView
 //            ECSetting.Alert.background.addStyle(.bg(.yellow))
 //ECSetting.Alert.backgroundPresentAnimation = ECPresentAnimation.Fade()
 //                        ECSetting.Alert.presentAnimation = nil
-            ECMessageBox.confirm(message: "点下我") {
+//            let text = NSAttributedString.easy("我是一段富文本，文本很\("富", .color(.red))，我很\("穷", .color(.green), .boldFont(size: 30))", .color(rgb: 0x333333), .font(size: 15))
+            ECMessageBox.confirm(attr: "我是一段富文本，文本很\("富", .color(.red))，我很\("穷", .color(.green), .boldFont(size: 30))") {
                 print("你点了确定")
             }
+            
         case 3:
             self.page.animationView.easy.slideOut(direction: .right)
         case 4: self.load(TableViewDataSourceController())
