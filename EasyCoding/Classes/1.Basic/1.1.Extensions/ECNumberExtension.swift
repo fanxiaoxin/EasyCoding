@@ -165,3 +165,22 @@ extension EC.NamespaceImplement where Base == UIEdgeInsets {
         return self.base.top + self.base.bottom
     }
 }
+extension EC.NamespaceImplement where Base == CGRect {
+    ///上坐标，等于x
+    public var top: CGFloat {
+        return self.base.origin.y
+    }
+    ///左坐标，等于y
+    public var left: CGFloat {
+        return self.base.origin.x
+    }
+    ///下坐标，等于y + height
+    public var bottom: CGFloat {
+        return self.base.origin.y + self.base.size.height
+    }
+    ///右坐标，等于x + width
+    public var right: CGFloat {
+        return self.base.origin.x + self.base.size.width
+    }
+}
+

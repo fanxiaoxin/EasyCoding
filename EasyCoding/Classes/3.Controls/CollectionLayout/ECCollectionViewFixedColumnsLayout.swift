@@ -25,10 +25,10 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
     open var lineAlignment: LineAlignment = .top
     ///高度，可根据宽度获取，不设则默认正方型
     open var heightForWidth: (_ width: CGFloat, _ indexPath: IndexPath) -> CGFloat = { width, _ in width }
-    ///Header尺寸
-    open var headerReferenceSize: CGSize = .zero
-    ///Footer尺寸
-    open var footerReferenceSize: CGSize = .zero
+    ///Header高度，可根据宽度获取，不设则默认0
+    open var headerHeightForWidth: (_ width: CGFloat, _ indexPath: IndexPath) -> CGFloat = { width, _ in 0 }
+    ///Footer高度，可根据宽度获取，不设则默认0
+    open var footerHeightForWidth: (_ width: CGFloat, _ indexPath: IndexPath) -> CGFloat = { width, _ in 0 }
     ///Section内边距
     open var sectionInset: UIEdgeInsets = .zero
     
@@ -52,64 +52,150 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
         }
         
         if let collectionView = self.collectionView, collectionView.numberOfSections > 0 {
-            var attrs: [UICollectionViewLayoutAttributes] = []
-            ///初始化每一列的最大高度
-            __lastColHeights = .init(repeating: self.padding.top + self.sectionInset.top, count: self.numberOfColumns)
             if self.lineAlignment == .none {
-                //无序特殊处理
-                var col = 0
-                self.forEachIndexPaths(for: collectionView) { (indexPath) in
-                    ///换Section时重设高度
-                    if indexPath.row == 0 && indexPath.section != 0 {
-                        let max = __lastColHeights.max() ?? self.padding.top + self.sectionInset.top
-                        for i in 0..<__lastColHeights.count { __lastColHeights[i] = max - self.spacing.y + self.sectionInset.easy.topBottom }
-                        //重置列
-                        col = 0
-                    }
-                    let att = self.prepareDisorderLayoutAttributesForItem(at: indexPath, col: col)
-                    attrs.append(att.0)
-                    //记录最后一行的数据和每列高度
-                    self.__lastColHeights[att.1] = att.0.frame.origin.y + att.0.frame.size.height + spacing.y
-                    if att.1 >= self.numberOfColumns - 1 {
-                        col = 0
-                    }else{
-                        col = att.1 + 1
-                    }
-                }
-                self.aligLastRowFrame()
+                let attrs = self.prepareDisorderLayoutAttributes(for: collectionView)
+                __cellAttributes = attrs.cell
+                __headerAttributes = attrs.header
+                __footerAttributes = attrs.footer
             }else{
-                self.__lastRowAttributes.removeAll()
-                //有序统一处理
-                self.forEachIndexPaths(for: collectionView) { (indexPath) in
-                    let col = indexPath.row % self.numberOfColumns
-                    ///换Section或换行时重设高度
-                    if col == 0 && indexPath.section != 0  {
-                        let max = __lastColHeights.max() ?? self.padding.top + self.sectionInset.top
-                        for i in 0..<__lastColHeights.count { __lastColHeights[i] = max - self.spacing.y + self.sectionInset.easy.topBottom }
-                        ///对齐上一行的布局
-                        self.aligLastRowFrame()
-                        //每换一行清空
-                        self.__lastRowAttributes.removeAll()
-                    }
-                    //该方法全部往上面对齐排
-                    let att = self.prepareOrderlyLayoutAttributesForItem(at: indexPath)
-                    attrs.append(att)
-                    //记录最后一行的数据和每列高度
-                    self.__lastRowAttributes.append(att)
-                    self.__lastColHeights[col] = att.frame.origin.y + att.frame.size.height + spacing.y
-                }
-                self.aligLastRowFrame()
+                let attrs = self.prepareOrderlyLayoutAttributes(for: collectionView)
+                __cellAttributes = attrs.cell
+                __headerAttributes = attrs.header
+                __footerAttributes = attrs.footer
             }
-            __cellAttributes = attrs
         }else{
             __cellAttributes = nil
+            __headerAttributes = nil
+            __footerAttributes = nil
         }
     }
-    func forEachIndexPaths(for collectionView: UICollectionView, block: (IndexPath) -> Void) {
-        for i in 0..<collectionView.numberOfSections {
-            for j in 0..<collectionView.numberOfItems(inSection: i) {
-                block(IndexPath(item: j, section: i))
+    ///计算有序布局
+    open func prepareOrderlyLayoutAttributes(for collectionView: UICollectionView) -> (header: [UICollectionViewLayoutAttributes]?, cell: [UICollectionViewLayoutAttributes]?, footer: [UICollectionViewLayoutAttributes]?) {
+        var attrs: [UICollectionViewLayoutAttributes] = []
+        var headerAttrs: [UICollectionViewLayoutAttributes] = []
+        var footerAttrs: [UICollectionViewLayoutAttributes] = []
+        ///初始化每一列的最大高度
+        __lastColHeights = .init(repeating: self.padding.top, count: self.numberOfColumns)
+        self.__lastRowAttributes.removeAll()
+        //有序统一处理
+        self.forEachIndexPaths(for: collectionView, header: { indexPath in
+            let max: CGFloat
+            if let header = self.prepareSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: indexPath) {
+                headerAttrs.append(header)
+                max = header.frame.easy.bottom
+            }else{
+                max = __lastColHeights.max()!
             }
+            //重设列的高度
+            for i in 0..<__lastColHeights.count {
+                __lastColHeights[i] = max + self.sectionInset.top
+            }
+        }, cell: { (indexPath) in
+            let col = indexPath.row % self.numberOfColumns
+            ///换行时重设高度
+            if col == 0 && indexPath.row != 0 {
+                let max = __lastColHeights.max()!
+                for i in 0..<__lastColHeights.count {
+                    __lastColHeights[i] = max
+                }
+                ///对齐上一行的布局
+                self.aligLastRowFrame()
+                //每换一行清空
+                self.__lastRowAttributes.removeAll()
+            }
+            //该方法全部往上面对齐排
+            let att = self.prepareOrderlyLayoutAttributesForItem(at: indexPath)
+            attrs.append(att)
+            //记录最后一行的数据和每列高度
+            self.__lastRowAttributes.append(att)
+            self.__lastColHeights[col] = att.frame.easy.bottom + spacing.y
+        }, footer: { indexPath in
+            //结束刷新布局
+            let max = __lastColHeights.max()!
+            for i in 0..<__lastColHeights.count {
+                __lastColHeights[i] = max - self.spacing.y + self.sectionInset.bottom
+            }
+            ///对齐上一行的布局
+            self.aligLastRowFrame()
+            //每换一行清空
+            self.__lastRowAttributes.removeAll()
+            ///底部
+            if let footer = self.prepareSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, at: indexPath) {
+                footerAttrs.append(footer)
+                //重设列的高度
+                let max = footer.frame.easy.bottom
+                for i in 0..<__lastColHeights.count {
+                    __lastColHeights[i] = max
+                }
+            }
+        })
+        //对齐最后一行
+        self.aligLastRowFrame()
+        return (header: headerAttrs.count > 0 ? headerAttrs : nil,
+                cell: attrs,
+                footer: footerAttrs.count > 0 ? footerAttrs : nil)
+    }
+    ///计算无序布局
+    open func prepareDisorderLayoutAttributes(for collectionView: UICollectionView) -> (header: [UICollectionViewLayoutAttributes]?, cell: [UICollectionViewLayoutAttributes]?, footer: [UICollectionViewLayoutAttributes]?) {
+        var attrs: [UICollectionViewLayoutAttributes] = []
+        var headerAttrs: [UICollectionViewLayoutAttributes] = []
+        var footerAttrs: [UICollectionViewLayoutAttributes] = []
+        ///初始化每一列的最大高度
+        __lastColHeights = .init(repeating: self.padding.top, count: self.numberOfColumns)
+        //无序特殊处理
+        var col = 0
+        self.forEachIndexPaths(for: collectionView, header: { indexPath in
+            let max: CGFloat
+            if let header = self.prepareSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: indexPath) {
+                headerAttrs.append(header)
+                max = header.frame.easy.bottom
+            }else{
+                max = __lastColHeights.max()!
+            }
+            //重设列的高度
+            for i in 0..<__lastColHeights.count {
+                __lastColHeights[i] = max + self.sectionInset.top
+            }
+        }, cell: { (indexPath) in
+            let att = self.prepareDisorderLayoutAttributesForItem(at: indexPath, col: col)
+            attrs.append(att.0)
+            //记录最后一行的数据和每列高度
+            self.__lastColHeights[att.1] = att.0.frame.origin.y + att.0.frame.size.height + spacing.y
+            if att.1 >= self.numberOfColumns - 1 {
+                col = 0
+            }else{
+                col = att.1 + 1
+            }
+        }, footer: { indexPath in
+            ///换Section时重设高度
+            let max = __lastColHeights.max()!
+            for i in 0..<__lastColHeights.count {
+                __lastColHeights[i] = max - self.spacing.y + self.sectionInset.bottom
+            }
+            //重置列
+            col = 0
+            ///底部
+            if let footer = self.prepareSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, at: indexPath) {
+                footerAttrs.append(footer)
+                //重设列的高度
+                let max = footer.frame.easy.bottom
+                for i in 0..<__lastColHeights.count {
+                    __lastColHeights[i] = max
+                }
+            }
+        })
+        return (header: headerAttrs.count > 0 ? headerAttrs : nil,
+                cell: attrs,
+                footer: footerAttrs.count > 0 ? footerAttrs : nil)
+    }
+    open func forEachIndexPaths(for collectionView: UICollectionView, header: (IndexPath) -> Void, cell: (IndexPath) -> Void, footer: (IndexPath) -> Void) {
+        for i in 0..<collectionView.numberOfSections {
+            let items = collectionView.numberOfItems(inSection: i)
+            header(IndexPath(item: 0, section: i))
+            for j in 0..<items {
+                cell(IndexPath(item: j, section: i))
+            }
+            footer(IndexPath(item: max(items - 1, 0), section: i))
         }
     }
     ///对齐最后一行
@@ -129,6 +215,29 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
         default: break
         }
     }
+    ///头部底部
+    open func prepareSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        if let boundWidth = self.collectionView?.bounds.size.width {
+            let width = boundWidth - self.padding.easy.leftRight
+            let height: CGFloat
+            switch elementKind {
+            case UICollectionView.elementKindSectionHeader: height = self.headerHeightForWidth(width, indexPath)
+            case UICollectionView.elementKindSectionFooter: height = self.footerHeightForWidth(width, indexPath)
+            default: height = 0
+            }
+            if height > 0 {
+                let attribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
+                let size = CGSize(width: width, height: height)
+                
+                //在调用该方法前应该先将所有高度重置为最高值，所以此处只取第1个
+                let origin = CGPoint(x: padding.left, y: __lastColHeights[0])
+                attribute.frame = CGRect(origin: origin, size: size)
+                
+                return attribute
+            }
+        }
+        return nil
+    }
     ///有序列表, lineAligment == .top, .bottom, .center
     open func prepareOrderlyLayoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes {
         let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
@@ -144,7 +253,7 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
     open func prepareDisorderLayoutAttributesForItem(at indexPath: IndexPath, col: Int) -> (UICollectionViewLayoutAttributes, Int) {
         let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         let size = CGSize(width: self.__itemWidth, height: self.heightForWidth(self.__itemWidth, indexPath))
-       
+        
         var targetCol = col
         //最大和最小的差值
         let max = __lastColHeights.max() ?? 0
@@ -169,7 +278,7 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
                 }
             }
         }
-
+        
         let origin = CGPoint(x: padding.left + self.sectionInset.left + CGFloat(targetCol) * (__itemWidth + spacing.x), y: __lastColHeights[targetCol])
         attribute.frame = CGRect(origin: origin, size: size)
         
@@ -205,12 +314,17 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
         index += indexPath.row
         return __cellAttributes?[index]
     }
+    ///如果你的布局支持追加视图的话，必须重载该方法，该方法返回的是
+    ///追加视图的布局信息，kind这个参数区分段头还是段尾的，在collectionview注册的时候回用到该参数。
+    open override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        switch elementKind {
+        case UICollectionView.elementKindSectionHeader: return __headerAttributes?[indexPath.section]
+        case UICollectionView.elementKindSectionFooter: return __footerAttributes?[indexPath.section]
+        default: return nil
+        }
+    }
+    
     /*
-     ///如果你的布局支持追加视图的话，必须重载该方法，该方法返回的是
-     追加视图的布局信息，kind这个参数区分段头还是段尾的，在collectionview注册的时候回用到该参数。
-     open override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-     
-     }
      ///如果你的布局支持装饰视图的话，必须重载该方法，该方法返回的是装饰视图的布局信息，
      ecorationViewKind这个参数在collectionview注册的时候回用到
      open override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {

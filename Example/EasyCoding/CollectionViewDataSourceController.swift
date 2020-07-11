@@ -35,7 +35,7 @@ class CollectionViewDataSourceView: ECPage {
     var collectionView: UICollectionView
     override func load() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        self.easy.style(.bg(.yellow)).add(collectionView.easy(.bg(.white), .cell(CollectionViewDataSourceCell.self), .header(CollectionViewDataSourceHeader.self)), layout: .margin)
+        self.easy.style(.bg(.yellow)).add(collectionView.easy(.bg(.white), .cell(CollectionViewDataSourceCell.self), .header(CollectionViewDataSourceHeader.self), .footer(CollectionViewDataSourceHeader.self)), layout: .margin)
         layout.sectionInset = .easy(top: 5, left: 10, bottom: 15, right: 20)
         layout.numberOfColumns = 3
         layout.lineAlignment = .none
@@ -49,7 +49,9 @@ class CollectionViewDataSourceView: ECPage {
         }
         layout.spacing = .easy(15)
         layout.padding = .easy(10)
-//        layout.headerReferenceSize = .easy(UIScreen.main.bounds.size.width, 100)
+//        layout.headerReferenceSize = .easy(100, 50)
+        layout.headerHeightForWidth = { _,_ in 50 }
+        layout.footerHeightForWidth = { _,index in CGFloat(index.section + 1) * 20 }
     }
 }
 class CollectionViewDataSourceCell: ECCollectionViewCell<String> {
