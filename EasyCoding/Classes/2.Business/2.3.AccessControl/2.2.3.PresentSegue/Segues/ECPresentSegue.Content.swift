@@ -11,9 +11,10 @@ extension ECPresentSegue {
     ///指定加载到某个View，这个场景只能由调用方使用，因为被调用方无法固定要加载的View
     public class Content: ECPresentSegue {
         public let view: UIView
-        public let config = ECCustomControlConfig<UIView>(layouts: [.margin])
+        public let config: ECCustomControlConfig<UIView>
         public init(view: UIView) {
             self.view = view
+            self.config = ECCustomControlConfig<UIView>(layouts: [.margin])
             super.init()
         }
         open override func performAction(completion: (() -> Void)?) {

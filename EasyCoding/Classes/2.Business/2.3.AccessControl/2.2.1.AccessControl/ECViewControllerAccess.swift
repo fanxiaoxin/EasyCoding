@@ -14,6 +14,13 @@ open class ECViewControllerPrecondition: ECPrecondition<UIViewController, Any> {
 }*/
 public typealias ECViewControllerPrecondition = ECPrecondition<UIViewController, Any>
 
+extension ECViewControllerPrecondition {
+    ///当前控制器
+    public var currentController: UIViewController? {
+        return self.input ?? UIViewController.easy.current
+    }
+}
+
 open class ECViewControllerAccessCenter: ECAccessCenter<UIViewController, Any> {
     ///单例
     public static let shared = ECViewControllerAccessCenter()

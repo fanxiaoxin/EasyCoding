@@ -10,6 +10,6 @@ import UIKit
 import EasyCoding
 
 ///网络出错视图
-class NetworkErrorView: ECDataErrorPlugin<ECNull>.ErrorView {
+class NetworkErrorView: ECDataPluginConfig.ErrorView {
     
 }

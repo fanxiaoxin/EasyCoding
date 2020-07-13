@@ -10,6 +10,6 @@ import UIKit
 import EasyCoding
 
 ///加载数据为空视图
-class DataEmptyView: ECDataEmptyPlugin<ECNull>.EmptyView {
+class DataEmptyView: ECDataPluginConfig.EmptyView {
     
 }

@@ -15,7 +15,7 @@ open class ECDataRefreshPlugin<DataType>: ECDataRefreshPluginBase<DataType> {
     
     ///mj_header
     open lazy var header: MJRefreshHeader = {
-        return MJRefreshNormalHeader()
+        ECDataPluginConfig.shared.headerBuilder()
     }()
     
     

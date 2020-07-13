@@ -297,6 +297,7 @@
 		9C61E7F524BBF50F001EB85A /* ECDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61E7F424BBF50F001EB85A /* ECDataCollectionView.swift */; };
 		9C61E7F724BBF518001EB85A /* ECDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61E7F624BBF518001EB85A /* ECDataPickerView.swift */; };
 		9C61E7F924BBFD04001EB85A /* ECDataControlType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61E7F824BBFD04001EB85A /* ECDataControlType.swift */; };
+		9C61E7FC24BC0FCC001EB85A /* ECDataPluginConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61E7FB24BC0FCC001EB85A /* ECDataPluginConfig.swift */; };
 		9C79112BC15181F0774DF188B3F4BDD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD765A2062F093EA3F393D9FD2FB280 /* Foundation.framework */; };
 		9CD9DD1624B454DF00C39419 /* ECKeyboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD9DD1524B454DF00C39419 /* ECKeyboardType.swift */; };
 		9CDB1C9024B5584F00011609 /* ECConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C8F24B5584F00011609 /* ECConstant.swift */; };
@@ -966,6 +967,7 @@
 		9C61E7F424BBF50F001EB85A /* ECDataCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataCollectionView.swift; sourceTree = "<group>"; };
 		9C61E7F624BBF518001EB85A /* ECDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataPickerView.swift; sourceTree = "<group>"; };
 		9C61E7F824BBFD04001EB85A /* ECDataControlType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataControlType.swift; sourceTree = "<group>"; };
+		9C61E7FB24BC0FCC001EB85A /* ECDataPluginConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataPluginConfig.swift; sourceTree = "<group>"; };
 		9CD9DD1524B454DF00C39419 /* ECKeyboardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECKeyboardType.swift; sourceTree = "<group>"; };
 		9CDB1C8F24B5584F00011609 /* ECConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECConstant.swift; sourceTree = "<group>"; };
 		9CDB1C9324B55E3A00011609 /* ECPresentAnimation.Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPresentAnimation.Group.swift; sourceTree = "<group>"; };
@@ -1352,6 +1354,7 @@
 		132D3C15C896790FEF191C971498CC62 /* Injectable */ = {
 			isa = PBXGroup;
 			children = (
+				9C61E7FA24BC0FBE001EB85A /* Config */,
 				95ED72A93AECE071C7509B2989844507 /* Common */,
 				CE15AC2D326543B64BF015AFC8D770DB /* Decorators */,
 				BD25A650DA8BB1F5E3688F4272993F5A /* Plugins */,
@@ -2186,6 +2189,14 @@
 				9C61E7F624BBF518001EB85A /* ECDataPickerView.swift */,
 			);
 			path = DataControl;
+			sourceTree = "<group>";
+		};
+		9C61E7FA24BC0FBE001EB85A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				9C61E7FB24BC0FCC001EB85A /* ECDataPluginConfig.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		9CD9DD1424B454D000C39419 /* Keyboard */ = {
@@ -3818,6 +3829,7 @@
 				12DDC17B846C07794271794A4108C00C /* ECStringAttribute.swift in Sources */,
 				30B326085B940695BD4905DDA3E9D364 /* ECStringAttributeShortcut.swift in Sources */,
 				14DEEE86DFB350230B6CCD2B1CFC38AA /* ECStringExtension.swift in Sources */,
+				9C61E7FC24BC0FCC001EB85A /* ECDataPluginConfig.swift in Sources */,
 				9CE2018324B6E50700D0C01C /* ECMJRefreshStyle.swift in Sources */,
 				2D67F2BE67FF59CD289A623F52EF3AEA /* ECStringProperty.swift in Sources */,
 				EE0619FA34D64F5042431DD58E8EB82A /* ECStyleSetting.swift in Sources */,

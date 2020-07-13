@@ -9,10 +9,13 @@ import UIKit
 
 ///自定义控件的配置
 open class ECCustomControlConfig<ViewType: UIView>: ECControlConfig<ViewType> {
+    ///自定义控件
+    public var viewBuilder: (() -> ViewType)?
     ///呈现动画
     public var presentAnimation: ECPresentAnimationType?
     
-    public init(layouts: [ECViewLayout]) {
+    public init(viewBuilder: (() -> ViewType)? = nil, layouts: [ECViewLayout]) {
+        self.viewBuilder = viewBuilder
         super.init(styles: [], layouts: layouts)
     }
     ///在指定的页面上显示

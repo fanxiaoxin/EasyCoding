@@ -49,6 +49,7 @@ class ApiController: ECViewController<ApiView> {
         dataSource.tableView = self.page.tableView
         dataSource.dataProvider = decorator
         dataSource.reloadData()
+        
     }
     ///列表
     class ListApi : ECPagedResponseApiType {

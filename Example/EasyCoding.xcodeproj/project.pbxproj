@@ -51,7 +51,6 @@
 		9CB7A01324B9C74300B7B2A6 /* ExamplePrecondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7A01224B9C74300B7B2A6 /* ExamplePrecondition.swift */; };
 		9CB7A01724B9CB1700B7B2A6 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7A01624B9CB1700B7B2A6 /* ProgressHUD.swift */; };
 		9CB7A01924B9CB2600B7B2A6 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7A01824B9CB2600B7B2A6 /* NetworkErrorView.swift */; };
-		9CB7A01C24B9D50B00B7B2A6 /* ViewDataDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7A01B24B9D50B00B7B2A6 /* ViewDataDecorator.swift */; };
 		9CBCAC8724B5C93800F09747 /* TextConstraintController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBCAC8624B5C93800F09747 /* TextConstraintController.swift */; };
 		9CD9DD1324B4330400C39419 /* PickerViewMultiDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD9DD1224B4330400C39419 /* PickerViewMultiDataSourceController.swift */; };
 /* End PBXBuildFile section */
@@ -126,7 +125,6 @@
 		9CB7A01224B9C74300B7B2A6 /* ExamplePrecondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePrecondition.swift; sourceTree = "<group>"; };
 		9CB7A01624B9CB1700B7B2A6 /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		9CB7A01824B9CB2600B7B2A6 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
-		9CB7A01B24B9D50B00B7B2A6 /* ViewDataDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDataDecorator.swift; sourceTree = "<group>"; };
 		9CBCAC8624B5C93800F09747 /* TextConstraintController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConstraintController.swift; sourceTree = "<group>"; };
 		9CD9DD1224B4330400C39419 /* PickerViewMultiDataSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewMultiDataSourceController.swift; sourceTree = "<group>"; };
 		D774970F978473E8483D11B0 /* Pods-EasyCoding_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyCoding_Example.release.xcconfig"; path = "Target Support Files/Pods-EasyCoding_Example/Pods-EasyCoding_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 		9CB79F3F24B9A7FC00B7B2A6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9CB7A01A24B9D4DA00B7B2A6 /* DataDecorator */,
 				9CB79F4224B9A7FC00B7B2A6 /* View */,
 				9CB79F4024B9A7FC00B7B2A6 /* ViewController.swift */,
 				9CB79F4E24B9A7FC00B7B2A6 /* NavigationController.swift */,
@@ -311,9 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				9CB79F4424B9A7FC00B7B2A6 /* Page.swift */,
-				9CB79F4324B9A7FC00B7B2A6 /* DataEmptyView.swift */,
-				9CB79F4524B9A7FC00B7B2A6 /* DataLoadingView.swift */,
-				9CB7A01824B9CB2600B7B2A6 /* NetworkErrorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -323,6 +317,9 @@
 			children = (
 				9CB79F4824B9A7FC00B7B2A6 /* RefreshHeader.swift */,
 				9CB79F4A24B9A7FC00B7B2A6 /* RefreshFooter.swift */,
+				9CB79F4324B9A7FC00B7B2A6 /* DataEmptyView.swift */,
+				9CB79F4524B9A7FC00B7B2A6 /* DataLoadingView.swift */,
+				9CB7A01824B9CB2600B7B2A6 /* NetworkErrorView.swift */,
 				9CB7A01624B9CB1700B7B2A6 /* ProgressHUD.swift */,
 			);
 			path = Control;
@@ -515,14 +512,6 @@
 			children = (
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		9CB7A01A24B9D4DA00B7B2A6 /* DataDecorator */ = {
-			isa = PBXGroup;
-			children = (
-				9CB7A01B24B9D50B00B7B2A6 /* ViewDataDecorator.swift */,
-			);
-			path = DataDecorator;
 			sourceTree = "<group>";
 		};
 		E05A749F168CFD8C7303F6BF /* Frameworks */ = {
@@ -789,7 +778,6 @@
 				9C8E40D024AC751400853BDD /* DataPluginController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				9CB79FCB24B9A7FD00B7B2A6 /* ApiLoggerPlugin.swift in Sources */,
-				9CB7A01C24B9D50B00B7B2A6 /* ViewDataDecorator.swift in Sources */,
 				9CB79FB824B9A7FD00B7B2A6 /* DataEmptyView.swift in Sources */,
 				9CB79FBE24B9A7FD00B7B2A6 /* RefreshFooter.swift in Sources */,
 				9CB79FC324B9A7FD00B7B2A6 /* BaseModel.swift in Sources */,

@@ -43,6 +43,13 @@ struct Style {
         UINavigationBar.appearance().barStyle = .default
         //不显示最下边的线
         UINavigationBar.appearance().shadowImage = UIImage()
+        
+        //重写默认的数据视图
+        ECSetting.DataPlugin.empty.viewBuilder = { DataEmptyView() }
+        ECSetting.DataPlugin.loading.viewBuilder = { DataLoadingView() }
+        ECSetting.DataPlugin.error.viewBuilder = { NetworkErrorView() }
+        ECSetting.DataPlugin.headerBuilder = { RefreshHeader() }
+        ECSetting.DataPlugin.footerBuilder = { RefreshFooter() }
     }
 }
 extension UIColor {

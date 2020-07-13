@@ -14,12 +14,12 @@ open class ECDataPagedDecorator<DataProviderType: ECDataPagedProviderType>: ECDa
     
     ///mj_header
     open lazy var header: MJRefreshHeader = {
-        return MJRefreshNormalHeader()
+        ECDataPluginConfig.shared.headerBuilder()
     }()
     
     ///mj_footer
     open lazy var footer: MJRefreshFooter = {
-        return MJRefreshBackStateFooter()
+        ECDataPluginConfig.shared.footerBuilder()
     }()
     
     open override func initRefresh() {
