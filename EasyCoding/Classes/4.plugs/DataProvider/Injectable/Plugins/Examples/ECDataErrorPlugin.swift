@@ -37,7 +37,7 @@ open class ECDataErrorPlugin<DataType>: ECDataErrorPluginBase<DataType> {
     open override func unload() {
         self.config.dismiss(self.errorView)
     }
-    public class ErrorView: UIView, ECDataErrorViewType {
+    open class ErrorView: UIView, ECDataErrorViewType {
            public var error: Error? {
                didSet {
                    self.errorLabel.text = error?.localizedDescription

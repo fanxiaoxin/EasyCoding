@@ -58,7 +58,7 @@ public struct ECHandyJSON {
             return nil
         }
     }
-    open class secondDateTransform: DateTransform {
+    open class SecondDateTransform: DateTransform {
         open override func transformFromJSON(_ value: Any?) -> Date? {
             var v: Any? = nil
             if let timeInt = value as? Double {

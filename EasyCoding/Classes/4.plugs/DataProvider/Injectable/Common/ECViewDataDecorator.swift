@@ -8,7 +8,7 @@
 import UIKit
 
 ///常用的单页数据加载
-public class ECViewDataDecorator<DataProviderType: ECDataProviderType>: ECDataPluginDecorator<DataProviderType> {
+open class ECViewDataDecorator<DataProviderType: ECDataProviderType>: ECDataPluginDecorator<DataProviderType> {
     ///日志
     public let log = ECDataLogPlugin<DataProviderType.DataType>()
     ///加载框

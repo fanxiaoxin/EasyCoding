@@ -10,7 +10,7 @@ import UIKit
 import EasyCoding
 //import SnapKit
 
-class ViewController: ECViewController<View>, UITableViewDataSource, UITableViewDelegate {
+class IndexController: ECViewController<View>, UITableViewDataSource, UITableViewDelegate {
     
     let popupRect = UIView()
     override func viewDidLoad() {

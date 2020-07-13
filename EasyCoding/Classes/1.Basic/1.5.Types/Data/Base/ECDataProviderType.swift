@@ -168,6 +168,8 @@ public protocol ECDataProviderDecoratorType: class, ECDataProviderInjectable, EC
     associatedtype DataProviderType: ECDataProviderType
     ///需要装饰的数据类型
     var dataProvider : DataProviderType? { get set }
+    ///请求数据，用于子类继承重载
+    func request(original completion:@escaping (Result<DataType, Error>) -> Void, injected injectedCompletion: @escaping (Result<DataType, Error>) -> Void)
 }
 ///默认添加注入，本想限制该协议只能使用在DataType相等的情况，但编译器一直无法通过，只能这样实现
 extension ECDataProviderDecoratorType where DataProviderType.DataType == DataType {
@@ -177,7 +179,7 @@ extension ECDataProviderDecoratorType where DataProviderType.DataType == DataTyp
     public func easyData(original completion:@escaping (Result<DataType, Error>) -> Void, injected injectedCompletion: @escaping (Result<DataType, Error>) -> Void) {
         if let provider = self.dataProvider {
             if self.willRequest(for: provider) {
-                self.dataProvider?.easyData(original: completion, injected: { [weak self] (result) in
+                self.request(original: completion, injected: { [weak self] (result) in
                     if let s = self {
                         if let provider = s.dataProvider {
                             if let r = self?.willResponse(for: provider, result: result, completion: injectedCompletion) {
@@ -204,6 +206,9 @@ extension ECDataProviderDecoratorType where DataProviderType.DataType == DataTyp
         }else{
             completion(.failure(ECDataError<DataType>("未主动调用过easyData")))
         }
+    }
+    public func request(original completion:@escaping (Result<DataType, Error>) -> Void, injected injectedCompletion: @escaping (Result<DataType, Error>) -> Void) {
+         self.dataProvider?.easyData(original: completion, injected: injectedCompletion)
     }
 }
 

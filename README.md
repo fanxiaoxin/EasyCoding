@@ -30,7 +30,7 @@ UIView.easy.add(
 
 .follow: 跟.follow一样，但返回源视图
 
-.parent: 参数为布局设置，针对当前视图相对于父视图的布局
+.parent: 参数为布局设置，针对当前视图相对于父视图的布局，返回父视图
 
 详细使用参考1.4.3.ViewBuilder目录及1.4.2.ViewStyle目录下的类
 

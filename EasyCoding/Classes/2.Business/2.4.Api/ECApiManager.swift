@@ -53,7 +53,7 @@ extension ECApiManagerType {
     public func handle(error: Error, for api: ECApiType) {}
     ///Provider
     public func provider<ApiType: ECApiType>(for api: ApiType) -> MoyaProvider<ApiType> {
-        return MoyaProvider<ApiType>()
+        return MoyaProvider<ApiType>(callbackQueue: self.callbackQueue)
     }
     internal func mappingError(_ info:String) -> Error {
         return NSError(domain: "ECApiRequestSchemeType", code: 999, userInfo: [NSLocalizedDescriptionKey: info])

@@ -11,7 +11,7 @@ import UIKit
 import EasyCoding
 
 class PickerViewMultiDataSourceController: ECViewController<PickerViewDataSourceView> {
-    let dataSource = ECPickerViewDataSource2<Provider, Provider>()
+    let dataSource = ECPickerViewDataSource3<Provider, Provider, Provider>()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.page.stateView.isHidden = true
@@ -20,7 +20,7 @@ class PickerViewMultiDataSourceController: ECViewController<PickerViewDataSource
         
         self.dataSource.firstDataProvider = provider
         self.dataSource.secondDataProvider = provider
-//        self.dataSource.thirdDataProvider = provider
+        self.dataSource.thirdDataProvider = provider
         
 //        self.dataSource.viewForThirdCell = { Cell() }
         

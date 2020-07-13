@@ -8,7 +8,7 @@
 import UIKit
 
 ///常用的可刷新数据加载
-public class ECViewDataRefreshDecorator<DataProviderType: ECDataProviderType>: ECViewDataDecorator<DataProviderType> {
+open class ECViewDataRefreshDecorator<DataProviderType: ECDataProviderType>: ECViewDataDecorator<DataProviderType> {
     ///刷新控件
     let refresh = ECDataRefreshPlugin<DataProviderType.DataType>()
     ///错误提示

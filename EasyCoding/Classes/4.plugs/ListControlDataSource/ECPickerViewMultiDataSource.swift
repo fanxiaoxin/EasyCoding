@@ -31,6 +31,9 @@ open class ECPickerViewMultiDataSourceBase<FirstType: ECDataListProviderType>: N
     ///选择了第一项
     open var actionForFirstSelect: ((FirstType.ModelType, Int) -> Void)?
     
+    required public override init() {
+        
+    }
     ///获取选中的数据
     open var selectedModels:[Any]? {
         if let datas = self.datas, let picker = self.pickerView {

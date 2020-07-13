@@ -10,22 +10,12 @@ import UIKit
 import EasyCoding
 import HandyJSON
 
-extension ECCustomApiType {
-    public var baseURL: URL {
-        return URL(string: "https://video8.guosha.com")!
-    }
-    public var headers: [String : String]? {
-        return ["Content-type": "application/json"]
-    }
-}
 struct ApiStructure {
      ///接口返回的通用结构及错误封装
        class Common<DataType:HandyJSON>: ECApiResponseType {
            var data: DataType?
            var code: Int = 0
            var msg: String?
-           ///服务器当前时间
-           var time: Date?
            
            var error: Error? {
                if self.code != 1 {
@@ -39,9 +29,6 @@ struct ApiStructure {
            }
            required init() {
                
-           }
-           func mapping(mapper: HelpingMapper) {
-               mapper <<< self.time <-- ECHandyJSON.secondDateTransform()
            }
        }
 }
@@ -118,6 +105,10 @@ class ApiController: ECViewController<ApiView> {
         }
         
         typealias ResponseType = Response
+
+        var baseURL: URL {
+            return URL(string: "https://video8.guosha.com")!
+        }
         var path: String {
             return "api.php/v1/provide/vod"
         }
@@ -144,27 +135,6 @@ class ApiController: ECViewController<ApiView> {
         var order: Int?
         ///up主ID
         var upman_id: Int?
-    }
-    class Api: ECResponseApiType {
-        class Model:HandyJSON {
-            ///开启预告片的版本号
-            var ios_trailer:String?
-            ///当前是否只显示预告片
-            var isTrailerOnly: Bool {
-                return self.ios_trailer == Bundle.main.easy.version
-            }
-            required init() { }
-        }
-        
-        typealias ResponseType = ApiStructure.Common<Model>
-        
-        required init() {
-            
-        }
-        
-        var path: String {
-            return "api.php/v1/app/config"
-        }
     }
 }
 class ApiView: ECPage {

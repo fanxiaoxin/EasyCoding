@@ -12,12 +12,7 @@ open class ECDataEmptyPlugin<DataType>: ECDataEmptyPluginBase<DataType> {
     open weak var targetView: UIView?
     ///空数据页
     open lazy var emptyView: UIView = {
-        let view = UIView()
-        let image = UIImage.init(named: "data_empty", in: .easyCoding, compatibleWith: nil)
-        view.easy.add(UIImageView.easy(.image(image)), layout: .top, .centerX)
-            .next(.label(.font(ECSetting.Font.normal), .color(ECSetting.Color.light), .text("暂无数据")), layout: .bottomTop(15))
-        .parent(.marginX, .bottom)
-        return view
+       return EmptyView()
     }()
     
     ///配置，可修改布局及加载隐藏动画
@@ -31,5 +26,22 @@ open class ECDataEmptyPlugin<DataType>: ECDataEmptyPluginBase<DataType> {
     
     open override func unload() {
         self.config.dismiss(self.emptyView)
+    }
+    
+   open class EmptyView: UIView {
+        public override init(frame: CGRect) {
+            super.init(frame: frame)
+            self.load()
+        }
+        public required init?(coder: NSCoder) {
+            super.init(coder: coder)
+            self.load()
+        }
+        public func load() {
+            let image = UIImage.init(named: "data_empty", in: .easyCoding, compatibleWith: nil)
+            self.easy.add(UIImageView.easy(.image(image)), layout: .top, .centerX)
+                .next(.label(.font(ECSetting.Font.normal), .color(ECSetting.Color.light), .text("暂无数据")), layout: .bottomTop(15))
+                .parent(.marginX, .bottom)
+        }
     }
 }
