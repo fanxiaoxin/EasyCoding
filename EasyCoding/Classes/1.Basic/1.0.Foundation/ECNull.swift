@@ -11,7 +11,11 @@ import UIKit
 public struct ECNull: Equatable {
     ///唯一值
     public static let null = ECNull()
-    private init() { }
+    ///唯一值
+    public static var value: ECNull { return .null }
+    public init() {
+        
+    }
     public static func == (lhs: Self, rhs: Self) -> Bool {
         return true
     }

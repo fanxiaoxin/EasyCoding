@@ -157,7 +157,7 @@
 		4E4A282D5996E4B1D3331EAF9CD7CFBB /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37933F6074E9FF25D6439C2ABEBD09F8 /* ConstraintDSL.swift */; };
 		4FA6510155C579004B4153CF59B70CA8 /* AnyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464303B41AAB9B61C59AB34A285EF9F4 /* AnyError.swift */; };
 		4FB1CBDA7C1205B3C311374CE5CB3ED6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD765A2062F093EA3F393D9FD2FB280 /* Foundation.framework */; };
-		5081C6FE3C00CFA8DD6A1E3F04840CFA /* ECApiRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F94DB4B2578254A4928B2DB5237114 /* ECApiRequestable.swift */; };
+		5081C6FE3C00CFA8DD6A1E3F04840CFA /* ECApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F94DB4B2578254A4928B2DB5237114 /* ECApiRequest.swift */; };
 		511BA73694F4B8A9FCC8DAA826E4F014 /* MJRefreshBackNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3525C8D2B1AEC9F81A26525B5C997A /* MJRefreshBackNormalFooter.m */; };
 		5120753EB596E592C1248FA39EFCD556 /* ECDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33330F7C41A25AECE4EC19172A8F17DB /* ECDateExtension.swift */; };
 		53791F5E5F07400F92CFDFC89A432305 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8A12E233628AE7B921711ACD598A24 /* Validation.swift */; };
@@ -220,7 +220,6 @@
 		73E576D77E3F85F8E14E8DE294361B5F /* MJRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AAF438744357E5DAEE7CC724995872 /* MJRefreshAutoNormalFooter.m */; };
 		74BA914ACC542DD8421BF3CBEC3E9B1D /* NSButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BDBAE0744728F8771EED534478510A /* NSButton+Kingfisher.swift */; };
 		7538AF4F1907ECBD6CC5450A8382A2A4 /* ECEventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60DD60FF6BA683A2FFB85AE2EE805A9 /* ECEventPublisher.swift */; };
-		754AD23D16B0DF0592DC958B12EEE922 /* ECApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98646B4884130F14B31EAA735BBD225D /* ECApiManager.swift */; };
 		75B77F810D68386B152D2EDAA1F61CBB /* HandyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B613C5063581F9218860ABCB2F080290 /* HandyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7664FD4F59A0C00866CBAE60B0A3AD64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD765A2062F093EA3F393D9FD2FB280 /* Foundation.framework */; };
 		772CF1C0D00FB35EACABCB42D0FC8041 /* EasyCoding-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 610B97BFF137E4CC6CA1EEC92FD840DC /* EasyCoding-dummy.m */; };
@@ -288,6 +287,7 @@
 		9C2C2AA324B326060078A225 /* ECDataProviderMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C2AA224B326060078A225 /* ECDataProviderMerger.swift */; };
 		9C2E4C4C24B8697F000678D5 /* ECArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2E4C4B24B8697F000678D5 /* ECArrayExtension.swift */; };
 		9C51FA3624B2BBC2007540CA /* ECTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51FA3524B2BBC2007540CA /* ECTableViewDataSource.swift */; };
+		9C5E594124BDA8F00062F619 /* ECApiManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E594024BDA8F00062F619 /* ECApiManagerType.swift */; };
 		9C61149624B46F7200799650 /* ECToolbarKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61149524B46F7200799650 /* ECToolbarKeyboard.swift */; };
 		9C61149A24B483E600799650 /* ECToolbarPickerKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61149924B483E600799650 /* ECToolbarPickerKeyboard.swift */; };
 		9C61E7EC24BBE9EC001EB85A /* ECApiDataPluginDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61E7EB24BBE9EC001EB85A /* ECApiDataPluginDecorator.swift */; };
@@ -372,7 +372,6 @@
 		C0E20F1F8C3D3F957CE2F81893BCEC67 /* DataTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9547E5863C4A782385216AA84E3D7 /* DataTransform.swift */; };
 		C1646F7CC0DA38086D56B1883A05E1AC /* ECImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F2676CA0F642666DEEDB6035517EE /* ECImagePicker.swift */; };
 		C21A72D2AABFD12951BC6FDCAC740403 /* ResultProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2ACD9874963C55088D0F75BDD1B583 /* ResultProtocol.swift */; };
-		C2BACDD9DC1B303A31FE4292CCDB7693 /* ECApiPluginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB824BAA7E0BFAD39C92D2B635CCD7B /* ECApiPluginType.swift */; };
 		C49D52712466511E332C952834C81FE1 /* FBSnapshotTestCasePlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = 45155B492516435EB1F8A4B4B37CE8F5 /* FBSnapshotTestCasePlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4E6FB0E9B2C7EEB0139F8FEC7E7AD5E /* EasyCoding.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37F81CA58BF69DFAF3F6AA94F9B1F16D /* EasyCoding.bundle */; };
 		C4FC6DA15FF8C89C451D78EFD0CC0EBE /* ECEventPublisherType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CBB904F9E52B66235CAF5C6BA998F3 /* ECEventPublisherType.swift */; };
@@ -944,7 +943,6 @@
 		97ECC9722B53C5CAEF6D0FD905C52C2C /* ECViewDataDecorator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewDataDecorator.swift; sourceTree = "<group>"; };
 		980EE444F53A961DF2295F864FF99E12 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98485A2C34E335441B8FBE5D874BD063 /* ECPresentAnimationType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPresentAnimationType.swift; sourceTree = "<group>"; };
-		98646B4884130F14B31EAA735BBD225D /* ECApiManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECApiManager.swift; sourceTree = "<group>"; };
 		992DE3A1CE9B83E1D25312752E1B0AEF /* MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefresh.h; path = MJRefresh/MJRefresh.h; sourceTree = "<group>"; };
 		9AA02904DAFE1E3B4F0FA56457E90485 /* KingfisherOptionsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherOptionsInfo.swift; path = Sources/General/KingfisherOptionsInfo.swift; sourceTree = "<group>"; };
 		9B0DE041A45F012F45CFB276571FDD68 /* Pods-EasyCoding_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EasyCoding_Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -958,6 +956,7 @@
 		9C2C2AA224B326060078A225 /* ECDataProviderMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataProviderMerger.swift; sourceTree = "<group>"; };
 		9C2E4C4B24B8697F000678D5 /* ECArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECArrayExtension.swift; sourceTree = "<group>"; };
 		9C51FA3524B2BBC2007540CA /* ECTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECTableViewDataSource.swift; sourceTree = "<group>"; };
+		9C5E594024BDA8F00062F619 /* ECApiManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECApiManagerType.swift; sourceTree = "<group>"; };
 		9C61149524B46F7200799650 /* ECToolbarKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECToolbarKeyboard.swift; sourceTree = "<group>"; };
 		9C61149924B483E600799650 /* ECToolbarPickerKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECToolbarPickerKeyboard.swift; sourceTree = "<group>"; };
 		9C61E7EB24BBE9EC001EB85A /* ECApiDataPluginDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECApiDataPluginDecorator.swift; sourceTree = "<group>"; };
@@ -988,7 +987,7 @@
 		A05BF28D253DE52AE498481E9AF5A335 /* MoyaProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MoyaProvider.swift; path = Sources/Moya/MoyaProvider.swift; sourceTree = "<group>"; };
 		A087660B0AC9B56CC687A51D9AD3F70B /* MJRefreshHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshHeader.m; path = MJRefresh/Base/MJRefreshHeader.m; sourceTree = "<group>"; };
 		A10B1B684EA4FD7E75DFF6A4646415A4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
-		A1F94DB4B2578254A4928B2DB5237114 /* ECApiRequestable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECApiRequestable.swift; sourceTree = "<group>"; };
+		A1F94DB4B2578254A4928B2DB5237114 /* ECApiRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECApiRequest.swift; sourceTree = "<group>"; };
 		A2977F7BD37F97F0C56DA332FFB1579D /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
 		A2CC2172136EF44A5122C80C10491FF4 /* ECImageViewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECImageViewStyle.swift; sourceTree = "<group>"; };
 		A2D8956A0C853FEB77CE7DE5D1D037D4 /* Result-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Result-umbrella.h"; sourceTree = "<group>"; };
@@ -1138,7 +1137,6 @@
 		E8E11BE00F0D174BF3F33548D22A1F18 /* MangledName.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MangledName.swift; path = Source/MangledName.swift; sourceTree = "<group>"; };
 		E8F0393402B65E412E75F0FB285EE3CF /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackGifFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.m; sourceTree = "<group>"; };
 		E9119D986326B98888E8E5179F5825B9 /* Pods-EasyCoding_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EasyCoding_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		EAB824BAA7E0BFAD39C92D2B635CCD7B /* ECApiPluginType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECApiPluginType.swift; sourceTree = "<group>"; };
 		EB7DEB2F68C864C126A14FB6D54CFFA8 /* ECSimpleLocalized.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECSimpleLocalized.swift; sourceTree = "<group>"; };
 		ECB8CDF96E92618F9E377067E61112D2 /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sources/Networking/ImageDownloader.swift; sourceTree = "<group>"; };
 		ECC542272617F74A8E21E2F39F3EA182 /* ECAlertConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECAlertConfig.swift; sourceTree = "<group>"; };
@@ -1418,13 +1416,12 @@
 		2239ADD4781988C719F5D11045C2A2A9 /* 2.4.Api */ = {
 			isa = PBXGroup;
 			children = (
-				EAB824BAA7E0BFAD39C92D2B635CCD7B /* ECApiPluginType.swift */,
-				A1F94DB4B2578254A4928B2DB5237114 /* ECApiRequestable.swift */,
-				98646B4884130F14B31EAA735BBD225D /* ECApiManager.swift */,
-				BD3AB421054256E47FDBB692397BBC94 /* ECApiStructure.swift */,
+				9C5E594024BDA8F00062F619 /* ECApiManagerType.swift */,
 				B37518C2F827008F114CE753C88FA4B6 /* ECApiType.swift */,
-				7A6756FABA88B131BFC8D46972792ED1 /* ECHandyJSONExtension.swift */,
+				BD3AB421054256E47FDBB692397BBC94 /* ECApiStructure.swift */,
+				A1F94DB4B2578254A4928B2DB5237114 /* ECApiRequest.swift */,
 				9C61E7EB24BBE9EC001EB85A /* ECApiDataPluginDecorator.swift */,
+				7A6756FABA88B131BFC8D46972792ED1 /* ECHandyJSONExtension.swift */,
 			);
 			path = 2.4.Api;
 			sourceTree = "<group>";
@@ -3691,9 +3688,7 @@
 				8AE37C784C69C3830B12B71D230817D7 /* ECAlertView.swift in Sources */,
 				9C61149624B46F7200799650 /* ECToolbarKeyboard.swift in Sources */,
 				9CDB1C9424B55E3A00011609 /* ECPresentAnimation.Group.swift in Sources */,
-				C2BACDD9DC1B303A31FE4292CCDB7693 /* ECApiPluginType.swift in Sources */,
-				5081C6FE3C00CFA8DD6A1E3F04840CFA /* ECApiRequestable.swift in Sources */,
-				754AD23D16B0DF0592DC958B12EEE922 /* ECApiManager.swift in Sources */,
+				5081C6FE3C00CFA8DD6A1E3F04840CFA /* ECApiRequest.swift in Sources */,
 				F34CB05D6000E5B4B1FBB0AEFF78670A /* ECApiStructure.swift in Sources */,
 				9CDB1C9724B5760700011609 /* ECPopupKeyboard.swift in Sources */,
 				E41F4E0452A52D4D083A3F93CB57B61F /* ECApiType.swift in Sources */,
@@ -3819,6 +3814,7 @@
 				30DCF8D93133CEEF15633E025AFE7B28 /* ECRejectTypePrecondition.swift in Sources */,
 				AB87451437C572A6D06C78131A327B8E /* ECScrollViewExtension.swift in Sources */,
 				89AF489BDC33491BC31E858DA927F1E9 /* ECScrollViewStyle.swift in Sources */,
+				9C5E594124BDA8F00062F619 /* ECApiManagerType.swift in Sources */,
 				572F36EE9F54FC0CE84A512F2C0937C9 /* ECSetting.swift in Sources */,
 				AA9CAAB36B51A88D0602FE20FB8D1A3C /* ECSimpleLocalized.swift in Sources */,
 				AF7075C51198CD6771035206891AE464 /* ECSimplePrecondition.swift in Sources */,

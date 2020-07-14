@@ -19,6 +19,7 @@
 		9C2C2A9324B2CA250078A225 /* TableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C2A9224B2CA250078A225 /* TableViewDataSourceController.swift */; };
 		9C2C2A9524B2D1F60078A225 /* CollectionViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C2A9424B2D1F60078A225 /* CollectionViewDataSourceController.swift */; };
 		9C2C2A9B24B301060078A225 /* PickerViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C2A9A24B301060078A225 /* PickerViewDataSourceController.swift */; };
+		9C69484624BC32F600D0514A /* Precondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB79F5424B9A7FC00B7B2A6 /* Precondition.swift */; };
 		9C8C36F12487382C00305113 /* FunctionBuilderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C36F02487382C00305113 /* FunctionBuilderTest.swift */; };
 		9C8DBB8D24B6B07500D8EEAD /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DBB8C24B6B07500D8EEAD /* ApiController.swift */; };
 		9C8E40D024AC751400853BDD /* DataPluginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E40CF24AC751400853BDD /* DataPluginController.swift */; };
@@ -793,6 +794,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				9C69484624BC32F600D0514A /* Precondition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,15 +9,15 @@
 import UIKit
 import Moya
 import HandyJSON
+import Alamofire
 
 ///一个接口一个类
 public protocol ECApiType: TargetType, HandyJSON, CustomStringConvertible {
     var parameters: [String: Any]? { get }
-    ///传入parameters的返回值
-    var paramtersFormatter: ECApiParametersFomatterType? { get }
     ///是否将参数放于Body中否则放URL，默认GET放URL，其他放Body
     var isBodyParamters: Bool { get }
-    var defaultManager: ECApiManagerType { get }
+    ///该接口使用的MoyaProvider，默认无参，可根据情况自定义或设为属性可动态改变
+    var manager: ECApiManagerType { get }
 }
 ///配置默认值
 extension ECApiType {
@@ -25,28 +25,16 @@ extension ECApiType {
     public var sampleData: Data { return "empty sample data".data(using: .utf8)! }
     public var headers: [String: String]? { return ["Content-type": "application/json"] }
     public var parameters: [String: Any]? { return self.toJSON() }
-    public var paramtersFormatter: ECApiParametersFomatterType? { return nil }
     
     public func finalParameters() -> [String: Any]? {
-        if let fomatter = self.paramtersFormatter {
-            return fomatter.format(api: self)
-        }else{
-            return self.parameters
-        }
-
+        return self.manager.format(paramaters: self.parameters)
     }
     public var isBodyParamters: Bool { return self.method == .get ? false : true }
-    public var defaultManager: ECApiManagerType { return ECImplicitApiManager.shared }
+    ///默认provider
+    public var manager: ECApiManagerType { return ECApiManager() }
     ///默认get参数则放在URL，其他放在body
     public var task: Task {
         if let json = self.finalParameters() {
-            /*
-            switch self.method {
-            case .get:
-                return .requestParameters(parameters: json, encoding: URLEncoding.queryString)
-            default:
-                return .requestCompositeParameters(bodyParameters: json, bodyEncoding: JSONEncoding.default, urlParameters: json)
-            }*/
             if self.isBodyParamters {
                 return .requestParameters(parameters: json, encoding: JSONEncoding.default)
             }else{
@@ -72,17 +60,8 @@ extension ECCustomApiType {
 public protocol ECResponseApiType: ECCustomApiType, ECDataProviderType where DataType == ResponseType {
     ///响应结构
     associatedtype ResponseType: ECApiResponseType
-}
-extension ECResponseApiType {
-    public typealias DataType = ResponseType
-    ///直接使用内部的defaultManager调用
-    public func easyData(completion: @escaping (Result<DataType, Error>) -> Void) {
-        self.defaultManager.request(self).success { data in
-            completion(.success(data))
-        }.failure { error in
-            completion(.failure(error))
-        }
-    }
+    
+    func request(callbackQueue: DispatchQueue?, progress: ProgressBlock?, completion: @escaping (Swift.Result<ResponseType, Error>) -> Void)
 }
 ///列表接口
 public protocol ECListResponseApiType: ECResponseApiType, ECDataListProviderType where ResponseType: ECApiListResponseType, ModelType == ResponseType.ModelType {
@@ -95,12 +74,12 @@ extension ECListResponseApiType {
     }
 }
 ///分页接口
-public protocol ECPagedResponseApiType: ECListResponseApiType, ECApiPagedListRequestType, ECDataPagedProviderType where ResponseType: ECApiPagedListResponseType {
+public protocol ECPagedResponseApiType: ECListResponseApiType, ECApiPagedListRequestType, ECDataPagedProviderType where ResponseType: ECApiPagedListResponseType, ModelType == ResponseType.ModelType {
     
 }
 ///转分页相关操作转移支ResponseType
 extension ECPagedResponseApiType {
-    public typealias ModelType = ResponseType.ModelType
+//    public typealias ModelType = ResponseType.ModelType
     public func isLastPage(for data: DataType) -> Bool {
         return data.isEnd(for: self)
     }
@@ -108,9 +87,14 @@ extension ECPagedResponseApiType {
         return data1.merge(data: data2)
     }
 }
+extension ECNull: ECApiResponseType {
+    public var error: Error? {
+        return nil
+    }
+}
 ///上传接口
-public protocol ECUploadApiType: ECCustomApiType {
-    var datas: [MultipartFormData] { get }
+public protocol ECUploadApiType: ECResponseApiType where ResponseType == ECNull {
+    var datas: [Moya.MultipartFormData] { get }
 }
 extension ECUploadApiType {
     public var method: Moya.Method { return .post }
@@ -123,11 +107,24 @@ extension ECUploadApiType {
         }
     }
 }
+extension URL: ECApiResponseType {
+    public var error: Error? {
+        return nil
+    }
+    
+    public init() {
+        fatalError("不可空")
+    }
+}
 ///下载接口
-public protocol ECDownloadApiType: ECCustomApiType {
-    var destination: DownloadDestination { get set }
+public protocol ECDownloadApiType: ECResponseApiType where ResponseType == URL {
+    ///下载地址，默认放缓存目录
+    var destination: DownloadDestination { get }
 }
 extension ECDownloadApiType {
+    public var destination: DownloadDestination {
+        return DownloadRequest.suggestedDownloadDestination(for: .cachesDirectory, in: .userDomainMask)
+    }
     ///默认get参数则放在URL，其他放在body
     public var task: Task {
         if let json = self.finalParameters() {
@@ -141,7 +138,7 @@ extension ECDownloadApiType {
             return .downloadDestination(self.destination)
         }
     }
-    public mutating func mapping(mapper: HelpingMapper) {
-        mapper >>> self.destination
-    }
+//    public mutating func mapping(mapper: HelpingMapper) {
+//        mapper >>> self.destinationURL
+//    }
 }

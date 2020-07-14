@@ -8,11 +8,8 @@
 
 import UIKit
 import HandyJSON
+import Moya
 
-///API请求参数格式化
-public protocol ECApiParametersFomatterType {
-    func format(api:ECApiType) -> [String:Any]?
-}
 public protocol ECApiResponseType: HandyJSON {
     ///判断当前接口数据是否失败，若为nil才会去取数据及列表字段
     var error: Error? { get }
