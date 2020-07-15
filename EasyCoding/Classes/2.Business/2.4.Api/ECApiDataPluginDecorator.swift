@@ -10,6 +10,7 @@ import HandyJSON
 import Moya
 import Result
 
+///Api数据插件装饰器
 open class ECApiDataPluginDecorator<ApiType: ECResponseApiType>: ECDataPluginDecorator<ApiType> {
     open var manager: ECApiManagerType? = .none
     open var callbackQueue: DispatchQueue? = .none

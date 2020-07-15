@@ -34,3 +34,13 @@ open class ECDataLoadingPlugin<DataType>: ECDataLoadingPluginBase<DataType> {
         }
     }
 }
+
+extension ECDataPlugin {
+    ///加载中显示加载页
+    public static func loading(for view: UIView) -> ECDataLoadingPlugin<DataType> {
+        let plugin = ECDataLoadingPlugin<DataType>()
+        plugin.targetView = view
+        return plugin
+    }
+}
+

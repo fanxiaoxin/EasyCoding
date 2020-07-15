@@ -38,3 +38,12 @@ open class ECDataErrorPlugin<DataType>: ECDataErrorPluginBase<DataType> {
     }
     
 }
+extension ECDataPlugin {
+    ///加载失败页面
+    public static func error(for view: UIView) -> ECDataErrorPlugin<DataType> {
+        let plugin = ECDataErrorPlugin<DataType>()
+        plugin.targetView = view
+        return plugin
+    }
+}
+

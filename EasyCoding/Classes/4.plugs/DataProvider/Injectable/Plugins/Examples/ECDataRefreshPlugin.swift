@@ -30,3 +30,12 @@ open class ECDataRefreshPlugin<DataType>: ECDataRefreshPluginBase<DataType> {
         self.header.endRefreshing()
     }
 }
+
+extension ECDataPlugin {
+    ///可下拉刷新
+    public static func refresh(for view: UIScrollView) -> ECDataRefreshPlugin<DataType> {
+        let plugin = ECDataRefreshPlugin<DataType>()
+        plugin.targetView = view
+        return plugin
+    }
+}

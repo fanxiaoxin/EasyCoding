@@ -11,6 +11,8 @@ import Moya
 import HandyJSON
 import Alamofire
 
+// MARK: 接口基础设置
+
 ///一个接口一个类
 public protocol ECApiType: TargetType, HandyJSON, CustomStringConvertible {
     var parameters: [String: Any]? { get }
@@ -56,13 +58,21 @@ public protocol ECCustomApiType: ECApiType {
 extension ECCustomApiType {
 }
 
+// MARK: 接口类型
+
 ///一般使用的强类型接口，可直接当成ECDataProviderType使用
 public protocol ECResponseApiType: ECCustomApiType, ECDataProviderType where DataType == ResponseType {
     ///响应结构
     associatedtype ResponseType: ECApiResponseType
-    
-    func request(callbackQueue: DispatchQueue?, progress: ProgressBlock?, completion: @escaping (Swift.Result<ResponseType, Error>) -> Void)
 }
+extension ECResponseApiType {
+    public func easyData(completion: @escaping (Swift.Result<DataType, Error>) -> Void) {
+        self.manager.request(self, callbackQueue: nil, progress: nil, completion: completion)
+    }
+}
+
+// MARK: 列表及分页接口类型
+
 ///列表接口
 public protocol ECListResponseApiType: ECResponseApiType, ECDataListProviderType where ResponseType: ECApiListResponseType, ModelType == ResponseType.ModelType {
     
@@ -87,13 +97,11 @@ extension ECPagedResponseApiType {
         return data1.merge(data: data2)
     }
 }
-extension ECNull: ECApiResponseType {
-    public var error: Error? {
-        return nil
-    }
-}
+
+// MARK: 上传接口类型
+
 ///上传接口
-public protocol ECUploadApiType: ECResponseApiType where ResponseType == ECNull {
+public protocol ECUploadApiType: ECResponseApiType {
     var datas: [Moya.MultipartFormData] { get }
 }
 extension ECUploadApiType {
@@ -107,6 +115,9 @@ extension ECUploadApiType {
         }
     }
 }
+
+// MARK: 下载接口类型
+
 extension URL: ECApiResponseType {
     public var error: Error? {
         return nil

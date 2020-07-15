@@ -26,3 +26,11 @@ open class ECDataEmptyPlugin<DataType>: ECDataEmptyPluginBase<DataType> {
         self.config.dismiss(self.emptyView)
     }
 }
+extension ECDataPlugin {
+    ///数据为空页面
+    public static func empty(for view: UIView) -> ECDataEmptyPlugin<DataType> {
+        let plugin = ECDataEmptyPlugin<DataType>()
+        plugin.targetView = view
+        return plugin
+    }
+}

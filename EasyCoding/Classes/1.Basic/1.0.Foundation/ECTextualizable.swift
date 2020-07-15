@@ -44,16 +44,25 @@ extension Float80: ECTextualizable {
 extension Date: ECTextualizable {
     public var text: String { return self.easy.string() }
 }
-extension NSObject: ECTextualizable {
-    public var text: String { return self.description }
+extension NSError: ECTextualizable {
+    public var text: String { return self.localizedDescription }
+}
+extension Error {
+    public var text: String {
+        return (self as ECTextualizable).text
+    }
 }
 ///获取最适合的字条串表示
-public func ECText(_ obj: Any) -> String {
-    if let o = obj as? ECTextualizable {
-        return o.text
-    }else if let o = obj as? CustomStringConvertible {
-        return o.description
-    } else {
-        return "\(obj)"
+public func ECText(_ object: Any?) -> String {
+    if let obj = object {
+        if let o = obj as? ECTextualizable {
+            return o.text
+        }else if let o = obj as? CustomStringConvertible {
+            return o.description
+        } else {
+            return "\(obj)"
+        }
+    }else{
+        return ""
     }
 }
