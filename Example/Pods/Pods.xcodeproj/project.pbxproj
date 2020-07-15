@@ -308,6 +308,7 @@
 		9CDB1C9D24B5C0C600011609 /* ECKeyboardTextConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C9C24B5C0C600011609 /* ECKeyboardTextConstraint.swift */; };
 		9CDB1C9F24B5C2B900011609 /* ECTextualizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1C9E24B5C2B900011609 /* ECTextualizable.swift */; };
 		9CDB1CA424B5C53600011609 /* ECPickerTextConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB1CA324B5C53600011609 /* ECPickerTextConstraint.swift */; };
+		9CDD33EE24BE90670082ED5F /* ECApiPluginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD33ED24BE90670082ED5F /* ECApiPluginType.swift */; };
 		9CE2018324B6E50700D0C01C /* ECMJRefreshStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE2018224B6E50700D0C01C /* ECMJRefreshStyle.swift */; };
 		9D65089019D558E5A9661F2DCAD20313 /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87362F5B0138E9BD366742AF03D483 /* SwiftSupport.swift */; };
 		9E0A05882BDA16EF7B31F2E7CC5A4FA0 /* ECTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEF649DD6E2C0486ADD3B67F147694 /* ECTableViewExtension.swift */; };
@@ -976,6 +977,7 @@
 		9CDB1C9C24B5C0C600011609 /* ECKeyboardTextConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECKeyboardTextConstraint.swift; sourceTree = "<group>"; };
 		9CDB1C9E24B5C2B900011609 /* ECTextualizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECTextualizable.swift; sourceTree = "<group>"; };
 		9CDB1CA324B5C53600011609 /* ECPickerTextConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPickerTextConstraint.swift; sourceTree = "<group>"; };
+		9CDD33ED24BE90670082ED5F /* ECApiPluginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECApiPluginType.swift; sourceTree = "<group>"; };
 		9CE2018224B6E50700D0C01C /* ECMJRefreshStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMJRefreshStyle.swift; sourceTree = "<group>"; };
 		9D5230DCD4FDC74E5FC77A68A8E66FE7 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtensionHelpers.swift; path = Sources/Utility/ExtensionHelpers.swift; sourceTree = "<group>"; };
 		9D76FF1FE12444158859C95DF0FF874C /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateHeader.h; path = MJRefresh/Custom/Header/MJRefreshStateHeader.h; sourceTree = "<group>"; };
@@ -1416,6 +1418,7 @@
 		2239ADD4781988C719F5D11045C2A2A9 /* 2.4.Api */ = {
 			isa = PBXGroup;
 			children = (
+				9CDD33ED24BE90670082ED5F /* ECApiPluginType.swift */,
 				9C5E594024BDA8F00062F619 /* ECApiManagerType.swift */,
 				B37518C2F827008F114CE753C88FA4B6 /* ECApiType.swift */,
 				BD3AB421054256E47FDBB692397BBC94 /* ECApiStructure.swift */,
@@ -3814,6 +3817,7 @@
 				30DCF8D93133CEEF15633E025AFE7B28 /* ECRejectTypePrecondition.swift in Sources */,
 				AB87451437C572A6D06C78131A327B8E /* ECScrollViewExtension.swift in Sources */,
 				89AF489BDC33491BC31E858DA927F1E9 /* ECScrollViewStyle.swift in Sources */,
+				9CDD33EE24BE90670082ED5F /* ECApiPluginType.swift in Sources */,
 				9C5E594124BDA8F00062F619 /* ECApiManagerType.swift in Sources */,
 				572F36EE9F54FC0CE84A512F2C0937C9 /* ECSetting.swift in Sources */,
 				AA9CAAB36B51A88D0602FE20FB8D1A3C /* ECSimpleLocalized.swift in Sources */,
