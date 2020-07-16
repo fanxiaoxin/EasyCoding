@@ -13,7 +13,7 @@ struct Setting {
     ///接口
     struct Api {
         ///接口地址
-        static var url = ""
+        static var url = "https://www.baidu.com"
     }
     ///外部参数
     struct External {

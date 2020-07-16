@@ -11,12 +11,7 @@ open class ECKeyboardTextConstraint<KeyboardType: ECKeyboardType>: ECTextConstra
     public let keyboard: KeyboardType
     public lazy var textForValue: (KeyboardType.InputType) -> String = {
         return { value in
-            if let v = value as? ECTextualizable {
-                return v.text
-            }else if let v = value as? CustomStringConvertible {
-                return v.description
-            }
-            return "\(value)"
+            return ECText(value)
         }
     }()
     ///观察者，用于观察OptionsView的改变

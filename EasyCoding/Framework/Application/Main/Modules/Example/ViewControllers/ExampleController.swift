@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import EasyCoding
 
 class ExampleController: ViewController<ExamplePage> {
     ///要求通过ExamplePrecondition条件并且去调用 Exampler接口，若成功则打开
     override var preconditions: [ECViewControllerPrecondition]? {
         return [.example,
                 .easy(action: { (condition, finished) in
-            condition.request(Api.Example()) { (response) in
-                finished(true)
-            }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        finished(true)
+                    }
         })]
     }
     @objc var testName: String?

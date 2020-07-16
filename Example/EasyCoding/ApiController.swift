@@ -10,29 +10,6 @@ import UIKit
 import EasyCoding
 import HandyJSON
 
-struct ApiStructure {
-     ///接口返回的通用结构及错误封装
-       class Common<DataType:HandyJSON>: ECApiResponseType {
-           var data: DataType?
-           var code: Int = 0
-           var msg: String?
-           
-           var error: Error? {
-               if self.code != 1 {
-                   return self.mappingError(self.msg ?? "数据请求失败")
-               }
-               return nil
-           }
-           
-           func mappingError(_ info:String) -> Error {
-               return NSError(domain: "ApiModel", code: 999, userInfo: [NSLocalizedDescriptionKey: info])
-           }
-           required init() {
-               
-           }
-       }
-}
-
 class ApiController: ECViewController<ApiView> {
     let dataSource = ECTableViewDataSource<ECViewDataPagedDecorator<ListApi>>()
     override func viewDidLoad() {
@@ -64,7 +41,7 @@ class ApiController: ECViewController<ApiView> {
             required init() {
                 
             }
-            var text: String {
+            var friendlyText: String {
                 return self.vod_name ?? "没数据"
             }
         }
@@ -74,7 +51,7 @@ class ApiController: ECViewController<ApiView> {
                 
             }
         }
-        class Response: ApiStructure.Common<List>, ECApiPagedListResponseType, CustomStringConvertible {
+        class Response: ApiStructure.Response.Common<List>, ECApiPagedListResponseType, CustomStringConvertible {
             typealias ModelType = Model
             var list: [Model]? {
                 return self.data?.list

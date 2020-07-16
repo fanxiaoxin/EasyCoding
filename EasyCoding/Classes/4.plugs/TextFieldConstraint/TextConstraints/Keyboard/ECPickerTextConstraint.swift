@@ -33,9 +33,9 @@ public class ECPickerTextConstraint<DataProviderType: ECDataListProviderType>: E
         self.textForValue = { value in
             if let v = value as? [ECTextualizable] {
                 if v.count == 1 {
-                    return v[0].text
+                    return v[0].friendlyText
                 }else {
-                    return v.map({ $0.text }).joined(separator: ", ")
+                    return v.map({ $0.friendlyText }).joined(separator: ", ")
                 }
             }else if let v = value as? [CustomStringConvertible] {
                 if v.count == 1 {

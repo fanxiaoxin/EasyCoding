@@ -10,7 +10,7 @@ import UIKit
 ///请求失败时弹toast信息
 open class ECDataErrorToastPlugin<DataType>: ECDataErrorPluginBase<DataType> {
     open override func load() {
-        if let message =  self.error?.text {
+        if let message =  self.error?.friendlyText {
             ECMessageBox.toast(message)
         }
     }

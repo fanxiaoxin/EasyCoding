@@ -19,6 +19,8 @@ public protocol ECApiManagerType {
     func request<ApiType: ECResponseApiType>(_ api: ApiType,callbackQueue: DispatchQueue?, progress: ProgressBlock?, completion: @escaping (Swift.Result<ApiType.ResponseType, Error>) -> Void)
     ///下载
     func request<ApiType: ECDownloadApiType>(_ api: ApiType,callbackQueue: DispatchQueue?, progress: ProgressBlock?, completion: @escaping (Swift.Result<ApiType.ResponseType, Error>) -> Void)
+    ///测试
+    func request<ApiType: ECApiTestType>(_ api: ApiType,callbackQueue: DispatchQueue?, progress: ProgressBlock?, completion: @escaping (Swift.Result<ApiType.ResponseType, Error>) -> Void)
 }
 
 // MARK: ApiManager默认实现辅
@@ -74,7 +76,23 @@ extension ECApiManagerType {
             }
         }
     }
-
+    // MARK: 测试
+    public func request<ApiType: ECApiTestType>(_ api: ApiType,callbackQueue: DispatchQueue? = .none, progress: ProgressBlock? = .none, completion: @escaping (Swift.Result<ApiType.ResponseType, Error>) -> Void) {
+        let normalProvider = self.provider(for: api)
+        let provider = MoyaProvider<ApiType>(endpointClosure: normalProvider.endpointClosure, requestClosure: normalProvider.requestClosure, stubClosure: MoyaProvider.delayedStub(api.delayTime), callbackQueue: callbackQueue, manager: normalProvider.manager, plugins: normalProvider.plugins, trackInflights: normalProvider.trackInflights)
+        provider.request(api, callbackQueue: callbackQueue, progress: progress) { (result) in
+            switch result {
+            case .success(_):
+                let s = api.response
+                if let error = s.error {
+                    completion(.failure(error))
+                }else{
+                    Self.onCompletionSuccess(plugins: provider.plugins, api: api, response: s, completion: completion)
+                }
+            case let .failure(error): completion(.failure(error))
+            }
+        }
+    }
     // MARK: 不包含错误处理
     public func requestWithoutError<ApiType: ECResponseApiType>(_ api: ApiType, callbackQueue: DispatchQueue? = .none, progress: ProgressBlock? = .none, completion: @escaping (ApiType.ResponseType) -> Void) {
         self.request(api, callbackQueue: callbackQueue, progress: progress) { result in

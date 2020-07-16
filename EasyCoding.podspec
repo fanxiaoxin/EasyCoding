@@ -78,10 +78,4 @@ TODO: Add long description of the pod here.
         'EasyCoding' => ['EasyCoding/Assets/*.xcassets']
     }
    end
-#   # 提供列表及API绑定数据的封装，新建一个TableView不需要写太多重复的代码，包含上下拉刷新
-#   s.subspec 'ListLoader' do |l|
-#       l.source_files = 'EasyCoding/Classes/4.plugs/ApiListLoader/**/*'
-#       l.dependency 'EasyCoding/Api'
-#       l.dependency 'MJRefresh', '~> 3.4.0'
-#   end
 end

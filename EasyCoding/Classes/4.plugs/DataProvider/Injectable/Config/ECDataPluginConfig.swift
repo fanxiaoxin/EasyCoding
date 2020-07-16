@@ -45,7 +45,7 @@ open class ECDataPluginConfig {
     open class ErrorView: UIView, ECDataErrorViewType {
         public var error: Error? {
             didSet {
-                self.errorLabel.text = error?.text
+                self.errorLabel.text = error?.friendlyText
             }
         }
         

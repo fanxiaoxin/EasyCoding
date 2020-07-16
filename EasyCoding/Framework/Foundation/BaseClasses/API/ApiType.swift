@@ -17,11 +17,8 @@ extension ECCustomApiType {
     public var headers: [String : String]? {
         return ["Content-type": "application/json"]
     }
-    public var paramtersFormatter: ECApiParametersFomatterType? {
-        return Api.Structure.Request.ParamterFomatter()
-    }
-    public var defaultManager: ECApiManagerType {
-        return ECImplicitApiManager.shared
+    public var manager: ECApiManagerType {
+        return ApiManager.shared
     }
 }
 
@@ -29,19 +26,26 @@ extension ECCustomApiType {
 typealias ApiType = ECResponseApiType
 
 ///带Section类型的列表Api
-typealias SectionListApiType = ECPagedResponseApiType
+typealias SectionListApiType = ECListResponseApiType
 
 ///带Section类型的分页列表Api
 typealias SectionPagedListApiType = ECPagedResponseApiType
 
 ///列表Api
 protocol ListApiType: SectionListApiType where SectionType == ECNull { }
-
+extension ListApiType {
+    typealias SectionType = ECNull
+}
 ///分页列表Api
-protocol PagedListApiType: SectionPagedListApiType where SectionType == ECNull { }
+protocol PagedListApiType: SectionPagedListApiType where SectionType == ECNull {
+    //此处可转换page参数为API通用参数名
+}
+extension PagedListApiType {
+    typealias SectionType = ECNull
+}
 
 ///上传Api
-protocol UploadApiType:ECUploadApiType, ApiType { }
+typealias UploadApiType = ECUploadApiType
 
 ///下载Api
 typealias DownloadApiType = ECDownloadApiType

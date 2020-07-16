@@ -10,8 +10,8 @@ import UIKit
 import Moya
 
 extension Api {
-    class Example: ApiType, ApiTestType {
-        typealias ResponseType = Structure.Response.Common<Test.Model>
+    class Example: ApiType {
+        typealias ResponseType = ApiStructure.Response.Common<ApiTest.Model>
         
         var path: String {
             return "example"
@@ -20,17 +20,8 @@ extension Api {
             return .get
         }
         
-        var sampleData: Data {
-            let data: [String: Any] = ["return_code": "SUCCESS",
-                                       "result_code": "SUCCESS",
-                                       "data": [
-                                           "list": [["text":"内容1"],["text":"内容2"],["text":"内容3"],["text":"内容4"]],
-                                           "phone": self.phone ?? "nil"
-                                       ]]
-            return try! JSONSerialization.data(withJSONObject: data, options: JSONSerialization.WritingOptions.prettyPrinted)
-        }
         required init() {}
 
-        var phone: String?
+        var paramter: String?
     }
 }

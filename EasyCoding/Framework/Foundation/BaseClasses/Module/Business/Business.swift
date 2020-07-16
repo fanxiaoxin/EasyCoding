@@ -11,5 +11,5 @@ import EasyCoding
 import Moya
 
 ///业务类基类
-class Business: NSObject, ECViewControllerAccessable, ECApiRequestable {
+class Business: NSObject, ECViewControllerAccessable {
 }

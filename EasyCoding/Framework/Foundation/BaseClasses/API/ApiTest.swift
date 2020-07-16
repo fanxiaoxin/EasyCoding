@@ -8,58 +8,64 @@
 
 import UIKit
 import HandyJSON
+import EasyCoding
 
-protocol ApiTestType {
-    
-}
-
-extension Api {
-    struct Test {
-        class Model: HandyJSON{
-            required init() {}
-            var text: String?
+///测试接口
+struct ApiTest {
+    class Model: HandyJSON, ECTextualizable{
+        required init() {}
+        var friendlyText: String = "测试文字"
+    }
+    ///一般测试接口
+    class Normal: ApiType, ECApiTestType {
+        typealias ResponseType = ApiStructure.Response.Common<Model>
+        required init() {
+            
         }
-        class List: ApiType, ApiTestType {
-            var path: String {
-                return "TEST"
-            }
-            
-            typealias ResponseType = Api.Structure.Response.CommonList<Model>
-            required init() {
-                
-            }
-            public var sampleData: Data {
-                let data: [String: Any] =  ["code": "1",
-                                            "msg": "请求成功",
-                                            "time": Date().timeIntervalSince1970.description,
-                                            "data": [
-                                                "list": [["text":"内容1"],["text":"内容2"],["text":"内容3"],["text":"内容4"]]
-                    ]]
-                return try! JSONSerialization.data(withJSONObject: data, options: JSONSerialization.WritingOptions.prettyPrinted)
-            }
-        }
-        
-        class PagedList: PagedListApiType, ApiTestType {
-            
-            typealias ResponseType = Api.Structure.Response.CommonPagedList<Model>
-            
-            var path: String {
-                return "TEST"
-            }
-            required init() {
-                
-            }
-            var page: Int = 1
-            public var sampleData: Data {
-                let data: [String: Any] =  ["code": "1",
-                                            "msg": "请求成功",
-                                            "time": Date().timeIntervalSince1970.description,
-                                            "data": [
-                                                "list": [["text":"内容1"],["text":"内容2"],["text":"内容3"],["text":"内容4"]]
-                    ]]
-                return try! JSONSerialization.data(withJSONObject: data, options: JSONSerialization.WritingOptions.prettyPrinted)
-            }
+        var isError: Bool = false
+        var response: ResponseType {
+            let common = ApiStructure.Response.Common<Model>()
+            common.code = isError ? 0 : 1
+            common.msg = isError ? "测试请求出错" : "成功"
+            common.time = Date()
+            common.data = Model()
+            return common
         }
     }
-    
+    ///列表测试接口
+    class List: ListApiType, ECApiTestType {
+        typealias ResponseType = ApiStructure.Response.CommonList<Model>
+        required init() {
+            
+        }
+        var isError: Bool = false
+        var response: ResponseType {
+            let list = ApiStructure.Response.CommonList<Model>()
+            list.code = 1
+            list.msg = isError ? "测试请求出错" : "成功"
+            list.time = Date()
+            list.data = ApiStructure.Data.List()
+            list.data?.list = [Model(),Model(),Model(),Model(),Model(),Model(),Model()]
+            return list
+        }
+    }
+    ///分页测试接口
+    class PagedList: PagedListApiType, ECApiTestType {
+        typealias ResponseType = ApiStructure.Response.CommonPagedList<Model>
+        required init() {
+            
+        }
+        var page: Int = 1
+        var isError: Bool = false
+        var response: ResponseType {
+            let list = ApiStructure.Response.CommonPagedList<Model>()
+            list.code = 1
+            list.msg = isError ? "测试请求出错" : "成功"
+            list.time = Date()
+            list.data = ApiStructure.Data.PagedList()
+            list.data?.list = [Model(),Model(),Model(),Model(),Model(),Model(),Model()]
+            return list
+        }
+    }
 }
+

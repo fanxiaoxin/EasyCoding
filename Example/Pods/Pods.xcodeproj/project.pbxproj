@@ -1413,7 +1413,7 @@
 			name = Basic;
 			sourceTree = "<group>";
 		};
-		2239ADD4781988C719F5D11045C2A2A9 /* 2.4.Api */ = {
+		2239ADD4781988C719F5D11045C2A2A9 /* 2.3.Api */ = {
 			isa = PBXGroup;
 			children = (
 				9CDD33ED24BE90670082ED5F /* ECApiPluginType.swift */,
@@ -1423,7 +1423,7 @@
 				9C61E7EB24BBE9EC001EB85A /* ECApiDataPluginDecorator.swift */,
 				7A6756FABA88B131BFC8D46972792ED1 /* ECHandyJSONExtension.swift */,
 			);
-			path = 2.4.Api;
+			path = 2.3.Api;
 			sourceTree = "<group>";
 		};
 		224EF88682ED2D6FA8E2FD710828416A /* OtherPodStyle */ = {
@@ -1734,6 +1734,7 @@
 		494B97C0C7BAB79549826CD913DADF4F /* 3.Controls */ = {
 			isa = PBXGroup;
 			children = (
+				BE70C9808E4169A3253E8DA73CD11ECB /* 3.0.Setting */,
 				9C61E7ED24BBF480001EB85A /* DataControl */,
 				9CD9DD1424B454D000C39419 /* Keyboard */,
 				75D6E5BADF4CD637591C195A48367D6D /* Button */,
@@ -1788,7 +1789,7 @@
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
-		51DA105B2A437C065AED0B6E848850BF /* 2.2.Personalized */ = {
+		51DA105B2A437C065AED0B6E848850BF /* 2.1.Personalized */ = {
 			isa = PBXGroup;
 			children = (
 				A9F4CFC9250F85682B9E1654BEBC010F /* ECLocalized.swift */,
@@ -1796,10 +1797,10 @@
 				EB7DEB2F68C864C126A14FB6D54CFFA8 /* ECSimpleLocalized.swift */,
 				ACC5E50AC977FDF9FA87BA7210D9294A /* ECThemeManagement.swift */,
 			);
-			path = 2.2.Personalized;
+			path = 2.1.Personalized;
 			sourceTree = "<group>";
 		};
-		53FA99564A3A09B5E5C086DFC77BE585 /* 2.3.AccessControl */ = {
+		53FA99564A3A09B5E5C086DFC77BE585 /* 2.2.AccessControl */ = {
 			isa = PBXGroup;
 			children = (
 				4619416CFCA6D1FB14C6AC682FEA96D1 /* 2.2.1.AccessControl */,
@@ -1807,7 +1808,7 @@
 				739CD0A6D21A1DC29BB978D3DB0CF20E /* 2.2.3.PresentSegue */,
 				6ECF645F87028F0D508D5AA165A20D2C /* 2.2.4.ViewControllerAccess */,
 			);
-			path = 2.3.AccessControl;
+			path = 2.2.AccessControl;
 			sourceTree = "<group>";
 		};
 		548E4F6DFE628C9544B13EAB77CA9DF3 /* Weaker */ = {
@@ -2323,12 +2324,12 @@
 			path = Plugins;
 			sourceTree = "<group>";
 		};
-		BE70C9808E4169A3253E8DA73CD11ECB /* 2.1.Setting */ = {
+		BE70C9808E4169A3253E8DA73CD11ECB /* 3.0.Setting */ = {
 			isa = PBXGroup;
 			children = (
 				AC7DEAE2A20A6026C83C831ECF0B5878 /* ECSetting.swift */,
 			);
-			path = 2.1.Setting;
+			path = 3.0.Setting;
 			sourceTree = "<group>";
 		};
 		BEFE5FABBBCAFF5689F7BA51E87A4DA2 /* Examples */ = {
@@ -2361,10 +2362,9 @@
 		C2D45039734AC49A7AA587A9E0B23C0C /* 2.Business */ = {
 			isa = PBXGroup;
 			children = (
-				BE70C9808E4169A3253E8DA73CD11ECB /* 2.1.Setting */,
-				51DA105B2A437C065AED0B6E848850BF /* 2.2.Personalized */,
-				53FA99564A3A09B5E5C086DFC77BE585 /* 2.3.AccessControl */,
-				2239ADD4781988C719F5D11045C2A2A9 /* 2.4.Api */,
+				51DA105B2A437C065AED0B6E848850BF /* 2.1.Personalized */,
+				53FA99564A3A09B5E5C086DFC77BE585 /* 2.2.AccessControl */,
+				2239ADD4781988C719F5D11045C2A2A9 /* 2.3.Api */,
 			);
 			name = 2.Business;
 			path = EasyCoding/Classes/2.Business;

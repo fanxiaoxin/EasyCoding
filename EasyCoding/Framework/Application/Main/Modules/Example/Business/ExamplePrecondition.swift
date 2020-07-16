@@ -16,7 +16,7 @@ class ExamplePrecondition: Precondition {
     }
     override func failureAction() {
         //失败处理，比如弹出失败页面
-//        if let current = self.input ?? UIViewController.easy.current {
+//        if let current = self.currentViewController {
 //            let failureController = FailureController()
 //            current.load(failureController)
 //        }

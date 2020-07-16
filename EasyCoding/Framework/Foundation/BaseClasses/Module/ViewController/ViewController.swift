@@ -11,7 +11,7 @@ import UIKit
 import Moya
 import Result
 
-class ViewController<PageType:UIView>: ECViewController<PageType>, ECFlowControllerType, ECApiRequestable, NavigationControllerDelegate {
+class ViewController<PageType:UIView>: ECViewController<PageType>, ECFlowControllerType, NavigationControllerDelegate {
     
     var onFlow: ((ECFlowStep.State) -> Void)?
     ///关闭时的流程状态
@@ -42,7 +42,6 @@ class ViewController<PageType:UIView>: ECViewController<PageType>, ECFlowControl
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         //设置返回按钮
         if self != self.navigationController?.viewControllers.first {
             let backButton = UIBarButtonItem(image: UIImage(named:"返回按钮图片"), style: .plain, target: self, action: #selector(self.onNavigationBack))

@@ -14,7 +14,6 @@ public class ECSimplePrecondition<IT,OT>: ECPrecondition<IT,OT> {
         self.verfiyAction = action
     }
     public override func verify() {
-//        weak var weakSelf = self
         self.verfiyAction?(self, self.finished)
     }
 }
@@ -23,21 +22,3 @@ extension ECPrecondition {
         return ECSimplePrecondition<InputType,OutputType>(action)
     }
 }
-
-/*
-class ECViewControllerSimplePrecondition : ECViewControllerPrecondition {
-    var verfiyAction: (((Bool)->Void)->Void)? = nil
-    public init(_ action: @escaping ((Bool)->Void)->Void) {
-        super.init()
-        self.verfiyAction = action
-    }
-    public override func verify() {
-        self.verfiyAction?(self.finished)
-    }
-}
-extension ECViewControllerPrecondition {
-    public static func simple(action: @escaping ((Bool)->Void)->Void) -> ECViewControllerPrecondition {
-        return ECViewControllerSimplePrecondition(action)
-    }
-}
- */

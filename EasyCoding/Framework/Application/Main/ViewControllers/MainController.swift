@@ -12,7 +12,7 @@ import Moya
 import Result
 
 ///主视图
-class MainController: UITabBarController, UITabBarControllerDelegate, ECViewControllerType, ECApiRequestable {
+class MainController: UITabBarController, UITabBarControllerDelegate, ECViewControllerType {
     var segue: ECPresentSegue { return ECPresentSegue.popup }
     
     var preconditions: [ECViewControllerPrecondition]? { return nil}

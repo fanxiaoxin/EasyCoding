@@ -11,7 +11,7 @@ import EasyCoding
 import Moya
 
 ///页面加载条件类基类
-class Precondition: ECViewControllerPrecondition, ECApiRequestable {
+class Precondition: ECViewControllerPrecondition {
     
 }
 extension UIViewController {
@@ -20,7 +20,4 @@ extension UIViewController {
             pass()
         })
     }
-}
-extension ECSimplePrecondition : ECApiRequestable {
-    
 }

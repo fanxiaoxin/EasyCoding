@@ -14,7 +14,7 @@ open class ECViewControllerPrecondition: ECPrecondition<UIViewController, Any> {
 }*/
 public typealias ECViewControllerPrecondition = ECPrecondition<UIViewController, Any>
 
-extension ECViewControllerPrecondition {
+extension ECPrecondition where InputType: UIViewController {
     ///当前控制器
     public var currentController: UIViewController? {
         return self.input ?? UIViewController.easy.current

@@ -66,6 +66,7 @@ public protocol ECResponseApiType: ECCustomApiType, ECDataProviderType where Dat
     associatedtype ResponseType: ECApiResponseType
 }
 extension ECResponseApiType {
+    public typealias DataType = ResponseType
     public func easyData(completion: @escaping (Swift.Result<DataType, Error>) -> Void) {
         self.manager.request(self, callbackQueue: nil, progress: nil, completion: completion)
     }
@@ -78,7 +79,7 @@ public protocol ECListResponseApiType: ECResponseApiType, ECDataListProviderType
     
 }
 extension ECListResponseApiType {
-//    public typealias SectionType = String
+    public typealias ModelType = ResponseType.ModelType
     public func list(for data: DataType) -> [ModelType] {
         return data.list ?? []
     }
@@ -149,7 +150,28 @@ extension ECDownloadApiType {
             return .downloadDestination(self.destination)
         }
     }
+    public func easyData(completion: @escaping (Swift.Result<DataType, Error>) -> Void) {
+        self.manager.request(self, callbackQueue: nil, progress: nil, completion: completion)
+    }
 //    public mutating func mapping(mapper: HelpingMapper) {
 //        mapper >>> self.destinationURL
 //    }
+}
+
+// MARK: 测试接口类型
+
+///测试接口
+public protocol ECApiTestType: ECResponseApiType {
+    ///延时，默认1秒
+    var delayTime: TimeInterval { get }
+    ///测试数据
+    var response: ResponseType { get }
+}
+extension ECApiTestType {
+    public var delayTime: TimeInterval { return 1 }
+    public var path: String { return ""}
+    public var sampleData: Data { return Data() }
+    public func easyData(completion: @escaping (Swift.Result<DataType, Error>) -> Void) {
+        self.manager.request(self, callbackQueue: nil, progress: nil, completion: completion)
+    }
 }

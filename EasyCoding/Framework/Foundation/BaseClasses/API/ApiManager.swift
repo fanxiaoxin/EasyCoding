@@ -10,29 +10,19 @@ import UIKit
 import EasyCoding
 import Moya
 
-extension Api {
-    struct Manager {
-        ///默认的Api管理器
-        class Default: ECApiManagerType {
-            #if DEBUG
-            var plugins:[PluginType] = [Api.Plugin.Logger()]
-            #else
-            var plugins:[PluginType] = []
-            #endif
-            func provider<ApiType>(for api: ApiType) -> MoyaProvider<ApiType> where ApiType : ECApiType {
-                if api is ApiTestType {
-                    //测试接口延时1秒钟
-                    return MoyaProvider<ApiType>(stubClosure: MoyaProvider.delayedStub(1), plugins:self.plugins)
-                }else{
-                    return MoyaProvider<ApiType>(plugins:self.plugins)
-                }
-            }
-        }
-        ///显式API调用(默认通用，在失败时会弹toast)
-        static let shared = Default()
-        ///添加通用插件
-        static func append(plugin: PluginType) {
-            Self.shared.plugins.append(plugin)
-        }
+struct ApiManager {
+    ///默认的Api管理器
+    class Default: ECApiManagerType {
+        #if DEBUG
+        var plugins:[PluginType] = [ApiPlugin.Logger()]
+        #else
+        var plugins:[PluginType] = []
+        #endif
+    }
+    ///显式API调用(默认通用，在失败时会弹toast)
+    static let shared = Default()
+    ///添加通用插件
+    static func append(plugin: PluginType) {
+        Self.shared.plugins.append(plugin)
     }
 }
