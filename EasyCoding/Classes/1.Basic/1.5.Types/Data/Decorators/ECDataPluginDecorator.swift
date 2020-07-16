@@ -41,7 +41,13 @@ open class ECDataPlugin<DataType>: ECDataProviderInjectable {
         }
     }
     ///最后一次请求操作
-    public var lastCompletion: ((Result<DataType, Error>) -> Void)?
+    public var lastCompletion: ((Result<DataType, Error>) -> Void)? {
+        didSet {
+            for p in plugins {
+                p.lastCompletion = self.lastCompletion
+            }
+        }
+    }
 
     internal weak var delegate: ECDataPluginDelegate? {
         didSet {
@@ -108,7 +114,16 @@ open class ECDataPlugin<DataType>: ECDataProviderInjectable {
 open class ECDataPluginDecorator<DataProviderType: ECDataProviderType>: ECDataPlugin<DataProviderType.DataType>, ECDataProviderDecoratorType, ECDataPluginDelegate {
     public typealias DataType = DataProviderType.DataType
     ///原始的数据提供者
-    open var dataProvider: DataProviderType?
+    open var dataProvider: DataProviderType? {
+        didSet {
+            self.syncPluginDataProvider()
+        }
+    }
+    open override var plugins: [ECDataPlugin<DataProviderType.DataType>] {
+        didSet {
+            self.syncPluginDataProvider()
+        }
+    }
     override var delegate: ECDataPluginDelegate? {
         get {
             return self
@@ -122,6 +137,14 @@ open class ECDataPluginDecorator<DataProviderType: ECDataProviderType>: ECDataPl
             self.easyData(completion: completion)
         }
     }
+    //同步插件的数据提供
+    open func syncPluginDataProvider() {
+        if let provder = self.dataProvider {
+            self.plugins.compactMap({ $0 as? ECDataPluginDecorator<DataProviderType> }).forEach { (plugin) in
+                plugin.dataProvider = provder
+            }
+        }
+    }
 }
 
 extension ECDataPluginDecorator: ECDataPagedProviderType where DataProviderType: ECDataPagedProviderType {
@@ -133,3 +156,14 @@ extension ECDataPluginDecorator: ECDataListProviderType where DataProviderType: 
     public typealias ModelType = DataProviderType.ModelType
 }
 
+
+extension ECDataProviderType {
+    public typealias Plugin = ECDataPluginDecorator<Self>
+    ///使用插件装饰器
+    public func plugin(_ plugins: ECDataPlugin<DataType>...) -> ECDataPluginDecorator<Self> {
+        let plugin = ECDataPluginDecorator<Self>()
+        plugin.dataProvider = self
+        plugin.plugins = plugins
+        return plugin
+    }
+}

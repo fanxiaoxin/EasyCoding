@@ -95,9 +95,15 @@ func bb() {
     
 }
 extension DataPluginController {
-    class Provider: ECDataPagedProviderType {
-        var page: Int = 1
+    class Provider: ECDataPagedProviderType, ECDataListProviderType {
+        typealias SectionType = String
         
+        typealias ModelType = String
+        
+        var page: Int = 1
+        func list(for data: [String]) -> [String] {
+            return data
+        }
         func merge(data1: [String], data2: [String]) -> [String] {
             var data = data1
             data.append(contentsOf: data2)
@@ -122,7 +128,7 @@ extension DataPluginController {
                 }
             }
         }
-        var isLastPage: Bool {
+        func isLastPage(for data: DataType) -> Bool {
             return page >= 5
         }
     }

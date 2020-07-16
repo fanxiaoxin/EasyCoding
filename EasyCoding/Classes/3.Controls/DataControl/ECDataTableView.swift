@@ -9,10 +9,13 @@ import UIKit
 
 open class ECDataTableView<DataProviderType: ECDataListProviderType>: UITableView, ECDataScrollViewType {
     ///数据源
-    public let easyDataSource = ECTableViewDataSource<DataPluginType>()
+    public let easyDataSource = ECTableViewDataSource<ECDataPluginDecorator<DataProviderType>>()
     ///数据插件
-    @ECProperty.DelayInit
-    public var dataPlugin: DataPluginType
+    public var dataPlugin: ECDataPluginDecorator<DataProviderType>? {
+        didSet {
+            self.easyDataSource.dataProvider = self.dataPlugin
+        }
+    }
     
     public override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -23,8 +26,6 @@ open class ECDataTableView<DataProviderType: ECDataListProviderType>: UITableVie
         self.load()
     }
     open func load() {
-        self.dataPlugin = self.createDataPlugin()
-        self.easyDataSource.dataProvider = self.dataPlugin
         self.easyDataSource.tableView = self
     }
     ///重新加载数据

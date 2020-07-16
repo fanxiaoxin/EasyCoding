@@ -9,10 +9,13 @@ import UIKit
 
 open class ECDataCollectionView<DataProviderType: ECDataListProviderType>: UICollectionView, ECDataScrollViewType {
     ///数据源
-    public let easyDataSource = ECCollectionViewDataSource<DataPluginType>()
+    public let easyDataSource = ECCollectionViewDataSource<ECDataPluginDecorator<DataProviderType>>()
     ///数据插件
-    @ECProperty.DelayInit
-    public var dataPlugin: DataPluginType
+    public var dataPlugin: ECDataPluginDecorator<DataProviderType>? {
+        didSet {
+            self.easyDataSource.dataProvider = self.dataPlugin
+        }
+    }
     
     public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -23,8 +26,6 @@ open class ECDataCollectionView<DataProviderType: ECDataListProviderType>: UICol
         self.load()
     }
     open func load() {
-        self.dataPlugin = self.createDataPlugin()
-        self.easyDataSource.dataProvider = self.dataPlugin
         self.easyDataSource.collectionView = self
     }
     ///重新加载数据

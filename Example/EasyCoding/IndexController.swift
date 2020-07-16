@@ -53,7 +53,6 @@ class IndexController: ECViewController<View>, UITableViewDataSource, UITableVie
         }
         return cell
     }
-    var apiData: ApiTest.Normal.DataPlugin?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0: self.load(DataPluginController())
@@ -69,14 +68,6 @@ class IndexController: ECViewController<View>, UITableViewDataSource, UITableVie
 //            let text = NSAttributedString.easy("我是一段富文本，文本很\("富", .color(.red))，我很\("穷", .color(.green), .boldFont(size: 30))", .color(rgb: 0x333333), .font(size: 15))
             ECMessageBox.confirm(attr: "我是一段富文本，文本很\("富", .color(.red))，我很\("穷", .color(.green), .boldFont(size: 30))") { [weak self] in
                 print("你点了确定")
-
-                let api = ApiTest.Normal()
-                api.isError = true
-                self?.apiData = api.dataPlugin(.loading(for: self!.view), .errorToast(), .error(for: self!.view))
-                 self?.apiData?.easyDataWithoutError { (response) in
-                    print(response.data?.friendlyText)
-                }
-                self?.apiData = nil
             }
             
         case 3:

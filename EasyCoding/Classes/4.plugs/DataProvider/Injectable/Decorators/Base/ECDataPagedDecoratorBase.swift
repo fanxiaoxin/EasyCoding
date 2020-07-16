@@ -13,7 +13,15 @@ open class ECDataPagedDecoratorBase<DataProviderType: ECDataPagedProviderType>: 
     //用于标记是否当前正在加载，若被刷掉则可以用来中断前一个加载
     fileprivate var _requestFlag = 0
     ///当前加载的数据
-    public var data: DataType?
+    public var data: DataType? {
+        didSet {
+            if let data = self.data {
+                self.isLoadMoreFinished = self.isLastPage(for: data)
+            }else{
+                self.isLoadMoreFinished = true
+            }
+        }
+    }
     ///重新加载数据时重置为首页
     public override func reloadData() {
         if var provider = self.dataProvider {
@@ -54,6 +62,7 @@ open class ECDataPagedDecoratorBase<DataProviderType: ECDataPagedProviderType>: 
                             ///将数据进行整合
                             if let data1 = s.data {
                                 s.data = s.dataProvider?.merge(data1: data1, data2: data)
+                                s.isLoadMoreFinished = s.isLastPage(for: data)
                             }else{
                                 s.data = data
                             }
@@ -80,6 +89,8 @@ open class ECDataPagedDecoratorBase<DataProviderType: ECDataPagedProviderType>: 
     open func endRefresh() {}
     ///用于判断分页控件是否已加载
     open var isLoadMoreInited: Bool = false
+    ///是否已没有下一页
+    open var isLoadMoreFinished: Bool = false
     ///初始化加载更多控件，在第一次数据加载成功后调用
     open func initLoadMore() {}
     ///开始加载更多操作

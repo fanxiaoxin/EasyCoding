@@ -32,7 +32,7 @@ open class ECDataPagedDecorator<DataProviderType: ECDataPagedProviderType>: ECDa
     open override func endRefresh() {
         self.header.endRefreshing()
         //若刷新的时候不是只有一页则设置可上拉加载更多
-        if let data = self.data, !self.isLastPage(for: data) {
+        if let data = self.data, !self.isLoadMoreFinished {
             self.footer.resetNoMoreData()
         }
     }
@@ -44,17 +44,40 @@ open class ECDataPagedDecorator<DataProviderType: ECDataPagedProviderType>: ECDa
             self?.loadMore()
         }
         //若初始化的时候只有一页则设置已全部加载
-        if self.data == nil || self.isLastPage(for: self.data!) {
+        if self.data == nil || self.isLoadMoreFinished {
             self.footer.endRefreshingWithNoMoreData()
         }
     }
     ///结束加载更多操作
     open override func endLoadMore() {
-        if self.data == nil || self.isLastPage(for: self.data!) {
+        if self.data == nil || self.isLoadMoreFinished {
             self.footer.endRefreshingWithNoMoreData()
         }else{
             self.footer.endRefreshing()
         }
     }
     
+}
+
+
+extension ECDataPlugin {
+    ///使用分页插件装饰器
+    public static func paged<DataProviderType: ECDataPagedProviderType>(for target: UIScrollView, provider: DataProviderType? = nil) -> ECDataPagedDecorator<DataProviderType> where DataProviderType.DataType == DataType {
+        let plugin = ECDataPagedDecorator<DataProviderType>()
+        plugin.targetView = target
+        plugin.dataProvider = provider
+        return plugin
+    }
+}
+
+extension ECDataPagedProviderType {
+    public typealias Paged = ECDataPagedDecorator<Self>
+    ///使用分页插件装饰器
+    public func paged(for target: UIScrollView,_ plugins: ECDataPlugin<DataType>...) -> ECDataPagedDecorator<Self> {
+        let plugin = ECDataPagedDecorator<Self>()
+        plugin.targetView = target
+        plugin.dataProvider = self
+        plugin.plugins = plugins
+        return plugin
+    }
 }

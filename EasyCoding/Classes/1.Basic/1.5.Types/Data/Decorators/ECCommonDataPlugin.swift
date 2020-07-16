@@ -47,3 +47,10 @@ open class ECDataLogPlugin<DataType>: ECDataPlugin<DataType> {
     }
     #endif
 }
+
+extension ECDataPlugin {
+    public static func log() -> ECDataLogPlugin<DataType> {
+        let plugin = ECDataLogPlugin<DataType>()
+        return plugin
+    }
+}

@@ -203,6 +203,16 @@ extension ECDataProviderDecoratorType where DataProviderType.DataType == DataTyp
             self.easyData(original: last, injected: completion)
         }else{
             completion(.failure(ECDataError<DataType>("未主动调用过easyData")))
+            if let provider = self.dataProvider {
+                if self.willRequest(for: provider) {
+                    self.didRequest(for: provider)
+                    let result: Result<DataType, Error> = .failure(ECDataError<DataType>("未主动调用过easyData"))
+                    if let r = self.willResponse(for: provider, result: result, completion: completion) {
+                        completion(r)
+                        self.didResponse(for: provider, result: r, completion: completion)
+                    }
+                }
+            }
         }
     }
 }

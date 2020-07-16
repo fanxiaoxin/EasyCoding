@@ -23,23 +23,41 @@ extension ECDataControlType {
         }
     }
 }
-public protocol ECDataScrollViewType: ECDataControlType where Self: UIScrollView, DataPluginType == ECDataPluginDecorator<DataProviderType> {
+
+public protocol ECDataScrollViewType: UIScrollView {
     associatedtype DataProviderType: ECDataProviderType
-    func createDataPlugin() -> DataPluginType
+    ///数据插件
+    var dataPlugin: ECDataPluginDecorator<DataProviderType>?  { get set }
 }
 extension ECDataScrollViewType {
-    public typealias DataPluginType = ECDataPluginDecorator<DataProviderType>
-    public func createDataPlugin() -> DataPluginType {
-        let p = ECViewDataRefreshDecorator<DataProviderType>()
-        p.targetView = self
-        return p
+    ///数据源
+    public var dataProvider: DataProviderType? {
+        get {
+            return self.dataPlugin?.dataProvider
+        }
+        set {
+            if self.dataPlugin == nil {
+                let p = ECViewDataRefreshDecorator<DataProviderType>()
+                p.targetView = self
+                self.dataPlugin = p
+            }
+            self.dataPlugin?.dataProvider = newValue
+        }
     }
 }
 extension ECDataScrollViewType where DataProviderType: ECDataPagedProviderType {
-    public func createDataPlugin() -> DataPluginType {
-        let p = ECViewDataPagedDecorator<DataProviderType>()
-        p.targetView = self
-        return p
+    ///数据源
+    public var dataProvider: DataProviderType? {
+        get {
+            return self.dataPlugin?.dataProvider
+        }
+        set {
+            if self.dataPlugin == nil {
+                let p = ECViewDataPagedDecorator<DataProviderType>()
+                p.targetView = self
+                self.dataPlugin = p
+            }
+            self.dataPlugin?.dataProvider = newValue
+        }
     }
 }
-

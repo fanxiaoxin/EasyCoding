@@ -60,43 +60,29 @@ extension ECCustomApiType {
 
 // MARK: 接口类型
 
-///一般使用的强类型接口，可直接当成ECDataProviderType使用
-public protocol ECResponseApiType: ECCustomApiType, ECDataProviderType where DataType == ResponseType {
+///一般使用的强类型接口
+public protocol ECResponseApiType: ECCustomApiType {
     ///响应结构
     associatedtype ResponseType: ECApiResponseType
+    ///请求数据
+    func request(callbackQueue: DispatchQueue?, progress: ProgressBlock?, completion: @escaping (Swift.Result<ResponseType, Error>) -> Void)
 }
 extension ECResponseApiType {
-    public typealias DataType = ResponseType
-    public func easyData(completion: @escaping (Swift.Result<DataType, Error>) -> Void) {
-        self.manager.request(self, callbackQueue: nil, progress: nil, completion: completion)
+    ///请求数据
+    public func request(callbackQueue: DispatchQueue? = .none, progress: ProgressBlock? = .none, completion: @escaping (Swift.Result<ResponseType, Error>) -> Void) {
+        self.manager.request(self, callbackQueue: callbackQueue, progress: progress, completion: completion)
     }
 }
 
 // MARK: 列表及分页接口类型
 
 ///列表接口
-public protocol ECListResponseApiType: ECResponseApiType, ECDataListProviderType where ResponseType: ECApiListResponseType, ModelType == ResponseType.ModelType {
+public protocol ECListResponseApiType: ECResponseApiType where ResponseType: ECApiListResponseType {
     
-}
-extension ECListResponseApiType {
-    public typealias ModelType = ResponseType.ModelType
-    public func list(for data: DataType) -> [ModelType] {
-        return data.list ?? []
-    }
 }
 ///分页接口
-public protocol ECPagedResponseApiType: ECListResponseApiType, ECApiPagedListRequestType, ECDataPagedProviderType where ResponseType: ECApiPagedListResponseType, ModelType == ResponseType.ModelType {
+public protocol ECPagedResponseApiType: ECListResponseApiType, ECApiPagedListRequestType where ResponseType: ECApiPagedListResponseType {
     
-}
-///转分页相关操作转移支ResponseType
-extension ECPagedResponseApiType {
-//    public typealias ModelType = ResponseType.ModelType
-    public func isLastPage(for data: DataType) -> Bool {
-        return data.isEnd(for: self)
-    }
-    public func merge(data1: DataType, data2: DataType) -> DataType {
-        return data1.merge(data: data2)
-    }
 }
 
 // MARK: 上传接口类型
@@ -150,8 +136,10 @@ extension ECDownloadApiType {
             return .downloadDestination(self.destination)
         }
     }
-    public func easyData(completion: @escaping (Swift.Result<DataType, Error>) -> Void) {
-        self.manager.request(self, callbackQueue: nil, progress: nil, completion: completion)
+    
+    ///请求数据
+    public func request(callbackQueue: DispatchQueue? = .none, progress: ProgressBlock? = .none, completion: @escaping (Swift.Result<ResponseType, Error>) -> Void) {
+        self.manager.request(self, callbackQueue: callbackQueue, progress: progress, completion: completion)
     }
 //    public mutating func mapping(mapper: HelpingMapper) {
 //        mapper >>> self.destinationURL
@@ -171,7 +159,9 @@ extension ECApiTestType {
     public var delayTime: TimeInterval { return 1 }
     public var path: String { return ""}
     public var sampleData: Data { return Data() }
-    public func easyData(completion: @escaping (Swift.Result<DataType, Error>) -> Void) {
-        self.manager.request(self, callbackQueue: nil, progress: nil, completion: completion)
+    
+    ///请求数据
+    public func request(callbackQueue: DispatchQueue? = .none, progress: ProgressBlock? = .none, completion: @escaping (Swift.Result<ResponseType, Error>) -> Void) {
+        self.manager.request(self, callbackQueue: callbackQueue, progress: progress, completion: completion)
     }
 }

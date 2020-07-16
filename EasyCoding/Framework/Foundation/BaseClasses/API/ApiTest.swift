@@ -63,7 +63,11 @@ struct ApiTest {
             list.msg = isError ? "测试请求出错" : "成功"
             list.time = Date()
             list.data = ApiStructure.Data.PagedList()
-            list.data?.list = [Model(),Model(),Model(),Model(),Model(),Model(),Model()]
+            if self.page > 3 {
+                list.data?.list = []
+            }else{
+                list.data?.list = [Model(),Model(),Model(),Model(),Model(),Model(),Model()]
+            }
             return list
         }
     }
