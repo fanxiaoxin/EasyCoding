@@ -18,7 +18,7 @@ open class ECViewDataDecorator<DataProviderType: ECDataProviderType>: ECDataPlug
     ///数据为空页面
     public let empty = ECDataEmptyPlugin<DataProviderType.DataType>()
     ///要显示控件的视图
-    public var targetView: UIView? {
+    public weak var targetView: UIView? {
         didSet {
             self.loading.targetView = self.targetView
             self.error.targetView = self.targetView

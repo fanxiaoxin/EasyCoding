@@ -14,7 +14,7 @@ open class ECViewDataRefreshDecorator<DataProviderType: ECDataProviderType>: ECV
     ///错误提示
     let errorToast = ECDataErrorToastPlugin<DataProviderType.DataType>()
 
-    public override var targetView: UIView? {
+    public override weak var targetView: UIView? {
         didSet {
             self.refresh.targetView = self.targetView as? UIScrollView
         }

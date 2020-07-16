@@ -20,7 +20,7 @@ open class ECViewDataPagedDecorator<DataProviderType: ECDataPagedProviderType>: 
     ///错误提示
     public let errorToast = ECDataErrorToastPlugin<DataProviderType.DataType>()
     ///要显示控件的视图
-    public override var targetView: UIScrollView? {
+    public override weak var targetView: UIScrollView? {
         didSet {
             self.loading.targetView = self.targetView
             self.error.targetView = self.targetView

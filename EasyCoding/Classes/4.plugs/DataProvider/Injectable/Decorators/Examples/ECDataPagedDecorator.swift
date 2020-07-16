@@ -10,7 +10,7 @@ import MJRefresh
 
 open class ECDataPagedDecorator<DataProviderType: ECDataPagedProviderType>: ECDataPagedDecoratorBase<DataProviderType> {
     //要显示下拉刷新的视图
-    open var targetView: UIScrollView?
+    open weak var targetView: UIScrollView?
     
     ///mj_header
     open lazy var header: MJRefreshHeader = {
