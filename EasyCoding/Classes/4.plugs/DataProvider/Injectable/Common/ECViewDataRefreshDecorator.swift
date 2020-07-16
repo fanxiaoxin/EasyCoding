@@ -35,6 +35,6 @@ open class ECViewDataRefreshDecorator<DataProviderType: ECDataProviderType>: ECV
             return !(refresh?.isRereshInited ?? true)
         }
         
-        self.plugins = [log, loading, error, empty, errorToast, refresh]
+        self.plugins = [loading, error, empty, errorToast, refresh]
     }
 }
