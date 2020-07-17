@@ -1,11 +1,7 @@
 use_frameworks!
 
+platform :ios, '10.0'
+
 target 'EasyCoding_Example' do
   pod 'EasyCoding', :path => '../'
-
-  target 'EasyCoding_Tests' do
-    inherit! :search_paths
-
-    pod 'FBSnapshotTestCase' , '~> 2.1.4'
-  end
 end

@@ -40,3 +40,14 @@ public struct ECSetting {
     ///常用的圆角
     public static var corner: CGFloat = 4
 }
+
+extension ECSetting {
+    public static var PopupColor: UIColor {
+        get {
+            return ECPresentSegue.Popup.backgroundColor
+        }
+        set {
+            ECPresentSegue.Popup.backgroundColor = newValue
+        }
+    }
+}

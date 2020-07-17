@@ -90,17 +90,6 @@ extension ECPresentSegue {
     }
 }
 
-extension ECSetting {
-    public static var PopupColor: UIColor {
-        get {
-            return ECPresentSegue.Popup.backgroundColor
-        }
-        set {
-            ECPresentSegue.Popup.backgroundColor = newValue
-        }
-    }
-}
-
 extension ECPresentSegue {
     ///Popup并则原先的卸载的场景
     open class PopupReplace: Popup {
