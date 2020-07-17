@@ -9,7 +9,7 @@
 import UIKit
 import EasyCoding
 
-class PopupController: ECViewController<PopupView> {
+class PopupController: ViewController<PopupView> {
     override var segue: ECPresentSegue {
         _ = self.view
         return .popup(content: self.page.contentView, anchor: .easy(1, 1))

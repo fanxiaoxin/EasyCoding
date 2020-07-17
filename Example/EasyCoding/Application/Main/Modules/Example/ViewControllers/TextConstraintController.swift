@@ -9,7 +9,7 @@
 import UIKit
 import EasyCoding
 
-class TextConstraintController: ECViewController<TextConstraintView> {
+class TextConstraintController: ViewController<TextConstraintView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -9,7 +9,7 @@
 import UIKit
 import EasyCoding
 
-class CollectionViewDataSourceController: ECViewController<CollectionViewDataSourceView> {
+class CollectionViewDataSourceController: ViewController<CollectionViewDataSourceView> {
     let dataSource = ECCollectionViewDataSource<ECViewDataRefreshDecorator<Provider>>()
     override func viewDidLoad() {
         super.viewDidLoad()

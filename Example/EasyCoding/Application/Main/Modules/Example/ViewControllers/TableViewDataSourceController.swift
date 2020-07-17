@@ -9,7 +9,7 @@
 import UIKit
 import EasyCoding
 
-class TableViewDataSourceController: ECViewController<TableViewDataSourceView> {
+class TableViewDataSourceController: ViewController<TableViewDataSourceView> {
     let dataSource = ECTableViewDataSource<ECViewDataRefreshDecorator<Provider>>()
     override func viewDidLoad() {
         super.viewDidLoad()

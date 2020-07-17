@@ -9,7 +9,7 @@
 import UIKit
 import EasyCoding
 
-class PickerViewDataSourceController: ECViewController<PickerViewDataSourceView> {
+class PickerViewDataSourceController: ViewController<PickerViewDataSourceView> {
     let dataSource = ECPickerViewDataSource<ECViewDataDecorator<Provider>>()
     override func viewDidLoad() {
         super.viewDidLoad()

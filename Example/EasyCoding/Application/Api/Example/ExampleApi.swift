@@ -8,6 +8,7 @@
 
 import UIKit
 import Moya
+import EasyCoding
 
 extension Api {
     class Example: ApiType {
@@ -23,9 +24,9 @@ extension Api {
         required init() {}
 
         var paramter: String?
+        
     }
 }
-
 ///此为测试接口
 extension Api.Example: ECApiTestType {
     var response: ApiStructure.Response.Common<ApiTest.Model> {

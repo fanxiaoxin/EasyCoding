@@ -10,14 +10,16 @@ import UIKit
 extension ECPresentSegue {
     ///附加到TabbarController上
     public class TabBar: ECPresentSegue {
+        public let title: String?
         public let icon: UIImage?
         public let selectedIcon: UIImage?
-        public init(icon:UIImage?,selected: UIImage?) {
+        public init(title: String?, icon:UIImage?,selected: UIImage?) {
+            self.title = title
             self.icon = icon
             self.selectedIcon = selected
             super.init()
         }
-        public convenience init(iconNamed:String,selectedNamed: String?) {
+        public convenience init(title: String?, iconNamed:String,selectedNamed: String?) {
             let icon = UIImage(named: iconNamed)?.withRenderingMode(.alwaysOriginal)
             let selected: UIImage?
             if let s = selectedNamed {
@@ -25,7 +27,7 @@ extension ECPresentSegue {
             }else{
                 selected = nil
             }
-            self.init(icon: icon, selected: selected)
+            self.init(title: title, icon: icon, selected: selected)
         }
         
         open override func performAction(completion: (() -> Void)?) {
@@ -37,6 +39,7 @@ extension ECPresentSegue {
                     tab.viewControllers = [d]
                 }
                 let index = tab.viewControllers!.count - 1
+                tab.tabBar.items![index].title = title
                 tab.tabBar.items![index].image = icon
                 tab.tabBar.items![index].selectedImage = selectedIcon
                 completion?()

@@ -9,7 +9,7 @@
 import UIKit
 import EasyCoding
 
-class DataPluginController: ECViewController<DataPluginView>, UITableViewDataSource {
+class DataPluginController: ViewController<DataPluginView>, UITableViewDataSource {
 //    let dataProvider = ECViewDataDecorator<Provider>()
 //    let dataProvider = ECViewDataRefreshDecorator<Provider>()
     let dataProvider = ECViewDataPagedDecorator<Provider>()

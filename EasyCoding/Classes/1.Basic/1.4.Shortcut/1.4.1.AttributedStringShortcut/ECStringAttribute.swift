@@ -99,3 +99,10 @@ extension EC.NamespaceImplement where Base: NSMutableAttributedString {
         return self.base
     }
 }
+extension Dictionary where Key == NSAttributedString.Key, Value == Any {
+    public static func easy(_ attrs: ECStringAttribute...) -> [NSAttributedString.Key: Any] {
+        var result:[NSAttributedString.Key: Any] = [:]
+        attrs.forEach({ result.merge($0.attributes, uniquingKeysWith: { $1 })})
+        return result
+    }
+}

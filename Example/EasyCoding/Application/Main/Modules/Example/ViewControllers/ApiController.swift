@@ -10,7 +10,7 @@ import UIKit
 import EasyCoding
 import HandyJSON
 
-class ApiController: ECViewController<ApiView> {
+class ApiController: ViewController<ApiView> {
 //    let dataSource = ECTableViewDataSource<ListApi.DataProvider.Paged>()
     override func viewDidLoad() {
         super.viewDidLoad()

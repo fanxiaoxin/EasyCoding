@@ -26,6 +26,9 @@ class MainController: UITabBarController, UITabBarControllerDelegate, ECViewCont
         let c2 = ViewController<UIView>()
         let c3 = ViewController<UIView>()
         
+        c2.view.easy(.bg(.systemGreen))
+        c3.view.easy(.bg(.systemYellow))
+        
         let n1 = NavigationController(rootViewController: c1)
         let n2 = NavigationController(rootViewController: c2)
         let n3 = NavigationController(rootViewController: c3)

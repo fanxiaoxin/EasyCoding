@@ -10,7 +10,7 @@ import UIKit
 import EasyCoding
 //import SnapKit
 
-class IndexController: ECViewController<View>, UITableViewDataSource, UITableViewDelegate {
+class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UITableViewDelegate {
     
     let popupRect = UIView()
     override func viewDidLoad() {
@@ -100,7 +100,7 @@ class IndexController: ECViewController<View>, UITableViewDataSource, UITableVie
         self.page.animationView.easy.dismiss()
     }
 }
-class View: ECPage {
+class ExampleView: ECPage {
     let tableView = UITableView()
     let animationView = UIView()
     override func load() {
