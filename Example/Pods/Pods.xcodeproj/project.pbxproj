@@ -264,6 +264,7 @@
 		9B26A19E200C9BBE95DAB319C1653928 /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4135B2E7A67618CF5B01AE2D39791A /* ConstraintLayoutGuideDSL.swift */; };
 		9B520E6933F5AC59EA298B18D28DF7C6 /* ECNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4FA64CD4A0B118531E993C00B612C /* ECNavigationController.swift */; };
 		9B704916E8A108066E00C7B0A11139FA /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33BCF254788DCBCBDFBE1232ADF721A /* ImageModifier.swift */; };
+		9C1E798824C56B7300F4F48B /* ECDataPrecondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1E798724C56B7300F4F48B /* ECDataPrecondition.swift */; };
 		9C371D43464217293023FED30D96DF3F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F27D0665236C25596A1CACBC67EE5 /* ImageCache.swift */; };
 		9D074582D37F12E84C96D91C50FEDB69 /* RetryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7C838934A7CF2D675826CD56D5417 /* RetryStrategy.swift */; };
 		9D5205C1003C420DDBA213B9D6A22A62 /* URL+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB3DF188FFC4CD8C70577997C0738C2 /* URL+Moya.swift */; };
@@ -609,7 +610,7 @@
 		02BE6A94FE75656D1D2E712A372020C7 /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateHeader.h; path = MJRefresh/Custom/Header/MJRefreshStateHeader.h; sourceTree = "<group>"; };
 		034A3595F5D179B8ECCF0B48684F9B40 /* ECControlStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECControlStyle.swift; sourceTree = "<group>"; };
 		0435C30505B3D037B7207200BFD6E6B3 /* ECViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewExtension.swift; sourceTree = "<group>"; };
-		0461B3F80FC05957690727254D64DB36 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Result.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0461B3F80FC05957690727254D64DB36 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04972FEC45C2EF7365B5BFF1BEAA5AA8 /* HandyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HandyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DF659A41AAE3377CCD8DADA3155C19 /* ECUserDefaultProperty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECUserDefaultProperty.swift; sourceTree = "<group>"; };
 		05A79F6103F1A2605CD82D2871957F03 /* ECCustomControlConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECCustomControlConfig.swift; sourceTree = "<group>"; };
@@ -641,7 +642,7 @@
 		116F30362D7E3DF9CA31B17DBE0DC801 /* ECTestSettingController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECTestSettingController.swift; sourceTree = "<group>"; };
 		126E3E8D969FE4B5896104C258A78C21 /* ECPresentSegue.Window.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.Window.swift; sourceTree = "<group>"; };
 		1443E619BCB3073A510F12C6D6229089 /* NetworkActivityPlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkActivityPlugin.swift; path = Sources/Moya/Plugins/NetworkActivityPlugin.swift; sourceTree = "<group>"; };
-		146E0CC005A875B61A7C360B243ADB45 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		146E0CC005A875B61A7C360B243ADB45 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		14D6B15E06AC80E6513225F12298FA8C /* CallbackQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CallbackQueue.swift; path = Sources/Utility/CallbackQueue.swift; sourceTree = "<group>"; };
 		157083ED400ADCD726322C93789D6D70 /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
 		15AA0810A40B55A205DA7F398EB55DF6 /* ExtendCustomBasicType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtendCustomBasicType.swift; path = Source/ExtendCustomBasicType.swift; sourceTree = "<group>"; };
@@ -674,7 +675,7 @@
 		2476304E906A71B8F7DC62BD9EE80DF4 /* ECClampingProperty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECClampingProperty.swift; sourceTree = "<group>"; };
 		250215767E424FFFD36DC7947FF9A07E /* ECPrecondition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPrecondition.swift; sourceTree = "<group>"; };
 		25381725DB330C31AECA1DECCC55FC0F /* EasyCoding-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EasyCoding-Info.plist"; sourceTree = "<group>"; };
-		25FD2453E03BBC0A60FCDF934F1BFB5D /* EasyCoding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EasyCoding.framework; path = EasyCoding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25FD2453E03BBC0A60FCDF934F1BFB5D /* EasyCoding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyCoding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		268D61975B1BAE12A282A6A760FA70B4 /* ECGesturePasswordView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECGesturePasswordView.swift; sourceTree = "<group>"; };
 		269BC39514A6D3802623B52762F78086 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
 		273024F66FF2649C484772883A501ACC /* ECNull.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECNull.swift; sourceTree = "<group>"; };
@@ -686,7 +687,7 @@
 		27DFDDA7185F540D313D6BF305750617 /* ECDeviceExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDeviceExtension.swift; sourceTree = "<group>"; };
 		27FFB16E0E8BCF41EF93C4DDD879BF8E /* ExtensionHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtensionHelpers.swift; path = Sources/Utility/ExtensionHelpers.swift; sourceTree = "<group>"; };
 		2812D5B4374CCAAC6ECE0BC2D7688BC5 /* YYKeyboardManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YYKeyboardManager-prefix.pch"; sourceTree = "<group>"; };
-		288824C3EE570D5822918CF5EA6BDA70 /* Pods_EasyCoding_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EasyCoding_Example.framework; path = "Pods-EasyCoding_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		288824C3EE570D5822918CF5EA6BDA70 /* Pods_EasyCoding_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyCoding_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		296D556CC7680FC449908024C0D7E5CD /* Result.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Result.release.xcconfig; sourceTree = "<group>"; };
 		2A08DC1298EB8CD764165AAD88F415B2 /* ECAccessCenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECAccessCenter.swift; sourceTree = "<group>"; };
 		2BDF1CE67E6DA52797B3AA9936442EA4 /* Measuable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Measuable.swift; path = Source/Measuable.swift; sourceTree = "<group>"; };
@@ -709,8 +710,8 @@
 		34A649838C4F73FD6BB239780AF49186 /* WKInterfaceImage+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WKInterfaceImage+Kingfisher.swift"; path = "Sources/Extensions/WKInterfaceImage+Kingfisher.swift"; sourceTree = "<group>"; };
 		350DFB669986FA094C15B31C6060E5E8 /* ECObjcRuntime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECObjcRuntime.swift; sourceTree = "<group>"; };
 		36E95A85AFB4EFAF05DE8E91C9B9D0EE /* ECScrollViewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECScrollViewStyle.swift; sourceTree = "<group>"; };
-		3756A9BBE41ABEE8DCBF5BCA6972C4DA /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Moya.framework; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		37F81CA58BF69DFAF3F6AA94F9B1F16D /* EasyCoding.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = EasyCoding.bundle; path = "EasyCoding-EasyCoding.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3756A9BBE41ABEE8DCBF5BCA6972C4DA /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		37F81CA58BF69DFAF3F6AA94F9B1F16D /* EasyCoding.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyCoding.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		395B240924DD83129324208E4DBAE19B /* MJRefreshGifHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshGifHeader.m; path = MJRefresh/Custom/Header/MJRefreshGifHeader.m; sourceTree = "<group>"; };
 		395FB5875D7AB700AB5A973964721355 /* ECDataView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDataView.swift; sourceTree = "<group>"; };
 		396D83DAA9C6DC238A1E96AFA2643BB4 /* ECSimpleLocalized.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECSimpleLocalized.swift; sourceTree = "<group>"; };
@@ -790,7 +791,7 @@
 		570F382251A970718108F586DB4FB7D3 /* DateTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateTransform.swift; path = Source/DateTransform.swift; sourceTree = "<group>"; };
 		5716E26844A55D34597EE7361317A48F /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
 		57DC525E1F16E3B5A49FC6F2F3B64A8E /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
-		591F771DABCCDDDF5758EAD836E05EF8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		591F771DABCCDDDF5758EAD836E05EF8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5958412FE4BD5DEFE4C3884E9EE0E553 /* ECWindowExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECWindowExtension.swift; sourceTree = "<group>"; };
 		5971A96823DC6B0DFD5E13BD9CF64AEF /* ECButtonStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECButtonStyle.swift; sourceTree = "<group>"; };
 		5B1D177DB46421053C83407A52AC6648 /* ECLazyProperty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECLazyProperty.swift; sourceTree = "<group>"; };
@@ -798,11 +799,11 @@
 		5B9360254FFE093CA9374E62AC0A44DA /* Kingfisher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.release.xcconfig; sourceTree = "<group>"; };
 		5BBB500B78C7FBD7137FA6BFAFF9A202 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+MJRefresh.m"; path = "MJRefresh/UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		5D6C970EDC5A9BD2ABC77A2FAAEFAEF6 /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
-		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD21A59038FC3C4B5C766A9D2F6E9C5 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		5E071073EBC423839F194B388BB76955 /* Moya-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Moya-umbrella.h"; sourceTree = "<group>"; };
 		5E2682535F0CD9F85BBA7D9CAC676354 /* MJRefreshAutoStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoStateFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.m; sourceTree = "<group>"; };
-		5E2FC05FE6D2413804FAB83C04D25485 /* YYKeyboardManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = YYKeyboardManager.framework; path = YYKeyboardManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E2FC05FE6D2413804FAB83C04D25485 /* YYKeyboardManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YYKeyboardManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F1E20EA7924CB6B3FBC9461FDF399AB /* JRSwizzle-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JRSwizzle-Info.plist"; sourceTree = "<group>"; };
 		5FB53901C43C6D83C026F059CDCAC440 /* ECDataPagedProviderType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDataPagedProviderType.swift; sourceTree = "<group>"; };
 		5FC167D40AC67D68FF435D576FAA49E4 /* MJRefreshFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshFooter.h; path = MJRefresh/Base/MJRefreshFooter.h; sourceTree = "<group>"; };
@@ -880,7 +881,7 @@
 		87CEA966335FE16D4C006F0D9E368928 /* MJRefreshComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshComponent.m; path = MJRefresh/Base/MJRefreshComponent.m; sourceTree = "<group>"; };
 		88039B7435577277ED4582740E6E416F /* ECPresentSegue.Present.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.Present.swift; sourceTree = "<group>"; };
 		8822609C3A71281BB7BD664873614D96 /* ECDataEmptyPluginBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDataEmptyPluginBase.swift; sourceTree = "<group>"; };
-		88E18AA86F52099C1386E7FF4858F741 /* EasyCoding.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = EasyCoding.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		88E18AA86F52099C1386E7FF4858F741 /* EasyCoding.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = EasyCoding.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		89210C239CCB9946D081779B4C0A4A8F /* ECFlowStep.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECFlowStep.swift; sourceTree = "<group>"; };
 		89422788124BC86F5BFE6935867ABAD9 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		8981AF6A57DC5B4AD7D1B5573DF8B0D0 /* ECViewBuilderShortcut.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewBuilderShortcut.swift; sourceTree = "<group>"; };
@@ -909,7 +910,7 @@
 		95564BE91F929B95B09D5FC80C845658 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95EE561303F278E3283F3A1AD387C055 /* ConstraintDirectionalInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsetTarget.swift; path = Source/ConstraintDirectionalInsetTarget.swift; sourceTree = "<group>"; };
 		9633A71FC10945F1DF6B425F8E817D6F /* ECPresentAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPresentAnimation.swift; sourceTree = "<group>"; };
-		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97A7BED71634240D96C063A1B7BFB1A5 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackFooter.h; path = MJRefresh/Base/MJRefreshBackFooter.h; sourceTree = "<group>"; };
 		9851C49E9BB19764D2539EA56704C410 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
 		98B2B4AE56BA8CBD553BD078237E8A82 /* MJRefreshConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshConst.h; path = MJRefresh/MJRefreshConst.h; sourceTree = "<group>"; };
@@ -921,8 +922,9 @@
 		9BA638B2C39AE628D4E4DD2B33C02ABB /* MJRefresh.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = MJRefresh.bundle; path = MJRefresh/MJRefresh.bundle; sourceTree = "<group>"; };
 		9BB7E67DC2A0834A6135FCB4BB78DF5D /* ECEventPublisherType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECEventPublisherType.swift; sourceTree = "<group>"; };
 		9BCB1BAAE9713E27FF2B7E17294D06EC /* ECAttributedStringOperator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECAttributedStringOperator.swift; sourceTree = "<group>"; };
+		9C1E798724C56B7300F4F48B /* ECDataPrecondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataPrecondition.swift; sourceTree = "<group>"; };
 		9D85BE6F8069337B11D6E0D3360EDFAB /* ECNumberExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECNumberExtension.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DB065DA978F026C31E534EDBA8D5FC0 /* ECDataErrorPlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDataErrorPlugin.swift; sourceTree = "<group>"; };
 		9DBB3719CB5049F07827629E4B969F7B /* ECEquatableExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECEquatableExtension.swift; sourceTree = "<group>"; };
 		9DFF4A304AF434728635E4B9642A15A6 /* ECScrollViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECScrollViewExtension.swift; sourceTree = "<group>"; };
@@ -979,7 +981,7 @@
 		BDDE34FA6566A7E2BAD6E54E6AEF5529 /* ISO8601DateTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ISO8601DateTransform.swift; path = Source/ISO8601DateTransform.swift; sourceTree = "<group>"; };
 		BE0A60B22DADC27A3A5D4858BC0682BF /* ECTextualizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECTextualizable.swift; sourceTree = "<group>"; };
 		BE39F93F33ACCEC986BB6AE38CAFC65C /* ECViewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewStyle.swift; sourceTree = "<group>"; };
-		BF00B9FDD7BB8C94607F8205694252E1 /* JRSwizzle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JRSwizzle.framework; path = JRSwizzle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF00B9FDD7BB8C94607F8205694252E1 /* JRSwizzle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JRSwizzle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6874A254ECD03C8EB5399AE4634C7B /* ECProtocolButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECProtocolButton.swift; sourceTree = "<group>"; };
 		C1E7092DA9BCA95C99FBB0618346D2A1 /* MJRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-prefix.pch"; sourceTree = "<group>"; };
 		C230D0AAC9C6185F0EF6DBDA50CF9609 /* ECDataPagedDecorator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDataPagedDecorator.swift; sourceTree = "<group>"; };
@@ -988,7 +990,7 @@
 		C35E1C834E8D98D341EC4FB03AAA3597 /* Moya-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Moya-dummy.m"; sourceTree = "<group>"; };
 		C3A53834040956DFBAC7B1A53EC07E01 /* ECFontExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECFontExtension.swift; sourceTree = "<group>"; };
 		C3E2A3B780F5A70BE6FD07709E102240 /* ECLoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECLoadingView.swift; sourceTree = "<group>"; };
-		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43D06CBEA4E493AF06032B742A5E6E7 /* ECEventManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECEventManager.swift; sourceTree = "<group>"; };
 		C514330DC1C9FC56CC29CD4FCFC4F947 /* MJRefreshBackNormalFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackNormalFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.h; sourceTree = "<group>"; };
 		C6C10221F2248ACE3933259DB990AAF0 /* Kingfisher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Kingfisher.h; path = Sources/Kingfisher.h; sourceTree = "<group>"; };
@@ -1003,7 +1005,7 @@
 		CB3619A9BC09DC407775BBB98D6C25A8 /* MJRefresh.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MJRefresh.modulemap; sourceTree = "<group>"; };
 		CBBA58A38696DF5A0BA0252A897DB7FB /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Source/Logger.swift; sourceTree = "<group>"; };
 		CC4135B2E7A67618CF5B01AE2D39791A /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
-		CD54121DDA84872534168702B5F92950 /* HandyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HandyJSON.framework; path = HandyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD54121DDA84872534168702B5F92950 /* HandyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HandyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD98864588E3A34CA5F02870573DDAD2 /* ECTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECTextField.swift; sourceTree = "<group>"; };
 		CE60CD52FA8F55899D1B3F1E5549CA83 /* ECEventHandlerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECEventHandlerType.swift; sourceTree = "<group>"; };
 		CF084AB003CC4F366C69A838ED797D6C /* Result-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Result-Info.plist"; sourceTree = "<group>"; };
@@ -1047,7 +1049,7 @@
 		E1A89E9AF5D8585FFE052ADCD757BE61 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
 		E29F0580CCCD4F8ADD9D0D468EF85EE5 /* ECPresentSegue.TabBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPresentSegue.TabBar.swift; sourceTree = "<group>"; };
 		E45FB782161FFFAB3F6CF324F031202A /* TransformOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransformOf.swift; path = Source/TransformOf.swift; sourceTree = "<group>"; };
-		E49D6D248DD1CEE584E6776B9164A1B2 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MJRefresh.framework; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49D6D248DD1CEE584E6776B9164A1B2 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53AC9678F5BA427A66107EB14FE7589 /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
 		E5BA2989F09F7777ECA8EF7F46ADE42E /* ECPopupKeyboard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPopupKeyboard.swift; sourceTree = "<group>"; };
 		E671946BA2477F4329A8DD58A68EBDB5 /* Endpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = Sources/Moya/Endpoint.swift; sourceTree = "<group>"; };
@@ -1233,7 +1235,6 @@
 				67961B70E6A7280891BD98BB438AC0F7 /* ECViewControllerKeyboardAdaptPlug.swift */,
 				A24412934F2972F3CF0FE909674B9A1C /* ECViewControllerPlug.swift */,
 			);
-			name = ViewControllerPlug;
 			path = ViewControllerPlug;
 			sourceTree = "<group>";
 		};
@@ -1245,7 +1246,6 @@
 				8E5C5EEA5A1337635A1D38E06AEB08A9 /* ECFlowState.swift */,
 				89210C239CCB9946D081779B4C0A4A8F /* ECFlowStep.swift */,
 			);
-			name = 2.2.2.FlowControl;
 			path = 2.2.2.FlowControl;
 			sourceTree = "<group>";
 		};
@@ -1254,7 +1254,6 @@
 			children = (
 				1F1C4512DDB67DBF4E3F86777D20D41E /* Injectable */,
 			);
-			name = DataProvider;
 			path = DataProvider;
 			sourceTree = "<group>";
 		};
@@ -1275,7 +1274,6 @@
 				51CC7DDF30076780EF06851902CEC518 /* Base */,
 				64207634F3857E95B1EE67FF9DCAC2CA /* Examples */,
 			);
-			name = Plugins;
 			path = Plugins;
 			sourceTree = "<group>";
 		};
@@ -1286,7 +1284,6 @@
 				6D9C01AD307E8FB7AA076CBB1C8960D4 /* AlertController */,
 				D3944B36B1983875EAEF7429F567A768 /* ToastController */,
 			);
-			name = MessageBox;
 			path = MessageBox;
 			sourceTree = "<group>";
 		};
@@ -1295,7 +1292,6 @@
 			children = (
 				C230D0AAC9C6185F0EF6DBDA50CF9609 /* ECDataPagedDecorator.swift */,
 			);
-			name = Examples;
 			path = Examples;
 			sourceTree = "<group>";
 		};
@@ -1304,7 +1300,6 @@
 			children = (
 				4D362330E1B184F84281362888D21634 /* ECPageControl.swift */,
 			);
-			name = PageControl;
 			path = PageControl;
 			sourceTree = "<group>";
 		};
@@ -1316,7 +1311,6 @@
 				E55997BE4856E3BDD4EDD6E6B829788F /* Decorators */,
 				115D9BB43B54A29D200D2F09D50A815A /* Plugins */,
 			);
-			name = Injectable;
 			path = Injectable;
 			sourceTree = "<group>";
 		};
@@ -1341,7 +1335,6 @@
 			children = (
 				76CC5D926A800D1C9666BE55D5FA37F1 /* ECCollectionViewFixedColumnsLayout.swift */,
 			);
-			name = CollectionLayout;
 			path = CollectionLayout;
 			sourceTree = "<group>";
 		};
@@ -1350,7 +1343,6 @@
 			children = (
 				66BD3D97D6B56FF95A27A7B85CA6837C /* ECTextView.swift */,
 			);
-			name = TextView;
 			path = TextView;
 			sourceTree = "<group>";
 		};
@@ -1359,7 +1351,6 @@
 			children = (
 				CD98864588E3A34CA5F02870573DDAD2 /* ECTextField.swift */,
 			);
-			name = TextField;
 			path = TextField;
 			sourceTree = "<group>";
 		};
@@ -1368,7 +1359,6 @@
 			children = (
 				690E75500F2B73F525ECBABB1701029C /* ECTextConstraint.swift */,
 			);
-			name = Base;
 			path = Base;
 			sourceTree = "<group>";
 		};
@@ -1379,7 +1369,6 @@
 				765BFC09C9B9E8FA1742DE0A976852A2 /* ECViewDataPagedDecorator.swift */,
 				4557F395B84B30C354E52AD88E1D0D81 /* ECViewDataRefreshDecorator.swift */,
 			);
-			name = Common;
 			path = Common;
 			sourceTree = "<group>";
 		};
@@ -1392,7 +1381,6 @@
 				D184C2E85EF687466CF5F37649CF3847 /* ECStringAttribute.swift */,
 				687F975EC430B192475CF4561E8749FB /* ECStringAttributeShortcut.swift */,
 			);
-			name = 1.4.1.AttributedStringShortcut;
 			path = 1.4.1.AttributedStringShortcut;
 			sourceTree = "<group>";
 		};
@@ -1424,7 +1412,6 @@
 			children = (
 				A2E89C63EC797A6F7BCF905EE234CE70 /* ECDataPagedDecoratorBase.swift */,
 			);
-			name = Base;
 			path = Base;
 			sourceTree = "<group>";
 		};
@@ -1434,7 +1421,6 @@
 				E0F70114279C54FFD5D4B741D25A29B8 /* Core */,
 				8D443D3E76F4D450D8B383318C76507E /* Support Files */,
 			);
-			name = Moya;
 			path = Moya;
 			sourceTree = "<group>";
 		};
@@ -1451,7 +1437,6 @@
 				E29F0580CCCD4F8ADD9D0D468EF85EE5 /* ECPresentSegue.TabBar.swift */,
 				126E3E8D969FE4B5896104C258A78C21 /* ECPresentSegue.Window.swift */,
 			);
-			name = Segues;
 			path = Segues;
 			sourceTree = "<group>";
 		};
@@ -1460,7 +1445,6 @@
 			children = (
 				0788945373767F3264E02A1400674C40 /* ECPicker.swift */,
 			);
-			name = Picker;
 			path = Picker;
 			sourceTree = "<group>";
 		};
@@ -1472,7 +1456,6 @@
 				A9F5137FF2E86254FA53F99DB17EA7ED /* ECViewControllerAccess.swift */,
 				C69ED2F26F12AC9FE4D915D2912F349D /* 2.2.1.1 Preconditions */,
 			);
-			name = 2.2.1.AccessControl;
 			path = 2.2.1.AccessControl;
 			sourceTree = "<group>";
 		};
@@ -1517,7 +1500,6 @@
 				AB4293733BC8FE2B50903396B7D3F059 /* URLTransform.swift */,
 				982BE7E97520FB4BA32201FE42DF81BD /* Support Files */,
 			);
-			name = HandyJSON;
 			path = HandyJSON;
 			sourceTree = "<group>";
 		};
@@ -1536,7 +1518,6 @@
 				EF4891A8F86C2E32C7C034BE0293850D /* 2.2.3.PresentSegue */,
 				A2DCFFAF4E07983CEF3E864FEA91770C /* 2.2.4.ViewControllerAccess */,
 			);
-			name = 2.2.AccessControl;
 			path = 2.2.AccessControl;
 			sourceTree = "<group>";
 		};
@@ -1562,7 +1543,6 @@
 				09BCC160B2DEFA59EF578B62D61C180D /* Validation.swift */,
 				BECF712F095FA6908A06D9E976EA6DF2 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1579,7 +1559,6 @@
 			children = (
 				C3E2A3B780F5A70BE6FD07709E102240 /* ECLoadingView.swift */,
 			);
-			name = LoadingView;
 			path = LoadingView;
 			sourceTree = "<group>";
 		};
@@ -1591,7 +1570,6 @@
 				396D83DAA9C6DC238A1E96AFA2643BB4 /* ECSimpleLocalized.swift */,
 				750B8489D519858F035B898B2FDAA091 /* ECThemeManagement.swift */,
 			);
-			name = 2.1.Personalized;
 			path = 2.1.Personalized;
 			sourceTree = "<group>";
 		};
@@ -1600,7 +1578,6 @@
 			children = (
 				34557253E45D9480270611F1E334911B /* ECImagePicker.swift */,
 			);
-			name = ImagePicker;
 			path = ImagePicker;
 			sourceTree = "<group>";
 		};
@@ -1612,7 +1589,6 @@
 				8C7C1E77EC8730ADA23606994D07BDD9 /* ECDataLoadingPluginBase.swift */,
 				7DC4D717CC88DC143586F957E87316F2 /* ECDataRefreshPluginBase.swift */,
 			);
-			name = Base;
 			path = Base;
 			sourceTree = "<group>";
 		};
@@ -1623,7 +1599,6 @@
 				337A1038077226E166E23B6685BC35A8 /* JRSwizzle.m */,
 				DC151BBC6FF73103D5B8B132FCF1EC46 /* Support Files */,
 			);
-			name = JRSwizzle;
 			path = JRSwizzle;
 			sourceTree = "<group>";
 		};
@@ -1632,7 +1607,6 @@
 			children = (
 				6C912C2E2373297A1F7EF94F749A70E2 /* ECLabel.swift */,
 			);
-			name = Label;
 			path = Label;
 			sourceTree = "<group>";
 		};
@@ -1645,7 +1619,6 @@
 				5560BFA3148C04286465E45BECCB967C /* ECDataLoadingPlugin.swift */,
 				F6B1741F9FCE31CA2762A54F79DADE03 /* ECDataRefreshPlugin.swift */,
 			);
-			name = Examples;
 			path = Examples;
 			sourceTree = "<group>";
 		};
@@ -1673,7 +1646,6 @@
 				0435C30505B3D037B7207200BFD6E6B3 /* ECViewExtension.swift */,
 				5958412FE4BD5DEFE4C3884E9EE0E553 /* ECWindowExtension.swift */,
 			);
-			name = 1.1.Extensions;
 			path = 1.1.Extensions;
 			sourceTree = "<group>";
 		};
@@ -1683,7 +1655,6 @@
 				DFAE8FCBC2895AE658E9733A878BEB30 /* ECControlConfig.swift */,
 				05A79F6103F1A2605CD82D2871957F03 /* ECCustomControlConfig.swift */,
 			);
-			name = ControlConfig;
 			path = ControlConfig;
 			sourceTree = "<group>";
 		};
@@ -1693,7 +1664,6 @@
 				2F0FF462C2C2B8C05A35C90B04574B4C /* Base */,
 				D1225A918C84CF86BB6DBB5236BED56F /* TextConstraints */,
 			);
-			name = TextFieldConstraint;
 			path = TextFieldConstraint;
 			sourceTree = "<group>";
 		};
@@ -1717,7 +1687,6 @@
 				6834883B956BE59D0175E230B30AE6EA /* ECKingfisherStyle.swift */,
 				6E7A0EF4987A82B13040B185F76D5D04 /* ECMJRefreshStyle.swift */,
 			);
-			name = OtherPodStyle;
 			path = OtherPodStyle;
 			sourceTree = "<group>";
 		};
@@ -1728,7 +1697,6 @@
 				EA1ECC5FAEC380EB85EE262267CB4DA1 /* ECAlertController.swift */,
 				C8099A226EDB9E05A84DC74469DE3507 /* ECAlertView.swift */,
 			);
-			name = AlertController;
 			path = AlertController;
 			sourceTree = "<group>";
 		};
@@ -1737,7 +1705,6 @@
 			children = (
 				4A8AFB990796076671DB39074FA59D68 /* ECSlideshow.swift */,
 			);
-			name = Slideshow;
 			path = Slideshow;
 			sourceTree = "<group>";
 		};
@@ -1750,7 +1717,6 @@
 				B96457BF9214E590A96BFD764BB69866 /* ResultProtocol.swift */,
 				77F81210B597F3C291788003D9FDCE00 /* Support Files */,
 			);
-			name = Result;
 			path = Result;
 			sourceTree = "<group>";
 		};
@@ -1800,7 +1766,6 @@
 				DC5BDCAE05AC921C7145DD622C018545 /* ECCheckbox.swift */,
 				BF6874A254ECD03C8EB5399AE4634C7B /* ECProtocolButton.swift */,
 			);
-			name = Button;
 			path = Button;
 			sourceTree = "<group>";
 		};
@@ -1811,7 +1776,6 @@
 				FE25CC95E31F015001213F9D9488ED96 /* YYKeyboardManager.m */,
 				3B014E51770BC2331849E2F380E040C1 /* Support Files */,
 			);
-			name = YYKeyboardManager;
 			path = YYKeyboardManager;
 			sourceTree = "<group>";
 		};
@@ -1822,7 +1786,6 @@
 				C6A88DCE0908E9F65777E12B138C0859 /* 1.4.2.ViewStyle */,
 				C1D5303380077C25EFA3F1976B30AAC9 /* 1.4.3.ViewBuilder */,
 			);
-			name = 1.4.Shortcut;
 			path = 1.4.Shortcut;
 			sourceTree = "<group>";
 		};
@@ -1832,7 +1795,6 @@
 				8019E2DE6A67026482F551CA397F4728 /* ECEventPublisher.swift */,
 				AD3AF2D22C34E6DE413F983B325D7CAA /* ECEventTriggerable.swift */,
 			);
-			name = Publisher;
 			path = Publisher;
 			sourceTree = "<group>";
 		};
@@ -1903,7 +1865,6 @@
 				110B8F89A20C50D93302B7CD35485117 /* UILayoutSupport+Extensions.swift */,
 				9CD1B01495915E1DA931132E95180E81 /* Support Files */,
 			);
-			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
@@ -1913,7 +1874,6 @@
 				90F0B66F8BFA2D78014EBB130A3183D0 /* ECKeyboardTextConstraint.swift */,
 				53E2A04F961345968388AA4B59D32C6F /* ECPickerTextConstraint.swift */,
 			);
-			name = Keyboard;
 			path = Keyboard;
 			sourceTree = "<group>";
 		};
@@ -1923,7 +1883,6 @@
 				872CEC87D555D341C56678303886E8F1 /* Core */,
 				CA0D996898F804C769A422F612BE9DF4 /* Support Files */,
 			);
-			name = Kingfisher;
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
@@ -2003,7 +1962,6 @@
 			children = (
 				3488E5E197089E899AEA0FDD74BD53AC /* ECKeyboardType.swift */,
 			);
-			name = Base;
 			path = Base;
 			sourceTree = "<group>";
 		};
@@ -2014,7 +1972,6 @@
 				F5264363ED7F55440CF202BDF56ED4BD /* ECPage.swift */,
 				4785D8A100FF33F20A6A8C0D84DEA744 /* ECViewController.swift */,
 			);
-			name = ViewController;
 			path = ViewController;
 			sourceTree = "<group>";
 		};
@@ -2050,7 +2007,6 @@
 			children = (
 				8717A61DD7561B487710B188E1A8AC6D /* ECWeaker.swift */,
 			);
-			name = Weaker;
 			path = Weaker;
 			sourceTree = "<group>";
 		};
@@ -2087,7 +2043,6 @@
 				4E58391FA8322F0D0F644BF9DC70E275 /* ECTextViewStyle.swift */,
 				BE39F93F33ACCEC986BB6AE38CAFC65C /* ECViewStyle.swift */,
 			);
-			name = StyleSettings;
 			path = StyleSettings;
 			sourceTree = "<group>";
 		};
@@ -2098,7 +2053,6 @@
 				5FB53901C43C6D83C026F059CDCAC440 /* ECDataPagedProviderType.swift */,
 				2FE2B2F9143FD9B34031BAF1BE8EBB50 /* ECDataProviderMerger.swift */,
 			);
-			name = Providers;
 			path = Providers;
 			sourceTree = "<group>";
 		};
@@ -2110,7 +2064,6 @@
 				9BB7E67DC2A0834A6135FCB4BB78DF5D /* ECEventPublisherType.swift */,
 				A8C81903430C029F36694E0543A542CE /* ECEventType.swift */,
 			);
-			name = Base;
 			path = Base;
 			sourceTree = "<group>";
 		};
@@ -2121,7 +2074,6 @@
 				A3E3C54DB354B007BB801EDC4DDAF8D4 /* ECViewControllerAccessable.swift */,
 				67310FCF1A08E81F654C5ED067A49FEF /* ECViewControllerType.swift */,
 			);
-			name = 2.2.4.ViewControllerAccess;
 			path = 2.2.4.ViewControllerAccess;
 			sourceTree = "<group>";
 		};
@@ -2132,7 +2084,6 @@
 				A682BB69E427360F5122B2A711B2CBA1 /* Decorators */,
 				A053F42B353885966D3734DD82BD9D07 /* Providers */,
 			);
-			name = Data;
 			path = Data;
 			sourceTree = "<group>";
 		};
@@ -2142,7 +2093,6 @@
 				DE31647AC32B76C577F7366D5C67E216 /* ECCommonDataPlugin.swift */,
 				719807042AF5FA20EE513E9FBA28FA04 /* ECDataPluginDecorator.swift */,
 			);
-			name = Decorators;
 			path = Decorators;
 			sourceTree = "<group>";
 		};
@@ -2152,7 +2102,6 @@
 				FE5AC7FEAF698665117840E72D21190B /* Animations */,
 				B96D00443DF689641C2BDF553DFB6EEE /* Base */,
 			);
-			name = PresentAnimation;
 			path = PresentAnimation;
 			sourceTree = "<group>";
 		};
@@ -2161,7 +2110,6 @@
 			children = (
 				268D61975B1BAE12A282A6A760FA70B4 /* ECGesturePasswordView.swift */,
 			);
-			name = GesturePasswordView;
 			path = GesturePasswordView;
 			sourceTree = "<group>";
 		};
@@ -2180,7 +2128,6 @@
 				3F8D8C84FF7FA78683DF4E1D3600D7F3 /* ECToolbarKeyboard.swift */,
 				943D4371D2FBE6F1D689207EEA15C905 /* ECToolbarPickerKeyboard.swift */,
 			);
-			name = Toolbar;
 			path = Toolbar;
 			sourceTree = "<group>";
 		};
@@ -2191,7 +2138,6 @@
 				C2421D441DD29FC71F1E3B5354D3E45A /* ECTestSettingItem.swift */,
 				3F5C9A2676E4487FCB551C735F63D64A /* ECTestSettingManager.swift */,
 			);
-			name = TestSettingManager;
 			path = TestSettingManager;
 			sourceTree = "<group>";
 		};
@@ -2202,7 +2148,6 @@
 				A3453C33AB370982F738CD66F06FC48D /* ECOnceEventManager.swift */,
 				F04EBBBEA285AD27B5D1F354B8F42DC3 /* ECTimer.swift */,
 			);
-			name = Manager;
 			path = Manager;
 			sourceTree = "<group>";
 		};
@@ -2211,7 +2156,6 @@
 			children = (
 				3E019A63ACD275EED7304C7BE2EF8222 /* ECPresentAnimationType.swift */,
 			);
-			name = Base;
 			path = Base;
 			sourceTree = "<group>";
 		};
@@ -2221,7 +2165,6 @@
 				E5BA2989F09F7777ECA8EF7F46ADE42E /* ECPopupKeyboard.swift */,
 				8BFD361876F5DF95F1E2F37A95EB7AEA /* ECPopupListKeyboard.swift */,
 			);
-			name = Popup;
 			path = Popup;
 			sourceTree = "<group>";
 		};
@@ -2242,7 +2185,6 @@
 			isa = PBXGroup;
 			children = (
 				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */,
-				FB7E9D5939B332FEA1CCF9840B3F0234 /* EasyCoding.bundle */,
 				37F81CA58BF69DFAF3F6AA94F9B1F16D /* EasyCoding.bundle */,
 				25FD2453E03BBC0A60FCDF934F1BFB5D /* EasyCoding.framework */,
 				CD54121DDA84872534168702B5F92950 /* HandyJSON.framework */,
@@ -2280,7 +2222,6 @@
 				8981AF6A57DC5B4AD7D1B5573DF8B0D0 /* ECViewBuilderShortcut.swift */,
 				8A5E2E0EFF0CFFB197FD38C719484AED /* ECViewLayout.swift */,
 			);
-			name = 1.4.3.ViewBuilder;
 			path = 1.4.3.ViewBuilder;
 			sourceTree = "<group>";
 		};
@@ -2294,7 +2235,6 @@
 				D033FE5360CC921042AE97B5934AA414 /* ECApiType.swift */,
 				52A9CCE0E6186D637C2F654A21F0AB50 /* ECHandyJSONExtension.swift */,
 			);
-			name = 2.3.Api;
 			path = 2.3.Api;
 			sourceTree = "<group>";
 		};
@@ -2308,7 +2248,6 @@
 				F254D33963245825AAE35A7D378007F9 /* Regex */,
 				996EFD54F19CEDEAF92D50B0FCD319AF /* Weaker */,
 			);
-			name = 1.5.Types;
 			path = 1.5.Types;
 			sourceTree = "<group>";
 		};
@@ -2317,8 +2256,8 @@
 			children = (
 				F3FEB0563375B5BC08A5AE197327C0BF /* ECRejectTypePrecondition.swift */,
 				7E5EF34C8B3D2AC7930EBCC9CB833D2A /* ECSimplePrecondition.swift */,
+				9C1E798724C56B7300F4F48B /* ECDataPrecondition.swift */,
 			);
-			name = "2.2.1.1 Preconditions";
 			path = "2.2.1.1 Preconditions";
 			sourceTree = "<group>";
 		};
@@ -2329,7 +2268,6 @@
 				E0B952B681B2C2245314468E4DD40257 /* ECStyleSetting.swift */,
 				9E07F64239B63D7B3E0CC5F8555E6CC2 /* StyleSettings */,
 			);
-			name = 1.4.2.ViewStyle;
 			path = 1.4.2.ViewStyle;
 			sourceTree = "<group>";
 		};
@@ -2338,7 +2276,6 @@
 			children = (
 				D7338B9D1525A091AEA2C349132E654C /* ECDataProviderType.swift */,
 			);
-			name = Base;
 			path = Base;
 			sourceTree = "<group>";
 		};
@@ -2394,7 +2331,6 @@
 				76BAD4FD6EC2D7C00DB30FEC12A15121 /* ECNumberTextConstraint.swift */,
 				84C09D34FB52A346D7A4701299A305E4 /* Keyboard */,
 			);
-			name = TextConstraints;
 			path = TextConstraints;
 			sourceTree = "<group>";
 		};
@@ -2404,7 +2340,6 @@
 				EC1E0C1BCDEEBB7607700D15065CDC97 /* ECBlockEventHandler.swift */,
 				9FCB99426BA56BA519918681CAC8CA9D /* ECObjectEventHandler.swift */,
 			);
-			name = Handler;
 			path = Handler;
 			sourceTree = "<group>";
 		};
@@ -2415,7 +2350,6 @@
 				B982B5CD776F8DA0AF9A4A24C8DDE448 /* Popup */,
 				B5285F54F5B542EC1CD81C68F8403E7A /* Toolbar */,
 			);
-			name = Keyboard;
 			path = Keyboard;
 			sourceTree = "<group>";
 		};
@@ -2425,7 +2359,6 @@
 				DDE03CC41FD4748C6D2D696B188FE4AB /* ECToastConfig.swift */,
 				F7E5F1EA7DC587CB4524FBE7DD71D22D /* ECToastView.swift */,
 			);
-			name = ToastController;
 			path = ToastController;
 			sourceTree = "<group>";
 		};
@@ -2434,7 +2367,6 @@
 			children = (
 				85B8E2238B3A6E75CDF2EF823F9B3EB5 /* ECPresentSegueType.swift */,
 			);
-			name = Base;
 			path = Base;
 			sourceTree = "<group>";
 		};
@@ -2446,7 +2378,6 @@
 				B91C9C4D58B12A72FADAFAD99AB558E8 /* Manager */,
 				7FAF7E2526DAC7B7C408C5EF874C5D21 /* Publisher */,
 			);
-			name = Event;
 			path = Event;
 			sourceTree = "<group>";
 		};
@@ -2475,7 +2406,6 @@
 				6DD3E2327EFB6C18A26F8FF973E260DF /* EasyCoding-umbrella.h */,
 				FFA6820CD371F5CD63DA98C0DEA3D290 /* EasyCoding.debug.xcconfig */,
 				9A9DD27F50B3C60332B4F1F6B2945C15 /* EasyCoding.release.xcconfig */,
-				06C9B56960762932BD47177A57DA98DE /* ResourceBundle-EasyCoding-EasyCoding-Info.plist */,
 				06C9B56960762932BD47177A57DA98DE /* ResourceBundle-EasyCoding-EasyCoding-Info.plist */,
 			);
 			name = "Support Files";
@@ -2529,7 +2459,6 @@
 				B24A2A6827063C34B2A30E5D9121BF46 /* Resources */,
 				F37890E952B9AB4504571ECB40AC44C4 /* Support Files */,
 			);
-			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -2542,7 +2471,6 @@
 				41E251466AC8392F1C7F8F93AAFD638C /* ECPickerViewMultiDataSource.swift */,
 				77AEEE95183DE0E8C12BB12E0421D251 /* ECTableViewDataSource.swift */,
 			);
-			name = ListControlDataSource;
 			path = ListControlDataSource;
 			sourceTree = "<group>";
 		};
@@ -2596,7 +2524,6 @@
 				00D248F41B7A55BC32A078CD35A0DA2F /* ECUndoProperty.swift */,
 				04DF659A41AAE3377CCD8DADA3155C19 /* ECUserDefaultProperty.swift */,
 			);
-			name = 1.2.PropertyWrapper;
 			path = 1.2.PropertyWrapper;
 			sourceTree = "<group>";
 		};
@@ -2606,7 +2533,6 @@
 				3DBC33B84F9DB2B5CCA6EF5CFD77BAB2 /* Base */,
 				162017BEA64E08A1DA248C5D22F5DEFE /* Examples */,
 			);
-			name = Decorators;
 			path = Decorators;
 			sourceTree = "<group>";
 		};
@@ -2627,7 +2553,6 @@
 				D8D34FE05E46149424EC3A290803F91D /* Base */,
 				43604C57DAC01EA0DC9AF052F557CD31 /* Segues */,
 			);
-			name = 2.2.3.PresentSegue;
 			path = 2.2.3.PresentSegue;
 			sourceTree = "<group>";
 		};
@@ -2636,7 +2561,6 @@
 			children = (
 				A2CFCF0BAC2321D2FAF5040D15F28A32 /* ECRegex.swift */,
 			);
-			name = Regex;
 			path = Regex;
 			sourceTree = "<group>";
 		};
@@ -2645,7 +2569,6 @@
 			children = (
 				B8DFEF7F50E9C1190B216536542EE184 /* ECSetting.swift */,
 			);
-			name = 3.0.Setting;
 			path = 3.0.Setting;
 			sourceTree = "<group>";
 		};
@@ -2674,7 +2597,6 @@
 				5104AD5C08860C484999AF0DA9CEF62F /* ECDataTableView.swift */,
 				395FB5875D7AB700AB5A973964721355 /* ECDataView.swift */,
 			);
-			name = DataControl;
 			path = DataControl;
 			sourceTree = "<group>";
 		};
@@ -2688,7 +2610,6 @@
 				273024F66FF2649C484772883A501ACC /* ECNull.swift */,
 				BE0A60B22DADC27A3A5D4858BC0682BF /* ECTextualizable.swift */,
 			);
-			name = 1.0.Foundation;
 			path = 1.0.Foundation;
 			sourceTree = "<group>";
 		};
@@ -2729,7 +2650,6 @@
 				4F32867669A79C33DBC195C8225524FC /* ECPresentAnimation.Popup.swift */,
 				B79A1127760E4AF9150181AF743BE585 /* ECPresentAnimation.SlideOut.swift */,
 			);
-			name = Animations;
 			path = Animations;
 			sourceTree = "<group>";
 		};
@@ -2738,7 +2658,6 @@
 			children = (
 				EC75DC0D28866CC3B3911B5683E4678D /* ECDataPluginConfig.swift */,
 			);
-			name = Config;
 			path = Config;
 			sourceTree = "<group>";
 		};
@@ -3129,7 +3048,6 @@
 			targets = (
 				EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */,
 				16B74564F9E6460ED37319FCA2D9D871 /* EasyCoding */,
-				818BC923CF74078911D8A8029C943237 /* EasyCoding-EasyCoding */,
 				116973AEBB6B1F787EEE772273D957B8 /* EasyCoding-EasyCoding */,
 				10D88C24864319FF583AD6D156896F32 /* HandyJSON */,
 				A3E3F0EA585AAE8570BE2D08F5EA816E /* JRSwizzle */,
@@ -3628,6 +3546,7 @@
 				20718EBD154F9698A21680E68F964CC6 /* ECRejectTypePrecondition.swift in Sources */,
 				34B0A3C50F36518FC994EC477143F1AB /* ECScrollViewExtension.swift in Sources */,
 				81A20094926009B767651F3E8E956C30 /* ECScrollViewStyle.swift in Sources */,
+				9C1E798824C56B7300F4F48B /* ECDataPrecondition.swift in Sources */,
 				8824D78F3CF2981B3F7395EAC9DA2ECE /* ECSetting.swift in Sources */,
 				D41D9D4D7D05DAF1EC48EEFAEC04577F /* ECSimpleLocalized.swift in Sources */,
 				964A459F0B3B5709BCC236F0A78A2F02 /* ECSimplePrecondition.swift in Sources */,
@@ -4459,8 +4378,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
