@@ -266,6 +266,8 @@
 		9B704916E8A108066E00C7B0A11139FA /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33BCF254788DCBCBDFBE1232ADF721A /* ImageModifier.swift */; };
 		9C1E798824C56B7300F4F48B /* ECDataPrecondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1E798724C56B7300F4F48B /* ECDataPrecondition.swift */; };
 		9C371D43464217293023FED30D96DF3F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F27D0665236C25596A1CACBC67EE5 /* ImageCache.swift */; };
+		9C5D0D4224C6D4A900AE6DAF /* ECPrerequisiteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0D4124C6D4A900AE6DAF /* ECPrerequisiteType.swift */; };
+		9C5D0D4424C6D4CC00AE6DAF /* ECInstantiateMediatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0D4324C6D4CC00AE6DAF /* ECInstantiateMediatorType.swift */; };
 		9D074582D37F12E84C96D91C50FEDB69 /* RetryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7C838934A7CF2D675826CD56D5417 /* RetryStrategy.swift */; };
 		9D5205C1003C420DDBA213B9D6A22A62 /* URL+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB3DF188FFC4CD8C70577997C0738C2 /* URL+Moya.swift */; };
 		9D7801B0E7700D5559CA9D775AC6EDF7 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A89E9AF5D8585FFE052ADCD757BE61 /* LayoutConstraintItem.swift */; };
@@ -923,6 +925,8 @@
 		9BB7E67DC2A0834A6135FCB4BB78DF5D /* ECEventPublisherType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECEventPublisherType.swift; sourceTree = "<group>"; };
 		9BCB1BAAE9713E27FF2B7E17294D06EC /* ECAttributedStringOperator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECAttributedStringOperator.swift; sourceTree = "<group>"; };
 		9C1E798724C56B7300F4F48B /* ECDataPrecondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataPrecondition.swift; sourceTree = "<group>"; };
+		9C5D0D4124C6D4A900AE6DAF /* ECPrerequisiteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPrerequisiteType.swift; sourceTree = "<group>"; };
+		9C5D0D4324C6D4CC00AE6DAF /* ECInstantiateMediatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECInstantiateMediatorType.swift; sourceTree = "<group>"; };
 		9D85BE6F8069337B11D6E0D3360EDFAB /* ECNumberExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECNumberExtension.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DB065DA978F026C31E534EDBA8D5FC0 /* ECDataErrorPlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDataErrorPlugin.swift; sourceTree = "<group>"; };
@@ -2010,6 +2014,15 @@
 			path = Weaker;
 			sourceTree = "<group>";
 		};
+		9C5D0D4024C6D49600AE6DAF /* Prerequisite */ = {
+			isa = PBXGroup;
+			children = (
+				9C5D0D4124C6D4A900AE6DAF /* ECPrerequisiteType.swift */,
+				9C5D0D4324C6D4CC00AE6DAF /* ECInstantiateMediatorType.swift */,
+			);
+			path = Prerequisite;
+			sourceTree = "<group>";
+		};
 		9CD1B01495915E1DA931132E95180E81 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -2071,8 +2084,8 @@
 			isa = PBXGroup;
 			children = (
 				D4DB7490DDFEC91FFA12F4B0D8C5FC5E /* ECFlowController.swift */,
-				A3E3C54DB354B007BB801EDC4DDAF8D4 /* ECViewControllerAccessable.swift */,
 				67310FCF1A08E81F654C5ED067A49FEF /* ECViewControllerType.swift */,
+				A3E3C54DB354B007BB801EDC4DDAF8D4 /* ECViewControllerAccessable.swift */,
 			);
 			path = 2.2.4.ViewControllerAccess;
 			sourceTree = "<group>";
@@ -2241,6 +2254,7 @@
 		C5DF91EE9A1B2C181523FE17B2BB3C59 /* 1.5.Types */ = {
 			isa = PBXGroup;
 			children = (
+				9C5D0D4024C6D49600AE6DAF /* Prerequisite */,
 				65BC2DB38C19F7801DAD705E0930440A /* ControlConfig */,
 				A569AE0E2328E090AE39DBEF6853CF1E /* Data */,
 				D93006594E89D1496818152A1FBE1C4C /* Event */,
@@ -3413,6 +3427,7 @@
 				3CE99718DCE1AC100540712062BAF5A3 /* ECActivityIndicatorViewStyle.swift in Sources */,
 				592A002AFD2DAC7B4D1C9368AD364FC1 /* ECAlertConfig.swift in Sources */,
 				6C7B1259CF3A3B54CD26E31CDC448BE0 /* ECAlertController.swift in Sources */,
+				9C5D0D4224C6D4A900AE6DAF /* ECPrerequisiteType.swift in Sources */,
 				F94DDEDE57E1223E4A50CD13D1A1D443 /* ECAlertView.swift in Sources */,
 				5F14903E23C407AD2AFED9E483784FB5 /* ECApiDataProvider.swift in Sources */,
 				622E53FC4FEB4CA28CB194B52F66B2A2 /* ECApiManagerType.swift in Sources */,
@@ -3548,6 +3563,7 @@
 				81A20094926009B767651F3E8E956C30 /* ECScrollViewStyle.swift in Sources */,
 				9C1E798824C56B7300F4F48B /* ECDataPrecondition.swift in Sources */,
 				8824D78F3CF2981B3F7395EAC9DA2ECE /* ECSetting.swift in Sources */,
+				9C5D0D4424C6D4CC00AE6DAF /* ECInstantiateMediatorType.swift in Sources */,
 				D41D9D4D7D05DAF1EC48EEFAEC04577F /* ECSimpleLocalized.swift in Sources */,
 				964A459F0B3B5709BCC236F0A78A2F02 /* ECSimplePrecondition.swift in Sources */,
 				8C097C4C69BC71CBD9F75EDCFA7406AE /* ECSliderStyle.swift in Sources */,
