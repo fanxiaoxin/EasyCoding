@@ -64,4 +64,9 @@ extension ECStyleSetting where TargetType: UITextView {
             target.keyboardType = type
         })
     }
+    public static func padding(_ padding:UIEdgeInsets) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.textContainerInset = padding
+        })
+    }
 }

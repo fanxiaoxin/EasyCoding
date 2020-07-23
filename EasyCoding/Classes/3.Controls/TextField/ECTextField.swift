@@ -11,7 +11,7 @@ open class ECTextField: UITextField {
     ///内边距
     open var padding: UIEdgeInsets = UIEdgeInsets.zero {
         didSet {
-            self.placeHolderLabel.snp.updateConstraints { (make) in
+            self.placeholderLabel.snp.updateConstraints { (make) in
                 make.top.equalToSuperview().offset(self.padding.top)
                 make.bottom.equalToSuperview().offset(-self.padding.bottom)
                 make.left.equalToSuperview().offset(self.padding.left)
@@ -20,7 +20,7 @@ open class ECTextField: UITextField {
         }
     }
     
-    public let placeHolderLabel = UILabel()
+    public let placeholderLabel = UILabel()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,17 +32,17 @@ open class ECTextField: UITextField {
         self.load()
     }
     open func load() {
-        placeHolderLabel.text = text
-        placeHolderLabel.numberOfLines = 0;
-        placeHolderLabel.textColor = UIColor.lightGray
-        placeHolderLabel.textAlignment = self.textAlignment
-        placeHolderLabel.sizeToFit()
+        placeholderLabel.text = text
+        placeholderLabel.numberOfLines = 0;
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.textAlignment = self.textAlignment
+        placeholderLabel.sizeToFit()
         
-        self.addSubview(placeHolderLabel)
+        self.addSubview(placeholderLabel)
         
-        placeHolderLabel.font = self.font
+        placeholderLabel.font = self.font
         
-        placeHolderLabel.snp.makeConstraints { (make) in
+        placeholderLabel.snp.makeConstraints { (make) in
             make.top.bottom.left.right.equalToSuperview()
         }
         
@@ -53,23 +53,23 @@ open class ECTextField: UITextField {
     }
     open override var font: UIFont? {
         didSet {
-            self.placeHolderLabel.font = self.font
+            self.placeholderLabel.font = self.font
         }
     }
     open override var placeholder: String? {
         get {
-            return self.placeHolderLabel.text
+            return self.placeholderLabel.text
         }
         set {
-            self.placeHolderLabel.text = newValue
+            self.placeholderLabel.text = newValue
         }
     }
     open override var attributedPlaceholder: NSAttributedString?{
         get {
-            return self.placeHolderLabel.attributedText
+            return self.placeholderLabel.attributedText
         }
         set {
-            self.placeHolderLabel.attributedText = newValue
+            self.placeholderLabel.attributedText = newValue
         }
     }
     open override var text: String? {
@@ -79,15 +79,15 @@ open class ECTextField: UITextField {
     }
     open override var textAlignment: NSTextAlignment {
         didSet {
-            self.placeHolderLabel.textAlignment = self.textAlignment
+            self.placeholderLabel.textAlignment = self.textAlignment
         }
     }
     
     @objc func textFieldDidChange(hidePlaceHolder:Bool) {
         if (self.text?.count ?? 0) > 0 || hidePlaceHolder{
-            placeHolderLabel.isHidden = true
+            placeholderLabel.isHidden = true
         }else {
-            placeHolderLabel.isHidden = false
+            placeholderLabel.isHidden = false
         }
     }
     open override var intrinsicContentSize: CGSize {
@@ -116,14 +116,14 @@ open class ECTextField: UITextField {
     }
 }
 extension ECBuildable where Self: UIView {
-    public static func easyText(_ styles: ECStyleSetting<ECTextField>...) -> ECTextField {
+    public static func ecText(_ styles: ECStyleSetting<ECTextField>...) -> ECTextField {
         return ECTextField().easy(styles: styles)
     }
 }
 extension ECStyleSetting where TargetType: ECTextField {
     public static func placeholder(style:ECStyleSetting<UILabel>...) -> ECStyleSetting<TargetType> {
         return .init(action: { (target) in
-            style.forEach({ $0.action(target.placeHolderLabel) })
+            style.forEach({ $0.action(target.placeholderLabel) })
         })
     }
     public static func padding(_ padding:UIEdgeInsets) -> ECStyleSetting<TargetType> {

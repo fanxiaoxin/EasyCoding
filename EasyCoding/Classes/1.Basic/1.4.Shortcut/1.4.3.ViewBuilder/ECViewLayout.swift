@@ -103,6 +103,12 @@ public enum ECViewLayout {
     public func update() -> ECViewLayout {
         return .update(self)
     }
+    ///指定页面布局
+    indirect case with(UIView,ECViewLayout)
+    ///指定页面布局
+    public func with(_ view: UIView) -> ECViewLayout {
+        return .with(view, self)
+    }
 }
 
 extension ConstraintMakerEditable {
@@ -126,12 +132,14 @@ extension ECViewLayout {
     }
     ///应用约束
     public func apply(to v1: UIView, with v2: UIView, compare: ECViewLayoutCompare = .equal, priority: ConstraintPriority? = nil, isUpdating: Bool = false) {
+        var abort = true
         switch self {
+        case let .set(layout): layout.forEach({ $0.apply(to: v1, with: v2, compare: compare, priority: priority) })
+        case let .custom(apply: apply): apply(v1, v2)
         case let .parent(layout):
             if let sp = v1.superview {
                 layout.apply(to: sp, with: v2, compare: compare, priority: priority, isUpdating: isUpdating)
             }
-            return
         case let .less(layout):
             layout.apply(to: v1, with: v2, compare: .lessThanOrEqual, priority: priority, isUpdating: isUpdating)
         case let .greather(layout):
@@ -140,7 +148,12 @@ extension ECViewLayout {
             layout.apply(to: v1, with: v2, compare: compare, priority: value, isUpdating: isUpdating)
         case let .update(layout):
             layout.apply(to: v1, with: v2, compare: compare, priority: priority, isUpdating: true)
-        default: break
+        case let .with(view, layout):
+            layout.apply(to: v2, with: view, compare: compare, priority: priority, isUpdating: isUpdating)
+        default: abort = false
+        }
+        if abort {
+            return
         }
         let maker = isUpdating ? v2.snp.updateConstraints : v2.snp.makeConstraints
         maker { (make) in
@@ -196,8 +209,6 @@ extension ECViewLayout {
             ///上-上，左-左，下-下，右-右
             case let .margin(top,left,bottom,right):
                 make.edges.compare(compare, v1).inset(UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)).ec_priority(priority)
-            case let .set(layout): layout.forEach({ $0.apply(to: v1, with: v2, compare: compare, priority: priority) })
-            case let .custom(apply: apply): apply(v1, v2)
             default: break
             }
         }

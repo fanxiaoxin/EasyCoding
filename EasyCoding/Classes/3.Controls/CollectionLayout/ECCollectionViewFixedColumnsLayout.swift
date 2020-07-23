@@ -9,6 +9,7 @@ import UIKit
 
 ///固定列数
 open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
+    public typealias HeightForWidth = (_ width: CGFloat, _ indexPath: IndexPath) -> CGFloat
     public enum LineAlignment {
         case top
         case bottom
@@ -24,11 +25,11 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
     ///行对齐，默认顶部对齐，不对齐则乱序
     open var lineAlignment: LineAlignment = .top
     ///高度，可根据宽度获取，不设则默认正方型
-    open var heightForWidth: (_ width: CGFloat, _ indexPath: IndexPath) -> CGFloat = { width, _ in width }
+    open var heightForWidth: HeightForWidth = { width, _ in width }
     ///Header高度，可根据宽度获取，不设则默认0
-    open var headerHeightForWidth: (_ width: CGFloat, _ indexPath: IndexPath) -> CGFloat = { width, _ in 0 }
+    open var headerHeightForWidth: HeightForWidth = { width, _ in 0 }
     ///Footer高度，可根据宽度获取，不设则默认0
-    open var footerHeightForWidth: (_ width: CGFloat, _ indexPath: IndexPath) -> CGFloat = { width, _ in 0 }
+    open var footerHeightForWidth: HeightForWidth = { width, _ in 0 }
     ///Section内边距
     open var sectionInset: UIEdgeInsets = .zero
     
@@ -338,5 +339,56 @@ open class ECCollectionViewFixedColumnsLayout: UICollectionViewLayout {
             return true
         }
         return false
+    }
+}
+
+extension ECStyleSetting where TargetType: ECCollectionViewFixedColumnsLayout {
+    ///边距
+    public static func padding(_ paddind:UIEdgeInsets) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.padding = paddind
+        })
+    }
+    ///Section内边距
+    public static func sectionInset(_ sectionInset:UIEdgeInsets) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.sectionInset = sectionInset
+        })
+    }
+    ///间距
+    public static func spacing(_ spacing:CGPoint) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.spacing = spacing
+        })
+    }
+    ///列数
+    public static func numberOfColumns(_ numberOfColumns:Int) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.numberOfColumns = numberOfColumns
+        })
+    }
+    ///行对齐，默认顶部对齐，不对齐则乱序
+    public static func lineAlignment(_ lineAlignment:TargetType.LineAlignment) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.lineAlignment = lineAlignment
+        })
+    }
+    ///高度，可根据宽度获取，不设则默认正方型
+    public static func heightForWidth(_  height: @escaping TargetType.HeightForWidth) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.heightForWidth = height
+        })
+    }
+    ///Header高度，可根据宽度获取，不设则默认0
+    public static func headerHeightForWidth(_ height:@escaping TargetType.HeightForWidth) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.headerHeightForWidth = height
+        })
+    }
+    ///Footer高度，可根据宽度获取，不设则默认0
+    public static func footerHeightForWidth(_ height:@escaping TargetType.HeightForWidth) -> ECStyleSetting<TargetType> {
+        return .init(action: { (target) in
+            target.footerHeightForWidth = height
+        })
     }
 }

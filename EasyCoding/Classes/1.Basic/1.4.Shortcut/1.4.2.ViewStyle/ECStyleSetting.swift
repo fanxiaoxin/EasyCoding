@@ -17,37 +17,69 @@ public struct ECStyleSetting<TargetType> {
 ///所有需要设置样式的都可继承该协议
 public protocol ECStyleSetable { }
 extension EC.NamespaceImplement where Base: ECStyleSetable {
+//    @discardableResult
+//    public func style(_ style:ECStyleSetting<Base>...) -> ECNamespaceWrapper<Base> {
+//        style.forEach({$0.action(self.base)})
+//        return self as! ECNamespaceWrapper<Base>
+//    }
     @discardableResult
-    public func style(_ style:ECStyleSetting<Base>...) -> ECNamespaceWrapper<Base> {
-        style.forEach({$0.action(self.base)})
-        return self as! ECNamespaceWrapper<Base> 
-    }
-}
-/*
-extension EC.NamespaceImplement where Base == [UIView] {
-    @discardableResult
-    public func style(_ style:ECStyleSetting<Base.Element>...) -> ECNamespaceWrapper<Base> {
-        self.base.forEach { (obj) in
-            style.forEach({ $0.action(obj)})
+    public func style(animated: Bool = false,_ style:ECStyleSetting<Base>...) -> ECNamespaceWrapper<Base> {
+        if animated {
+            UIView.animate(withDuration: 0.25) {
+                style.forEach({$0.action(self.base)})
+            }
+        } else{
+            style.forEach({$0.action(self.base)})
         }
         return self as! ECNamespaceWrapper<Base>
     }
-}*/
-extension EC.NamespaceArrayImplement where Element: UIView {
     @discardableResult
-    public func style(_ style:ECStyleSetting<Element>...) -> ECNamespaceArrayWrapper<Element> {
-        self.base.forEach { (obj) in
-            style.forEach({ $0.action(obj)})
+    public func style(animated duration: TimeInterval,_ style:ECStyleSetting<Base>...) -> ECNamespaceWrapper<Base> {
+        UIView.animate(withDuration: duration) {
+            style.forEach({$0.action(self.base)})
+        }
+        return self as! ECNamespaceWrapper<Base>
+    }
+}
+extension EC.NamespaceArrayImplement where Element: UIView {
+//    @discardableResult
+//    public func style(_ style:ECStyleSetting<Element>...) -> ECNamespaceArrayWrapper<Element> {
+//        self.base.forEach { (obj) in
+//            style.forEach({ $0.action(obj)})
+//        }
+//        return self as! ECNamespaceArrayWrapper<Element>
+//    }
+    @discardableResult
+    public func style(animated: Bool = false,_ style:ECStyleSetting<Element>...) -> ECNamespaceArrayWrapper<Element> {
+        if animated {
+            UIView.animate(withDuration: 0.25) {
+                self.base.forEach { (obj) in
+                    style.forEach({ $0.action(obj)})
+                }
+            }
+        } else{
+            self.base.forEach { (obj) in
+                style.forEach({ $0.action(obj)})
+            }
+        }
+        return self as! ECNamespaceArrayWrapper<Element>
+    }
+    @discardableResult
+    public func style(animated duration: TimeInterval,_ style:ECStyleSetting<Element>...) -> ECNamespaceArrayWrapper<Element> {
+        UIView.animate(withDuration: duration) {
+            self.base.forEach { (obj) in
+                style.forEach({ $0.action(obj)})
+            }
         }
         return self as! ECNamespaceArrayWrapper<Element>
     }
 }
 ///UIView默认可设置样式
 extension UIView: ECStyleSetable { }
-extension ECStyleSetable where Self: UIView {
-    public static func easy(_ styles:ECStyleSetting<Self>...) -> Self {
-        return self.init().easy(styles: styles)
-    }
+///UICollectionViewLayout默认可设置样式
+extension UICollectionViewLayout: ECStyleSetable { }
+
+extension ECStyleSetable {
     @discardableResult
     public func easy(_ styles:ECStyleSetting<Self>...) -> Self {
         return self.easy(styles: styles)
@@ -56,6 +88,14 @@ extension ECStyleSetable where Self: UIView {
     public func easy(styles:[ECStyleSetting<Self>]) -> Self {
         styles.forEach({$0.action(self)})
         return self
+    }
+}
+extension ECStyleSetable where Self: ECEmptyInstantiable {
+    public static func easy(_ styles:ECStyleSetting<Self>...) -> Self {
+        return self.init().easy(styles: styles)
+    }
+    public static func easy(styles:[ECStyleSetting<Self>]) -> Self {
+        return self.init().easy(styles: styles)
     }
 }
 extension ECStyleSetting {

@@ -374,9 +374,9 @@
 			isa = PBXGroup;
 			children = (
 				9CB361E024C14BA700EA6F98 /* README.md */,
+				9CB361DB24C14BA700EA6F98 /* Models */,
 				9CB361E124C14BA700EA6F98 /* Api */,
 				9CB361E424C14BA700EA6F98 /* Main */,
-				9CB361DB24C14BA700EA6F98 /* Models */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -384,18 +384,9 @@
 		9CB361DB24C14BA700EA6F98 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9CB361DC24C14BA700EA6F98 /* Video */,
 				9CB361DD24C14BA700EA6F98 /* Example */,
-				9CB361DF24C14BA700EA6F98 /* Mine */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		9CB361DC24C14BA700EA6F98 /* Video */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Video;
 			sourceTree = "<group>";
 		};
 		9CB361DD24C14BA700EA6F98 /* Example */ = {
@@ -404,13 +395,6 @@
 				9CB361DE24C14BA700EA6F98 /* ExampleModel.swift */,
 			);
 			path = Example;
-			sourceTree = "<group>";
-		};
-		9CB361DF24C14BA700EA6F98 /* Mine */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mine;
 			sourceTree = "<group>";
 		};
 		9CB361E124C14BA700EA6F98 /* Api */ = {

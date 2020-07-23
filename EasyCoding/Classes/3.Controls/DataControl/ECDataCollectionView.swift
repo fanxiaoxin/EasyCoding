@@ -16,7 +16,11 @@ open class ECDataCollectionView<DataProviderType: ECDataListProviderType>: UICol
             self.easyDataSource.dataProvider = self.dataPlugin
         }
     }
-    
+    public init(_ layoutStyles: ECStyleSetting<ECCollectionViewFixedColumnsLayout>) {
+        let layout = ECCollectionViewFixedColumnsLayout.easy(layoutStyles)
+        super.init(frame: .zero, collectionViewLayout: layout)
+        self.load()
+    }
     public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         self.load()

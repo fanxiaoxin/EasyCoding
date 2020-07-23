@@ -15,7 +15,7 @@ open class ECViewController<PageType:UIView>: UIViewController, ECPageEventDeleg
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        if let title = (self.page as? ECPage)?.title {
+        if self.title == nil, let title = (self.page as? ECPage)?.title {
             self.title = title
         }
         

@@ -60,7 +60,7 @@ open class ECPrecondition<InputType,OutputType>  {
     ///成功操作，重载可定制默认操作
     open func successAction()  {
         
-    }
+    } 
     ///失败操作，重载可定制默认操作
     open func failureAction() {
         
