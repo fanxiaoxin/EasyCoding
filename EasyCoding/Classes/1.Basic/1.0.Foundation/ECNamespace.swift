@@ -123,3 +123,13 @@ extension EC {
         return "EasyCoding." + key
     }
 }
+///需要使用.easy扩展的可继承自该类型
+public typealias EasyExtension = EC.NamespaceDefine
+public typealias EasyArrayExtension = EC.NamespaceArrayDefine
+public typealias EasyDictionaryExtension = EC.NamespaceDictionaryDefine
+///扩展EasyCoding的属性和方法
+public typealias EasyCoding = EC.NamespaceImplement
+///扩展数组的EasyCoding扩展
+public typealias EasyArray = EC.NamespaceArrayImplement
+///扩展字典的EasyCoding扩展
+public typealias EasyDictionary = EC.NamespaceDictionaryImplement

@@ -12,9 +12,10 @@ import EasyCoding
 
 class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UITableViewDelegate {
     let popupRect = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.page.tableView.dataSource = self
         self.page.tableView.delegate = self
         

@@ -15,7 +15,7 @@ import Result
 class MainController: UITabBarController, UITabBarControllerDelegate, ECViewControllerType {
     var segue: ECPresentSegue { return ECPresentSegue.popup }
     
-    var preconditions: [ECViewControllerPrecondition]? { return nil}
+    var preconditions: [ECViewControllerCondition]? { return nil}
     
     let whenStartupCompleted = ECOnceEvent()
 

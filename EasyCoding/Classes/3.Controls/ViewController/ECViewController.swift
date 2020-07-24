@@ -34,7 +34,7 @@ open class ECViewController<PageType:UIView>: UIViewController, ECPageEventDeleg
         self.view = self.page
     }
     ///设置进入该页面的权限
-    open var preconditions: [ECViewControllerPrecondition]? { return nil }
+    open var preconditions: [ECViewControllerCondition]? { return nil }
     ///转让场景，不设置则默认Push
     open var segue: ECPresentSegue { return ECPresentSegue.push }
     ///关闭页面事件，Page中可直接用"Close"事件

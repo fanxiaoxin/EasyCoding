@@ -24,7 +24,7 @@ protocol ECComponentLoadingSegueType: ECEmptyInstantiable {
     ///卸载
     func unload(for component: ComponentType)
 }
-
+/*
 //1. ViewControler + ViewController
 //2. Business + ViewController
 //3. ViewController + Business
@@ -62,7 +62,7 @@ class AT {
         AB().load(A1(), segue: AS())
     }
 }
-
+*/
 ///组件化模块
 protocol ECModuleType {
     ///模块需求，每个模块自定义自己的协议，这样设置的时候有遗漏编译器会警告

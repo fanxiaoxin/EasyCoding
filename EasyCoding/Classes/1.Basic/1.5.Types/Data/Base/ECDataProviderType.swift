@@ -10,7 +10,7 @@ import UIKit
 // MARK:  -最基本抽象数据提供接口，不区分同异步: ECDataProviderType
 
 ///抽象数据提供接口，可给需要数据的控件提供定制
-public protocol ECDataProviderType {
+public protocol ECDataProviderType: EasyExtension {
     ///所提供的数据类型
     associatedtype DataType
     ///请求数据

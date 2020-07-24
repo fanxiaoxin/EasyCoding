@@ -11,13 +11,11 @@ import EasyCoding
 import Moya
 
 ///页面加载条件类基类
-class Precondition: ECViewControllerPrecondition {
+class Precondition: ECViewControllerCondition {
     
 }
 extension UIViewController {
-    @discardableResult public func check<ConditionType:ECViewControllerPrecondition>(condition:ConditionType, pass:@escaping ()->Void) -> ConditionType {
-        return self.easy.check(condition: condition, pass: { (_) in
-            pass()
-        })
+    public func check(condition:ECViewControllerCondition, pass:@escaping ()->Void) {
+        return self.easy.check(condition, pass: pass, reject: nil)
     }
 }

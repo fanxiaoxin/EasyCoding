@@ -13,7 +13,7 @@ open class ECNavigationController: UINavigationController,UIGestureRecognizerDel
     open var segue: ECPresentSegue = ECPresentSegue.push
     
     ///可由外部设置
-    open var preconditions: [ECViewControllerPrecondition]? = nil
+    open var preconditions: [ECViewControllerCondition]? = nil
     ///只有根控制器显示Tabbar
     open var onlyRootControllerShowBottomBar = true
     

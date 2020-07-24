@@ -9,22 +9,29 @@
 import UIKit
 
 class ExamplePrecondition: Precondition {
-    override func verify() {
-        let isPass = true
-        //判断是否通过
-        self.finished(isPass)
+    var text: String? = "i'm text"
+    override init() {
+        super.init()
+        print("i born")
     }
-    override func failureAction() {
-        //失败处理，比如弹出失败页面
-//        if let current = self.currentViewController {
-//            let failureController = FailureController()
-//            current.load(failureController)
-//        }
-        super.failureAction()
+    deinit {
+        print("i die")
+    }
+    override func check(completion: @escaping (Bool) -> Void) {
+        print(self.text)
+//        self.source?.view.showHUD()
+        let api = ApiTest.Normal().asDataProvider().plugin(.loading(for: self.source!.view))
+        api.easy.retain()
+        api.easyData { [weak self, weak api] (result) in
+            api?.easy.release()
+            print(self?.text)
+//            self?.source?.view.hideHUD()
+            completion(true)
+        }
     }
 }
-extension ECViewControllerPrecondition {
-    static var example: ECViewControllerPrecondition {
+extension ECViewControllerCondition {
+    static var example: ECViewControllerCondition {
         return ExamplePrecondition()
     }
 }

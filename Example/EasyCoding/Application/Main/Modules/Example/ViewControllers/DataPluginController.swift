@@ -10,6 +10,9 @@ import UIKit
 import EasyCoding
 
 class DataPluginController: ViewController<DataPluginView>, UITableViewDataSource {
+    override var preconditions: [ECViewControllerCondition]? {
+        return [.example]
+    }
 //    let dataProvider = ECViewDataDecorator<Provider>()
 //    let dataProvider = ECViewDataRefreshDecorator<Provider>()
     let dataProvider = ECViewDataPagedDecorator<Provider>()

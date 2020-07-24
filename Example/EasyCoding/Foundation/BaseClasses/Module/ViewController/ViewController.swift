@@ -20,7 +20,7 @@ class ViewController<PageType:UIView>: ECViewController<PageType>, ECFlowControl
     }
     var customizeNavigationBack: ((@escaping ()->Void)->Void)?
     
-    override var preconditions: [ECViewControllerPrecondition]? {
+    override var preconditions: [ECViewControllerCondition]? {
         return nil
     }
     ///默认是PUSH

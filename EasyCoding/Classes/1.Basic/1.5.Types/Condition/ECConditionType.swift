@@ -8,7 +8,7 @@
 import UIKit
 
 ///条件判断
-public protocol ECConditionType {
+public protocol ECConditionType: EasyExtension {
     associatedtype ResultType
     ///检查分支
     func check(completion: @escaping (ResultType)->Void)
@@ -18,11 +18,12 @@ public protocol ECConditionType {
 extension Array: ECConditionType where Element: ECConditionType, Element.ResultType: ECBooleanType {
     ///验证，若全是成功的则返回nil，失败则返回ResultType
     public func check(completion: @escaping (Element.ResultType?)->Void) {
-        if self.count > 0 {
+        if let first = self.first {
             var prqs = self
-            let first = prqs.removeFirst()
             first.check { (result) in
                 if (result.isPositive) {
+                    ///等检测完再移除，防止被提前释放
+                    prqs.removeFirst()
                     prqs.check(completion: completion)
                 }else{
                     completion(result)
@@ -31,25 +32,5 @@ extension Array: ECConditionType where Element: ECConditionType, Element.ResultT
         }else{
             completion(nil)
         }
-    }
-}
-class BBB: ECConditionType {
-    typealias ResultType = Bool
-    func check(completion: @escaping (Bool) -> Void) {
-        completion(true)
-    }
-}
-class VVV {
-    func xx() {
-        let b = BBB()
-        b.check { (haha) in
-            
-        }
-        let c = [b, BBB()]
-        c.check { (v) in
-            
-        }
-        let r = [BBB].ResultType
-
     }
 }

@@ -18,6 +18,9 @@ struct ApiTest {
     }
     ///一般测试接口
     class Normal: ApiType, ECApiTestType {
+        deinit {
+            print("api die")
+        }
         typealias ResponseType = ApiStructure.Response.Common<Model>
         required init() {
             

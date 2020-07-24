@@ -70,7 +70,7 @@
 		202CFB73FE9A4B91E1B1338B694238E2 /* ECViewControllerPlug.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24412934F2972F3CF0FE909674B9A1C /* ECViewControllerPlug.swift */; };
 		20559EA604F20E61FEAAD11341DF9DCC /* ECNumberTextConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BAD4FD6EC2D7C00DB30FEC12A15121 /* ECNumberTextConstraint.swift */; };
 		206A5090874B32E9401A2DA3DEB9360C /* MoyaProvider+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4501A6D37900038548615DE83F9E8A3A /* MoyaProvider+Defaults.swift */; };
-		20718EBD154F9698A21680E68F964CC6 /* ECRejectTypePrecondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FEB0563375B5BC08A5AE197327C0BF /* ECRejectTypePrecondition.swift */; };
+		20718EBD154F9698A21680E68F964CC6 /* ECViewControllerRejectCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FEB0563375B5BC08A5AE197327C0BF /* ECViewControllerRejectCondition.swift */; };
 		20A04185451DAB1EE738D10B167B6E01 /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A608DE4AFFDECC9C6EB0E168FF1C0 /* ConstraintConstantTarget.swift */; };
 		20E227BFBE7D9A0EB4F2C84C85FB8071 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3117A18F5D33155B7675BEB01E6C01DC /* Cancellable.swift */; };
 		212554A75C95F13EC3710B53FA36E14D /* JRSwizzle-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BEAC673227C802DBE0ABAE3F949A58 /* JRSwizzle-dummy.m */; };
@@ -246,13 +246,12 @@
 		93D1B52A6E451FCBF9C2EFAF444940C0 /* Moya-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C35E1C834E8D98D341EC4FB03AAA3597 /* Moya-dummy.m */; };
 		945FC038688190A4431820EC77D0AC4A /* ECNumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D85BE6F8069337B11D6E0D3360EDFAB /* ECNumberExtension.swift */; };
 		952E0EF94DC5F4DD5B5A0875CFF863D7 /* MJRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7BEE4ECB211FE0303F8BB3DFECD1F /* MJRefreshAutoNormalFooter.m */; };
-		964A459F0B3B5709BCC236F0A78A2F02 /* ECSimplePrecondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5EF34C8B3D2AC7930EBCC9CB833D2A /* ECSimplePrecondition.swift */; };
+		964A459F0B3B5709BCC236F0A78A2F02 /* ECViewControllerBlockCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5EF34C8B3D2AC7930EBCC9CB833D2A /* ECViewControllerBlockCondition.swift */; };
 		9656C5179D1FD32D104D2500538D3895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4102AE1F76CF6D741664F5E3667FB1EA /* Foundation.framework */; };
 		96D8168848E6F3AC9BCAF63653DF397B /* ECDataRefreshPluginBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4D717CC88DC143586F957E87316F2 /* ECDataRefreshPluginBase.swift */; };
 		972B3D012A52813F1D9775FEBFBBFDC8 /* Kingfisher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BE40B91F566D374F8EC421B213C48CB /* Kingfisher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97A64854359A071ADBF99AD5DBBB786F /* ECDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9905C05C20CA53E30650198B527D798 /* ECDataPickerView.swift */; };
 		97E88A700412075FCC9BBC486C5C6461 /* ECTestSettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2421D441DD29FC71F1E3B5354D3E45A /* ECTestSettingItem.swift */; };
-		98489421DA7B1F4E4A4EF2FCCEA05CA8 /* ECViewControllerAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F5137FF2E86254FA53F99DB17EA7ED /* ECViewControllerAccess.swift */; };
 		98A929C8E9012AB167672714FFD2113C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E1CBEFBBA2AAD4839C4684C8C6519C /* Request.swift */; };
 		99524D9355174A1FBBC68BC93E46203C /* CacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2539EE4B074E3BCEFDC3640C8B1A8 /* CacheSerializer.swift */; };
 		99FDECECD82829B1324409FCD20F6B34 /* ECColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B3CE67D8220D18FD170CF34A00457E /* ECColorExtension.swift */; };
@@ -264,9 +263,12 @@
 		9B26A19E200C9BBE95DAB319C1653928 /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4135B2E7A67618CF5B01AE2D39791A /* ConstraintLayoutGuideDSL.swift */; };
 		9B520E6933F5AC59EA298B18D28DF7C6 /* ECNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4FA64CD4A0B118531E993C00B612C /* ECNavigationController.swift */; };
 		9B704916E8A108066E00C7B0A11139FA /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33BCF254788DCBCBDFBE1232ADF721A /* ImageModifier.swift */; };
-		9C1E798824C56B7300F4F48B /* ECDataPrecondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1E798724C56B7300F4F48B /* ECDataPrecondition.swift */; };
+		9C1E798824C56B7300F4F48B /* ECViewControllerDataCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1E798724C56B7300F4F48B /* ECViewControllerDataCondition.swift */; };
 		9C371D43464217293023FED30D96DF3F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F27D0665236C25596A1CACBC67EE5 /* ImageCache.swift */; };
 		9C5D0D4424C6D4CC00AE6DAF /* ECInstantiateConditionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0D4324C6D4CC00AE6DAF /* ECInstantiateConditionType.swift */; };
+		9C693D5F24CA69C9008EF063 /* ECAuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C693D5E24CA69C9008EF063 /* ECAuthenticationType.swift */; };
+		9C693D6424CA830A008EF063 /* ECUnmanagedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C693D6324CA830A008EF063 /* ECUnmanagedExtension.swift */; };
+		9C693D6824CA8D92008EF063 /* ECAccessControlType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C693D6724CA8D92008EF063 /* ECAccessControlType.swift */; };
 		9C76808024C91EA50079106C /* ECBooleanType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76807F24C91EA50079106C /* ECBooleanType.swift */; };
 		9CB804DF24C7C3AE005FA474 /* ECConditionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB804DE24C7C3AE005FA474 /* ECConditionType.swift */; };
 		9CB804E124C7C84E005FA474 /* ECEmptyInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB804E024C7C84E005FA474 /* ECEmptyInstantiable.swift */; };
@@ -330,7 +332,7 @@
 		C15289BF8B8A98E50B4AB5C01ED5D50B /* ECPopupListKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFD361876F5DF95F1E2F37A95EB7AEA /* ECPopupListKeyboard.swift */; };
 		C1BB28672508A3AA176DA97892EAD183 /* ECLengthTextConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F55627B00C751988A1230D325A477D /* ECLengthTextConstraint.swift */; };
 		C214F2FC48B59214A506B2A6CFA28864 /* YYKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FE25CC95E31F015001213F9D9488ED96 /* YYKeyboardManager.m */; };
-		C226EBFD30D8996984B9974353307A15 /* ECPrecondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250215767E424FFFD36DC7947FF9A07E /* ECPrecondition.swift */; };
+		C226EBFD30D8996984B9974353307A15 /* ECViewControllerCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250215767E424FFFD36DC7947FF9A07E /* ECViewControllerCondition.swift */; };
 		C26F12EFB82F91EFD9D8FC1F391D9439 /* ECStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB39EF83249975B1C6CBEB1BFE186732 /* ECStringExtension.swift */; };
 		C2A10E8ACB042641AA95282FBB515950 /* ECViewControllerKeyboardAdaptPlug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67961B70E6A7280891BD98BB438AC0F7 /* ECViewControllerKeyboardAdaptPlug.swift */; };
 		C2C70FAED5C5EA92D225524F8F3B69C1 /* ECExpirableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515DE9D51569365CFF7DAF0734E5CF75 /* ECExpirableProperty.swift */; };
@@ -370,7 +372,7 @@
 		D4B88789CC8E89D5214D7CE230BB99C9 /* Deserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA64A9219E7DE6BA6536A8655EB7C03B /* Deserializer.swift */; };
 		D4FAA2EA5EE6B0A624A50F99C12ACBD5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4102AE1F76CF6D741664F5E3667FB1EA /* Foundation.framework */; };
 		D51E76179014094FCC7F0A685CD99142 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C43F42BE2BECA29AD8F7851E4E4101 /* Image.swift */; };
-		D55BBE48499CDD86F4BD99F8F592B2D6 /* ECViewControllerAccessable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3C54DB354B007BB801EDC4DDAF8D4 /* ECViewControllerAccessable.swift */; };
+		D55BBE48499CDD86F4BD99F8F592B2D6 /* ECViewControllerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3C54DB354B007BB801EDC4DDAF8D4 /* ECViewControllerLoadable.swift */; };
 		D6440C6FAF057430D109D0C9DA16A735 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD75681BDD7EB8D048B574E5429E376 /* Constraint.swift */; };
 		D65C254F5ABF2CB5ECEE50FE8F8E1A80 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302FE56B0EB239CEC77EE027358CEC8 /* Response.swift */; };
 		D681F6E038C3B4948778D7348D408B1F /* HandyJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B6D2FB5C383A5F407B752CAC2FC928 /* HandyJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -455,7 +457,6 @@
 		FD4C88F65EB30FDC830F7B929D245897 /* Kingfisher.h in Headers */ = {isa = PBXBuildFile; fileRef = C6C10221F2248ACE3933259DB990AAF0 /* Kingfisher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDF804C4F9DC8A38718AF0A082DD3B2A /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95564BE91F929B95B09D5FC80C845658 /* Kingfisher.framework */; };
 		FFEA40909429889816C6DB67BA66CC79 /* MJRefreshAutoGifFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = DC8FC389BC5512A5D7FB8073C62D3ECC /* MJRefreshAutoGifFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FFF1CACB00082AC26A6D1C20349D5CAE /* ECAccessCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A08DC1298EB8CD764165AAD88F415B2 /* ECAccessCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -677,7 +678,7 @@
 		225C1D2EDA8EA779E71337C840919C2A /* SizeExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SizeExtensions.swift; path = Sources/Utility/SizeExtensions.swift; sourceTree = "<group>"; };
 		22E2CB7C2BF3FEB83FF60EAEE58FB99C /* Result-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Result-prefix.pch"; sourceTree = "<group>"; };
 		2476304E906A71B8F7DC62BD9EE80DF4 /* ECClampingProperty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECClampingProperty.swift; sourceTree = "<group>"; };
-		250215767E424FFFD36DC7947FF9A07E /* ECPrecondition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPrecondition.swift; sourceTree = "<group>"; };
+		250215767E424FFFD36DC7947FF9A07E /* ECViewControllerCondition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewControllerCondition.swift; sourceTree = "<group>"; };
 		25381725DB330C31AECA1DECCC55FC0F /* EasyCoding-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EasyCoding-Info.plist"; sourceTree = "<group>"; };
 		25FD2453E03BBC0A60FCDF934F1BFB5D /* EasyCoding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyCoding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		268D61975B1BAE12A282A6A760FA70B4 /* ECGesturePasswordView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECGesturePasswordView.swift; sourceTree = "<group>"; };
@@ -693,7 +694,6 @@
 		2812D5B4374CCAAC6ECE0BC2D7688BC5 /* YYKeyboardManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YYKeyboardManager-prefix.pch"; sourceTree = "<group>"; };
 		288824C3EE570D5822918CF5EA6BDA70 /* Pods_EasyCoding_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyCoding_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		296D556CC7680FC449908024C0D7E5CD /* Result.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Result.release.xcconfig; sourceTree = "<group>"; };
-		2A08DC1298EB8CD764165AAD88F415B2 /* ECAccessCenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECAccessCenter.swift; sourceTree = "<group>"; };
 		2BDF1CE67E6DA52797B3AA9936442EA4 /* Measuable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Measuable.swift; path = Source/Measuable.swift; sourceTree = "<group>"; };
 		2C20BCEF006B46D1130D1382D4E44E74 /* EasyCoding.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EasyCoding.modulemap; sourceTree = "<group>"; };
 		2C39690112FF7C78A77AE3DAA9BF1E75 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
@@ -871,7 +871,7 @@
 		7DB3DF188FFC4CD8C70577997C0738C2 /* URL+Moya.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URL+Moya.swift"; path = "Sources/Moya/URL+Moya.swift"; sourceTree = "<group>"; };
 		7DC4D717CC88DC143586F957E87316F2 /* ECDataRefreshPluginBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDataRefreshPluginBase.swift; sourceTree = "<group>"; };
 		7DCBC21B25984A48BE58FED4D73409E3 /* Result.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Result.modulemap; sourceTree = "<group>"; };
-		7E5EF34C8B3D2AC7930EBCC9CB833D2A /* ECSimplePrecondition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECSimplePrecondition.swift; sourceTree = "<group>"; };
+		7E5EF34C8B3D2AC7930EBCC9CB833D2A /* ECViewControllerBlockCondition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewControllerBlockCondition.swift; sourceTree = "<group>"; };
 		7EF6D2BB485F75314C296284E572C129 /* Runtime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Runtime.swift; path = Sources/Utility/Runtime.swift; sourceTree = "<group>"; };
 		8019E2DE6A67026482F551CA397F4728 /* ECEventPublisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECEventPublisher.swift; sourceTree = "<group>"; };
 		804B2DE58317C0254A07534F19132B32 /* Metadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Metadata.swift; path = Source/Metadata.swift; sourceTree = "<group>"; };
@@ -926,8 +926,11 @@
 		9BA638B2C39AE628D4E4DD2B33C02ABB /* MJRefresh.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = MJRefresh.bundle; path = MJRefresh/MJRefresh.bundle; sourceTree = "<group>"; };
 		9BB7E67DC2A0834A6135FCB4BB78DF5D /* ECEventPublisherType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECEventPublisherType.swift; sourceTree = "<group>"; };
 		9BCB1BAAE9713E27FF2B7E17294D06EC /* ECAttributedStringOperator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECAttributedStringOperator.swift; sourceTree = "<group>"; };
-		9C1E798724C56B7300F4F48B /* ECDataPrecondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDataPrecondition.swift; sourceTree = "<group>"; };
+		9C1E798724C56B7300F4F48B /* ECViewControllerDataCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECViewControllerDataCondition.swift; sourceTree = "<group>"; };
 		9C5D0D4324C6D4CC00AE6DAF /* ECInstantiateConditionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECInstantiateConditionType.swift; sourceTree = "<group>"; };
+		9C693D5E24CA69C9008EF063 /* ECAuthenticationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECAuthenticationType.swift; sourceTree = "<group>"; };
+		9C693D6324CA830A008EF063 /* ECUnmanagedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECUnmanagedExtension.swift; sourceTree = "<group>"; };
+		9C693D6724CA8D92008EF063 /* ECAccessControlType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECAccessControlType.swift; sourceTree = "<group>"; };
 		9C76807F24C91EA50079106C /* ECBooleanType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECBooleanType.swift; sourceTree = "<group>"; };
 		9CB804DE24C7C3AE005FA474 /* ECConditionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECConditionType.swift; sourceTree = "<group>"; };
 		9CB804E024C7C84E005FA474 /* ECEmptyInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECEmptyInstantiable.swift; sourceTree = "<group>"; };
@@ -948,7 +951,7 @@
 		A2E89C63EC797A6F7BCF905EE234CE70 /* ECDataPagedDecoratorBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDataPagedDecoratorBase.swift; sourceTree = "<group>"; };
 		A3453C33AB370982F738CD66F06FC48D /* ECOnceEventManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECOnceEventManager.swift; sourceTree = "<group>"; };
 		A3C292F6D343866C88FF86E31179ABBE /* MJRefreshGifHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshGifHeader.h; path = MJRefresh/Custom/Header/MJRefreshGifHeader.h; sourceTree = "<group>"; };
-		A3E3C54DB354B007BB801EDC4DDAF8D4 /* ECViewControllerAccessable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewControllerAccessable.swift; sourceTree = "<group>"; };
+		A3E3C54DB354B007BB801EDC4DDAF8D4 /* ECViewControllerLoadable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewControllerLoadable.swift; sourceTree = "<group>"; };
 		A41AD4E9AC0B2A26444755AD231C7ECD /* ECFlow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECFlow.swift; sourceTree = "<group>"; };
 		A4AE0244A10D3CD861202C07C0F65F3F /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackNormalFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.m; sourceTree = "<group>"; };
 		A582B2ABA01E7CD9CBA196A2FA2996C9 /* MJRefresh-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MJRefresh-Info.plist"; sourceTree = "<group>"; };
@@ -956,7 +959,6 @@
 		A856FB6C71AE292798A5150950BF80B4 /* ECLabelStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECLabelStyle.swift; sourceTree = "<group>"; };
 		A8C81903430C029F36694E0543A542CE /* ECEventType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECEventType.swift; sourceTree = "<group>"; };
 		A96BFB27B3EE8EEBA45E2AC3DB7B524E /* HandyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = HandyJSON.modulemap; sourceTree = "<group>"; };
-		A9F5137FF2E86254FA53F99DB17EA7ED /* ECViewControllerAccess.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewControllerAccess.swift; sourceTree = "<group>"; };
 		AA12FB492D6CE5C732AD83A159D2BC27 /* ConstraintDirectionalInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsets.swift; path = Source/ConstraintDirectionalInsets.swift; sourceTree = "<group>"; };
 		AA9DF31B54E1333F96998726FF9A8E46 /* ECViewDataDecorator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewDataDecorator.swift; sourceTree = "<group>"; };
 		AAAFE0D647A71E8CFAADF366FE283ED7 /* ReflectionHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReflectionHelper.swift; path = Source/ReflectionHelper.swift; sourceTree = "<group>"; };
@@ -1085,7 +1087,7 @@
 		F360D47C9D7D3DE6D07DD94211EF12CC /* ECDirection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDirection.swift; sourceTree = "<group>"; };
 		F3F5BADA8398D6D2714C50905AF0DC19 /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
 		F3FC45A6B26C0DC756E2E996FC737F56 /* ECApiPluginType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECApiPluginType.swift; sourceTree = "<group>"; };
-		F3FEB0563375B5BC08A5AE197327C0BF /* ECRejectTypePrecondition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECRejectTypePrecondition.swift; sourceTree = "<group>"; };
+		F3FEB0563375B5BC08A5AE197327C0BF /* ECViewControllerRejectCondition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECViewControllerRejectCondition.swift; sourceTree = "<group>"; };
 		F4A110AC12A0E15FA962ABF53CE2E9FF /* OtherExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OtherExtension.swift; path = Source/OtherExtension.swift; sourceTree = "<group>"; };
 		F4BAC93D703D4831F7093EF9EA37674B /* SnapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.release.xcconfig; sourceTree = "<group>"; };
 		F5264363ED7F55440CF202BDF56ED4BD /* ECPage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPage.swift; sourceTree = "<group>"; };
@@ -1456,15 +1458,13 @@
 			path = Picker;
 			sourceTree = "<group>";
 		};
-		4516E380BF361759829E4393C1106BC3 /* 2.2.1.AccessControl */ = {
+		4516E380BF361759829E4393C1106BC3 /* 2.2.1.ViewControllerCondition */ = {
 			isa = PBXGroup;
 			children = (
-				2A08DC1298EB8CD764165AAD88F415B2 /* ECAccessCenter.swift */,
-				250215767E424FFFD36DC7947FF9A07E /* ECPrecondition.swift */,
-				A9F5137FF2E86254FA53F99DB17EA7ED /* ECViewControllerAccess.swift */,
-				C69ED2F26F12AC9FE4D915D2912F349D /* 2.2.1.1 Preconditions */,
+				9C3412C324CAE5A9001224C6 /* Base */,
+				C69ED2F26F12AC9FE4D915D2912F349D /* Example */,
 			);
-			path = 2.2.1.AccessControl;
+			path = 2.2.1.ViewControllerCondition;
 			sourceTree = "<group>";
 		};
 		45C0B9373F9EB74C9AF7BBFBA622780B /* HandyJSON */ = {
@@ -1521,10 +1521,9 @@
 		48818BB0E355D824752009B59F11EA8D /* 2.2.AccessControl */ = {
 			isa = PBXGroup;
 			children = (
-				4516E380BF361759829E4393C1106BC3 /* 2.2.1.AccessControl */,
+				4516E380BF361759829E4393C1106BC3 /* 2.2.1.ViewControllerCondition */,
 				0D8D7F4051BFCC14370D8199A4C3CC93 /* 2.2.2.FlowControl */,
-				EF4891A8F86C2E32C7C034BE0293850D /* 2.2.3.PresentSegue */,
-				A2DCFFAF4E07983CEF3E864FEA91770C /* 2.2.4.ViewControllerAccess */,
+				A2DCFFAF4E07983CEF3E864FEA91770C /* 2.2.3.ViewControllerLoadable */,
 			);
 			path = 2.2.AccessControl;
 			sourceTree = "<group>";
@@ -1653,6 +1652,7 @@
 				8F7C56E742C2AECD2575353EF0A3B930 /* ECViewControllerExtension.swift */,
 				0435C30505B3D037B7207200BFD6E6B3 /* ECViewExtension.swift */,
 				5958412FE4BD5DEFE4C3884E9EE0E553 /* ECWindowExtension.swift */,
+				9C693D6324CA830A008EF063 /* ECUnmanagedExtension.swift */,
 			);
 			path = 1.1.Extensions;
 			sourceTree = "<group>";
@@ -2018,10 +2018,20 @@
 			path = Weaker;
 			sourceTree = "<group>";
 		};
+		9C3412C324CAE5A9001224C6 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				250215767E424FFFD36DC7947FF9A07E /* ECViewControllerCondition.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		9C5D0D4024C6D49600AE6DAF /* Condition */ = {
 			isa = PBXGroup;
 			children = (
 				9CB804DE24C7C3AE005FA474 /* ECConditionType.swift */,
+				9C693D5E24CA69C9008EF063 /* ECAuthenticationType.swift */,
+				9C693D6724CA8D92008EF063 /* ECAccessControlType.swift */,
 				9C5D0D4324C6D4CC00AE6DAF /* ECInstantiateConditionType.swift */,
 			);
 			path = Condition;
@@ -2084,14 +2094,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		A2DCFFAF4E07983CEF3E864FEA91770C /* 2.2.4.ViewControllerAccess */ = {
+		A2DCFFAF4E07983CEF3E864FEA91770C /* 2.2.3.ViewControllerLoadable */ = {
 			isa = PBXGroup;
 			children = (
 				D4DB7490DDFEC91FFA12F4B0D8C5FC5E /* ECFlowController.swift */,
 				67310FCF1A08E81F654C5ED067A49FEF /* ECViewControllerType.swift */,
-				A3E3C54DB354B007BB801EDC4DDAF8D4 /* ECViewControllerAccessable.swift */,
+				A3E3C54DB354B007BB801EDC4DDAF8D4 /* ECViewControllerLoadable.swift */,
 			);
-			path = 2.2.4.ViewControllerAccess;
+			path = 2.2.3.ViewControllerLoadable;
 			sourceTree = "<group>";
 		};
 		A569AE0E2328E090AE39DBEF6853CF1E /* Data */ = {
@@ -2263,20 +2273,21 @@
 				A569AE0E2328E090AE39DBEF6853CF1E /* Data */,
 				D93006594E89D1496818152A1FBE1C4C /* Event */,
 				A7E09F792BB1E81855D550C807533860 /* PresentAnimation */,
+				EF4891A8F86C2E32C7C034BE0293850D /* PresentSegue */,
 				F254D33963245825AAE35A7D378007F9 /* Regex */,
 				996EFD54F19CEDEAF92D50B0FCD319AF /* Weaker */,
 			);
 			path = 1.5.Types;
 			sourceTree = "<group>";
 		};
-		C69ED2F26F12AC9FE4D915D2912F349D /* 2.2.1.1 Preconditions */ = {
+		C69ED2F26F12AC9FE4D915D2912F349D /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				F3FEB0563375B5BC08A5AE197327C0BF /* ECRejectTypePrecondition.swift */,
-				7E5EF34C8B3D2AC7930EBCC9CB833D2A /* ECSimplePrecondition.swift */,
-				9C1E798724C56B7300F4F48B /* ECDataPrecondition.swift */,
+				F3FEB0563375B5BC08A5AE197327C0BF /* ECViewControllerRejectCondition.swift */,
+				7E5EF34C8B3D2AC7930EBCC9CB833D2A /* ECViewControllerBlockCondition.swift */,
+				9C1E798724C56B7300F4F48B /* ECViewControllerDataCondition.swift */,
 			);
-			path = "2.2.1.1 Preconditions";
+			path = Example;
 			sourceTree = "<group>";
 		};
 		C6A88DCE0908E9F65777E12B138C0859 /* 1.4.2.ViewStyle */ = {
@@ -2565,13 +2576,13 @@
 			path = EasyCoding/Classes/2.Business;
 			sourceTree = "<group>";
 		};
-		EF4891A8F86C2E32C7C034BE0293850D /* 2.2.3.PresentSegue */ = {
+		EF4891A8F86C2E32C7C034BE0293850D /* PresentSegue */ = {
 			isa = PBXGroup;
 			children = (
 				D8D34FE05E46149424EC3A290803F91D /* Base */,
 				43604C57DAC01EA0DC9AF052F557CD31 /* Segues */,
 			);
-			path = 2.2.3.PresentSegue;
+			path = PresentSegue;
 			sourceTree = "<group>";
 		};
 		F254D33963245825AAE35A7D378007F9 /* Regex */ = {
@@ -3430,7 +3441,6 @@
 			files = (
 				008517E76F7CD1EA8BFC7A2BCC1B37C8 /* EasyCoding-dummy.m in Sources */,
 				9CB804DF24C7C3AE005FA474 /* ECConditionType.swift in Sources */,
-				FFF1CACB00082AC26A6D1C20349D5CAE /* ECAccessCenter.swift in Sources */,
 				3CE99718DCE1AC100540712062BAF5A3 /* ECActivityIndicatorViewStyle.swift in Sources */,
 				592A002AFD2DAC7B4D1C9368AD364FC1 /* ECAlertConfig.swift in Sources */,
 				6C7B1259CF3A3B54CD26E31CDC448BE0 /* ECAlertController.swift in Sources */,
@@ -3545,13 +3555,15 @@
 				91C16C9C59250904819D4625087B640F /* ECPickerViewMultiDataSource.swift in Sources */,
 				6604FD557ED9A65290AD426D099F3E83 /* ECPopupKeyboard.swift in Sources */,
 				C15289BF8B8A98E50B4AB5C01ED5D50B /* ECPopupListKeyboard.swift in Sources */,
-				C226EBFD30D8996984B9974353307A15 /* ECPrecondition.swift in Sources */,
+				9C693D6424CA830A008EF063 /* ECUnmanagedExtension.swift in Sources */,
+				C226EBFD30D8996984B9974353307A15 /* ECViewControllerCondition.swift in Sources */,
 				114A1E118411A50CF68C150F2CE3C91B /* ECPresentAnimation.Fade.swift in Sources */,
 				BBB5914C2CFE9CCE3DCBCDAD91DC9C85 /* ECPresentAnimation.Group.swift in Sources */,
 				226D8162F3F5CE343BF8F653D8725ECD /* ECPresentAnimation.Popup.swift in Sources */,
 				4B6108C20E5E96F78A640E2B97B38F05 /* ECPresentAnimation.SlideOut.swift in Sources */,
 				CA209DDF63ED0ADB03C3A289C2E7EE35 /* ECPresentAnimation.swift in Sources */,
 				43536AB8187FF3E4C009B31911115916 /* ECPresentAnimationType.swift in Sources */,
+				9C693D6824CA8D92008EF063 /* ECAccessControlType.swift in Sources */,
 				B0939E7B72866BCD011B2608872076C5 /* ECPresentSegue.Content.swift in Sources */,
 				9C76808024C91EA50079106C /* ECBooleanType.swift in Sources */,
 				292DE474F48B3567D13F05829CD14A87 /* ECPresentSegue.MultiPush.swift in Sources */,
@@ -3566,14 +3578,14 @@
 				6F63763E293A826661D4E6902B99BE92 /* ECPropertyWrapper.swift in Sources */,
 				CDFC1F8F78C0462992F2C18932CED397 /* ECProtocolButton.swift in Sources */,
 				EE9DF394710D6B158FF2190632402FA8 /* ECRegex.swift in Sources */,
-				20718EBD154F9698A21680E68F964CC6 /* ECRejectTypePrecondition.swift in Sources */,
+				20718EBD154F9698A21680E68F964CC6 /* ECViewControllerRejectCondition.swift in Sources */,
 				34B0A3C50F36518FC994EC477143F1AB /* ECScrollViewExtension.swift in Sources */,
 				81A20094926009B767651F3E8E956C30 /* ECScrollViewStyle.swift in Sources */,
-				9C1E798824C56B7300F4F48B /* ECDataPrecondition.swift in Sources */,
+				9C1E798824C56B7300F4F48B /* ECViewControllerDataCondition.swift in Sources */,
 				8824D78F3CF2981B3F7395EAC9DA2ECE /* ECSetting.swift in Sources */,
 				9C5D0D4424C6D4CC00AE6DAF /* ECInstantiateConditionType.swift in Sources */,
 				D41D9D4D7D05DAF1EC48EEFAEC04577F /* ECSimpleLocalized.swift in Sources */,
-				964A459F0B3B5709BCC236F0A78A2F02 /* ECSimplePrecondition.swift in Sources */,
+				964A459F0B3B5709BCC236F0A78A2F02 /* ECViewControllerBlockCondition.swift in Sources */,
 				8C097C4C69BC71CBD9F75EDCFA7406AE /* ECSliderStyle.swift in Sources */,
 				410730CDC4CC9D056B89983D2912D13D /* ECSlideshow.swift in Sources */,
 				E41E4B8E445C9BA835C5E685C32EAD7C /* ECStackViewStyle.swift in Sources */,
@@ -3589,6 +3601,7 @@
 				97E88A700412075FCC9BBC486C5C6461 /* ECTestSettingItem.swift in Sources */,
 				05E856DDF55A1CA6A74CF9929F69A400 /* ECTestSettingManager.swift in Sources */,
 				16F421EA480E2C69FFBA21122381A8B1 /* ECTextConstraint.swift in Sources */,
+				9C693D5F24CA69C9008EF063 /* ECAuthenticationType.swift in Sources */,
 				CC9493C15468ACC484CAFEFED944F009 /* ECTextField.swift in Sources */,
 				E7E44A2DE5793B765600C94B4804F2A9 /* ECTextFieldStyle.swift in Sources */,
 				674A6C2631139F49BB535E14D30884B4 /* ECTextualizable.swift in Sources */,
@@ -3607,8 +3620,7 @@
 				F35AB4D54B7933D536850122C30BE46E /* ECViewBuilder.swift in Sources */,
 				1984DCA2AD2F0C4970C33E50EE956654 /* ECViewBuilderShortcut.swift in Sources */,
 				9DF42262278A5E1A724750B1C1F767B4 /* ECViewController.swift in Sources */,
-				98489421DA7B1F4E4A4EF2FCCEA05CA8 /* ECViewControllerAccess.swift in Sources */,
-				D55BBE48499CDD86F4BD99F8F592B2D6 /* ECViewControllerAccessable.swift in Sources */,
+				D55BBE48499CDD86F4BD99F8F592B2D6 /* ECViewControllerLoadable.swift in Sources */,
 				5E1DFCBB29C8DEC4A552742C23FAD9B9 /* ECViewControllerExtension.swift in Sources */,
 				C2A10E8ACB042641AA95282FBB515950 /* ECViewControllerKeyboardAdaptPlug.swift in Sources */,
 				202CFB73FE9A4B91E1B1338B694238E2 /* ECViewControllerPlug.swift in Sources */,
