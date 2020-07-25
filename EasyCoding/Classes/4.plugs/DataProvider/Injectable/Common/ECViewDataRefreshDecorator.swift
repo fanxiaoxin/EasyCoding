@@ -12,7 +12,7 @@ open class ECViewDataRefreshDecorator<DataProviderType: ECDataProviderType>: ECV
     ///刷新控件
     let refresh = ECDataRefreshPlugin<DataProviderType.DataType>()
     ///错误提示
-    let errorToast = ECDataErrorToastPlugin<DataProviderType.DataType>()
+//    let errorToast = ECDataErrorToastPlugin<DataProviderType.DataType>()
 
     public override weak var targetView: UIView? {
         didSet {
@@ -25,12 +25,12 @@ open class ECViewDataRefreshDecorator<DataProviderType: ECDataProviderType>: ECV
         
         empty.unloadWhenRequest = false
         
-        errorToast.activate({ [weak refresh] in
-            return refresh?.isRereshInited ?? false
-        })
-        error.activate ({ [weak refresh] in
-            return !(refresh?.isRereshInited ?? true)
-        })
+//        errorToast.activate({ [weak refresh] in
+//            return refresh?.isRereshInited ?? false
+//        })
+//        error.activate ({ [weak refresh] in
+//            return !(refresh?.isRereshInited ?? true)
+//        })
         loading.activate { [weak refresh] () -> Bool in
             return !(refresh?.isRereshInited ?? true)
         }

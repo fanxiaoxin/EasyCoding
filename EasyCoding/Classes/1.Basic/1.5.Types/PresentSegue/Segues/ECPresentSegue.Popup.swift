@@ -107,3 +107,13 @@ extension ECPresentSegue {
     public static var popupReplace: PopupReplace { return PopupReplace() }
 }
 
+extension ECSetting {
+    public static var PopupColor: UIColor {
+        get {
+            return ECPresentSegue.Popup.backgroundColor
+        }
+        set {
+            ECPresentSegue.Popup.backgroundColor = newValue
+        }
+    }
+}

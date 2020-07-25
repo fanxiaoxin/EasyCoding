@@ -9,7 +9,7 @@
 import UIKit
 
 class ExamplePrecondition: Precondition {
-    var text: String? = "i'm text"
+    var text: String = "i'm text"
     override init() {
         super.init()
         print("i born")
@@ -19,13 +19,9 @@ class ExamplePrecondition: Precondition {
     }
     override func check(completion: @escaping (Bool) -> Void) {
         print(self.text)
-//        self.source?.view.showHUD()
-        let api = ApiTest.Normal().asDataProvider().plugin(.loading(for: self.source!.view))
-        api.easy.retain()
-        api.easyData { [weak self, weak api] (result) in
-            api?.easy.release()
+        let api = ApiTest.Normal()
+        self.request(api) { [weak self] (response) in
             print(self?.text)
-//            self?.source?.view.hideHUD()
             completion(true)
         }
     }

@@ -61,7 +61,7 @@ TODO: Add long description of the pod here.
   end
   # 将每一个API请求的相关字段都封装为一个对象，可以清晰地看到每一个API的请求地址、方式、请求结构、响应结构等操作
   s.subspec 'Api' do |a|
-      a.source_files = 'EasyCoding/Classes/2.Business/2.3.Api/**/*'
+      a.source_files = 'EasyCoding/Classes/2.Business/2.3.Api/**/*','EasyCoding/Classes/4.plugs/DataProvider/**/*'
       a.dependency 'EasyCoding/Basic'
       a.dependency 'Moya', '~> 13.0.0'
       a.dependency 'HandyJSON', '~> 5.0.0'

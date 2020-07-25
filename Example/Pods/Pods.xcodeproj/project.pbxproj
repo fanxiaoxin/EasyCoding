@@ -223,7 +223,7 @@
 		86A534FC906340D4172B1FBD2878704E /* ConstraintDirectionalInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12FB492D6CE5C732AD83A159D2BC27 /* ConstraintDirectionalInsets.swift */; };
 		86B8C91460FCE00A05696CAE29F82567 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 337A1038077226E166E23B6685BC35A8 /* JRSwizzle.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		876C37E694CE03ADAF28618017DEC3B6 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = A3C292F6D343866C88FF86E31179ABBE /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8824D78F3CF2981B3F7395EAC9DA2ECE /* ECSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DFEF7F50E9C1190B216536542EE184 /* ECSetting.swift */; };
+		8824D78F3CF2981B3F7395EAC9DA2ECE /* ECControlSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DFEF7F50E9C1190B216536542EE184 /* ECControlSetting.swift */; };
 		88590E66BE85EC8B6BA4AD23C8E5D022 /* ConstraintPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BC39514A6D3802623B52762F78086 /* ConstraintPriority.swift */; };
 		8863A153B98FA9D210FFC11D6921CD30 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5BAC36B7383FB2E3401963BEE7B5BE5 /* CFNetwork.framework */; };
 		88E90056223CC5D57DC0FCF554E9879C /* KingfisherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B269BFE7AE43A74043B1F4B39BEFB3A /* KingfisherManager.swift */; };
@@ -265,6 +265,9 @@
 		9B704916E8A108066E00C7B0A11139FA /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33BCF254788DCBCBDFBE1232ADF721A /* ImageModifier.swift */; };
 		9C1E798824C56B7300F4F48B /* ECViewControllerDataCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1E798724C56B7300F4F48B /* ECViewControllerDataCondition.swift */; };
 		9C371D43464217293023FED30D96DF3F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F27D0665236C25596A1CACBC67EE5 /* ImageCache.swift */; };
+		9C4F30AF24CBBF78002D23BC /* ECApiDataPluginExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F30AE24CBBF78002D23BC /* ECApiDataPluginExtentions.swift */; };
+		9C4F30B124CBC3A3002D23BC /* ECViewDataOutsideDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F30B024CBC3A3002D23BC /* ECViewDataOutsideDecorator.swift */; };
+		9C4F30B324CBC9B6002D23BC /* ECSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F30B224CBC9B6002D23BC /* ECSetting.swift */; };
 		9C5D0D4424C6D4CC00AE6DAF /* ECInstantiateConditionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0D4324C6D4CC00AE6DAF /* ECInstantiateConditionType.swift */; };
 		9C693D5F24CA69C9008EF063 /* ECAuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C693D5E24CA69C9008EF063 /* ECAuthenticationType.swift */; };
 		9C693D6424CA830A008EF063 /* ECUnmanagedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C693D6324CA830A008EF063 /* ECUnmanagedExtension.swift */; };
@@ -927,6 +930,9 @@
 		9BB7E67DC2A0834A6135FCB4BB78DF5D /* ECEventPublisherType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECEventPublisherType.swift; sourceTree = "<group>"; };
 		9BCB1BAAE9713E27FF2B7E17294D06EC /* ECAttributedStringOperator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECAttributedStringOperator.swift; sourceTree = "<group>"; };
 		9C1E798724C56B7300F4F48B /* ECViewControllerDataCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECViewControllerDataCondition.swift; sourceTree = "<group>"; };
+		9C4F30AE24CBBF78002D23BC /* ECApiDataPluginExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECApiDataPluginExtentions.swift; sourceTree = "<group>"; };
+		9C4F30B024CBC3A3002D23BC /* ECViewDataOutsideDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECViewDataOutsideDecorator.swift; sourceTree = "<group>"; };
+		9C4F30B224CBC9B6002D23BC /* ECSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECSetting.swift; sourceTree = "<group>"; };
 		9C5D0D4324C6D4CC00AE6DAF /* ECInstantiateConditionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECInstantiateConditionType.swift; sourceTree = "<group>"; };
 		9C693D5E24CA69C9008EF063 /* ECAuthenticationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECAuthenticationType.swift; sourceTree = "<group>"; };
 		9C693D6324CA830A008EF063 /* ECUnmanagedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECUnmanagedExtension.swift; sourceTree = "<group>"; };
@@ -979,7 +985,7 @@
 		B728DBE72968D124FB66D34837730B52 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Source/Configuration.swift; sourceTree = "<group>"; };
 		B79A1127760E4AF9150181AF743BE585 /* ECPresentAnimation.SlideOut.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECPresentAnimation.SlideOut.swift; sourceTree = "<group>"; };
 		B88F5E14BD1E72801C2754EA2D5203C4 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoFooter.h; path = MJRefresh/Base/MJRefreshAutoFooter.h; sourceTree = "<group>"; };
-		B8DFEF7F50E9C1190B216536542EE184 /* ECSetting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECSetting.swift; sourceTree = "<group>"; };
+		B8DFEF7F50E9C1190B216536542EE184 /* ECControlSetting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECControlSetting.swift; sourceTree = "<group>"; };
 		B91B36567C4281BB09C02C4DBDD26C9D /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
 		B96457BF9214E590A96BFD764BB69866 /* ResultProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResultProtocol.swift; path = Result/ResultProtocol.swift; sourceTree = "<group>"; };
 		B9E1CBEFBBA2AAD4839C4684C8C6519C /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
@@ -1375,6 +1381,7 @@
 		3029A475B787403C84DFAE05645AC450 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9C4F30B024CBC3A3002D23BC /* ECViewDataOutsideDecorator.swift */,
 				AA9DF31B54E1333F96998726FF9A8E46 /* ECViewDataDecorator.swift */,
 				765BFC09C9B9E8FA1742DE0A976852A2 /* ECViewDataPagedDecorator.swift */,
 				4557F395B84B30C354E52AD88E1D0D81 /* ECViewDataRefreshDecorator.swift */,
@@ -2261,6 +2268,7 @@
 				80B3C9287098662D8622100A7EB648A3 /* ECApiStructure.swift */,
 				D033FE5360CC921042AE97B5934AA414 /* ECApiType.swift */,
 				52A9CCE0E6186D637C2F654A21F0AB50 /* ECHandyJSONExtension.swift */,
+				9C4F30AE24CBBF78002D23BC /* ECApiDataPluginExtentions.swift */,
 			);
 			path = 2.3.Api;
 			sourceTree = "<group>";
@@ -2596,7 +2604,7 @@
 		F2F3D77C40D076EE017DF0A8BA7FB19B /* 3.0.Setting */ = {
 			isa = PBXGroup;
 			children = (
-				B8DFEF7F50E9C1190B216536542EE184 /* ECSetting.swift */,
+				B8DFEF7F50E9C1190B216536542EE184 /* ECControlSetting.swift */,
 			);
 			path = 3.0.Setting;
 			sourceTree = "<group>";
@@ -2640,6 +2648,7 @@
 				BE0A60B22DADC27A3A5D4858BC0682BF /* ECTextualizable.swift */,
 				9CB804E024C7C84E005FA474 /* ECEmptyInstantiable.swift */,
 				9C76807F24C91EA50079106C /* ECBooleanType.swift */,
+				9C4F30B224CBC9B6002D23BC /* ECSetting.swift */,
 			);
 			path = 1.0.Foundation;
 			sourceTree = "<group>";
@@ -3569,6 +3578,7 @@
 				292DE474F48B3567D13F05829CD14A87 /* ECPresentSegue.MultiPush.swift in Sources */,
 				9F0684CDB52620BB56BE07DDFA3E78AC /* ECPresentSegue.Popup.swift in Sources */,
 				B1E0FEF82EBA472A56AD50793722E0F7 /* ECPresentSegue.Present.swift in Sources */,
+				9C4F30B324CBC9B6002D23BC /* ECSetting.swift in Sources */,
 				A9E677BC745244F98CA54EB12554B93C /* ECPresentSegue.Push.swift in Sources */,
 				CABC2387CFFD9D21CDA988F1A9559E12 /* ECPresentSegue.Replace.swift in Sources */,
 				05229D0CD2CA4C5D5788793EAE2353E1 /* ECPresentSegue.swift in Sources */,
@@ -3582,7 +3592,7 @@
 				34B0A3C50F36518FC994EC477143F1AB /* ECScrollViewExtension.swift in Sources */,
 				81A20094926009B767651F3E8E956C30 /* ECScrollViewStyle.swift in Sources */,
 				9C1E798824C56B7300F4F48B /* ECViewControllerDataCondition.swift in Sources */,
-				8824D78F3CF2981B3F7395EAC9DA2ECE /* ECSetting.swift in Sources */,
+				8824D78F3CF2981B3F7395EAC9DA2ECE /* ECControlSetting.swift in Sources */,
 				9C5D0D4424C6D4CC00AE6DAF /* ECInstantiateConditionType.swift in Sources */,
 				D41D9D4D7D05DAF1EC48EEFAEC04577F /* ECSimpleLocalized.swift in Sources */,
 				964A459F0B3B5709BCC236F0A78A2F02 /* ECViewControllerBlockCondition.swift in Sources */,
@@ -3598,6 +3608,7 @@
 				F3E84F9EB566C214214150247AA2B7D3 /* ECTableViewExtension.swift in Sources */,
 				DE00B6C9BF6A38DF89FA3F298B47B4C4 /* ECTableViewStyle.swift in Sources */,
 				E682F7C72973F193EA628ACD0E0BCEEA /* ECTestSettingController.swift in Sources */,
+				9C4F30AF24CBBF78002D23BC /* ECApiDataPluginExtentions.swift in Sources */,
 				97E88A700412075FCC9BBC486C5C6461 /* ECTestSettingItem.swift in Sources */,
 				05E856DDF55A1CA6A74CF9929F69A400 /* ECTestSettingManager.swift in Sources */,
 				16F421EA480E2C69FFBA21122381A8B1 /* ECTextConstraint.swift in Sources */,
@@ -3630,6 +3641,7 @@
 				E44C8D9C01BB0D55CE06DF62C6C459A5 /* ECViewDataRefreshDecorator.swift in Sources */,
 				119F06A94B482089DC37C21E4B85232F /* ECViewExtension.swift in Sources */,
 				5043736D470AC68E72E0E80BE0D906E2 /* ECViewLayout.swift in Sources */,
+				9C4F30B124CBC3A3002D23BC /* ECViewDataOutsideDecorator.swift in Sources */,
 				B7FBE14C40140AD4BF80B909C3F5F30D /* ECViewStyle.swift in Sources */,
 				DE20A584160DD760ACD15C9BFED53FDE /* ECWeaker.swift in Sources */,
 				34D81F652C0A33F4854639C5B5DD8000 /* ECWindowExtension.swift in Sources */,

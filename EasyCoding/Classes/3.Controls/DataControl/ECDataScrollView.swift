@@ -30,6 +30,18 @@ open class ECDataScrollView<DataProviderType: ECDataProviderType>: UIScrollView,
             }
         }
     }
+    ///加载数据
+    open func loadDataWithoutError(completion: @escaping (Self, DataProviderType.DataType) -> Void) {
+        self.dataPlugin?.easyData { [weak self] result in
+            if let s = self {
+                switch result {
+                case let .success(data):
+                completion(s as! Self, data)
+                default: break
+                }
+            }
+        }
+    }
     ///重新加载数据，调用前至少要调过一次loadData
     open func reloadData() {
         self.dataPlugin?.reloadData()
