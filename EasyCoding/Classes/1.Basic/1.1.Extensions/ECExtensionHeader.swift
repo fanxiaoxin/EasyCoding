@@ -21,4 +21,3 @@ extension CGFloat: EC.NamespaceDefine { }
 extension Decimal: EC.NamespaceDefine { }
 extension UIEdgeInsets: EC.NamespaceDefine {}
 extension CGRect: EC.NamespaceDefine { }
-

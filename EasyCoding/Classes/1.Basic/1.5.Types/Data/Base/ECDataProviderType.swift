@@ -67,7 +67,6 @@ extension Int32: ECDataType { }
 extension Int64: ECDataType { }
 extension Float: ECDataType { }
 extension Double: ECDataType { }
-extension Float80: ECDataType { }
 extension Date: ECDataType { }
 extension Data: ECDataType { }
 

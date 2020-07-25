@@ -275,6 +275,7 @@
 		9C76808024C91EA50079106C /* ECBooleanType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76807F24C91EA50079106C /* ECBooleanType.swift */; };
 		9CB804DF24C7C3AE005FA474 /* ECConditionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB804DE24C7C3AE005FA474 /* ECConditionType.swift */; };
 		9CB804E124C7C84E005FA474 /* ECEmptyInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB804E024C7C84E005FA474 /* ECEmptyInstantiable.swift */; };
+		9CBFCCBA24CBEA3F009C3AE0 /* ECResultExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBFCCB924CBEA3F009C3AE0 /* ECResultExtension.swift */; };
 		9D074582D37F12E84C96D91C50FEDB69 /* RetryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7C838934A7CF2D675826CD56D5417 /* RetryStrategy.swift */; };
 		9D5205C1003C420DDBA213B9D6A22A62 /* URL+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB3DF188FFC4CD8C70577997C0738C2 /* URL+Moya.swift */; };
 		9D7801B0E7700D5559CA9D775AC6EDF7 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A89E9AF5D8585FFE052ADCD757BE61 /* LayoutConstraintItem.swift */; };
@@ -940,6 +941,7 @@
 		9C76807F24C91EA50079106C /* ECBooleanType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECBooleanType.swift; sourceTree = "<group>"; };
 		9CB804DE24C7C3AE005FA474 /* ECConditionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECConditionType.swift; sourceTree = "<group>"; };
 		9CB804E024C7C84E005FA474 /* ECEmptyInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECEmptyInstantiable.swift; sourceTree = "<group>"; };
+		9CBFCCB924CBEA3F009C3AE0 /* ECResultExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECResultExtension.swift; sourceTree = "<group>"; };
 		9D85BE6F8069337B11D6E0D3360EDFAB /* ECNumberExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECNumberExtension.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DB065DA978F026C31E534EDBA8D5FC0 /* ECDataErrorPlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDataErrorPlugin.swift; sourceTree = "<group>"; };
@@ -1660,6 +1662,7 @@
 				0435C30505B3D037B7207200BFD6E6B3 /* ECViewExtension.swift */,
 				5958412FE4BD5DEFE4C3884E9EE0E553 /* ECWindowExtension.swift */,
 				9C693D6324CA830A008EF063 /* ECUnmanagedExtension.swift */,
+				9CBFCCB924CBEA3F009C3AE0 /* ECResultExtension.swift */,
 			);
 			path = 1.1.Extensions;
 			sourceTree = "<group>";
@@ -3558,6 +3561,7 @@
 				7650E0EA7AC81FD21D1C47DCCF66E418 /* ECPageControlStyle.swift in Sources */,
 				F87AAD41E3478293663A908BD9B7376F /* ECParagraphStyle.swift in Sources */,
 				FC2A756265B5A113619B7C83E18D79C9 /* ECPersonalized.swift in Sources */,
+				9CBFCCBA24CBEA3F009C3AE0 /* ECResultExtension.swift in Sources */,
 				26619CF4CAB0E9F1D6C700212BC1A9AE /* ECPicker.swift in Sources */,
 				D6E51AEFAB95BF15EDEFF999A6A0A00B /* ECPickerTextConstraint.swift in Sources */,
 				A62BEB6E703C2884952627150EE0CBEB /* ECPickerViewDataSource.swift in Sources */,

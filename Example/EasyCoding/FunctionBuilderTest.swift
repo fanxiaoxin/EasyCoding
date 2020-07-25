@@ -164,6 +164,37 @@ protocol ECCommandInvokerType {
     func call()
 }
 
+protocol ECFlowStepType {
+    
+}
+protocol ECFlowType: ECFlowStepType {
+    
+}
+struct AAA: ECFlowType {
+    
+}
+struct BBB: ECFlowStepType {
+    
+}
+@_functionBuilder
+struct ECFlowBuilder {
+    static func buildBlock() -> ECFlowType {
+        return AAA()
+    }
+    static func buildBlock(_ steps: ECFlowStepType...) -> ECFlowType {
+        return AAA()
+    }
+    static func buildIf(_ step: ECFlowStepType?) -> ECFlowType  {
+        return AAA()
+    }
+    static func buildEither(first: ECFlowType) -> ECFlowType {
+        return first
+    }
+    static func buildEither(second: ECFlowType) -> ECFlowType {
+        return second
+    }
+}
+
 @_functionBuilder
 struct AttributedStringBuilder {
     static func buildBlock() -> NSAttributedString {

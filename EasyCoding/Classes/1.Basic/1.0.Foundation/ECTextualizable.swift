@@ -39,9 +39,6 @@ extension Float: ECTextualizable {
 extension Double: ECTextualizable {
     public var friendlyText: String { return self.description }
 }
-extension Float80: ECTextualizable {
-    public var friendlyText: String { return self.description }
-}
 extension Date: ECTextualizable {
     public var friendlyText: String { return self.easy.string() }
 }
