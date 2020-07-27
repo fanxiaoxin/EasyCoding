@@ -19,8 +19,8 @@ open class ECTextConstraint: NSObject,UITextFieldDelegate {
     weak var textFieldDelegate: UITextFieldDelegate?
     ///切换delegate的设置到自定义属性
     static var swizzleTextFieldDelegateMethod: Int = {
-        try? UITextField.jr_swizzleMethod(#selector(getter: UITextField.delegate), withMethod: #selector(getter: UITextField.__ec_text_delegate))
-        try? UITextField.jr_swizzleMethod(#selector(setter: UITextField.delegate), withMethod: #selector(setter: UITextField.__ec_text_delegate))
+        UITextField.easy.swizzle(#selector(getter: UITextField.delegate), to: #selector(getter: UITextField.__ec_text_delegate))
+        UITextField.easy.swizzle(#selector(setter: UITextField.delegate), to: #selector(setter: UITextField.__ec_text_delegate))
         return 0
     }()
     public convenience init(other constraint:ECTextConstraint) {

@@ -47,10 +47,10 @@ extension ECViewControllerCondition {
         decorator.targetView = self.source?.view
         decorator.dataProvider = provider
         //内部变量手动retain
-        decorator.easy.retain()
+        let obj = decorator.easy.retain()
         decorator.easyData { (result) in
             completion(result)
-            decorator.easy.release()
+            obj.release()
         }
     }
 }

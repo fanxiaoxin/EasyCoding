@@ -22,12 +22,6 @@ extension ECEventTriggerable  {
 
 extension ECEventTriggerable where Self: NSObject {
     public var event: ECEventPublisher<EventType> {
-        if let event:ECEventPublisher<EventType> = self.easy.getAssociated(object:"ec_event_publisher") {
-            return event
-        }else{
-            let event = ECEventPublisher<EventType>()
-            self.easy.setAssociated(object: event, key: "ec_event_publisher")
-            return event
-        }
+        return self.easy.bindAssociatedObject("ec_event_publisher", creation: { ECEventPublisher<EventType>() })
     }
 }

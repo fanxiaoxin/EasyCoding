@@ -264,6 +264,9 @@
 		9B520E6933F5AC59EA298B18D28DF7C6 /* ECNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4FA64CD4A0B118531E993C00B612C /* ECNavigationController.swift */; };
 		9B704916E8A108066E00C7B0A11139FA /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33BCF254788DCBCBDFBE1232ADF721A /* ImageModifier.swift */; };
 		9C1E798824C56B7300F4F48B /* ECViewControllerDataCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1E798724C56B7300F4F48B /* ECViewControllerDataCondition.swift */; };
+		9C2CD45D24CE5D11000894CD /* ECViewControllerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CD45C24CE5D11000894CD /* ECViewControllerEvent.swift */; };
+		9C2CD45F24CE6501000894CD /* ECEventTiming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CD45E24CE6501000894CD /* ECEventTiming.swift */; };
+		9C2CD46124CE84FC000894CD /* ECViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CD46024CE84FC000894CD /* ECViewEvent.swift */; };
 		9C371D43464217293023FED30D96DF3F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F27D0665236C25596A1CACBC67EE5 /* ImageCache.swift */; };
 		9C4F30AF24CBBF78002D23BC /* ECApiDataPluginExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F30AE24CBBF78002D23BC /* ECApiDataPluginExtentions.swift */; };
 		9C4F30B124CBC3A3002D23BC /* ECViewDataOutsideDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F30B024CBC3A3002D23BC /* ECViewDataOutsideDecorator.swift */; };
@@ -931,6 +934,9 @@
 		9BB7E67DC2A0834A6135FCB4BB78DF5D /* ECEventPublisherType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECEventPublisherType.swift; sourceTree = "<group>"; };
 		9BCB1BAAE9713E27FF2B7E17294D06EC /* ECAttributedStringOperator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECAttributedStringOperator.swift; sourceTree = "<group>"; };
 		9C1E798724C56B7300F4F48B /* ECViewControllerDataCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECViewControllerDataCondition.swift; sourceTree = "<group>"; };
+		9C2CD45C24CE5D11000894CD /* ECViewControllerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECViewControllerEvent.swift; sourceTree = "<group>"; };
+		9C2CD45E24CE6501000894CD /* ECEventTiming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECEventTiming.swift; sourceTree = "<group>"; };
+		9C2CD46024CE84FC000894CD /* ECViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECViewEvent.swift; sourceTree = "<group>"; };
 		9C4F30AE24CBBF78002D23BC /* ECApiDataPluginExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECApiDataPluginExtentions.swift; sourceTree = "<group>"; };
 		9C4F30B024CBC3A3002D23BC /* ECViewDataOutsideDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECViewDataOutsideDecorator.swift; sourceTree = "<group>"; };
 		9C4F30B224CBC9B6002D23BC /* ECSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECSetting.swift; sourceTree = "<group>"; };
@@ -2028,6 +2034,15 @@
 			path = Weaker;
 			sourceTree = "<group>";
 		};
+		9C2CD45B24CE5CAE000894CD /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				9C2CD45C24CE5D11000894CD /* ECViewControllerEvent.swift */,
+				9C2CD46024CE84FC000894CD /* ECViewEvent.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
 		9C3412C324CAE5A9001224C6 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -2100,6 +2115,7 @@
 				F0C0A08236224E341065F7807CC305AF /* ECEventManagerType.swift */,
 				9BB7E67DC2A0834A6135FCB4BB78DF5D /* ECEventPublisherType.swift */,
 				A8C81903430C029F36694E0543A542CE /* ECEventType.swift */,
+				9C2CD45E24CE6501000894CD /* ECEventTiming.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -2417,6 +2433,7 @@
 				D1F3752730E9CA9FAEB6820A0C1CA9EE /* Handler */,
 				B91C9C4D58B12A72FADAFAD99AB558E8 /* Manager */,
 				7FAF7E2526DAC7B7C408C5EF874C5D21 /* Publisher */,
+				9C2CD45B24CE5CAE000894CD /* Example */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -3467,6 +3484,7 @@
 				CDFE393954F82B8B4F8A31902931EC53 /* ECAttributedString.swift in Sources */,
 				F02F9F7B2F3A9BF2CA7776782BBA0551 /* ECAttributedStringOperator.swift in Sources */,
 				7C8B322ECA132F1EF9141105387F4FCD /* ECBlockEventHandler.swift in Sources */,
+				9C2CD45F24CE6501000894CD /* ECEventTiming.swift in Sources */,
 				0199D3B2FC025F93BDBEAB90F74D783F /* ECBundleExtension.swift in Sources */,
 				55B5FFA51F86A7DB75C05253E24AF0F5 /* ECButton.swift in Sources */,
 				5597CE63E9EABD441A60A79D9BF948C1 /* ECButtonStyle.swift in Sources */,
@@ -3527,6 +3545,8 @@
 				5E9AE7BC0AA8D2A47A7F85B1AD7488BD /* ECFlow.swift in Sources */,
 				E2FF9BB2931A4B7ABB68F73E29E3D1C6 /* ECFlowCenter.swift in Sources */,
 				290AF73A8810B6AA431EFA1C65AFBF88 /* ECFlowController.swift in Sources */,
+				9C2CD46124CE84FC000894CD /* ECViewEvent.swift in Sources */,
+				9C2CD45D24CE5D11000894CD /* ECViewControllerEvent.swift in Sources */,
 				A0138FF3DBAE05E90B8D004141555567 /* ECFlowState.swift in Sources */,
 				61ED5555BDCCCF172CF2768AF142FF16 /* ECFlowStep.swift in Sources */,
 				B0EE7610DDA1F370C340E6921006B286 /* ECFontExtension.swift in Sources */,

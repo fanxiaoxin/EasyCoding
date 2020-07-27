@@ -10,6 +10,9 @@ import UIKit
 import EasyCoding
 
 class DataPluginController: ViewController<DataPluginView>, UITableViewDataSource {
+    deinit {
+        print("i die")
+    }
     override var preconditions: [ECViewControllerCondition]? {
         return [.example]
     }
@@ -25,6 +28,9 @@ class DataPluginController: ViewController<DataPluginView>, UITableViewDataSourc
         self.dataProvider.targetView = self.page.tableView
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "来吧", style: .plain, target: self, action: #selector(self.onTest))
+        
+        
+        self.easy.event.unregister(event: .dealloc)
     }
     @objc func onTest() {
         self.dataProvider.easyDataWithoutError { [weak self] (datas) in

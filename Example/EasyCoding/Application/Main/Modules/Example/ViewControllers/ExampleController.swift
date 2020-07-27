@@ -55,8 +55,30 @@ class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UIT
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0: self.load(DataPluginController())
-        case 1: self.load(PopupController())
+        case 0:
+            let controller = DataPluginController()
+            controller.easy.event.register(event: .viewDidLoad(.before)) {
+                print("view did load before 1")
+            }
+            controller.easy.event.register(event: .viewDidLoad(.after)) {
+                print("view did load after 1")
+            }
+            controller.easy.event.register(event: .dealloc) {
+                print("view die before")
+            }
+            self.load(controller)
+        case 1:
+            let controller = PopupController()
+            controller.easy.event.register(event: .viewDidLoad(.before)) {
+                print("view did load before 2")
+            }
+            controller.easy.event.register(event: .viewDidLoad(.after)) {
+                print("view did load after 2")
+            }
+                        controller.easy.event.register(event: .dealloc) {
+                            print("view die event")
+                        }
+            self.load(controller)
         case 2:
             ECSetting.Alert.container.addStyle(.border(.systemBlue))
 //            ECSetting.Alert.backgroundPresentAnimation = ECPresentAnimation.FadeColor(to: .init(white: 0, alpha: 0.4))

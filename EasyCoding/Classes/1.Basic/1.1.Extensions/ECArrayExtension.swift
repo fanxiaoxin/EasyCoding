@@ -7,6 +7,19 @@
 
 import UIKit
 
+extension Array {
+    ///若没有返回nil，可用负数
+    public func easy(_ index: Int) -> Element? {
+        var i = index
+        if index < 0 {
+            i = self.count + index
+        }
+        if i.easy.isBetween(-1, self.count) {
+            return self[i]
+        }
+        return nil
+    }
+}
 extension EC.NamespaceArrayImplement {
     ///将多个数组组合成一个
     public static func union<S>(_ contents: [S?]) -> Base where Self.Element == S.Element, S:Sequence {

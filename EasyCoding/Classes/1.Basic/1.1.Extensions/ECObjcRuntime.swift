@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import JRSwizzle
 
 extension EC.NamespaceImplement where Base: NSObject {
     public func getAssociatedObject(_ key: String) -> Any? {
@@ -33,6 +34,86 @@ extension EC.NamespaceImplement where Base: NSObject {
         if let idx = UnsafeRawPointer(bitPattern: key.hashValue) {
             objc_setAssociatedObject(self.base, idx, nil, .OBJC_ASSOCIATION_ASSIGN);
         }
+    }
+    ///黑魔法，切换实例方法
+    public static func swizzle(_ method: Selector, to newMethod:Selector) {
+        try? Self.Base.jr_swizzleMethod(method, withMethod: newMethod)
+    }
+    ///黑魔法，切换类方法
+    public static func swizzle(class method: Selector, to newMethod:Selector) {
+        try? Self.Base.jr_swizzleClassMethod(method, withClassMethod: newMethod)
+    }
+}
+///用于线程锁
+fileprivate let __ecCreateSingletonLockObject: Int = 0
+
+extension EasyCoding {
+    ///线程安全的创建单例对象
+    public static func createSingleton(getter: () -> Base?, setter: (Base) -> Void, creation: () -> Base) -> Base {
+        if let obj = getter() {
+            return obj
+        }else{
+            objc_sync_enter(__ecCreateSingletonLockObject)
+            defer { objc_sync_exit(__ecCreateSingletonLockObject) }
+            if let obj = getter() {
+                return obj
+            }else{
+                let obj = creation()
+                setter(obj)
+                return obj
+            }
+        }
+    }
+}
+extension EasyCoding where Base: ECEmptyInstantiable {
+    ///线程安全的创建单例对象
+    public static func createSingleton(getter: () -> Base?, setter: (Base) -> Void) -> Base {
+        return self.createSingleton(getter: getter, setter: setter, creation: { Base() })
+    }
+}
+
+fileprivate var __econceTracker = [String]()
+
+extension EasyCoding {
+    ///线程安全只执行一次
+    public static func once(file: String = #file, function: String = #function, line: Int = #line, block:()->Void) {
+        let token = file + ":" + function + ":" + String(line)
+        once(token: token, block: block)
+    }
+    public static func once(token: String, block:()->Void) {
+        if __econceTracker.contains(token) { return }
+        objc_sync_enter(self.Base)
+        defer { objc_sync_exit(self.Base) }
+        if __econceTracker.contains(token) { return }
+        __econceTracker.append(token)
+        block()
+    }
+}
+
+
+///用于线程锁
+fileprivate let __ecPropertyBindLockObject: Int = 0
+
+extension EasyCoding where Base: NSObject {
+    ///线程安全的给对象绑定属性，若为空则创建，否则返回
+    public func bindAssociatedObject<T>(_ key: String, creation: () -> T) -> T {
+        if let obj: T = self.getAssociated(object: key) {
+            return obj
+        }else{
+            objc_sync_enter(__ecPropertyBindLockObject)
+            defer { objc_sync_exit(__ecPropertyBindLockObject) }
+            if let obj: T = self.getAssociated(object: key) {
+                return obj
+            }else{
+                let obj = creation()
+                self.setAssociated(object: obj, key: key)
+                return obj
+            }
+        }
+    }
+    ///线程安全的给对象绑定属性，若为空则创建，否则返回
+    public func bindAssociatedObject<T: ECEmptyInstantiable>(_ key: String) -> T {
+        return self.bindAssociatedObject(key, creation: { T() })
     }
 }
 
