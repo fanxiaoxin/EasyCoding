@@ -33,4 +33,3 @@ open class ECEventPublisher<EventType: ECEventType>: ECEventPublisherType where 
         }
     }
 }
-

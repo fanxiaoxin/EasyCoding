@@ -7,6 +7,12 @@
 
 import UIKit
 
+//空类型
+public typealias ECNull = Void
+//空值
+public let ecNull: ECNull = ECNull()
+
+/*
 ///空的结构体，用于泛型不需要参数时
 public struct ECNull: Equatable {
     ///唯一值
@@ -28,4 +34,4 @@ public struct ECNull: Equatable {
             return true
         }
     }
-}
+}*/

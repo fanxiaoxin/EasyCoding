@@ -34,8 +34,11 @@ public class ECViewEventPublisher: ECEventPublisher<ECViewEvent>, ECEmptyInstant
             UIView.easy.swizzle(#selector(UIView.didMoveToSuperview), to: #selector(UIView.__ecEventDidMoveToSuperview))
             UIView.easy.swizzle(#selector(UIView.willMove(toWindow:)), to: #selector(UIView.__ecEventWillMove(toWindow:)))
             UIView.easy.swizzle(#selector(UIView.didMoveToWindow), to: #selector(UIView.__ecEventDidMoveToWindow))
-            UIView.easy.swizzle(NSSelectorFromString("dealloc"), to: #selector(UIView.__ecEventDealloc))
         }
+    }
+    deinit {
+        self.send(event: .dealloc)
+        __ecStaticViewEventPublisher?.send(event: .dealloc)
     }
 }
 fileprivate var __ecStaticViewEventPublisher: ECViewEventPublisher? = nil
@@ -98,12 +101,6 @@ extension UIView {
             self.easy.event.send(event: .removeFromWindow(.after))
         }
     }
-    @objc func __ecEventDealloc() {
-        __ecStaticViewEventPublisher?.send(event: .dealloc)
-        self.easy.event.send(event: .dealloc)
-        ///实测deallco方法不需要调用原方法，否则会异常
-        //        self.__ecEventDealloc()
-    }
 }
 extension EasyCoding where Base: UIView{
     ///给UIViewController添加事件
@@ -115,5 +112,20 @@ extension EasyCoding where Base: UIView{
         return ECViewEventPublisher.easy.createSingleton(getter: { return __ecStaticViewEventPublisher }, setter: { (publisher) in
             __ecStaticViewEventPublisher = publisher
         })
+    }
+    ///注册事件
+    public func when<EventParameterType>(_ event: ECViewEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+        self.event.when(event, identifier: identifier, block: block)
+    }
+    ///注册事件
+    public static func when<EventParameterType>(_ event: ECViewEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+        self.event.when(event, identifier: identifier, block: block)
+    }
+}
+
+extension ECEventPublisherType where Self: UIView {
+    ///注册事件
+    public func when<EventParameterType>(easy event: ECViewEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+        self.easy.event.when(event, identifier: identifier, block: block)
     }
 }

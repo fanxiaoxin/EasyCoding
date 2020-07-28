@@ -9,7 +9,13 @@
 import UIKit
 import EasyCoding
 
-class DataPluginController: ViewController<DataPluginView>, UITableViewDataSource {
+class DataPluginController: ViewController<DataPluginView>, UITableViewDataSource, ECEventTriggerable {
+    typealias EventType = Event
+    
+    enum Event {
+        case login
+        case logout
+    }
     deinit {
         print("i die")
     }
@@ -28,15 +34,13 @@ class DataPluginController: ViewController<DataPluginView>, UITableViewDataSourc
         self.dataProvider.targetView = self.page.tableView
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "来吧", style: .plain, target: self, action: #selector(self.onTest))
-        
-        
-        self.easy.event.unregister(event: .dealloc)
     }
     @objc func onTest() {
         self.dataProvider.easyDataWithoutError { [weak self] (datas) in
             self?.datas = datas
             self?.page.tableView.reloadData()
         }
+        self.send(event: .login)
     }
     var datas: [String]?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

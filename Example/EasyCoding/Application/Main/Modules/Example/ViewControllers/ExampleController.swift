@@ -22,6 +22,9 @@ class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UIT
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "键盘", style: .plain, target: self, action: #selector(self.test))
         
         self.page.easy.add(popupRect.easy(.bg(.gray)), layout: .top(20), .left(20), .size(80, 30))
+        UIViewController.easy.when(.dealloc) {
+            print("all view die")
+        }
     }
     @objc func test() {
         let keyboard = ECPopupListKeyboard<[String]>(from: popupRect)
@@ -57,14 +60,14 @@ class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UIT
         switch indexPath.row {
         case 0:
             let controller = DataPluginController()
-            controller.easy.event.register(event: .viewDidLoad(.before)) {
-                print("view did load before 1")
+//            controller.when(.login) {
+//                print("view login")
+//            }
+            controller.easy.when(.viewDidLoad) {
+                print("view did load")
             }
-            controller.easy.event.register(event: .viewDidLoad(.after)) {
-                print("view did load after 1")
-            }
-            controller.easy.event.register(event: .dealloc) {
-                print("view die before")
+            controller.easy.when(.dealloc) {
+                print("view die event")
             }
             self.load(controller)
         case 1:

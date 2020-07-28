@@ -8,6 +8,7 @@
 
 import UIKit
 import EasyCoding
+import PromiseKit
 
 ///代表一个组件，大到一个系统，模块，小到一个Controller或者更小
 protocol ECComponentType { }
@@ -125,7 +126,7 @@ final class TestModule: ECBusinessModuleType {
     typealias ExportProtocol = TestModuleExportType
     var requirement: RequirementProtocol = TestModuleRequirement()
     var export: ExportProtocol = TestModuleExport()
-    var config: ECNull = .null
+    var config: ECNull = ecNull
 }
 func xxx() {
     if TestModule().requirement.isLogined() {
@@ -162,167 +163,6 @@ protocol ECCommandInvokerType {
     var command: CommandType { get set }
     ///执行命令
     func call()
-}
-
-enum ECFlowStepResult {
-    case done
-}
-
-protocol ECFlowStepBranchType {
-    ///判断是否同一分支
-    func match(_ branch: ECFlowStepBranchType) -> Bool
-}
-extension ECFlowStepBranchType where Self: Equatable {
-    func match(_ branch: ECFlowStepBranchType) -> Bool {
-        if let b = branch as? Self {
-            return b == self
-        }else{
-            return false
-        }
-    }
-}
-extension Bool: ECFlowStepBranchType {
-    
-}
-///单个流程业务
-protocol ECFlowStepType {
-    ///执行业务
-    func action(completion: (ECFlowStepBranchType) -> Void)
-}
-protocol ECFlowBranchType: ECFlowStepType {
-    associatedtype BranchType: ECFlowStepBranchType where BranchType: Hashable
-    var branchs: [BranchType: ECFlowStepType] { get set }
-    var branch: BranchType { get set }
-}
-extension ECFlowBranchType {
-    func action(completion: (ECFlowStepBranchType) -> Void) {
-        self.branchs[self.branch]?.action(completion: completion)
-    }
-}
-
-
-protocol ECFlowType: ECFlowStepType  {
-    ///该流程下的所有业务
-    var steps: [ECFlowStepType] { get set }
-}
-public protocol ECFlowStep2Type {
-    func perform(for flow: ECFlow2)
-}
-public struct ECFlowStep2 {
-    let action: (ECFlow2) -> Void
-}
-extension ECFlowStep2: ECFlowStep2Type {
-    public func perform(for flow: ECFlow2) {
-        self.action(flow)
-    }
-}
-public struct ECFlowBranchStep2<BranchType> {
-    let action: (ECFlow2, BranchType) -> Void
-    var branch: BranchType
-}
-extension ECFlowBranchStep2: ECFlowStep2Type {
-    public func perform(for flow: ECFlow2) {
-        self.action(flow, self.branch)
-    }
-}
-public class ECFlow2 {
-    var steps: [ECFlowStep2Type] = []
-    var currentStep: Int = -1
-    ///继续执行
-    public func `continue`() {
-        self.currentStep += 1
-        if self.currentStep < self.steps.count {
-            self.steps[self.currentStep].perform(for: self)
-        }
-    }
-    ///继续执行
-    public func `continue`<BranchType>(_ branch: BranchType) {
-        self.currentStep += 1
-        if self.currentStep < self.steps.count {
-            (self.steps[self.currentStep] as? ECFlowBranchStep2<BranchType>)?.branch = branch
-            self.steps[self.currentStep].perform(for: self)
-        }
-    }
-    ///添加下一个步骤
-    public func next(_ action:(Self) -> Void) {
-        
-    }
-    ///添加下一个步骤
-    public func next<BranchType>(_ action:(Self, BranchType) -> Void) {
-        
-    }
-    
-    public static func begin(_ action:(Self) -> Void) {
-        let flow = Self()
-        action(flow)
-    }
-}
-extension ECFlowType {
-    
-    ///执行业务
-    func action(completion: (ECFlowStepBranchType) -> Void) {
-        Flow.begin { flow in
-            UIViewController().easy.event.register(event: .dealloc, block: {
-                flow.continute()
-            })
-        }.next { flow in
-            let api = Api()
-            api.request { result in
-                switch result {
-                case .success: flow.continute(0)
-                case .fauliure: flow.continute(1)
-                }
-            }
-        }.next { flow, branch in
-            switch branch {
-            case 0:
-                flow.continute()
-            case 1:
-                Flow.begin { flow2 in
-                    
-                }.next {
-                    
-                } .end {
-                    flow.continute()
-                }
-            }
-        }.end()
-        completion(true)
-    }
-}
-struct AAA: ECFlowType {
-    
-}
-struct BBB: ECFlowBranchStepType {
-    func action(completion: (Void...) -> Void) {
-        completion()
-    }
-    
-    var branch: Void
-    
-    func action() {
-        
-    }
-    
-    typealias BranchType = Void
-}
-@_functionBuilder
-struct ECFlowBuilder {
-    static func buildBlock() -> ECFlowType {
-        return AAA()
-    }
-    static func buildBlock(_ steps: ECFlowStepType...) -> ECFlowType {
-        return AAA()
-    }
-    static func buildIf(_ step: ECFlowStepType?) -> ECFlowType  {
-        return AAA()
-    }
-    static func buildEither(first: ECFlowType) -> ECFlowType {
-        return first
-    }
-    static func buildEither(second: ECFlowType) -> ECFlowType {
-        return second
-    }
 }
 
 @_functionBuilder
@@ -385,5 +225,10 @@ class TEST {
         }
         print(str3)
         
+        firstly {
+            URLSession.shared.dataTask(.promise, with: URLRequest.init(stringLiteral: "https://www.baidu.com"))
+        }.done { obj in
+            
+        }
     }
 }

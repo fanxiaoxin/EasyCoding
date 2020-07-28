@@ -14,6 +14,6 @@ public protocol ECEventHandlerType {
 }
 extension ECEventHandlerType {
     public func execute() {
-        self.execute(ECNull.null)
+        self.execute(ecNull)
     }
 }

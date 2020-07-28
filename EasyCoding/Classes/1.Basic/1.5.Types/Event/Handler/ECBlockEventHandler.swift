@@ -70,3 +70,10 @@ extension ECEventPublisherType {
         self.manager(for: event, allowNil: true)?.remove(identifier)
     }
 }
+
+extension ECEventPublisherType {
+    ///注册事件
+    public func when<EventParameterType>(_ event:EventType, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+        self.manager(for: event, allowNil: false)!.add(block: block)
+    }
+}

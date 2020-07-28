@@ -58,11 +58,11 @@ open class ECEventManager<EventParameterType> : ECEventManagerBase, ECEventManag
 }
 extension ECEventManager where EventParameterType == ECNull {
     public func fire() {
-        self.fire(for: .null)
+        self.fire(for: ecNull)
     }
     ///添加处理事件
     public func callAsFunction() {
-        self.fire(for: .null)
+        self.fire(for: ecNull)
     }
 }
 

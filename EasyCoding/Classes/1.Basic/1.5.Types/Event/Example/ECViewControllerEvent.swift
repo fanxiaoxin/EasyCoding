@@ -43,8 +43,11 @@ public class ECViewControllerEventPublisher: ECEventPublisher<ECViewControllerEv
             UIViewController.easy.swizzle(#selector(UIViewController.viewDidDisappear(_:)), to: #selector(UIViewController.__ecEventViewDidDisappear(_:)))
             UIViewController.easy.swizzle(#selector(UIViewController.viewWillLayoutSubviews), to: #selector(UIViewController.__ecEventViewWillLayoutSubviews))
             UIViewController.easy.swizzle(#selector(UIViewController.viewDidLayoutSubviews), to: #selector(UIViewController.__ecEventViewDidLayoutSubviews))
-            UIViewController.easy.swizzle(NSSelectorFromString("dealloc"), to: #selector(UIViewController.__ecEventDealloc))
         }
+    }
+    deinit {
+        self.send(event: .dealloc)
+        __ecStaticViewControllerEventPublisher?.send(event: .dealloc)
     }
 }
 fileprivate var __ecStaticViewControllerEventPublisher: ECViewControllerEventPublisher? = nil
@@ -99,12 +102,6 @@ extension UIViewController {
         self.easy.event.send(event: .didLayoutSubviews(.after))
         __ecStaticViewControllerEventPublisher?.send(event: .didLayoutSubviews(.after))
     }
-    @objc func __ecEventDealloc() {
-        __ecStaticViewControllerEventPublisher?.send(event: .dealloc)
-        self.easy.event.send(event: .dealloc)
-        ///实测deallco方法不需要调用原方法，否则会异常
-//        self.__ecEventDealloc()
-    }
 }
 extension EasyCoding where Base: UIViewController{
     ///给UIViewController添加事件
@@ -117,7 +114,18 @@ extension EasyCoding where Base: UIViewController{
             __ecStaticViewControllerEventPublisher = publisher
         })
     }
+    ///注册事件
+    public func when<EventParameterType>(_ event: ECViewControllerEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+        self.event.when(event, identifier: identifier, block: block)
+    }
+    ///注册事件
+    public static func when<EventParameterType>(_ event: ECViewControllerEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+        self.event.when(event, identifier: identifier, block: block)
+    }
 }
-
-
-
+extension ECEventPublisherType where Self: UIViewController {
+    ///注册事件
+    public func when<EventParameterType>(easy event: ECViewControllerEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+        self.easy.event.when(event, identifier: identifier, block: block)
+    }
+}

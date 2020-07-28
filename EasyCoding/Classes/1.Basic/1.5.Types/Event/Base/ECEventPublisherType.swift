@@ -18,7 +18,7 @@ public protocol ECEventPublisherType {
 }
 public extension ECEventPublisherType {
     ///发送事件
-    func send(event: EventType, for parameter: Any = ECNull.null) {
+    func send(event: EventType, for parameter: Any = ecNull) {
         self.manager(for: event, allowNil: true)?.fire(for: parameter)
     }
     ///注册事件
@@ -36,3 +36,4 @@ public extension ECEventPublisherType {
         self.didUnregisterEventHandler(for: event)
     }
 }
+

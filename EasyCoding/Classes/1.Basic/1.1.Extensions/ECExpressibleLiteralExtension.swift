@@ -32,3 +32,12 @@ extension URL: ExpressibleByStringLiteral {
         self = url
     }
 }
+
+extension URLRequest: ExpressibleByStringLiteral {
+    public init(stringLiteral value: String) {
+        guard let url = URL(string: "\(value)") else {
+            preconditionFailure("This url: \(value) is not invalid")
+        }
+        self = .init(url: url)
+    }
+}
