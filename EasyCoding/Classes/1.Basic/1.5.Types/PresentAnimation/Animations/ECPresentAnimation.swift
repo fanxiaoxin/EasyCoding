@@ -21,3 +21,9 @@ public struct ECPresentAnimation {
         
     }
 }
+
+
+extension ECSetting {
+    ///默认动画时长
+    public static let animationDuration: TimeInterval = 0.25
+}

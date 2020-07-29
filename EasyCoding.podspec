@@ -58,7 +58,6 @@ TODO: Add long description of the pod here.
   s.subspec 'AccessControl' do |p|
       p.source_files = 'EasyCoding/Classes/2.Business/2.2.AccessControl/**/*'
       p.dependency 'EasyCoding/Basic'
-      p.dependency 'PromiseKit', '~> 6.13.1'
   end
   # 将每一个API请求的相关字段都封装为一个对象，可以清晰地看到每一个API的请求地址、方式、请求结构、响应结构等操作
   s.subspec 'Api' do |a|
@@ -66,6 +65,11 @@ TODO: Add long description of the pod here.
       a.dependency 'EasyCoding/Basic'
       a.dependency 'Moya', '~> 13.0.0'
       a.dependency 'HandyJSON', '~> 5.0.0'
+  end
+  s.subspec 'Promise' do |p|
+      p.source_files = 'EasyCoding/Classes/2.Business/2.9.Promise/**/*'
+      p.dependency 'EasyCoding/Api'
+      p.dependency 'PromiseKit', '~> 6.13.1'
   end
   # 提供一些控件及界面相关的工具
   s.subspec 'Controls' do |c|

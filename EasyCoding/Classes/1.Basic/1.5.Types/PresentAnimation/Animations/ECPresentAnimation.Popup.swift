@@ -15,7 +15,7 @@ extension ECPresentAnimation {
         ///起始缩放，默认从0.01到1
         public let startScale: CGPoint
         ///动画时长
-        public var duration: TimeInterval = ECConstant.animationDuration
+        public var duration: TimeInterval = ECSetting.animationDuration
         public init(anchor: CGPoint? = nil, startScale: CGPoint? = nil) {
             self.anchor = anchor ?? .easy(0.5)
             self.startScale = startScale ?? .easy(0.01)

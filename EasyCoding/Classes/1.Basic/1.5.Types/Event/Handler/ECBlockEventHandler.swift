@@ -73,7 +73,9 @@ extension ECEventPublisherType {
 
 extension ECEventPublisherType {
     ///注册事件
-    public func when<EventParameterType>(_ event:EventType, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+    @discardableResult
+    public func when<EventParameterType>(_ event:EventType, identifier: String? = nil, block: @escaping (EventParameterType)->Void) -> Self {
         self.manager(for: event, allowNil: false)!.add(block: block)
+        return self
     }
 }

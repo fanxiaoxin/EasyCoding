@@ -25,7 +25,6 @@
 		9CB361F624C14BA700EA6F98 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB361B324C14BA700EA6F98 /* Style.swift */; };
 		9CB361F824C14BA700EA6F98 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB361B524C14BA700EA6F98 /* Notifications.swift */; };
 		9CB361F924C14BA700EA6F98 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB361B624C14BA700EA6F98 /* UserDefaults.swift */; };
-		9CB361FA24C14BA700EA6F98 /* ControllerFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB361BB24C14BA700EA6F98 /* ControllerFlow.swift */; };
 		9CB361FB24C14BA700EA6F98 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB361BC24C14BA700EA6F98 /* Business.swift */; };
 		9CB361FC24C14BA700EA6F98 /* Precondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB361BD24C14BA700EA6F98 /* Precondition.swift */; };
 		9CB361FD24C14BA700EA6F98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB361C024C14BA700EA6F98 /* ViewController.swift */; };
@@ -90,7 +89,6 @@
 		9CB361B424C14BA700EA6F98 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9CB361B524C14BA700EA6F98 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		9CB361B624C14BA700EA6F98 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		9CB361BB24C14BA700EA6F98 /* ControllerFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerFlow.swift; sourceTree = "<group>"; };
 		9CB361BC24C14BA700EA6F98 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		9CB361BD24C14BA700EA6F98 /* Precondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Precondition.swift; sourceTree = "<group>"; };
 		9CB361C024C14BA700EA6F98 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 		9CB361BA24C14BA700EA6F98 /* Business */ = {
 			isa = PBXGroup;
 			children = (
-				9CB361BB24C14BA700EA6F98 /* ControllerFlow.swift */,
 				9CB361BC24C14BA700EA6F98 /* Business.swift */,
 				9CB361BD24C14BA700EA6F98 /* Precondition.swift */,
 			);
@@ -740,7 +737,6 @@
 				9C8E40D024AC751400853BDD /* DataPluginController.swift in Sources */,
 				9CB3621224C14BA700EA6F98 /* ExampleApi.swift in Sources */,
 				9CB361FE24C14BA700EA6F98 /* Page.swift in Sources */,
-				9CB361FA24C14BA700EA6F98 /* ControllerFlow.swift in Sources */,
 				9CB361F924C14BA700EA6F98 /* UserDefaults.swift in Sources */,
 				9CB3620924C14BA700EA6F98 /* ApiPlugin.swift in Sources */,
 				9CB3620C24C14BA700EA6F98 /* ApiManager.swift in Sources */,

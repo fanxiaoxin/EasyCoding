@@ -11,7 +11,7 @@ extension ECPresentAnimation {
     ///淡入淡出动画
     public struct Fade: ECPresentAnimationType {
         ///动画时长
-        public var duration: TimeInterval = ECConstant.animationDuration
+        public var duration: TimeInterval = ECSetting.animationDuration
         public init() {
             
         }
@@ -35,7 +35,7 @@ extension ECPresentAnimation {
     ///淡入淡出颜色动画
     public struct FadeColor: ECPresentAnimationType {
         ///动画时长
-        public var duration: TimeInterval = ECConstant.animationDuration
+        public var duration: TimeInterval = ECSetting.animationDuration
         ///起始颜色，默认透明，为nil则代表使用原本颜色
         public var from: UIColor?
         ///结束颜色，默认原本颜色，为nil则代表使用原本颜色

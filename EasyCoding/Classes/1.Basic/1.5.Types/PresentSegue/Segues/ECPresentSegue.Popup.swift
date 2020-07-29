@@ -11,7 +11,7 @@ extension ECPresentSegue {
     ///Popup的场景
     open class Popup: Window {
         ///默认的Popup背景色
-        public static var backgroundColor: UIColor = .init(white: 0, alpha: 0.4)
+        public static var backgroundColor: UIColor = ECSetting.PopupColor
         ///可以指定要作动画的视图，显示起来会更精细
         public var contentView: UIView?
         public override init(level: UIWindow.Level = .alert, makeKey: Bool = false, animation: ECPresentAnimationType? = ECPresentAnimation.Popup()) {
@@ -108,12 +108,5 @@ extension ECPresentSegue {
 }
 
 extension ECSetting {
-    public static var PopupColor: UIColor {
-        get {
-            return ECPresentSegue.Popup.backgroundColor
-        }
-        set {
-            ECPresentSegue.Popup.backgroundColor = newValue
-        }
-    }
+    public static var PopupColor: UIColor = .init(white: 0, alpha: 0.4)
 }

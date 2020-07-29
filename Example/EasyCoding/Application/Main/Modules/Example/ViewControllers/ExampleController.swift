@@ -8,7 +8,7 @@
 
 import UIKit
 import EasyCoding
-//import SnapKit
+import PromiseKit
 
 class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UITableViewDelegate {
     let popupRect = UIView()
@@ -29,7 +29,7 @@ class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UIT
     @objc func test() {
         let keyboard = ECPopupListKeyboard<[String]>(from: popupRect)
         keyboard.dataProvider = ["A","B","C","D"]
-//        keyboard.minSize = .easy(80, 100)
+        //        keyboard.minSize = .easy(80, 100)
         keyboard.inputReceive = { value in
             print(value)
         }
@@ -59,17 +59,32 @@ class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let controller = DataPluginController()
-//            controller.when(.login) {
-//                print("view login")
-//            }
-            controller.easy.when(.viewDidLoad) {
-                print("view did load")
+            //            let controller = DataPluginController()
+            ////            controller.when(.login) {
+            ////                print("view login")
+            ////            }
+            //            controller.easy.when(.viewDidLoad) {
+            //                print("view did load")
+            //            }
+            //            controller.easy.when(.dealloc) {
+            //                print("view die event")
+            //            }
+            let controller = self.load(DataPluginController())
+            controller.easy.event.when(.dealloc, block: {
+                print("i die 34")
+            })
+            firstly {
+                controller.easy.event.promise(.dealloc)
+            }.then{ [weak self] in
+                self!.load(PopupController()).easy.event.promise(.dealloc)
+            }.done { v in
+                print("logout")
+            }.ensure {
+                print("die")
+            }.catch { (error) in
+                print(error.friendlyText)
             }
-            controller.easy.when(.dealloc) {
-                print("view die event")
-            }
-            self.load(controller)
+        //            self.load(controller)
         case 1:
             let controller = PopupController()
             controller.easy.event.register(event: .viewDidLoad(.before)) {
@@ -78,19 +93,19 @@ class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UIT
             controller.easy.event.register(event: .viewDidLoad(.after)) {
                 print("view did load after 2")
             }
-                        controller.easy.event.register(event: .dealloc) {
-                            print("view die event")
-                        }
+            controller.easy.event.register(event: .dealloc) {
+                print("view die event")
+            }
             self.load(controller)
         case 2:
             ECSetting.Alert.container.addStyle(.border(.systemBlue))
-//            ECSetting.Alert.backgroundPresentAnimation = ECPresentAnimation.FadeColor(to: .init(white: 0, alpha: 0.4))
-//            ECSetting.Alert.presentAnimation = ECPresentAnimation.Popup(anchor: .easy(1))
+            //            ECSetting.Alert.backgroundPresentAnimation = ECPresentAnimation.FadeColor(to: .init(white: 0, alpha: 0.4))
+            //            ECSetting.Alert.presentAnimation = ECPresentAnimation.Popup(anchor: .easy(1))
             
-//            ECSetting.Alert.background.addStyle(.bg(.yellow))
-//ECSetting.Alert.backgroundPresentAnimation = ECPresentAnimation.Fade()
-//                        ECSetting.Alert.presentAnimation = nil
-//            let text = NSAttributedString.easy("我是一段富文本，文本很\("富", .color(.red))，我很\("穷", .color(.green), .boldFont(size: 30))", .color(rgb: 0x333333), .font(size: 15))
+            //            ECSetting.Alert.background.addStyle(.bg(.yellow))
+            //ECSetting.Alert.backgroundPresentAnimation = ECPresentAnimation.Fade()
+            //                        ECSetting.Alert.presentAnimation = nil
+            //            let text = NSAttributedString.easy("我是一段富文本，文本很\("富", .color(.red))，我很\("穷", .color(.green), .boldFont(size: 30))", .color(rgb: 0x333333), .font(size: 15))
             ECMessageBox.confirm(attr: "我是一段富文本，文本很\("富", .color(.red))，我很\("穷", .color(.green), .boldFont(size: 30))") { [weak self] in
                 print("你点了确定")
             }
@@ -103,15 +118,15 @@ class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UIT
         case 7: self.load(PickerViewMultiDataSourceController())
         case 8:
             let provider = PickerViewDataSourceController.Provider()
-//            let keyboard = ECToolbarPickerKeyboard<PickerViewDataSourceController.Provider>(provider: provider)
-//            let keyboard = ECToolbarDatePickerKeyboard()
-//            keyboard.isHiddenForTouchBackground = true
-//            keyboard.picker.datePickerMode = .date
-//            keyboard.toolbar.titleLabel.text = "我是标题"
-//            keyboard.inputReceive = { value in
-//                print(value)
-//            }
-//            keyboard.show()
+            //            let keyboard = ECToolbarPickerKeyboard<PickerViewDataSourceController.Provider>(provider: provider)
+            //            let keyboard = ECToolbarDatePickerKeyboard()
+            //            keyboard.isHiddenForTouchBackground = true
+            //            keyboard.picker.datePickerMode = .date
+            //            keyboard.toolbar.titleLabel.text = "我是标题"
+            //            keyboard.inputReceive = { value in
+            //                print(value)
+            //            }
+            //            keyboard.show()
             ECPicker.create("来个列表", dataProvider: provider) { (model) in
                 print(model)
             }.show()

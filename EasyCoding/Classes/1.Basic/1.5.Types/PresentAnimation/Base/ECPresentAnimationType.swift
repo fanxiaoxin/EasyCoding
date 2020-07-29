@@ -18,7 +18,7 @@ public protocol ECPresentAnimationType {
 }
 extension ECPresentAnimationType {
     ///动画时长默认
-    public var duration: TimeInterval { return ECConstant.animationDuration }
+    public var duration: TimeInterval { return ECSetting.animationDuration }
 }
 extension EC.NamespaceImplement where Base: UIView {
     ///通过指定的动画显示

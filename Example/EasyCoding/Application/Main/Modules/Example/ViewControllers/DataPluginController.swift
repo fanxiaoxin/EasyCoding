@@ -40,6 +40,7 @@ class DataPluginController: ViewController<DataPluginView>, UITableViewDataSourc
             self?.datas = datas
             self?.page.tableView.reloadData()
         }
+        self.send(event: .logout)
         self.send(event: .login)
     }
     var datas: [String]?

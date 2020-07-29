@@ -12,6 +12,7 @@ import UIKit
 open class ECViewController<PageType:UIView>: UIViewController, ECPageEventDelegate, ECViewControllerType {
     
     open var page: PageType!
+    open var keyboardAdapter: ECViewControllerKeyboardAdapter?
     override open func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,9 +24,10 @@ open class ECViewController<PageType:UIView>: UIViewController, ECPageEventDeleg
         
         //添加键盘处理
         if let kc = (self.page as? ECPage)?.keyboardConstraint {
-            let plug = ECViewControllerKeyboardAdaptPlug()
-            plug.keyboardConstraint = kc
-            self.easy.append(plug: plug)
+            let keyboardAdapter = ECViewControllerKeyboardAdapter()
+            keyboardAdapter.keyboardConstraint = kc
+            keyboardAdapter.controller = self
+            self.keyboardAdapter = keyboardAdapter
         }
     }
     override open func loadView() {

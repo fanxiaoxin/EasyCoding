@@ -11,13 +11,8 @@ import UIKit
 import Moya
 import Result
 
-class ViewController<PageType:UIView>: ECViewController<PageType>, ECFlowControllerType, NavigationControllerDelegate {
-    
-    var onFlow: ((ECFlowStep.State) -> Void)?
-    ///关闭时的流程状态
-    var onCloseFlowState : ECFlowStep.State {
-        return .success
-    }
+class ViewController<PageType:UIView>: ECViewController<PageType>, NavigationControllerDelegate {
+ 
     var customizeNavigationBack: ((@escaping ()->Void)->Void)?
     
     override var preconditions: [ECViewControllerCondition]? {
@@ -79,10 +74,10 @@ class ViewController<PageType:UIView>: ECViewController<PageType>, ECFlowControl
     @objc func onNavigationBack() {
         if let action = self.customizeNavigationBack {
             action({
-                self.onClose(state: .cancel)
+                self.onClose()
             })
         }else{
-            self.onClose(state: .cancel)
+            self.onClose()
         }
     }
     
@@ -90,14 +85,10 @@ class ViewController<PageType:UIView>: ECViewController<PageType>, ECFlowControl
         
     }
     override func onClose() {
-        self.onClose(state: self.onCloseFlowState)
-    }
-    func onClose(state: ECFlowStep.State) {
         if self.easy.currentSegue != nil {
             super.onClose()
         }else{
             self.navigationController?.popViewController(animated: true)
         }
-        self.onFlow?(state)
     }
 }

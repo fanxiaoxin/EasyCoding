@@ -45,60 +45,60 @@ fileprivate var __ecStaticViewEventPublisher: ECViewEventPublisher? = nil
 
 extension UIView {
     @objc func __ecEventLayoutSubviews() {
-        __ecStaticViewEventPublisher?.send(event: .layoutSubviews(.before))
-        self.easy.event.send(event: .layoutSubviews(.before))
+        __ecStaticViewEventPublisher?.send(event: .layoutSubviews(.before), for: self)
+        self.easy.event.send(event: .layoutSubviews(.before), for: self)
         self.__ecEventLayoutSubviews()
-        self.easy.event.send(event: .layoutSubviews(.after))
-        __ecStaticViewEventPublisher?.send(event: .layoutSubviews(.after))
+        self.easy.event.send(event: .layoutSubviews(.after), for: self)
+        __ecStaticViewEventPublisher?.send(event: .layoutSubviews(.after), for: self)
     }
     @objc func __ecEventDidAddSubview(_ subview: UIView) {
         self.__ecEventDidAddSubview(subview)
-        self.easy.event.send(event: .addSubview, for: subview)
-        __ecStaticViewEventPublisher?.send(event: .addSubview, for: subview)
+        self.easy.event.send(event: .addSubview, for: (target: self, subview: subview))
+        __ecStaticViewEventPublisher?.send(event: .addSubview, for: (target: self, subview: subview))
     }
     @objc func __ecEventWillRemoveSubview(_ subview: UIView) {
-        __ecStaticViewEventPublisher?.send(event: .removeSubview, for: subview)
-        self.easy.event.send(event: .removeSubview, for: subview)
+        __ecStaticViewEventPublisher?.send(event: .removeSubview, for: (target: self, subview: subview))
+        self.easy.event.send(event: .removeSubview, for: (target: self, subview: subview))
         self.__ecEventWillRemoveSubview(subview)
     }
     @objc func __ecEventWillMove(toSuperview newSuperview: UIView?) {
         if let view = newSuperview {
-            __ecStaticViewEventPublisher?.send(event: .moveToSuperview(.before), for: view)
-            self.easy.event.send(event: .moveToSuperview(.before), for: view)
+            __ecStaticViewEventPublisher?.send(event: .moveToSuperview(.before), for: (target: self, superview: view))
+            self.easy.event.send(event: .moveToSuperview(.before), for: (target: self, superview: view))
         }else{
-            __ecStaticViewEventPublisher?.send(event: .removeFromSuperview(.before))
-            self.easy.event.send(event: .removeFromSuperview(.before))
+            __ecStaticViewEventPublisher?.send(event: .removeFromSuperview(.before), for: self)
+            self.easy.event.send(event: .removeFromSuperview(.before), for: self)
         }
         self.__ecEventWillMove(toSuperview: newSuperview)
     }
     @objc func __ecEventDidMoveToSuperview() {
         self.__ecEventDidMoveToSuperview()
         if let view = self.superview {
-            __ecStaticViewEventPublisher?.send(event: .moveToSuperview(.after), for: view)
-            self.easy.event.send(event: .moveToSuperview(.after), for: view)
+            __ecStaticViewEventPublisher?.send(event: .moveToSuperview(.after), for: (target: self, superview: view))
+            self.easy.event.send(event: .moveToSuperview(.after), for: (target: self, superview: view))
         }else{
-            __ecStaticViewEventPublisher?.send(event: .removeFromSuperview(.after))
-            self.easy.event.send(event: .removeFromSuperview(.after))
+            __ecStaticViewEventPublisher?.send(event: .removeFromSuperview(.after), for: self)
+            self.easy.event.send(event: .removeFromSuperview(.after), for: self)
         }
     }
     @objc func __ecEventWillMove(toWindow newWindow: UIWindow?) {
         if let view = newWindow {
-            __ecStaticViewEventPublisher?.send(event: .moveToWindow(.before), for: view)
-            self.easy.event.send(event: .moveToWindow(.before), for: view)
+            __ecStaticViewEventPublisher?.send(event: .moveToWindow(.before), for: (target: self, window: view))
+            self.easy.event.send(event: .moveToWindow(.before), for: (target: self, window: view))
         }else{
-            __ecStaticViewEventPublisher?.send(event: .removeFromWindow(.before))
-            self.easy.event.send(event: .removeFromWindow(.before))
+            __ecStaticViewEventPublisher?.send(event: .removeFromWindow(.before), for: self)
+            self.easy.event.send(event: .removeFromWindow(.before), for: self)
         }
         self.__ecEventWillMove(toWindow: newWindow)
     }
     @objc func __ecEventDidMoveToWindow() {
         self.__ecEventDidMoveToWindow()
         if let view = self.superview {
-            __ecStaticViewEventPublisher?.send(event: .moveToWindow(.after), for: view)
-            self.easy.event.send(event: .moveToWindow(.after), for: view)
+            __ecStaticViewEventPublisher?.send(event: .moveToWindow(.after), for: (target: self, window: view))
+            self.easy.event.send(event: .moveToWindow(.after), for: (target: self, window: view))
         }else{
-            __ecStaticViewEventPublisher?.send(event: .removeFromWindow(.after))
-            self.easy.event.send(event: .removeFromWindow(.after))
+            __ecStaticViewEventPublisher?.send(event: .removeFromWindow(.after), for: self)
+            self.easy.event.send(event: .removeFromWindow(.after), for: self)
         }
     }
 }
@@ -114,18 +114,24 @@ extension EasyCoding where Base: UIView{
         })
     }
     ///注册事件
-    public func when<EventParameterType>(_ event: ECViewEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+    @discardableResult
+    public func when<EventParameterType>(_ event: ECViewEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) -> Self {
         self.event.when(event, identifier: identifier, block: block)
+        return self
     }
     ///注册事件
-    public static func when<EventParameterType>(_ event: ECViewEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+    @discardableResult
+    public static func when<EventParameterType>(_ event: ECViewEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) -> Self.Type {
         self.event.when(event, identifier: identifier, block: block)
+        return self
     }
 }
 
 extension ECEventPublisherType where Self: UIView {
     ///注册事件
-    public func when<EventParameterType>(easy event: ECViewEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) {
+    @discardableResult
+    public func when<EventParameterType>(easy event: ECViewEvent, identifier: String? = nil, block: @escaping (EventParameterType)->Void) -> Self {
         self.easy.event.when(event, identifier: identifier, block: block)
+        return self
     }
 }
