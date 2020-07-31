@@ -74,7 +74,7 @@ class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UIT
                 print("i die 34")
             })
             firstly {
-                controller.easy.event.promise(.dealloc)
+                when(fulfilled: controller.easy.event.promise(.dealloc), controller.promise(.login))
             }.then{ [weak self] in
                 self!.load(PopupController()).easy.event.promise(.dealloc)
             }.done { v in
