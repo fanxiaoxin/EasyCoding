@@ -48,7 +48,7 @@ TODO: Add long description of the pod here.
   s.subspec 'Basic' do |b|
       b.source_files = 'EasyCoding/Classes/1.Basic/**/*'
       b.dependency 'SnapKit', '~> 5.0.0'
-      c.dependency 'JRSwizzle'
+      b.dependency 'JRSwizzle'
   end
   # 定制化的操作，比如多语言或多主题
   s.subspec 'Personalized' do |p|
