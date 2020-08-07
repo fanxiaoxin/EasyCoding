@@ -48,6 +48,7 @@ TODO: Add long description of the pod here.
   s.subspec 'Basic' do |b|
       b.source_files = 'EasyCoding/Classes/1.Basic/**/*'
       b.dependency 'SnapKit', '~> 5.0.0'
+      c.dependency 'JRSwizzle'
   end
   # 定制化的操作，比如多语言或多主题
   s.subspec 'Personalized' do |p|
@@ -75,7 +76,6 @@ TODO: Add long description of the pod here.
   s.subspec 'Controls' do |c|
     c.source_files = 'EasyCoding/Classes/3.Controls/**/*','EasyCoding/Classes/4.plugs/**/*'
     c.dependency 'EasyCoding/AccessControl'
-    c.dependency 'JRSwizzle'
     c.dependency 'YYKeyboardManager', '~> 1.0.0'
     c.dependency 'Kingfisher', '~> 5.14.0'
     c.dependency 'MJRefresh', '~> 3.4.0'
