@@ -36,7 +36,7 @@ class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UIT
         keyboard.show()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11
+        return 12
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
@@ -52,6 +52,7 @@ class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UIT
         case 8: cell.textLabel?.text = "键盘"
         case 9: cell.textLabel?.text = "TextField输入限制"
         case 10: cell.textLabel?.text = "Api"
+        case 11: cell.textLabel?.text = "测试"
         default: break
         }
         return cell
@@ -132,6 +133,7 @@ class ExampleController: ViewController<ExampleView>, UITableViewDataSource, UIT
             }.show()
         case 9: self.load(TextConstraintController())
         case 10: self.load(ApiController())
+        case 11: self.load(TestController())
             
         default: break
         }
