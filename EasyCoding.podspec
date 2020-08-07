@@ -66,6 +66,7 @@ TODO: Add long description of the pod here.
       a.dependency 'EasyCoding/Basic'
       a.dependency 'Moya', '~> 13.0.0'
       a.dependency 'HandyJSON', '~> 5.0.0'
+      c.dependency 'MJRefresh', '~> 3.4.0'
   end
   s.subspec 'Promise' do |p|
       p.source_files = 'EasyCoding/Classes/2.Business/2.9.Promise/**/*'
