@@ -140,10 +140,10 @@ extension EC.NamespaceImplement where Base == String {
         if let p = parameters {
             var parameter = ""
             p.forEach { kv in
-                parameter = parameter.appending("&\(kv.key.easy.urlEncode)=\(kv.value.description.easy.urlEncode))")
+                parameter = parameter.appending("&\(kv.key.easy.urlEncode)=\(kv.value.description.easy.urlEncode)")
             }
-            if let idx = result.firstIndex(of: "?") {
-                parameter = parameter.replacingCharacters(in: Range<String.Index>(uncheckedBounds: (lower: idx, upper: idx)), with: "?")
+            if !result.contains("?") {
+                parameter = parameter.replacingCharacters(in: Range<String.Index>(uncheckedBounds: (lower: parameter.startIndex, upper: parameter.startIndex)), with: "?")
             }
             result = result.appending(parameter)
         }
