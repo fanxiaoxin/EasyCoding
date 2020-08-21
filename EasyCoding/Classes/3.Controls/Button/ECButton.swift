@@ -116,13 +116,16 @@ open class ECButton: UIButton {
         return rect
     }
     open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        return self.hitTestBounds().contains(point)
+        return !self.isHidden && self.hitTestBounds().contains(point)
     }
-//    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-//        let bounds = self.hitTestBounds()
-//        return bounds.contains(point)
-//        return super.hitTest(point, with: event)
-//    }
+
+    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if !self.isHidden && self.hitTestBounds().contains(point) {
+            return self
+        }else{
+            return super.hitTest(point, with: event)
+        }
+    }
 }
 
 extension ECBuildable where Self: UIView {
