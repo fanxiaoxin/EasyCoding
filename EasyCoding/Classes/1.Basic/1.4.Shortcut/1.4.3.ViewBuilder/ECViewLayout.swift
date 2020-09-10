@@ -312,6 +312,8 @@ extension ECViewLayout {
     public static var centerY: ECViewLayout { return .centerY(0) }
     ///居中
     public static var center: ECViewLayout { return .center(0,0) }
+    ///居中
+    public static func center(_ v:CGPoint) -> ECViewLayout { return .center(v.x, v.y) }
     
     ///水平边距
     public static func marginX(_ v:CGFloat) -> ECViewLayout { return .marginX(v, v) }

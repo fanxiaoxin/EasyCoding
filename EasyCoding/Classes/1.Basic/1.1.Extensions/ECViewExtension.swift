@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 
+// MARK: 位置大小相关信息
+
 extension EC.NamespaceImplement where Base: UIView {
     ///判断刘海屏的安全区域
     public static var safeArea: UIEdgeInsets {
@@ -18,14 +20,57 @@ extension EC.NamespaceImplement where Base: UIView {
             return .zero
         }
     }
-    public func layoutedSize() -> CGSize {
-        if #available(iOS 9.0, *) {
-            return self.base.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        } else {
-            self.base.frame.size.height = 0
-            self.base.layoutIfNeeded()
-            return self.base.frame.size
-        }
+    ///视图大小
+    public var size: CGSize {
+        return self.base.frame.size
+    }
+    ///视图宽度
+    public var width: CGFloat {
+        return self.base.frame.size.width
+    }
+    ///视图高度
+    public var height: CGFloat {
+        return self.base.frame.size.height
+    }
+    ///视图位置
+    public var origin: CGPoint {
+        return self.base.frame.origin
+    }
+    ///视图上边距
+    public var top: CGFloat {
+        return self.base.frame.origin.y
+    }
+    ///视图左边距
+    public var left: CGFloat {
+        return self.base.frame.origin.x
+    }
+    ///视图下边距
+    public var bottom: CGFloat {
+        return (self.base.superview?.bounds.size.height ?? 0) - self.base.frame.easy.bottom
+    }
+    ///视图右边距
+    public var right: CGFloat {
+        return (self.base.superview?.bounds.size.width ?? 0) - self.base.frame.easy.right
+    }
+}
+
+// MARK: 位移动画等操作
+
+extension EC.NamespaceImplement where Base: UIView {
+    ///因为直接设置锚点位置会乱，所以需要同步设置center以修正位置
+    ///注意该方法只能在布局确定后才可以使用，或未布局完使用位置照样会乱
+    public func anchor(_ anchor: CGPoint) {
+        let view = self.base
+        //若未加到父视图则无法生效
+        view.superview?.layoutIfNeeded()
+        
+        let oldOrigin = view.frame.origin
+        view.layer.anchorPoint = anchor
+        let newOrigin = view.frame.origin
+        
+        let transition = CGPoint(x: newOrigin.x - oldOrigin.x, y: newOrigin.y - oldOrigin.y)
+        
+        view.center = .easy(view.center.x - transition.x, view.center.y - transition.y)
     }
     ///抖动动画
    public func shake() {
@@ -47,6 +92,8 @@ extension EC.NamespaceImplement where Base: UIView {
     }
 }
 
+// MARK: 子视图相关操作：查找、定位、标记等
+
 extension EC.NamespaceImplement where Base: UIView {
     ///嵌套循环找到指定的View
     public func forEachAllSubviews<ViewType: UIView>(body: @escaping (ViewType) -> Void) {
@@ -57,7 +104,7 @@ extension EC.NamespaceImplement where Base: UIView {
             view.easy.forEachAllSubviews(body: body)
         }
     }
-    ///查找第一个指定条件的视图
+    ///查找第一个指定条件的视图(包含子视图的子视图)
     public func first<ViewType: UIView>(where body: (ViewType) -> Bool) -> UIView? {
         for view in self.base.subviews {
             if let v = view as? ViewType {
@@ -72,7 +119,7 @@ extension EC.NamespaceImplement where Base: UIView {
         }
         return nil
     }
-    ///查找最后一个指定条件的视图
+    ///查找最后一个指定条件的视图(包含子视图的子视图)
     public func last<ViewType: UIView>(where body: (ViewType) -> Bool) -> UIView? {
         for view in self.base.subviews.reversed() {
             if let v = view as? ViewType {
@@ -127,21 +174,6 @@ extension EC.NamespaceImplement where Base: UIView {
         }else{
             return self.base
         }
-    }
-    ///因为直接设置锚点位置会乱，所以需要同步设置center以修正位置
-    ///注意该方法只能在布局确定后才可以使用，或未布局完使用位置照样会乱
-    public func anchor(_ anchor: CGPoint) {
-        let view = self.base
-        //若未加到父视图则无法生效
-        view.superview?.layoutIfNeeded()
-        
-        let oldOrigin = view.frame.origin
-        view.layer.anchorPoint = anchor
-        let newOrigin = view.frame.origin
-        
-        let transition = CGPoint(x: newOrigin.x - oldOrigin.x, y: newOrigin.y - oldOrigin.y)
-        
-        view.center = .easy(view.center.x - transition.x, view.center.y - transition.y)
     }
     /*
     ///临时设置锚点并记录原始锚点，在reset(anchor:)方法可以重置原先的锚点

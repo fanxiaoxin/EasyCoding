@@ -10,6 +10,40 @@ import UIKit
 import EasyCoding
 import PromiseKit
 
+public struct ECTypeWarpper<T>: ECTypeWrapperProtocol {
+    public let base: T
+    public init(value: T) {
+        self.base = value
+    }
+}
+
+///泛型抽象类
+public protocol ECGenericType {
+    var types: [Any.Type] { get }
+}
+public extension ECGenericType {
+    func type<T>(for index: Int) -> T.Type {
+        return self.types[index] as! T.Type
+    }
+}
+public protocol MyTypeBase: ECGenericType {
+    
+}
+public protocol MyType: MyTypeBase {
+    associatedtype Element
+    func fuck(for element: Element)
+}
+extension MyType {
+    public var types: [Any.Type] {
+        return [Element.self]
+    }
+}
+public class my<Element>: MyType {
+    var other: ECTypeWarpper<ECGenericType>?
+    public func fuck(for element: Element) {
+        
+    }
+}
 ///代表一个组件，大到一个系统，模块，小到一个Controller或者更小
 protocol ECComponentType { }
 ///需要显示UI的组件

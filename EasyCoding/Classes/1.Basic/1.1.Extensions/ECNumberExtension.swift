@@ -184,3 +184,26 @@ extension EC.NamespaceImplement where Base == CGRect {
     }
 }
 
+extension EC.NamespaceImplement where Base == CGSize {
+    ///返回高宽中比较大的值
+    public var max: CGFloat {
+        return Swift.max(self.base.width, self.base.height)
+    }
+    ///返回高宽中比较小的值
+    public var min: CGFloat {
+        return Swift.min(self.base.width, self.base.height)
+    }
+}
+
+extension EC.NamespaceImplement where Base == CGPoint {
+    ///返回xy中比较大的值
+    public var max: CGFloat {
+        return Swift.max(self.base.x, self.base.y)
+    }
+    ///返回xy中比较小的值
+    public var min: CGFloat {
+        return Swift.min(self.base.x, self.base.y)
+    }
+}
+
+

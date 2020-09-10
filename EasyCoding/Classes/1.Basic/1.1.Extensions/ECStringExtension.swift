@@ -244,7 +244,7 @@ extension EC.NamespaceImplement where Base: NSAttributedString {
         
         let lines = CTFrameGetLines(frame) as! [CTLine]
         let count = lines.count//CFArrayGetCount(lines)
-        let lineCount = numberOfLines > 0 ? min(numberOfLines, count) : count
+        let lineCount = numberOfLines > 0 ? Swift.min(numberOfLines, count) : count
         
         if lineCount == 0 {
             return nil

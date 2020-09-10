@@ -151,6 +151,18 @@ class ExampleView: ECPage {
         
         self.easy.add(animationView.easy(.bg(.systemYellow), .corner(8), .hidden()), layout: .center, .size(200))
             .add(button("DismissAnimation", .text("关闭"), .bg(.systemGreen), .color(.white), .corner(4)), layout: .size(80, 44), .center)
+        
+        let view = UIView.easy(.bg(.red))
+        
+        self.addSubview(view)
+        view.snp.makeConstraints { (make) in
+            make.top.equalTo(self.snp.top).offset(200)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(0.5)
+            make.width.equalTo(100)
+            make.height.equalTo(200)
+        }
+        view.easy.setBadge(.point(color: .blue))
+        view.easy.setBadge(.value(25, color: .blue))
     }
 }
 class PopupKeyboard: ECPopupKeyboard<String> {

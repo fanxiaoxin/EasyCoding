@@ -44,6 +44,9 @@ class MainController: UITabBarController, UITabBarControllerDelegate, ECViewCont
             item.setTitleTextAttributes(.easy(.color(Style.Color.Font.light)), for: .normal)
         }
         
+        self.tabBar.easy.setBadge(.point(), at: 0)
+        self.tabBar.easy.setBadge(.value(20), at: 2)
+        self.tabBar.items?[1].badgeValue = "20"
         //启动流程
 //        self.start(.startup{
 //            self.isStartupCompleted = true
@@ -53,6 +56,13 @@ class MainController: UITabBarController, UITabBarControllerDelegate, ECViewCont
         
         //页面加载完成
         self.whenStartupCompleted()
+    }
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if viewController == self.viewControllers?[2] {
+            self.tabBar.easy.setBadge(.none, at: 2)
+        } else if viewController == self.viewControllers?[1] {
+            self.tabBar.easy.setBadge(.value(15), at: 2)
+        }
     }
 }
 
