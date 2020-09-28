@@ -19,6 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().isTranslucent = false
         
+//        let str = "http://www.baidu.com/abc/def/eeee.json"
+//        print(str.easy.first(-(str as NSString).lastPathComponent.count))
+        
+//        var haha: Int? = 5
+//        print(haha < 6)
+//        haha = nil
+//        print(haha < 6)
+//        haha = 8
+//        print(haha < 6)
+        
         return true
     }
 

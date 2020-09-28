@@ -308,11 +308,15 @@
 		9BD253A561C1D4324BD2FAF1008DED0E /* ECBlockEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F432FDE893661B980218A8B1A2BB89B /* ECBlockEventHandler.swift */; };
 		9C070173514870CC7F7391FCEFBF09FF /* ECPresentSegue.TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBFFC2CF355FA5BC93E6BD272F8AB4 /* ECPresentSegue.TabBar.swift */; };
 		9C1021CE24D1259F00288072 /* ECErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1021CD24D1259F00288072 /* ECErrorExtension.swift */; };
+		9C67BE902520A2F60034E36B /* ECOptionalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67BE8F2520A2F60034E36B /* ECOptionalExtension.swift */; };
 		9C6BBE8324CFFF9000867946 /* ECPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BBE8224CFFF9000867946 /* ECPromise.swift */; };
+		9C7BA5CA2501E57E00EC4CF3 /* ECDictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7BA5C92501E57E00EC4CF3 /* ECDictionaryExtension.swift */; };
 		9C7E5078C028B645E476B0C922321315 /* UIViewController+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBB01610A074B326556260A43DE4E5A /* UIViewController+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9CA6CD5F06FBB9791DBF6289B565EAB7 /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356606CE881422FCC4EDE67314AA5B02 /* Serializer.swift */; };
 		9CCE7BAC85AA87FD391F6885C342BCD9 /* ConstraintLayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558106DFF87076A608675F73B0E38200 /* ConstraintLayoutSupport.swift */; };
 		9CEB5EBEE9CDCE0738C6C94643A168CF /* YYKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAEA03E3D68934CE27AF39780D75703 /* YYKeyboardManager.framework */; };
+		9CECB38C2508B16300DF9BFC /* ECTabBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CECB38B2508B16300DF9BFC /* ECTabBarExtension.swift */; };
+		9CECB38F2508C24B00DF9BFC /* ECBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CECB38E2508C24B00DF9BFC /* ECBadge.swift */; };
 		9DD8624E2A7E28A20D920D60C57F774F /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB70A3FD0D0DF222CA6193D544C5EEE /* LayoutConstraint.swift */; };
 		9EDD97FA73139A4E14EDB5EF87E9ABCF /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32564816E86605F695994E9291443489 /* Export.swift */; };
 		9F84CDA4AD0FF724A2827E89427DC89C /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054A82C82A3B2A8D678FFB0C15DF3678 /* ConstraintConstantTarget.swift */; };
@@ -1019,9 +1023,13 @@
 		9BB182130E5B007D9436E98EB9C0B0F5 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Configuration.swift; sourceTree = "<group>"; };
 		9BC5F95691A65769D1C902998DFBCC89 /* ECDataErrorPluginBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDataErrorPluginBase.swift; sourceTree = "<group>"; };
 		9C1021CD24D1259F00288072 /* ECErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECErrorExtension.swift; sourceTree = "<group>"; };
+		9C67BE8F2520A2F60034E36B /* ECOptionalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECOptionalExtension.swift; sourceTree = "<group>"; };
 		9C6BBE8224CFFF9000867946 /* ECPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPromise.swift; sourceTree = "<group>"; };
+		9C7BA5C92501E57E00EC4CF3 /* ECDictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDictionaryExtension.swift; sourceTree = "<group>"; };
 		9C83FCAF44CD08153B20EC1279B62C18 /* NSTask+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSTask+AnyPromise.h"; path = "Extensions/Foundation/Sources/NSTask+AnyPromise.h"; sourceTree = "<group>"; };
 		9CCB610D351A9BAA3B840BB24913C69E /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
+		9CECB38B2508B16300DF9BFC /* ECTabBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECTabBarExtension.swift; sourceTree = "<group>"; };
+		9CECB38E2508C24B00DF9BFC /* ECBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECBadge.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D9C083C705A5A5E81DE134B3326973A /* ECApiStructure.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECApiStructure.swift; sourceTree = "<group>"; };
 		9F432FDE893661B980218A8B1A2BB89B /* ECBlockEventHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECBlockEventHandler.swift; sourceTree = "<group>"; };
@@ -1557,6 +1565,7 @@
 			isa = PBXGroup;
 			children = (
 				78CF152B2B4B75691CB6C33062CF8487 /* ECArrayExtension.swift */,
+				9C7BA5C92501E57E00EC4CF3 /* ECDictionaryExtension.swift */,
 				4796AC22FF5D1249506F37C69D152731 /* ECBundleExtension.swift */,
 				1BBEB6E55CE8AAC338330F19064C52E4 /* ECColorExtension.swift */,
 				D77A9117733EFC8274F8BE654470D63E /* ECDateExtension.swift */,
@@ -1579,6 +1588,8 @@
 				A92840C930C95810F4C56A1C4AB3F7B0 /* ECViewExtension.swift */,
 				BAC459A35B01FF057FA15F3F95383B70 /* ECWindowExtension.swift */,
 				9C1021CD24D1259F00288072 /* ECErrorExtension.swift */,
+				9CECB38B2508B16300DF9BFC /* ECTabBarExtension.swift */,
+				9C67BE8F2520A2F60034E36B /* ECOptionalExtension.swift */,
 			);
 			path = 1.1.Extensions;
 			sourceTree = "<group>";
@@ -2117,6 +2128,7 @@
 		8026E1DB232B38F9F3D9CB68E05568C5 /* 3.Controls */ = {
 			isa = PBXGroup;
 			children = (
+				9CECB38D2508C21800DF9BFC /* Badge */,
 				3364B53A002BBD589F06594A775C69C4 /* 3.0.Setting */,
 				78FCA73FC1BBE5D7552DA5CE5178760A /* Button */,
 				2260471812A4DFC25C9D7561408709E1 /* CollectionLayout */,
@@ -2357,6 +2369,14 @@
 				9C6BBE8224CFFF9000867946 /* ECPromise.swift */,
 			);
 			path = 2.9.Promise;
+			sourceTree = "<group>";
+		};
+		9CECB38D2508C21800DF9BFC /* Badge */ = {
+			isa = PBXGroup;
+			children = (
+				9CECB38E2508C24B00DF9BFC /* ECBadge.swift */,
+			);
+			path = Badge;
 			sourceTree = "<group>";
 		};
 		9DE4B2DBB3A8D6128709120BFA2DFC25 /* Result */ = {
@@ -3594,6 +3614,7 @@
 				24FC205CCF709C9BD8C0CD341CFE80FD /* ECAlertController.swift in Sources */,
 				2C20EE8F2656CF4E665BA70A372D0B1D /* ECAlertView.swift in Sources */,
 				151EE186BB6703EA96FC0ADB575E1F0C /* ECApiDataPluginExtentions.swift in Sources */,
+				9CECB38C2508B16300DF9BFC /* ECTabBarExtension.swift in Sources */,
 				B840DFDDCAD4CBC45FA18DB1CD7521DC /* ECApiDataProvider.swift in Sources */,
 				D84239D157C7824670E426017C5BBB1C /* ECApiManagerType.swift in Sources */,
 				15A2C97962B340AD98B32C2722EF4D41 /* ECApiPluginType.swift in Sources */,
@@ -3698,6 +3719,8 @@
 				C351B48FF3034E5F36A737F00554A0E5 /* ECPageControl.swift in Sources */,
 				786B364446F650847704AD518915357D /* ECPageControlStyle.swift in Sources */,
 				1068E0235DDC7B8803BFF7AE98C21F5F /* ECParagraphStyle.swift in Sources */,
+				9CECB38F2508C24B00DF9BFC /* ECBadge.swift in Sources */,
+				9C7BA5CA2501E57E00EC4CF3 /* ECDictionaryExtension.swift in Sources */,
 				7EB0303671B3ABD04CED82EF2BFE7D06 /* ECPersonalized.swift in Sources */,
 				0293D860E8843B32B24EED9D1218BA97 /* ECPicker.swift in Sources */,
 				05507E55BEA35C60F82133C3D11D8A2C /* ECPickerTextConstraint.swift in Sources */,
@@ -3775,6 +3798,7 @@
 				8E85C4B707DFE4B156C890487435558A /* ECViewControllerType.swift in Sources */,
 				E7F3E529C5577AEF7611E1EEF5E85C00 /* ECViewDataDecorator.swift in Sources */,
 				C57A604D9A5185F5F64D4761AF9D6101 /* ECViewDataOutsideDecorator.swift in Sources */,
+				9C67BE902520A2F60034E36B /* ECOptionalExtension.swift in Sources */,
 				7D23E286D4E061323EBBD19A3CB5B6A2 /* ECViewDataPagedDecorator.swift in Sources */,
 				1177C3551B35CABFAA401138AA8320F0 /* ECViewDataRefreshDecorator.swift in Sources */,
 				B9B88BDD9F4AD2C7004E58547F2DBF5F /* ECViewEvent.swift in Sources */,
