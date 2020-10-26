@@ -47,3 +47,22 @@ extension Optional: ECEmptiable {
         }
     }
 }
+
+///自定义操作符，若左边为空则取右边，否则取左边
+infix operator ???
+extension Optional where Wrapped: ECEmptiable {
+    @inlinable public static func ??? (lhs: Self, rhs: Wrapped) -> Wrapped {
+        if let value = lhs, !value.isEmpty {
+            return value
+        }
+        return rhs
+    }
+}
+extension ECEmptiable {
+    @inlinable public static func ??? (lhs: Self, rhs: Self) -> Self {
+        if !lhs.isEmpty {
+            return lhs
+        }
+        return rhs
+    }
+}

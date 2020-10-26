@@ -8,18 +8,6 @@
 import Foundation
 
 extension Optional: Comparable where Wrapped: Comparable {
-    @inlinable public static func == (lhs: Self, rhs: Wrapped) -> Bool {
-        switch lhs {
-        case .none: return false
-        case .some(let value): return value == rhs
-        }
-    }
-    @inlinable public static func == (lhs: Wrapped, rhs: Self) -> Bool {
-        switch rhs {
-        case .none: return false
-        case .some(let value): return rhs == value
-        }
-    }
     @inlinable public static func < (lhs: Self, rhs: Self) -> Bool {
         switch lhs {
         case .none: return true

@@ -15,8 +15,12 @@ extension EC.NamespaceImplement where Base == String {
     }
     ///判断该字符串是否为空，包括空字符串
     public var isBlank: Bool {
+        return self.trim.isEmpty
+    }
+    ///删除前后的空字符
+    public var trim: String {
         let blank = CharacterSet.whitespacesAndNewlines
-        return self.base.trimmingCharacters(in: blank).isEmpty
+        return self.base.trimmingCharacters(in: blank)
     }
     ///判断该字符串是否为空，包括空字符串，若为空则返回nil,否则返回源字符串
     public var notEmpty: String? {
