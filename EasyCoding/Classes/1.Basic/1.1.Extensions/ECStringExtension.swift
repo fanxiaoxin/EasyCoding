@@ -147,7 +147,7 @@ extension EC.NamespaceImplement where Base == String {
                 parameter = parameter.appending("&\(kv.key.easy.urlEncode)=\(kv.value.description.easy.urlEncode)")
             }
             if !result.contains("?") {
-                parameter = parameter.replacingCharacters(in: Range<String.Index>(uncheckedBounds: (lower: parameter.startIndex, upper: parameter.startIndex)), with: "?")
+                parameter = parameter.replacingCharacters(in: Range<String.Index>(uncheckedBounds: (lower: parameter.startIndex, upper: parameter.index(after: parameter.startIndex))), with: "?")
             }
             result = result.appending(parameter)
         }
@@ -307,7 +307,7 @@ extension EC.NamespaceImplement where Base: NSAttributedString {
 
 extension EC.NamespaceImplement where Base == String {
     ///将所有的字符串连起来，若其中有一个为nil则返回nil
-    public static func notEmpty(_ parts: Any?...) -> String? {
+    public static func joinWithoutNil(_ parts: Any?...) -> String? {
         let result = NSMutableString()
         for part in parts {
             if let p = part {
