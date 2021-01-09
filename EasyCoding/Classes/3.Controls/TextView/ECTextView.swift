@@ -127,7 +127,7 @@ public class ECTextView: UITextView, UITextViewDelegate {
 }
 
 extension ECBuildable where Self: UIView {
-    public static func fxTextView(_ styles: ECStyleSetting<ECTextView>...) -> ECTextView {
+    public static func ecTextView(_ styles: ECStyleSetting<ECTextView>...) -> ECTextView {
         return ECTextView().easy(styles: styles)
     }
 }

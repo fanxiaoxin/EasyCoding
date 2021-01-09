@@ -18,10 +18,10 @@ class MainController: UITabBarController, UITabBarControllerDelegate, ECViewCont
     var preconditions: [ECViewControllerCondition]? { return nil}
     
     let whenStartupCompleted = ECOnceEvent()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let c1 = ExampleController()
         let c2 = ViewController<UIView>()
         let c3 = ViewController<UIView>()
@@ -48,10 +48,10 @@ class MainController: UITabBarController, UITabBarControllerDelegate, ECViewCont
         self.tabBar.easy.setBadge(.value(20), at: 2)
         self.tabBar.items?[1].badgeValue = "20"
         //启动流程
-//        self.start(.startup{
-//            self.isStartupCompleted = true
-//            })
-
+        //        self.start(.startup{
+        //            self.isStartupCompleted = true
+        //            })
+        
         self.delegate = self
         
         //页面加载完成
@@ -111,3 +111,113 @@ extension ViewController {
 }
 
 
+
+
+/*
+ ///动态设置提供器类型
+ public protocol ECDynamicPropertyProviderType {
+ ///根据指定参数返回对应的值
+ func value<ValueType, Value>(for key: DynamicValueProviderType) -> Value
+ }
+ ///可动态设置属性
+ public protocol ECPropertyDynamically {
+ ///动态设置提供器类型
+ associatedtype DynamicProviderType: ECDynamicPropertyProviderType
+ }
+ extension ECPropertyDynamically {
+ ///动态属性，可在运行时动态改变值
+ public func dynamic<PropertyType>(_ keyPath: WritableKeyPath<UIView, PropertyType?>, value: PropertyType) {
+ self.base[keyPath: keyPath] = value
+ }
+ }
+ 
+ ///动态属性，可在运行时动态改变值
+ class DynamicProperty<ClassType> {
+ 
+ }
+ 
+ enum ColorIndex {
+ case main
+ case sub
+ case button
+ case title
+ }
+ struct DynamicTarget {
+ weak var object: UIView?
+ let keyPath: WritableKeyPath<UIView, UIColor?>
+ let index: ColorIndex
+ }
+ class DynamicObjects {
+ static let shared = DynamicObjects()
+ var targets:[DynamicTarget] = []
+ 
+ func color(for index: ColorIndex) -> UIColor {
+ return .blue
+ }
+ func set(keyPath: WritableKeyPath<UIView, UIColor?>, value: ColorIndex, for object: UIView) {
+ var o = object
+ o[keyPath: keyPath] = self.color(for: value)
+ }
+ func update() {
+ for target in self.targets {
+ target.object?[keyPath: target.keyPath] = self.color(for: target.index)
+ }
+ }
+ }
+ extension UIView {
+ func dynamic(_ keyPath: WritableKeyPath<UIView, UIColor?>, value: ColorIndex) {
+ DynamicObjects.shared.objects.append(self)
+ DynamicObjects.shared.color(for: value)
+ }
+ }
+ func test2() {
+ let view = UIView()
+ view.dynamic(\.backgroundColor, value: .main)
+ }
+ 
+ */
+
+///动态属性的值
+public protocol DynamicPropertyValueType {
+    associatedtype RawValue
+    var rawValue: RawValue { get }
+    init?(rawValue: RawValue)
+}
+///动态属性对象包装
+@dynamicMemberLookup
+struct DynamicPropertyObject<T> {
+    private var _get: () -> T
+    private var _set: (T) -> ()
+    
+    var object: T {
+        get { return _get()  }
+        nonmutating set { _set(newValue) }
+    }
+    
+    init(_ object: T) {
+        var x = object
+        _get = { x }
+        _set = { x = $0 }
+    }
+    subscript<ValueType: DynamicPropertyValueType>(dynamicMember kp: WritableKeyPath<T, ValueType.RawValue?>) -> ValueType? {
+        get {
+            if let value = self.object[keyPath: kp] {
+                return ValueType(rawValue: value)
+            }
+            return nil
+        }
+        nonmutating set {
+            self.object[keyPath: kp] = newValue?.rawValue
+        }
+    }
+    subscript<ValueType: DynamicPropertyValueType>(dynamicMember kp: WritableKeyPath<T, ValueType.RawValue>) -> ValueType? {
+        get {
+            return ValueType(rawValue: self.object[keyPath: kp])
+        }
+        nonmutating set {
+            if let value = newValue?.rawValue {
+                self.object[keyPath: kp] = value
+            }
+        }
+    }
+}

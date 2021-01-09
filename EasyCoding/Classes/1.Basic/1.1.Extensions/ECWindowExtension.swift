@@ -62,7 +62,7 @@ extension EC.NamespaceImplement where Base: UIWindow {
     public static var topWindow: UIWindow? {
         var top : UIWindow? = nil
         for w in UIApplication.shared.windows {
-            if w.windowLevel.rawValue >= (top?.windowLevel.rawValue ?? 0) {
+            if w.windowLevel.rawValue >= (top?.windowLevel.rawValue ?? 0) && !w.isHidden {
                 top = w
             }
         }

@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var thread: Thread?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -29,7 +30,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        haha = 8
 //        print(haha < 6)
         
+//        let thread = Thread(target: self, selector: #selector(self.test), object: nil)
+//        self.thread = thread
+//        thread.start()
+        self.test()
         return true
+    }
+    @objc func test() {
+        let observer = CFRunLoopObserverCreateWithHandler(kCFAllocatorDefault, CFRunLoopActivity.allActivities.rawValue, true, 0) { (observer, activity) in
+            switch activity {
+            case .entry: print("进入")
+            case .beforeTimers: print("即将处理Timer事件")
+            case .beforeSources: print("即将处理Source事件")
+            case .beforeWaiting: print("即将休眠")
+            case .afterWaiting: print("被唤醒")
+            case .exit: print("退出RunLoop")
+            default: break
+            }
+        }
+        CFRunLoopAddObserver(CFRunLoopGetCurrent(), observer, CFRunLoopMode.defaultMode)
+        /*
+        let context = CFRunLoopSourceContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil, equal: nil, hash: nil) { (_, runloop, mode) in
+            
+        } cancel: { (_, runloop, mode) in
+            
+        } perform: { (_) in
+            
+        }*/
+
+        
+        
+//        RunLoop.current.run()
+    }
+    @objc func timer() {
+        print("mode: \(String(describing: RunLoop.current.currentMode))")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

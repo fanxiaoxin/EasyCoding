@@ -177,7 +177,7 @@
 		58120B107E5A90C4FDC70346B57901EA /* ECKingfisherStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6834883B956BE59D0175E230B30AE6EA /* ECKingfisherStyle.swift */; };
 		588AA8612D199B515B8A93D5929BB824 /* NSDecimalNumberTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE70A6C671D811FC8F6FE62E5C5E0F9 /* NSDecimalNumberTransform.swift */; };
 		58B3DE706BF9E50424A5CCF4318528F4 /* ECApiStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9C083C705A5A5E81DE134B3326973A /* ECApiStructure.swift */; };
-		58C80AD11E95DA591DB4F25A4CF59770 /* ECThemeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669D1AA24CD3A651E6D1DDE9A834D507 /* ECThemeManagement.swift */; };
+		58C80AD11E95DA591DB4F25A4CF59770 /* ECSkinManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669D1AA24CD3A651E6D1DDE9A834D507 /* ECSkinManagement.swift */; };
 		59EBF035889863F0FD8AFF3066C43B7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F7E835C116B5F4E17F27AC7CE51A6F /* Foundation.framework */; };
 		5B84187E4FC7AC38BFC18D509E7FD166 /* RedirectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A91F868E1E11B1761F6DA98B239A70 /* RedirectHandler.swift */; };
 		5B89B1FAD0B642FD07AD7FBCBE0E0885 /* ECDataEmptyPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641FF99BE7F723C4823846340C334289 /* ECDataEmptyPlugin.swift */; };
@@ -308,10 +308,14 @@
 		9BD253A561C1D4324BD2FAF1008DED0E /* ECBlockEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F432FDE893661B980218A8B1A2BB89B /* ECBlockEventHandler.swift */; };
 		9C070173514870CC7F7391FCEFBF09FF /* ECPresentSegue.TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBFFC2CF355FA5BC93E6BD272F8AB4 /* ECPresentSegue.TabBar.swift */; };
 		9C1021CE24D1259F00288072 /* ECErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1021CD24D1259F00288072 /* ECErrorExtension.swift */; };
+		9C65A99D25A999A000305B26 /* ECThemeValueMapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C65A99C25A999A000305B26 /* ECThemeValueMapped.swift */; };
 		9C67BE902520A2F60034E36B /* ECOptionalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67BE8F2520A2F60034E36B /* ECOptionalExtension.swift */; };
 		9C6BBE8324CFFF9000867946 /* ECPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BBE8224CFFF9000867946 /* ECPromise.swift */; };
 		9C7BA5CA2501E57E00EC4CF3 /* ECDictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7BA5C92501E57E00EC4CF3 /* ECDictionaryExtension.swift */; };
 		9C7E5078C028B645E476B0C922321315 /* UIViewController+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBB01610A074B326556260A43DE4E5A /* UIViewController+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C84804125A86C3A000B0CBD /* ECThemeValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C847FFA25A86BE5000B0CBD /* ECThemeValueType.swift */; };
+		9C84804225A86C3A000B0CBD /* ECThemeManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84800925A86C02000B0CBD /* ECThemeManagerType.swift */; };
+		9C84804325A86C3A000B0CBD /* ECThemeSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84802525A86C36000B0CBD /* ECThemeSetter.swift */; };
 		9CA6CD5F06FBB9791DBF6289B565EAB7 /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356606CE881422FCC4EDE67314AA5B02 /* Serializer.swift */; };
 		9CCE7BAC85AA87FD391F6885C342BCD9 /* ConstraintLayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558106DFF87076A608675F73B0E38200 /* ConstraintLayoutSupport.swift */; };
 		9CEB5EBEE9CDCE0738C6C94643A168CF /* YYKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAEA03E3D68934CE27AF39780D75703 /* YYKeyboardManager.framework */; };
@@ -895,7 +899,7 @@
 		657BEC1D5BFAE21A8E5EA49C7DC4771D /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Utility/Box.swift; sourceTree = "<group>"; };
 		65DE074D98EDDF207887EEA7EBC7241D /* CustomDateFormatTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomDateFormatTransform.swift; path = Source/CustomDateFormatTransform.swift; sourceTree = "<group>"; };
 		66545A28FD43A36544737A638F987CB2 /* Endpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = Sources/Moya/Endpoint.swift; sourceTree = "<group>"; };
-		669D1AA24CD3A651E6D1DDE9A834D507 /* ECThemeManagement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECThemeManagement.swift; sourceTree = "<group>"; };
+		669D1AA24CD3A651E6D1DDE9A834D507 /* ECSkinManagement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECSkinManagement.swift; sourceTree = "<group>"; };
 		66BD3D97D6B56FF95A27A7B85CA6837C /* ECTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECTextView.swift; sourceTree = "<group>"; };
 		67083932D6A505742DDCDCB2670191AA /* CallbackQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CallbackQueue.swift; path = Sources/Utility/CallbackQueue.swift; sourceTree = "<group>"; };
 		674C5E8C6DD933B138ADCB8FC16F32B6 /* ECStringAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECStringAttribute.swift; sourceTree = "<group>"; };
@@ -1023,10 +1027,14 @@
 		9BB182130E5B007D9436E98EB9C0B0F5 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Configuration.swift; sourceTree = "<group>"; };
 		9BC5F95691A65769D1C902998DFBCC89 /* ECDataErrorPluginBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ECDataErrorPluginBase.swift; sourceTree = "<group>"; };
 		9C1021CD24D1259F00288072 /* ECErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECErrorExtension.swift; sourceTree = "<group>"; };
+		9C65A99C25A999A000305B26 /* ECThemeValueMapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECThemeValueMapped.swift; sourceTree = "<group>"; };
 		9C67BE8F2520A2F60034E36B /* ECOptionalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECOptionalExtension.swift; sourceTree = "<group>"; };
 		9C6BBE8224CFFF9000867946 /* ECPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECPromise.swift; sourceTree = "<group>"; };
 		9C7BA5C92501E57E00EC4CF3 /* ECDictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDictionaryExtension.swift; sourceTree = "<group>"; };
 		9C83FCAF44CD08153B20EC1279B62C18 /* NSTask+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSTask+AnyPromise.h"; path = "Extensions/Foundation/Sources/NSTask+AnyPromise.h"; sourceTree = "<group>"; };
+		9C847FFA25A86BE5000B0CBD /* ECThemeValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECThemeValueType.swift; sourceTree = "<group>"; };
+		9C84800925A86C02000B0CBD /* ECThemeManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECThemeManagerType.swift; sourceTree = "<group>"; };
+		9C84802525A86C36000B0CBD /* ECThemeSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECThemeSetter.swift; sourceTree = "<group>"; };
 		9CCB610D351A9BAA3B840BB24913C69E /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
 		9CECB38B2508B16300DF9BFC /* ECTabBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECTabBarExtension.swift; sourceTree = "<group>"; };
 		9CECB38E2508C24B00DF9BFC /* ECBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECBadge.swift; sourceTree = "<group>"; };
@@ -2371,6 +2379,17 @@
 			path = 2.9.Promise;
 			sourceTree = "<group>";
 		};
+		9C847FF925A86BBF000B0CBD /* ECThemeManager */ = {
+			isa = PBXGroup;
+			children = (
+				9C847FFA25A86BE5000B0CBD /* ECThemeValueType.swift */,
+				9C84800925A86C02000B0CBD /* ECThemeManagerType.swift */,
+				9C84802525A86C36000B0CBD /* ECThemeSetter.swift */,
+				9C65A99C25A999A000305B26 /* ECThemeValueMapped.swift */,
+			);
+			path = ECThemeManager;
+			sourceTree = "<group>";
+		};
 		9CECB38D2508C21800DF9BFC /* Badge */ = {
 			isa = PBXGroup;
 			children = (
@@ -2522,10 +2541,11 @@
 		B858B3564B507E84ED6BF84FAEF0052F /* 2.1.Personalized */ = {
 			isa = PBXGroup;
 			children = (
+				9C847FF925A86BBF000B0CBD /* ECThemeManager */,
 				0F272A94E347F32BB208E74C0569AB4C /* ECLocalized.swift */,
 				F4371FD71BFCD67783BE72E4F2CAC0C9 /* ECPersonalized.swift */,
 				20DE50A4F10106739FEFAE2A85A2A83C /* ECSimpleLocalized.swift */,
-				669D1AA24CD3A651E6D1DDE9A834D507 /* ECThemeManagement.swift */,
+				669D1AA24CD3A651E6D1DDE9A834D507 /* ECSkinManagement.swift */,
 			);
 			path = 2.1.Personalized;
 			sourceTree = "<group>";
@@ -3636,6 +3656,7 @@
 				D14972F49E5C75DE933377DED938F600 /* ECCollectionViewDataSource.swift in Sources */,
 				8B4BB83ECFEA1D3DD0C481564F6B4D61 /* ECCollectionViewFixedColumnsLayout.swift in Sources */,
 				B265AA1FA743562F7CBD03BB16403417 /* ECColorExtension.swift in Sources */,
+				9C84804325A86C3A000B0CBD /* ECThemeSetter.swift in Sources */,
 				894F82B5642423EDB0F82CD27070718A /* ECCommonDataPlugin.swift in Sources */,
 				DD60CC4CC0559D46777E72C2CED30B7F /* ECConditionType.swift in Sources */,
 				02769F2C4997340531F59E8777DD4EDA /* ECControlConfig.swift in Sources */,
@@ -3691,6 +3712,7 @@
 				1B304AC876632E5FFE56258375B1152F /* ECHandyJSONExtension.swift in Sources */,
 				A3B1DDC9A4A0F3A10612D154D5D3AE48 /* ECImageExtension.swift in Sources */,
 				6509B892AAA10AFDA82BCAE45CB6EBD9 /* ECImagePicker.swift in Sources */,
+				9C84804125A86C3A000B0CBD /* ECThemeValueType.swift in Sources */,
 				40D6CEF2B39169094DB9470A066F27D9 /* ECImageViewStyle.swift in Sources */,
 				170F749897EF73F92D92905A1EF24E75 /* ECInstantiateConditionType.swift in Sources */,
 				761A82C7C6BA619F957D2BC849BC258A /* ECKeyboardTextConstraint.swift in Sources */,
@@ -3733,6 +3755,7 @@
 				BEE999C4D8A80B90579DD77D89BF6814 /* ECPresentAnimation.Popup.swift in Sources */,
 				2B195F51061869C97ACA516B766F7B64 /* ECPresentAnimation.SlideOut.swift in Sources */,
 				B3036B6475E3C9B195FFDFA8D510408B /* ECPresentAnimation.swift in Sources */,
+				9C84804225A86C3A000B0CBD /* ECThemeManagerType.swift in Sources */,
 				BACC0415026C1790DAE2F442049E380A /* ECPresentAnimationType.swift in Sources */,
 				5044BE72FF1126D7B44F5A5BB5F91541 /* ECPresentSegue.Content.swift in Sources */,
 				679EC250A2792B9A87809522D4780A3E /* ECPresentSegue.MultiPush.swift in Sources */,
@@ -3768,11 +3791,12 @@
 				31B9AD0BB6FBFF26C14923A9246DC0BC /* ECTestSettingManager.swift in Sources */,
 				822C114726510657F9BE9C44EF9162C6 /* ECTextConstraint.swift in Sources */,
 				087E3957AE1F6E2A83DB1A101AD5EDE6 /* ECTextField.swift in Sources */,
+				9C65A99D25A999A000305B26 /* ECThemeValueMapped.swift in Sources */,
 				8B985335FF2DF44A94E13EF37BFC35BD /* ECTextFieldStyle.swift in Sources */,
 				D14A47063068EE4804DF2E5D241CDA52 /* ECTextualizable.swift in Sources */,
 				F2695EB8A1C973E35E4501CD1C4DBF67 /* ECTextView.swift in Sources */,
 				F018948D42C1F71DD93BC32B79325002 /* ECTextViewStyle.swift in Sources */,
-				58C80AD11E95DA591DB4F25A4CF59770 /* ECThemeManagement.swift in Sources */,
+				58C80AD11E95DA591DB4F25A4CF59770 /* ECSkinManagement.swift in Sources */,
 				AB7F95E4B948ADBB9906DDA83E2AB7A2 /* ECTimer.swift in Sources */,
 				657FF6057C13F0FB6E1784BC58CBBFA4 /* ECToastConfig.swift in Sources */,
 				B2D301CC302FACBBCC4DEA50A3F094F0 /* ECToastView.swift in Sources */,
