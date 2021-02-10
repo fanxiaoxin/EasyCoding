@@ -8,9 +8,8 @@
 
 import UIKit
 import EasyCoding
-import PromiseKit
 
-public struct ECTypeWarpper<T>: ECTypeWrapperProtocol {
+public struct EasyTypeWarpper<T>: EasyTypeWrapperProtocol {
     public let base: T
     public init(value: T) {
         self.base = value
@@ -18,15 +17,15 @@ public struct ECTypeWarpper<T>: ECTypeWrapperProtocol {
 }
 
 ///泛型抽象类
-public protocol ECGenericType {
+public protocol EasyGenericType {
     var types: [Any.Type] { get }
 }
-public extension ECGenericType {
+public extension EasyGenericType {
     func type<T>(for index: Int) -> T.Type {
         return self.types[index] as! T.Type
     }
 }
-public protocol MyTypeBase: ECGenericType {
+public protocol MyTypeBase: EasyGenericType {
     
 }
 public protocol MyType: MyTypeBase {
@@ -39,19 +38,19 @@ extension MyType {
     }
 }
 public class my<Element>: MyType {
-    var other: ECTypeWarpper<ECGenericType>?
+    var other: EasyTypeWarpper<EasyGenericType>?
     public func fuck(for element: Element) {
         
     }
 }
 ///代表一个组件，大到一个系统，模块，小到一个Controller或者更小
-protocol ECComponentType { }
+protocol EasyComponentType { }
 ///需要显示UI的组件
-protocol ECUIComponentType: ECComponentType { }
+protocol EasyUIComponentType: EasyComponentType { }
 ///可加载组件
-protocol ECComponentLoadable { }
+protocol EasyComponentLoadable { }
 ///组件加载场景
-protocol ECComponentLoadingSegueType: ECEmptyInstantiable {
+protocol EasyComponentLoadingSegueType: EasyEmptyInstantiable {
     associatedtype LoaderType
     associatedtype ComponentType
     ///加载
@@ -64,19 +63,19 @@ protocol ECComponentLoadingSegueType: ECEmptyInstantiable {
 //2. Business + ViewController
 //3. ViewController + Business
 //4. Business + Business
-extension ECComponentLoadable {
+extension EasyComponentLoadable {
     ///加载另一个组件
-    func load<SegueType: ECComponentLoadingSegueType>(_ component: SegueType.ComponentType, segue: SegueType) where  Self: SegueType.LoaderType {
+    func load<SegueType: EasyComponentLoadingSegueType>(_ component: SegueType.ComponentType, segue: SegueType) where  Self: SegueType.LoaderType {
         segue.load(for: self, component: component)
     }
 }
-class A1: ECComponentType {
+class A1: EasyComponentType {
     
 }
-class AS: ECComponentLoadingSegueType {
-    var source: ECComponentLoadable
+class AS: EasyComponentLoadingSegueType {
+    var source: EasyComponentLoadable
     
-    var destination: ECComponentType
+    var destination: EasyComponentType
     
     func load() {
         
@@ -86,7 +85,7 @@ class AS: ECComponentLoadingSegueType {
         
     }
 }
-class A: ECComponentLoadable {
+class A: EasyComponentLoadable {
     
 }
 class AB: A {
@@ -99,7 +98,7 @@ class AT {
 }
 */
 ///组件化模块
-protocol ECModuleType {
+protocol EasyModuleType {
     ///模块需求，每个模块自定义自己的协议，这样设置的时候有遗漏编译器会警告
     associatedtype RequirementProtocol
     ///模块产出
@@ -111,24 +110,24 @@ protocol ECModuleType {
     static var shared: Self { get }
 }
 ///主模块，负责调配组装所有模块，装配每个模块的config, requirement和exprot属性
-protocol ECMainModuleType: ECModuleType {
+protocol EasyMainModuleType: EasyModuleType {
     ///在该方法装配所有模块
     func assembly()
 }
 ///基础模块，负责整个框架的基础设施
-protocol ECBasicModuleType: ECModuleType {
+protocol EasyBasicModuleType: EasyModuleType {
     
 }
 ///上下文模块，负责维护整个项目使用到的上下文信息，如登录信息，注意仅维护全局的，各模块的上下文信息由自身去维护
-protocol ECContextModuleType: ECModuleType {
+protocol EasyContextModuleType: EasyModuleType {
     
 }
 ///具体的业务模块
-protocol ECBusinessModuleType: ECModuleType {
+protocol EasyBusinessModuleType: EasyModuleType {
     
 }
 ///第三方业务模块，由主模块去配置
-protocol ECThreePartyModuleType: ECModuleType {
+protocol EasyThreePartyModuleType: EasyModuleType {
     
 }
 
@@ -153,14 +152,14 @@ class TestModuleExport: TestModuleExportType {
         
     }
 }
-final class TestModule: ECBusinessModuleType {
+final class TestModule: EasyBusinessModuleType {
     static let shared = TestModule()
     
     typealias RequirementProtocol = TestModuleRequirementType
     typealias ExportProtocol = TestModuleExportType
     var requirement: RequirementProtocol = TestModuleRequirement()
     var export: ExportProtocol = TestModuleExport()
-    var config: ECNull = ecNull
+    var config: EasyNull = easyNull
 }
 func xxx() {
     if TestModule().requirement.isLogined() {
@@ -176,24 +175,24 @@ func xxx() {
 //2.2 无返回值
     
 ///命令模式
-protocol ECCommandType {
+protocol EasyCommandType {
     associatedtype InputType
     associatedtype OutputType
     var input: InputType { get set }
     var conditions: [Any] { get set }
     var method: Any { get set }
     ///命令接收者
-    var receiver: ECCommandReceiverType { get set }
+    var receiver: EasyCommandReceiverType { get set }
     ///执行命令
     func execute(completion: (OutputType)->Void)
 }
 ///接收命令的目标
-protocol ECCommandReceiverType {
+protocol EasyCommandReceiverType {
     
 }
 ///执行命令的对象
-protocol ECCommandInvokerType {
-    associatedtype CommandType: ECCommandType
+protocol EasyCommandInvokerType {
+    associatedtype CommandType: EasyCommandType
     var command: CommandType { get set }
     ///执行命令
     func call()
@@ -258,11 +257,11 @@ class TEST {
             UIColor.blue
         }
         print(str3)
-        
-        firstly {
-            URLSession.shared.dataTask(.promise, with: URLRequest.init(stringLiteral: "https://www.baidu.com"))
-        }.done { obj in
-            
-        }
+//        
+//        firstly {
+//            URLSession.shared.dataTask(.promise, with: URLRequest.init(stringLiteral: "https://www.baidu.com"))
+//        }.done { obj in
+//            
+//        }
     }
 }

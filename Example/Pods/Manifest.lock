@@ -1,85 +1,23 @@
 PODS:
-  - Alamofire (4.9.1)
-  - EasyCoding (0.0.3):
-    - EasyCoding/AccessControl (= 0.0.3)
-    - EasyCoding/Api (= 0.0.3)
-    - EasyCoding/Basic (= 0.0.3)
-    - EasyCoding/Controls (= 0.0.3)
-    - EasyCoding/Personalized (= 0.0.3)
-  - EasyCoding/AccessControl (0.0.3):
-    - EasyCoding/Basic
-    - PromiseKit
-  - EasyCoding/Api (0.0.3):
-    - EasyCoding/Basic
-    - HandyJSON (~> 5.0.0)
-    - Moya (~> 13.0.0)
-  - EasyCoding/Basic (0.0.3):
+  - EasyCoding (0.1.0):
     - SnapKit (~> 5.0.0)
-  - EasyCoding/Controls (0.0.3):
-    - EasyCoding/AccessControl
-    - JRSwizzle
-    - Kingfisher (~> 5.14.0)
-    - MJRefresh (~> 3.4.0)
-    - YYKeyboardManager (~> 1.0.0)
-  - EasyCoding/Personalized (0.0.3):
-    - EasyCoding/Basic
-  - HandyJSON (5.0.2)
-  - JRSwizzle (1.0)
-  - Kingfisher (5.14.0):
-    - Kingfisher/Core (= 5.14.0)
-  - Kingfisher/Core (5.14.0)
-  - MJRefresh (3.4.3)
-  - Moya (13.0.1):
-    - Moya/Core (= 13.0.1)
-  - Moya/Core (13.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.1)
-  - PromiseKit (6.13.1):
-    - PromiseKit/CorePromise (= 6.13.1)
-    - PromiseKit/Foundation (= 6.13.1)
-    - PromiseKit/UIKit (= 6.13.1)
-  - PromiseKit/CorePromise (6.13.1)
-  - PromiseKit/Foundation (6.13.1):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.13.1):
-    - PromiseKit/CorePromise
-  - Result (4.1.0)
   - SnapKit (5.0.1)
-  - YYKeyboardManager (1.0.1)
 
 DEPENDENCIES:
   - EasyCoding (from `../`)
 
 SPEC REPOS:
   trunk:
-    - Alamofire
-    - HandyJSON
-    - JRSwizzle
-    - Kingfisher
-    - MJRefresh
-    - Moya
-    - PromiseKit
-    - Result
     - SnapKit
-    - YYKeyboardManager
 
 EXTERNAL SOURCES:
   EasyCoding:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  EasyCoding: ae14188f98ea7c967332e0246fa0f285dc19dc5e
-  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
-  JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
-  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
-  MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
-  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
-  PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  EasyCoding: 7c1990d06c635e58c38925e8afb7f03d854c8a12
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  YYKeyboardManager: ff53d2e80d1808567a7f004028bd200d9469a89f
 
 PODFILE CHECKSUM: 9c2688ec57bf39d46294bfa2f522f4b8c9fee234
 
-COCOAPODS: 1.9.2
+COCOAPODS: 1.10.1

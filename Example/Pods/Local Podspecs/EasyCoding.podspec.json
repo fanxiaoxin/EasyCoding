@@ -1,7 +1,7 @@
 {
   "name": "EasyCoding",
-  "version": "0.0.3",
-  "summary": "提供日常开发常用的操作及控件的封装",
+  "version": "0.1.0",
+  "summary": "提供日常开发最常用的操作封装",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/fanxiaoxin/EasyCoding",
   "license": {
@@ -13,96 +13,17 @@
   },
   "source": {
     "git": "https://github.com/fanxiaoxin/EasyCoding.git",
-    "tag": "0.0.3"
+    "tag": "0.1.0"
   },
   "platforms": {
     "ios": "10.0"
   },
   "source_files": "EasyCoding/Classes/**/*",
-  "swift_versions": "5.2",
-  "resource_bundles": {
-    "EasyCoding": [
-      "EasyCoding/Assets/*.xcassets"
+  "swift_versions": "5.3",
+  "dependencies": {
+    "SnapKit": [
+      "~> 5.0.0"
     ]
   },
-  "subspecs": [
-    {
-      "name": "Basic",
-      "source_files": "EasyCoding/Classes/1.Basic/**/*",
-      "dependencies": {
-        "SnapKit": [
-          "~> 5.0.0"
-        ]
-      }
-    },
-    {
-      "name": "Personalized",
-      "source_files": "EasyCoding/Classes/2.Business/2.1.Personalized/**/*",
-      "dependencies": {
-        "EasyCoding/Basic": [
-
-        ]
-      }
-    },
-    {
-      "name": "AccessControl",
-      "source_files": "EasyCoding/Classes/2.Business/2.2.AccessControl/**/*",
-      "dependencies": {
-        "EasyCoding/Basic": [
-
-        ],
-        "PromiseKit": [
-
-        ]
-      }
-    },
-    {
-      "name": "Api",
-      "source_files": [
-        "EasyCoding/Classes/2.Business/2.3.Api/**/*",
-        "EasyCoding/Classes/4.plugs/DataProvider/**/*"
-      ],
-      "dependencies": {
-        "EasyCoding/Basic": [
-
-        ],
-        "Moya": [
-          "~> 13.0.0"
-        ],
-        "HandyJSON": [
-          "~> 5.0.0"
-        ]
-      }
-    },
-    {
-      "name": "Controls",
-      "source_files": [
-        "EasyCoding/Classes/3.Controls/**/*",
-        "EasyCoding/Classes/4.plugs/**/*"
-      ],
-      "dependencies": {
-        "EasyCoding/AccessControl": [
-
-        ],
-        "JRSwizzle": [
-
-        ],
-        "YYKeyboardManager": [
-          "~> 1.0.0"
-        ],
-        "Kingfisher": [
-          "~> 5.14.0"
-        ],
-        "MJRefresh": [
-          "~> 3.4.0"
-        ]
-      },
-      "resource_bundles": {
-        "EasyCoding": [
-          "EasyCoding/Assets/*.xcassets"
-        ]
-      }
-    }
-  ],
-  "swift_version": "5.2"
+  "swift_version": "5.3"
 }

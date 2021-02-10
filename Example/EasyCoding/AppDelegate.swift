@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let thread = Thread(target: self, selector: #selector(self.test), object: nil)
 //        self.thread = thread
 //        thread.start()
-        self.test()
+//        self.test()
         return true
     }
     @objc func test() {
