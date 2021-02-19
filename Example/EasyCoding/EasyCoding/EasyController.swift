@@ -15,6 +15,7 @@ class EasyController: UITableViewController {
         self.title = "EasyCoding"
         
         self.tableView.easy.style(.cell(UITableViewCell.self))
+        
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2

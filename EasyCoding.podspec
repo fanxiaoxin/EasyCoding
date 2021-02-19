@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EasyCoding'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = '提供日常开发最常用的操作封装'
 
 # This description is used to generate tags and improve search results.
@@ -30,7 +30,7 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'EasyCoding/Classes/**/*'
+#  s.source_files = 'EasyCoding/Classes/**/*'
   
   s.swift_version = '5.3'
   
@@ -39,45 +39,85 @@ TODO: Add long description of the pod here.
 #  }
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'SnapKit', '~> 5.0.0'
+#  s.dependency 'SnapKit', '~> 5.0'
   
-#  # 最基本的操作
-#  s.subspec 'Basic' do |b|
-#      b.source_files = 'EasyCoding/Classes/1.Basic/**/*'
-#      b.dependency 'SnapKit', '~> 5.0.0'
-#      b.dependency 'JRSwizzle'
-#  end
-#  # 定制化的操作，比如多语言或多主题
-#  s.subspec 'Personalized' do |p|
-#      p.source_files = 'EasyCoding/Classes/2.Business/2.1.Personalized/**/*'
-#      p.dependency 'EasyCoding/Basic'
-#  end
-#  # ViewController的访问控制，提供统一的加载方法，可定制加载的先决条件及跳转方式、多页面加载流程
-#  s.subspec 'AccessControl' do |p|
-#      p.source_files = 'EasyCoding/Classes/2.Business/2.2.AccessControl/**/*'
-#      p.dependency 'EasyCoding/Basic'
-#  end
-#  # 提供一些控件及界面相关的工具
-#  s.subspec 'Controls' do |c|
-#    c.source_files = 'EasyCoding/Classes/3.Controls/**/*','EasyCoding/Classes/4.plugs/**/*'
-#    c.dependency 'EasyCoding/AccessControl'
-#    c.dependency 'YYKeyboardManager', '~> 1.0.0'
-#    c.dependency 'Kingfisher', '~> 5.14.0'
-#    c.dependency 'MJRefresh', '~> 3.4.0'
-#    c.resource_bundles = {
-#        'EasyCoding' => ['EasyCoding/Assets/*.xcassets']
-#    }
-#   end
-#   # 将每一个API请求的相关字段都封装为一个对象，可以清晰地看到每一个API的请求地址、方式、请求结构、响应结构等操作
-#   s.subspec 'Api' do |a|
-#       a.source_files = 'EasyCoding/Classes/2.Business/2.3.Api/**/*'
-#       a.dependency 'EasyCoding/Controls'
-#       a.dependency 'Moya', '~> 13.0.0'
-#       a.dependency 'HandyJSON', '~> 5.0.0'
-#   end
-#   s.subspec 'Promise' do |p|
-#       p.source_files = 'EasyCoding/Classes/2.Business/2.9.Promise/**/*'
-#       p.dependency 'EasyCoding/Api'
-#       p.dependency 'PromiseKit', '~> 6.13.1'
-#   end
+  s.default_subspecs = 'Basic'
+  # 最基本的操作
+  s.subspec 'Basic' do |sub|
+      sub.dependency 'SnapKit', '~> 5.0'
+      sub.source_files = 'EasyCoding/Classes/Basic/**/*'
+  end
+  # 事件
+  s.subspec 'Event' do |sub|
+    sub.dependency 'EasyCoding/Basic'
+    sub.source_files = 'EasyCoding/Classes/Event/**/*'
+    sub.pod_target_xcconfig = { 'OTHER_SWIFT_FLAGS' => ['-D','EASY_EVENT'] }
+  end
+  # 视图呈现
+  s.subspec 'Present' do |sub|
+    sub.dependency 'EasyCoding/Basic'
+    sub.source_files = 'EasyCoding/Classes/Present/**/*'
+  end
+  # 数据处理
+  s.subspec 'Data' do |sub|
+#    sub.dependency 'MJRefresh', '~> 3.4.0'
+    sub.dependency 'EasyCoding/Basic'
+    sub.source_files = 'EasyCoding/Classes/Data/**/*'
+    sub.pod_target_xcconfig = { 'OTHER_SWIFT_FLAGS' => ['-D','EASY_DATA'] }
+  end
+  # 控制器加载方案
+  s.subspec 'ViewControllerLoad' do |sub|
+    sub.dependency 'EasyCoding/Present'
+    sub.source_files = 'EasyCoding/Classes/ViewControllerLoad/**/*'
+    sub.pod_target_xcconfig = { 'OTHER_SWIFT_FLAGS' => ['-D','EASY_VIEWCONTROLLERLOAD'] }
+  end
+  # 控件
+  s.subspec 'Controls' do |sub|
+    sub.dependency 'EasyCoding/Event'
+    sub.dependency 'EasyCoding/ViewControllerLoad'
+    sub.dependency 'YYKeyboardManager', '~> 1.0.0'
+    sub.resource_bundles = {
+      'EasyCoding' => ['EasyCoding/Assets/Controls.xcassets']
+    }
+#    sub.dependency 'Kingfisher', '~> 5.14.0'
+#    sub.dependency 'MJRefresh', '~> 3.4.0'
+    sub.source_files = 'EasyCoding/Classes/Controls/**/*'
+    sub.pod_target_xcconfig = { 'OTHER_SWIFT_FLAGS' => ['-D','EASY_CONTROLS'] }
+  end
+  # Api封装
+  s.subspec 'Api' do |sub|
+    sub.dependency 'EasyCoding/Data'
+    sub.dependency 'Moya', '~> 13.0'
+    sub.dependency 'HandyJSON', '~> 5.0.0'
+    sub.source_files = 'EasyCoding/Classes/Api/**/*'
+  end
+  # 个性化方案
+  s.subspec 'Personalized' do |sub|
+    sub.dependency 'EasyCoding/Basic'
+    sub.source_files = 'EasyCoding/Classes/Personalized/**/*'
+  end
+  # 主题方案
+  s.subspec 'ThemeManager' do |sub|
+    sub.source_files = 'EasyCoding/Classes/ThemeManager/**/*'
+  end
+  # Kingfisher扩展
+  s.subspec 'Kingfisher' do |sub|
+    sub.dependency 'Kingfisher', '~> 6.0'
+  end
+  # MJRefresh扩展
+  s.subspec 'MJRefresh' do |sub|
+    sub.dependency 'MJRefresh', '~> 3.4'
+  end
+  # Promise扩展
+  s.subspec 'Promise' do |sub|
+    sub.dependency 'PromiseKit', '~> 6.13'
+  end
+  
+  # 常用的组件
+  s.subspec 'Common' do |sub|
+      sub.dependency 'EasyCoding/Controls'
+      sub.dependency 'EasyCoding/Api'
+      sub.dependency 'EasyCoding/Kingfisher'
+      sub.dependency 'EasyCoding/MJRefresh'
+  end
 end

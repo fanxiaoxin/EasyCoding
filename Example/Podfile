@@ -3,5 +3,13 @@ use_frameworks!
 platform :ios, '10.0'
 
 target 'EasyCoding_Example' do
-  pod 'EasyCoding', :path => '../'
+#  pod 'EasyCoding/Basic', :path => '../'
+  pod 'EasyCoding/Common', :path => '../'
+#  pod 'EasyCoding/Controls', :path => '../'
+#  pod 'EasyCoding/Api', :path => '../'
+#  pod 'EasyCoding/Personalized', :path => '../'
+#  pod 'EasyCoding/ThemeManager', :path => '../'
+#  pod 'EasyCoding/Kingfisher', :path => '../'
+#  pod 'EasyCoding/MJRefresh', :path => '../'
+#  pod 'EasyCoding/Promise', :path => '../'
 end
