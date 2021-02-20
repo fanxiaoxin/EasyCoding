@@ -24,10 +24,46 @@ extension EasyThemeSetter where ManagerType: EasyThemeColorMapped {
     ///设置颜色
     public subscript(dynamicMember kp: WritableKeyPath<TargetType, UIColor>) -> ManagerType.ColorType? {
         get {
-            return self.get(kp)
+            return nil
         }
         nonmutating  set {
             self.set(kp, value: newValue)
+        }
+    }
+    ///设置颜色
+    public subscript(dynamicMember kp: WritableKeyPath<TargetType, CGColor?>) -> ManagerType.ColorType? {
+        get {
+            return nil
+        }
+        nonmutating  set {
+            if let v = newValue {
+                self.set { (target) in
+                    var t = target
+                    t[keyPath: kp] = v.rawValue.cgColor
+                }
+            }
+        }
+    }
+    ///设置颜色
+    public subscript(dynamicMember kp: WritableKeyPath<TargetType, CGColor>) -> ManagerType.ColorType? {
+        get {
+            return nil
+        }
+        nonmutating  set {
+            if let v = newValue {
+                self.set { (target) in
+                    var t = target
+                    t[keyPath: kp] = v.rawValue.cgColor
+                }
+            }
+        }
+    }
+}
+extension EasyThemeSetter where TargetType: UIButton, ManagerType: EasyThemeColorMapped {
+    ///设置颜色
+    public func titleColor(_ color: ManagerType.ColorType, for state: UIControl.State = .normal) {
+        self.set { (target) in
+            target.setTitleColor(color.rawValue, for: state)
         }
     }
 }
@@ -64,6 +100,31 @@ public protocol EasyThemeImageMapped {
 extension EasyThemeSetter where ManagerType: EasyThemeImageMapped {
     ///设置图片
     public subscript(dynamicMember kp: WritableKeyPath<TargetType, UIImage?>) -> ManagerType.ImageType? {
+        get {
+            return self.get(kp)
+        }
+        nonmutating  set {
+            self.set(kp, value: newValue)
+        }
+    }
+}
+extension EasyThemeSetter where TargetType: UIButton, ManagerType: EasyThemeImageMapped {
+    ///设置图片
+    public func backgroundImage(_ image: ManagerType.ImageType, for state: UIControl.State = .normal) {
+        self.set { (target) in
+            target.setBackgroundImage(image.rawValue, for: state)
+        }
+    }
+}
+
+
+///可设置字体表
+public protocol EasyThemeFontMapped {
+    associatedtype FontType: EasyThemeValueType where FontType.RawValue == UIFont?
+}
+extension EasyThemeSetter where ManagerType: EasyThemeFontMapped {
+    ///设置字体
+    public subscript(dynamicMember kp: WritableKeyPath<TargetType, UIFont?>) -> ManagerType.FontType? {
         get {
             return self.get(kp)
         }

@@ -13,9 +13,13 @@ public protocol EasyThemeEnumType {
     var rawValue: RawValue { get }
     init?(rawValue: RawValue)
 }
-extension EasyThemeEnumType {
+///可直接扩展自身类型
+extension EasyThemeEnumType where RawValue == Self {
     public init?(rawValue: RawValue) {
-        return nil
+        self = rawValue
+    }
+    public var rawValue: RawValue {
+        return self
     }
 }
 
@@ -31,6 +35,9 @@ public protocol EasyThemeValueType: EasyThemeEnumType {
     associatedtype ThemeTableType: EasyThemeTableType
 }
 extension EasyThemeValueType {
+    public init?(rawValue: RawValue) {
+        return nil
+    }
     ///获取当前主题
     public var theme: ThemeTableType {
         return ThemeTableType.current

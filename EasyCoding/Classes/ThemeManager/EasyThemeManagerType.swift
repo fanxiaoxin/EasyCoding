@@ -48,8 +48,6 @@ public extension EasyThemeManagerType {
         tg.setters.append { (object) in
             setter(object as! TargetType)
         }
-        //注册时执行一次
-        setter(target)
     }
     ///更新主题
     func update() {
