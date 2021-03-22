@@ -48,7 +48,7 @@ extension EasyBuildable where Self: UIView {
 }
 
 extension EasyStyleSetting where TargetType: EasyProtocolButton {
-    public static func submit(_ button:UIButton) -> EasyStyleSetting<TargetType> {
+    public static func buildmit(_ button:UIButton) -> EasyStyleSetting<TargetType> {
         return .init(action: { (target) in
             target.submitButton = button
         })

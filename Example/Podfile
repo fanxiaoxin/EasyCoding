@@ -8,7 +8,7 @@ target 'EasyCoding_Example' do
 #  pod 'EasyCoding/Controls', :path => '../'
 #  pod 'EasyCoding/Api', :path => '../'
 #  pod 'EasyCoding/Personalized', :path => '../'
-#  pod 'EasyCoding/ThemeManager', :path => '../'
+  pod 'EasyCoding/ThemeManager', :path => '../'
 #  pod 'EasyCoding/Kingfisher', :path => '../'
 #  pod 'EasyCoding/MJRefresh', :path => '../'
 #  pod 'EasyCoding/Promise', :path => '../'

@@ -91,7 +91,7 @@ extension EasyCoding where Base: UIView {
     }
     ///批量添加子视图到父视图并返回父视图
     @discardableResult
-    public func sub(_ views:[UIView], first firstLayout: [EasyViewLayout],
+    public func build(_ views:[UIView], first firstLayout: [EasyViewLayout],
                                     last lastLayout: [EasyViewLayout],
                                     between betweenLayout:[EasyViewLayout],
                                     all layout:[EasyViewLayout]) ->Self  {
@@ -107,11 +107,11 @@ extension EasyCoding where Base: UIView {
     }
     ///批量添加子视图到父视图并返回父视图
     @discardableResult
-    public func sub(_ viewBuilders:[(EasyNamespaceWrapper<UIView>) -> Void], first firstLayout: [EasyViewLayout],
+    public func build(_ viewBuilders:[(EasyNamespaceWrapper<UIView>) -> Void], first firstLayout: [EasyViewLayout],
                     last lastLayout: [EasyViewLayout],
                     between betweenLayout:[EasyViewLayout],
                     all layout:[EasyViewLayout]) ->Self  {
-        return self.sub(viewBuilders.map({ (vb) -> UIView in
+        return self.build(viewBuilders.map({ (vb) -> UIView in
             let view = UIView()
             vb(view.easy)
             return view
@@ -119,22 +119,38 @@ extension EasyCoding where Base: UIView {
     }
     ///批量添加子视图到父视图并返回父视图
     @discardableResult
-    public func sub(_ views:[UIView], orientation: EasyOrientation = .landscape, margin:UIEdgeInsets = .zero, spacing: CGFloat = 0, equalsSize: Bool = false) ->Self  {
+    public func build(_ views:[UIView], orientation: EasyOrientation = .landscape, margin:UIEdgeInsets = .zero, spacing: CGFloat = 0, equalsSize: Bool = false) ->Self  {
         switch orientation {
         case .landscape:
-            return self.sub(views, first: [.left(margin.left)], last: [.right(margin.right)], between: equalsSize ? [.rightLeft(spacing), .width] : [.rightLeft(spacing)], all: [.marginY(margin.top, margin.bottom)])
+            return self.build(views, first: [.left(margin.left)], last: [.right(margin.right)], between: equalsSize ? [.rightLeft(spacing), .width] : [.rightLeft(spacing)], all: [.marginY(margin.top, margin.bottom)])
         case .portrait:
-            return self.sub(views, first: [.top(margin.top)], last: [.bottom(margin.bottom)], between: equalsSize ? [.bottomTop(spacing), .height] : [.bottomTop(spacing)], all: [.marginX(margin.left, margin.right)])
+            return self.build(views, first: [.top(margin.top)], last: [.bottom(margin.bottom)], between: equalsSize ? [.bottomTop(spacing), .height] : [.bottomTop(spacing)], all: [.marginX(margin.left, margin.right)])
         }
     }
     ///批量添加子视图到父视图并返回父视图
     @discardableResult
-    public func sub(_ viewBuilders:[(EasyNamespaceWrapper<UIView>) -> Void], orientation: EasyOrientation = .landscape, margin:UIEdgeInsets = .zero, spacing: CGFloat = 0, equalsSize: Bool = false) ->Self  {
-        return self.sub(viewBuilders.map({ (vb) -> UIView in
+    public func build(_ viewBuilders:[(EasyNamespaceWrapper<UIView>) -> Void], orientation: EasyOrientation = .landscape, margin:UIEdgeInsets = .zero, spacing: CGFloat = 0, equalsSize: Bool = false) ->Self  {
+        return self.build(viewBuilders.map({ (vb) -> UIView in
             let view = UIView()
             vb(view.easy)
             return view
         }), orientation: orientation, margin: margin, spacing: spacing, equalsSize: equalsSize)
+    }
+    ///批量添加子视图到父视图并返回父视图
+    @discardableResult
+    public func build(_ viewWithLayouts: (view: UIView, layout: [EasyViewLayout])...) -> Self  {
+        for item in viewWithLayouts {
+            self.base.addSubview(item.0)
+        }
+        if let first = viewWithLayouts.first {
+            first.layout.apply(to: self.base, with: first.view)
+        }
+        if viewWithLayouts.count > 1 {
+            for i in 0..<viewWithLayouts.count - 1 {
+                viewWithLayouts[i + 1].layout.apply(to: viewWithLayouts[i].view, with: viewWithLayouts[i + 1].view)
+            }
+        }
+        return self
     }
     ///设置视图的高宽
     @discardableResult

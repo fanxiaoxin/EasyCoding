@@ -25,6 +25,7 @@ PODS:
     - MJRefresh (~> 3.4)
   - EasyCoding/Present (0.1.1):
     - EasyCoding/Basic
+  - EasyCoding/ThemeManager (0.1.1)
   - EasyCoding/ViewControllerLoad (0.1.1):
     - EasyCoding/Present
   - HandyJSON (5.0.2)
@@ -41,6 +42,7 @@ PODS:
 
 DEPENDENCIES:
   - EasyCoding/Common (from `../`)
+  - EasyCoding/ThemeManager (from `../`)
 
 SPEC REPOS:
   trunk:
@@ -68,6 +70,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   YYKeyboardManager: ff53d2e80d1808567a7f004028bd200d9469a89f
 
-PODFILE CHECKSUM: 373fd2bae972aff950a0e48eda8cbe4f4c7d2026
+PODFILE CHECKSUM: c7840fc6dadce2d539c273b7e9be8c65ba934951
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.0

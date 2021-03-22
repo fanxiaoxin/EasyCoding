@@ -93,22 +93,10 @@ public enum EasyViewLayout {
     
     ///优先级
     indirect case priority(EasyViewLayout, ConstraintPriority)
-    ///优先级
-    public func priority(_ value: ConstraintPriority) -> EasyViewLayout {
-        return .priority(self, value)
-    }
     ///更新约束
     indirect case update(EasyViewLayout)
-    ///更新约束
-    public func update() -> EasyViewLayout {
-        return .update(self)
-    }
     ///指定页面布局
     indirect case with(UIView,EasyViewLayout)
-    ///指定页面布局
-    public func with(_ view: UIView) -> EasyViewLayout {
-        return .with(view, self)
-    }
 }
 
 extension ConstraintMakerEditable {
@@ -326,6 +314,19 @@ extension EasyViewLayout {
     public static var margin: EasyViewLayout { return .margin(0,0,0,0) }
     ///边距
     public static func margin(_ edge:UIEdgeInsets) -> EasyViewLayout { return .margin(edge.top, edge.left, edge.bottom, edge.right) }
+    
+    ///优先级
+    public func priority(_ value: ConstraintPriority) -> EasyViewLayout {
+        return .priority(self, value)
+    }
+    ///更新约束
+    public func update() -> EasyViewLayout {
+        return .update(self)
+    }
+    ///指定页面布局
+    public func with(_ view: UIView) -> EasyViewLayout {
+        return .with(view, self)
+    }
 }
 //父视图扩展
 extension EasyViewLayout {
